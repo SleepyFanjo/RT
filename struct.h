@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 10:34:55 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/10 18:13:15 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/10 18:52:06 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct		s_coord
 	float			y;
 	float			z;
 }					t_coord;
+
+typedef t_point t_coord;
 
 typedef struct		s_limit
 {
@@ -42,6 +44,12 @@ typedef struct		s_env
 	void			*win;
 	void			*img;
 }					t_env;
+
+typedef struct		s_cam
+{
+	t_coord			point;
+	int				rot[3];
+}					t_cam;
 
 typedef struct		s_img
 {
@@ -92,9 +100,18 @@ typedef struct		s_param
 	t_list			*spot;
 	t_list			*sphere;
 	t_list			*plane;
-	t_list			*cylindre;
+	t_list			*cylinder;
 	t_list			*cone;
 }					t_param;
+
+typedef struct		s_obj
+{
+	t_list			*plan;
+	t_list			*cylinder;
+	t_list			*spot;
+	t_list			*sphere;
+	t_cam			*cam;
+}					t_obj;
 
 typedef struct		s_thread
 {

@@ -6,11 +6,11 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:40:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/03 18:52:35 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/10 18:52:07 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "parser.h"
 
 static int		cam_test_tab(char **tab, int s_i)
 {
@@ -43,7 +43,7 @@ int				v_get_cam(t_obj *obj, char *line)
 	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		print_error("Allocation Fail");
-	if (get_size_tab(tab) != 7)
+	if (get_size_tab(tab) != 6)
 		print_error("Line \"%s\" has no six param");
 	if (!cam_test_tab(tab, 6))
 		print_error("Line \"%s\" is not ok");
@@ -55,7 +55,6 @@ int				v_get_cam(t_obj *obj, char *line)
 	plan->rot[0] = ft_atoi(tab[3]);
 	plan->rot[1] = ft_atoi(tab[4]);
 	plan->rot[2] = ft_atoi(tab[5]);
-	plan->zoom = ft_atoi(tab[6]);
 	obj->cam = plan;
 	return (0);
 }

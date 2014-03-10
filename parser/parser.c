@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 14:25:12 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/04 13:54:20 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/10 18:52:06 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,19 @@ static t_obj	*get_struct_obj(int fd)
 	return (var.obj);
 }
 
-t_obj		*parser(char *filename)
+void	parser(char *filename, t_param *param)
 {
 	int		fd;
+	t_obj	*obj;
 
 	if ((fd = open(filename, O_RDONLY)) < 0)
 		print_error("Unable to open the file\n");
-	return (get_struct_obj(fd));
+	obj = get_struct_obj(fd);
+	param->cylinder = obj->cylinder;
+	param->plan = obj->plan;
+	param->spot = obj->spot;
+	param->sphere = obj->sphere;
+	param->cone = NULL;
+	param->cam = obj->cam->point;
+	ft_memcpy(param->rot_cam, obj->cam->rot, sizeof(t_coord));
 }
