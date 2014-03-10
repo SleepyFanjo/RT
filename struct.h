@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 10:34:55 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/10 18:13:15 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/10 18:44:01 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct		s_param
 	t_list			*spot;
 	t_list			*sphere;
 	t_list			*plane;
-	t_list			*cylindre;
+	t_list			*cylinder;
 	t_list			*cone;
 }					t_param;
 
