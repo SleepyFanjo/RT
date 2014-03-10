@@ -6,17 +6,17 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 15:38:55 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/10 16:26:58 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/10 18:44:44 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raytracer.h"
 
-void	apply_trans(t_coord *translation, t_coord *to_move, int mult)
+void	apply_trans(t_coord translation, t_coord *to_move, int mult)
 {
-	to_move->x = to_move->x + (translation->x * mult);
-	to_move->y = to_move->y + (translation->y * mult);
-	to_move->z = to_move->z + (translation->z * mult);
+	to_move->x = to_move->x + (translation.x * mult);
+	to_move->y = to_move->y + (translation.y * mult);
+	to_move->z = to_move->z + (translation.z * mult);
 }
 
 void	apply_rot_x(t_coord *vec, float rot_x)
@@ -40,9 +40,9 @@ void	apply_rot_z(t_coord *vec, float rot_z)
 	vec->z = vec->z;
 }
 
-void	apply_rot(t_coord *rotation, t_coord *to_move, int mult)
+void	apply_rot(t_coord rotation, t_coord *to_move, int mult)
 {
-	apply_rot_x(to_move, rotation->x * mult);
-	apply_rot_y(to_move, rotation->y * mult);
-	apply_rot_z(to_move, rotation->z * mult);
+	apply_rot_x(to_move, rotation.x * mult);
+	apply_rot_y(to_move, rotation.y * mult);
+	apply_rot_z(to_move, rotation.z * mult);
 }

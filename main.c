@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 11:17:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/10 18:13:18 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/10 19:01:55 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		*j_malloc(size_t size)
 
 int			main(int argc, char **argv)
 {
-	t_param		*param;
+	t_param		param;
 
 	if (argc != 2)
 	{
@@ -44,12 +44,11 @@ int			main(int argc, char **argv)
 		ft_putendl("usage : ./RT file.rt");
 		return (1);
 	}
-	param = (t_param *)j_malloc(sizeof(t_param));
-	fill_param(param, argv[1]);
-	raytracer(param);
-	expose_hook(param);
-	mlx_expose_hook(param->env->win, expose_hook, param);
-	mlx_key_hook(param->env->win, key_hook, param);
-	mlx_loop(param->env->mlx);
+	fill_param(&param, argv[1]);
+	raytracer(&param, 4);
+	expose_hook(&param);
+	mlx_expose_hook(param.env.win, expose_hook, &param);
+	mlx_key_hook(param.env.win, key_hook, &param);
+	mlx_loop(param.env.mlx);
 	return (0);
 }
