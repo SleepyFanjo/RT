@@ -6,47 +6,35 @@
 #    By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/21 12:04:58 by vwatrelo          #+#    #+#              #
-#    Updated: 2014/02/12 16:54:13 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/02/21 15:18:02 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=clang
-FLAGS=-Wall -Wextra -Werror
-NAME=libft.a
-INCLUDES=-I includes/
-LIB=ft_printf/libft_printf.a \
-	libft_core/libft_core.a \
-	list/libft_list.a \
-	percent/libft_print_percent.a
+FLAGS=-Wall -Wextra -Werror -O3
+NAME=libft_print_percent.a
+INCLUDES=-I ../includes
+SRC=ft_print_percent.c \
+	my_tput.c \
+	env.c
 
-.PHONY: clean fclean all re
+OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): libft
+$(NAME): $(OBJ)
+	ar -q $(NAME) $^
+	ranlib $(NAME)
 
-libft: $(LIB)
-	$(foreach var, $(LIB), mv $(var) $(notdir $(var)) ;)
+%.o: %.c
+	$(CC) -o $@ -c $< $(FLAGS) $(INCLUDES)
 
-ft_printf/libft_printf.a:
-	(cd ft_printf && $(MAKE))
-
-list/libft_list.a:
-	(cd list && $(MAKE))
-
-libft_core/libft_core.a:
-	(cd libft_core && $(MAKE))
-
-percent/libft_print_percent.a:
-	(cd percent && $(MAKE))
+.PHONY: clean all re fclean clean
 
 clean:
-	(cd libft_core && $(MAKE) clean)
-	(cd ft_printf && $(MAKE) clean)
-	(cd list && $(MAKE) clean)
-	(cd percent && $(MAKE) clean)
+	rm -rf $(OBJ)
 
 fclean: clean
-	rm -f $(notdir $(LIB))
+	rm -rf $(NAME)
 
 re: fclean all

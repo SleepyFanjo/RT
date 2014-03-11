@@ -6,47 +6,40 @@
 #    By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/21 12:04:58 by vwatrelo          #+#    #+#              #
-#    Updated: 2014/02/12 16:54:13 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/02/21 15:17:48 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=clang
-FLAGS=-Wall -Wextra -Werror
-NAME=libft.a
-INCLUDES=-I includes/
-LIB=ft_printf/libft_printf.a \
-	libft_core/libft_core.a \
-	list/libft_list.a \
-	percent/libft_print_percent.a
+FLAGS=-Wall -Wextra -Werror -O3
+NAME=libft_list.a
+INCLUDES=-I ../includes
+SRC=ft_lstadd.c \
+	ft_lstdel.c \
+	ft_lstiter.c \
+	ft_lstdelone.c \
+	ft_lstnew.c \
+	ft_lstpop.c
 
-.PHONY: clean fclean all re
+OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): libft
 
-libft: $(LIB)
-	$(foreach var, $(LIB), mv $(var) $(notdir $(var)) ;)
+libft: $(OBJ)
+	ar -q $(NAME) $^
+	ranlib $(NAME)
 
-ft_printf/libft_printf.a:
-	(cd ft_printf && $(MAKE))
+%.o: %.c
+	$(CC) -o $@ -c $< $(FLAGS) $(INCLUDES)
 
-list/libft_list.a:
-	(cd list && $(MAKE))
-
-libft_core/libft_core.a:
-	(cd libft_core && $(MAKE))
-
-percent/libft_print_percent.a:
-	(cd percent && $(MAKE))
+.PHONY: clean mrproper
 
 clean:
-	(cd libft_core && $(MAKE) clean)
-	(cd ft_printf && $(MAKE) clean)
-	(cd list && $(MAKE) clean)
-	(cd percent && $(MAKE) clean)
+	rm -rf $(OBJ)
 
 fclean: clean
-	rm -f $(notdir $(LIB))
+	rm -rf $(NAME)
 
 re: fclean all
