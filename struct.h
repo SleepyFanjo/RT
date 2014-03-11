@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/10 19:06:23 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/11 17:54:32 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # define X			(0)
 # define Y			(1)
 # define Z			(2)
+# define SPHERE		(0)
+# define PLANE		(1)
+# define CYLINDER	(2)
+# define CONE		(3)
 
 typedef struct		s_coord
 {
@@ -123,3 +127,13 @@ typedef struct		s_thread
 	int				end_j;
 	t_param			*p;
 }					t_thread;
+
+typedef struct		s_equa
+{
+	float			a;
+	float			b;
+	float			c;
+	float			delta;
+}					t_equa;
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/10 19:06:20 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/11 17:54:34 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ void	apply_rot_x(t_coord *vec, float rot_x);
 void	apply_rot_y(t_coord *vec, float rot_y);
 void	apply_rot_z(t_coord *vec, float rot_z);
 void	inter_sphere(t_param *param, t_info *info, t_list *sphere);
+float	sqr(float nbr);
+
 #endif
