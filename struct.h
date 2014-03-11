@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/10 19:06:23 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/11 18:27:55 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,6 @@ typedef struct		s_obj
 	t_cam			*cam;
 }					t_obj;
 
-typedef struct		s_thread
-{
-	pthread_t		th;
-	int				id;
-	int				start_i;
-	int				start_j;
-	int				end_i;
-	int				end_j;
-	t_param			*p;
-}					t_thread;
+# include "multithread_struct.h"
+
+#endif
