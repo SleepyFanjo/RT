@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/11 18:27:55 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/11 18:44:47 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # define X			(0)
 # define Y			(1)
 # define Z			(2)
+# define SPHERE		(0)
+# define PLANE		(1)
+# define CYLINDER	(2)
+# define CONE		(3)
 
 typedef struct		s_coord
 {
