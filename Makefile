@@ -6,11 +6,11 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/12 15:35:25 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/12 19:30:23 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC= gcc
+CC= clang
 CFLAGS= -Wall -Werror -Wextra -g
 SRC= main.c \
 	 apply_transformation.c \
