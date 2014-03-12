@@ -34,4 +34,5 @@ int			raytracer(t_param *param, int nb_thread)
 	t_list		*thread;
 
 	thread = get_thread(param, 4, 4, 0);
+	execute_thread(thread);
 }
