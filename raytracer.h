@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/12 14:49:37 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/12 19:36:49 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # define RAD(deg)			(deg * F_PI / 180)
 # include <libft.h>
 # include "struct.h"
+# include "parser.h"
+# include <mlx.h>
+# include <math.h>
+# define WIDTH 1024
+# define HEIGHT 1024
 
 int		expose_hook(t_param *param);
 int		key_hook(t_param *param);
