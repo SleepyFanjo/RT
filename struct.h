@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/15 19:08:51 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/15 19:41:14 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,14 @@ typedef struct		s_plane
 	t_coord			rot;
 	int				color;
 }					t_plane;
+
+typedef struct		s_cylinder
+{
+	t_coord			pos;
+	t_coord			rot;
+	int				radius;
+	int				color;
+}					t_cylinder;
 
 typedef struct		s_spot
 {
