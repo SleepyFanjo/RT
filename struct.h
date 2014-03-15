@@ -6,12 +6,13 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/11 18:44:47 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/13 12:24:48 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+# include <list.h>
 # include <pthread.h>
 # define X			(0)
 # define Y			(1)
@@ -27,8 +28,6 @@ typedef struct		s_coord
 	float			y;
 	float			z;
 }					t_coord;
-
-typedef t_point t_coord;
 
 typedef struct		s_limit
 {
