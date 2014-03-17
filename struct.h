@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/17 18:28:45 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/17 18:30:41 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,6 @@ typedef struct		s_plane
 	int				color[3];
 }					t_plane;
 
-typedef struct		s_equa
-{
-	float			a;
-	float			b;
-	float			c;
-	float			delta;
-}					t_equa;
-
 typedef struct		s_cylinder
 {
 	t_coord			pos;
@@ -92,6 +84,22 @@ typedef struct		s_cylinder
 	int				radius;
 	int				color[3];
 }					t_cylinder;
+
+typedef struct		s_cone
+{
+	t_coord			pos;
+	t_coord			rot;
+	int				alpha;
+	int				color[3];
+}					t_cone;
+
+typedef struct		s_equa
+{
+	float			a;
+	float			b;
+	float			c;
+	float			delta;
+}					t_equa;
 
 typedef struct		s_spot
 {
