@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/13 12:24:48 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/17 14:33:35 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ typedef struct		s_coord
 	float			z;
 }					t_coord;
 
-typedef struct		s_limit
+typedef struct		s_lim
 {
 	int				i;
 	int				j;
-}					t_limit;
+}					t_lim;
 
 typedef struct		s_line
 {
@@ -75,6 +75,14 @@ typedef struct		s_plane
 	t_coord			rot;
 	int				color;
 }					t_plane;
+
+typedef struct		s_cylinder
+{
+	t_coord			pos;
+	t_coord			rot;
+	int				radius;
+	int				color;
+}					t_cylinder;
 
 typedef struct		s_spot
 {
