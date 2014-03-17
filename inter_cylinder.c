@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/15 19:17:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/15 19:52:40 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/17 15:36:22 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void			inter_cylinder(t_param *param, t_info *info, t_list *cylinder)
 	t_cylinder	*obj;
 	float		dist;
 
+	(void)param;
 	while (cylinder)
 	{
 		obj = (t_cylinder *)cylinder->content;

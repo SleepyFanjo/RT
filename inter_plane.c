@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 12:17:47 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/15 20:06:11 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/17 15:36:05 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void			inter_plane(t_param *param, t_info *info, t_list *plane)
 	t_plane		*obj;
 	float		dist;
 
+	(void)param;
 	while (plane)
 	{
 		obj = (t_plane *)plane->content;

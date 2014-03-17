@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:10:44 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/10 14:21:24 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/17 15:29:21 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int		expose_hook(t_param *param)
 {
-	t_env	*env;
+	t_env	env;
 
-	if (param->env->img == NULL)
+	if (param->env.img == NULL)
 		return (0);
 	env = param->env;
-	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
+	mlx_put_image_to_window(env.mlx, env.win, env.img, 0, 0);
 	return (0);
 }
 
-int		key_hook(t_param *param)
+int		key_hook(int keycode, t_param *param)
 {
 	(void)param;
 	if (keycode == 65307)

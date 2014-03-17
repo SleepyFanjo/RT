@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:55:26 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/10 19:00:50 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/17 15:27:14 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static t_env	get_env(void)
 		ft_error("Error : can't init mlx", NULL, 1);
 	env.win = mlx_new_window(env.mlx, WIDTH, HEIGHT, "Raytracer");
 	if (env.win == NULL);
-		ft_error("Error : can't open window");
+		ft_error("Error : can't open window", NULL, 1);
 	if ((env.img = mlx_new_image(env.mlx, WIDTH, HEIGHT)) == NULL)
-		ft_error("Error : can't create image");
+		ft_error("Error : can't create image", NULL, 1);
 	return (env);
 }
 

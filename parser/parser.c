@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 14:25:12 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/10 18:52:06 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/17 15:29:53 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static t_obj	*get_struct_obj(int fd)
 	return (var.obj);
 }
 
-void	parser(char *filename, t_param *param)
+void	parser(char *filename, t_param *param);
 {
 	int		fd;
 	t_obj	*obj;

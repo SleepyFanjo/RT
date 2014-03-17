@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/15 20:06:07 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/17 15:36:12 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_line	get_new_equa(t_sphere *obj, t_line line)
 
 static float	delta(t_line new, t_sphere *obj)
 {
-	t_equq		e;
+	t_equa		e;
 	float		x1;
 	float		x2;
 
@@ -65,6 +65,7 @@ void			inter_sphere(t_param *param, t_info *info, t_list *sphere)
 	t_sphere	*obj;
 	float		dist;
 
+	(void)param;
 	while (sphere)
 	{
 		obj = (t_sphere *)sphere->content;
