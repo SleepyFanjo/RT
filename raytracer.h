@@ -6,11 +6,12 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/17 14:33:50 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/17 14:48:53 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYTRACER_H
+# define LOADING		(0)
 # define RAYTRACER_H
 # define F_PI			(3.1415926535)
 # define RAD(deg)			(deg * F_PI / 180)
@@ -26,6 +27,7 @@ int		raythrow(t_thread *thread);
 int		put_pixel_to_img(t_param *param, int i, int j);
 void	fill_param(t_param *param, char *str);
 t_info	*init_info(t_param *param, int i, int j);
+void	write_on_img(t_param *param, int color, int i, int j);
 void	apply_trans(t_coord translation, t_coord *to_move, int mult);
 void	apply_rot(t_coord rotation, t_coord *to_turn, int mult);
 void	apply_rot_x(t_coord *vec, float rot_x);

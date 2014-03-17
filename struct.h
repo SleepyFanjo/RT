@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/17 14:33:35 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/17 14:48:08 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define STRUCT_H
 # include <list.h>
 # include <pthread.h>
-# define X			(0)
-# define Y			(1)
-# define Z			(2)
+# define PIX		(img.pix)
+# define BPP		(img.bpp)
+# define LINE		(img.line)
+# define ENDIAN		(img.endian)
 # define SPHERE		(0)
 # define PLANE		(1)
 # define CYLINDER	(2)
