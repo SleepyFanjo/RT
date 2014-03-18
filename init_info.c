@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 15:18:04 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/17 15:33:52 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/18 16:41:41 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ t_info			init_info(t_param *param, int i, int j)
 	init_line(param, i, j, &(info.line));
 	info.distance = -1;
 	info.light = 0.0;
+	info.color = NULL;
 	return (info);
 }

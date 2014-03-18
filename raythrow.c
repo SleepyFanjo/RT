@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/17 18:28:53 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/18 15:56:38 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	calc_intersection(t_param *param, t_info *info)
 	inter_sphere(param, info, param->sphere);
 	inter_plane(param, info, param->plane);
 	inter_cylinder(param, info, param->cylinder);
-	//inter_cone(param, info, param->cone);
+	inter_cone(param, info, param->cone);
 }
 
 static int		calc_color(int *color, float light)
@@ -25,6 +25,8 @@ static int		calc_color(int *color, float light)
 	int		ret;
 
 	(void)light;
+	if (color == NULL)
+		return (0);
 	ret = color[0] + 256 * color[1] + 256 * 256 * color[2];
 	return (ret);
 }
@@ -33,16 +35,16 @@ int		raythrow(t_thread *thread)
 {
 	int		j;
 
-	while (thread->limit->s_i <= thread->limit->e_i)
+	while (thread->limit.s_i <= thread->limit.e_i)
 	{
-		j = thread->limit->s_j;
-		while (j <= thread->limit->e_j)
+		j = thread->limit.s_j;
+		while (j <= thread->limit.e_j)
 		{
-			if (put_pixel_to_img(thread->p, thread->limit->s_i, j))
+			if (put_pixel_to_img(thread->p, thread->limit.s_i, j))
 				return (-1);
 			j = j + 1;
 		}
-		thread->limit->s_i = thread->limit->s_i + 1;
+		thread->limit.s_i = thread->limit.s_i + 1;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 12:17:47 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/17 15:36:05 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/18 14:27:34 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 static void		update_info(t_info *info, float dist, void *obj)
 {
+	t_plane		*plane;
+
 	info->distance = dist;
 	info->obj_type = PLANE;
 	info->obj = obj;
+	plane = (t_plane *)obj;
+	info->color = plane->color;
 	info->pos.x = info->line.pos.x + dist * info->line.vec.x;
 	info->pos.y = info->line.pos.y + dist * info->line.vec.y;
 	info->pos.z = info->line.pos.z + dist * info->line.vec.z;
@@ -39,7 +43,7 @@ static t_line	get_new_equa(t_plane *obj, t_line line)
 
 static float	delta(float d, t_line new)
 {
-	return (-(new.pos.y + d / new.vec.y));
+	return (-((new.pos.y + d) / new.vec.y));
 }
 
 void			inter_plane(t_param *param, t_info *info, t_list *plane)
@@ -53,7 +57,7 @@ void			inter_plane(t_param *param, t_info *info, t_list *plane)
 	{
 		obj = (t_plane *)plane->content;
 		new = get_new_equa(obj, info->line);
-		dist = delta(-(obj->pos->y), new);
+		dist = delta(-(obj->pos.y), new);
 		if (dist > 0 && (info->distance < 0 || dist < info->distance))
 			update_info(info, dist, plane->content);
 		plane = plane->next;

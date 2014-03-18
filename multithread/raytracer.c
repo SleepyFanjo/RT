@@ -1,5 +1,5 @@
 #include "../multithread.h"
-
+/*
 static void	*launch_thread(void *th)
 {
 	t_thread	*th;
@@ -28,11 +28,16 @@ static void	execute_thread(t_list *th)
 		th = th->next;
 	}
 }
-
-int			raytracer(t_param *param, int nb_thread)
+*/
+void			raytracer(t_param *param, int nbr_process)
 {
-	t_list		*thread;
+	t_thread		thread;
 
-	thread = get_thread(param, 4, 4, 0);
-	execute_thread(thread);
+	(void) nbr_process;
+	thread.limit.s_i = 0;
+	thread.limit.s_j = 0;
+	thread.limit.e_i = HEIGHT;
+	thread.limit.e_j = WIDTH;
+	thread.p = param;
+	raythrow(&thread);
 }

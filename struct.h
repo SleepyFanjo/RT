@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/17 18:30:41 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/18 17:00:10 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ typedef struct		s_sphere
 {
 	int				radius;
 	t_coord			pos;
-	int				color[3];
+	int				*color;
 }					t_sphere;
 
 typedef struct		s_plane
 {
 	t_coord			pos;
 	t_coord			rot;
-	int				color[3];
+	int				*color;
 }					t_plane;
 
 typedef struct		s_cylinder
@@ -82,7 +82,7 @@ typedef struct		s_cylinder
 	t_coord			pos;
 	t_coord			rot;
 	int				radius;
-	int				color[3];
+	int				*color;
 }					t_cylinder;
 
 typedef struct		s_cone
@@ -90,7 +90,7 @@ typedef struct		s_cone
 	t_coord			pos;
 	t_coord			rot;
 	int				alpha;
-	int				color[3];
+	int				*color;
 }					t_cone;
 
 typedef struct		s_equa
@@ -105,7 +105,7 @@ typedef struct		s_spot
 {
 	t_coord			coord;
 	float			value;
-	int				color[3];
+	int				*color;
 }					t_spot;
 
 typedef struct		s_info
@@ -116,7 +116,7 @@ typedef struct		s_info
 	t_coord			vec_r;
 	float			distance;
 	float			light;
-	int				color[3];
+	int				*color;
 	int				obj_type;
 	void			*obj;
 }					t_info;

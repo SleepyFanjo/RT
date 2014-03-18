@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:51:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/12 14:50:17 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/18 12:04:13 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,13 @@ t_list			*get_thread(t_param *param, int nb_t, int nb_t_tot, int nb_t_s)
 		exit(1);
 	}
 	res = NULL;
-	full_size = W * H;
+	full_size = WIDTH * HEIGHT;
 	step = full_size / nb_t_tot;
 	step += 1;
 	i_e[0] = nb_t_s * step;
 	i_e[1] = step * (nb_t_s + nb_t);
 	while (index < end)
-	{
 		add_thread_lst(&res, step, index, end);
-	}
+	(void)param;
 	return (res);
 }

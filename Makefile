@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/17 14:34:04 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/18 15:56:34 by qchevrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,29 +14,28 @@ CC= clang
 CFLAGS= -Wall -Werror -Wextra -g
 SRC= main.c \
 	 apply_transformation.c \
-	 fill_param.c \
 	 hook.c \
 	 init_info.c \
 	 inter_sphere.c \
+	 inter_plane.c \
+	 inter_cylinder.c \
+	 inter_cone.c \
+	 write_on_img.c \
 	 raythrow.c \
-	 parser/get_cam.c \
-	 parser/get_cylinder.c \
-	 parser/get_obj.c \
-	 parser/get_size_tab.c \
-	 parser/get_spot.c \
-	 parser/parser.c \
-	 parser/print_error.c \
-	 parser/test_tab.c \
-	 parser/v_get_plan.c \
-	 parser/v_get_sphere.c \
-	 multithread/get_thread.c \
+	 parser/fill_plan_list.c \
+	 parser/fill_spot_list.c \
+	 parser/fill_cylinder_list.c \
+	 parser/fill_cone_list.c \
+	 parser/init_cam.c \
+	 parser/spheres.c \
+	 parser/init_param.c \
 	 multithread/raytracer.c
 
 INCLUDES=-I includes/
 OBJ= $(SRC:.c=.o)
 NAME= Raytracer
-LIB=-L./libft -lft -L/usr/X11/lib -lmlx -lXext -lX11
-DIR_LFT= ./libft
+LIB=-L./libft -lft_core -lft_printf -lft_list -L/usr/X11/lib -lmlx -lXext -lX11
+DIR_LFT=./libft
 
 .PHONY: clean fclean re all
 

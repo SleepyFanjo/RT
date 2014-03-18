@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter_sphere.c                                     :+:      :+:    :+:   */
+/*   inter_cone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/18 13:57:23 by qchevrin         ###   ########.fr       */
+/*   Created: 2014/03/15 19:17:52 by qchevrin          #+#    #+#             */
+/*   Updated: 2014/03/18 16:44:56 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 static void		update_info(t_info *info, float dist, void *obj)
 {
-	t_sphere	*sphere;
+	t_cone	*cone;
 
 	info->distance = dist;
-	info->obj_type = SPHERE;
+	info->obj_type = CONE;
 	info->obj = obj;
-	sphere = (t_sphere *)obj;
-	info->color = sphere->color;
+	cone = (t_cone *)obj;
+	info->color = cone->color;
 	info->pos.x = info->line.pos.x + dist * info->line.vec.x;
 	info->pos.y = info->line.pos.y + dist * info->line.vec.y;
 	info->pos.z = info->line.pos.z + dist * info->line.vec.z;
 }
 
-static t_line	get_new_equa(t_sphere *obj, t_line line)
+static t_line	get_new_equa(t_cone *obj, t_line line)
 {
 	t_line		new;
 
@@ -36,20 +36,24 @@ static t_line	get_new_equa(t_sphere *obj, t_line line)
 	new.vec.x = line.vec.x;
 	new.vec.y = line.vec.y;
 	new.vec.z = line.vec.z;
-	apply_trans(obj->pos, &(new.pos), -1);
+	apply_trans(obj->pos, &new.pos, -1);
+	apply_rot(obj->rot, &new.vec, -1);
 	return (new);
 }
 
-static float	delta(t_line new, t_sphere *obj)
+static float	delta(t_line new, t_cone *obj)
 {
 	t_equa		e;
+	float		tan_al;
 	float		x1;
 	float		x2;
 
-	e.a = SQR(new.vec.x) + SQR(new.vec.y) + SQR(new.vec.z);
-	e.b = 2 * (new.pos.x * new.vec.x + new.pos.y * new.vec.y);
-	e.b = e.b + 2 * (new.pos.z * new.vec.z);
-	e.c = SQR(new.pos.x) + SQR(new.pos.y) + SQR(new.pos.z) - SQR(obj->radius);
+	tan_al = tan(RAD(obj->alpha));
+	tan_al = SQR(tan_al);
+	e.a = SQR(new.vec.x) + SQR(new.vec.z) - (SQR(new.vec.y) * tan_al);
+	e.b = 2 * (new.vec.x * new.pos.x + new.vec.z * new.pos.z);
+	e.b = e.b - (2 * new.vec.y * new.pos.y * tan_al);
+	e.c = SQR(new.pos.x) + SQR(new.pos.z) - (SQR(new.pos.y) * tan_al);
 	e.delta = SQR(e.b) - 4 * e.a * e.c;
 	if (e.delta < -0.00001)
 		return (-1);
@@ -62,21 +66,20 @@ static float	delta(t_line new, t_sphere *obj)
 	return (x2);
 }
 
-
-void			inter_sphere(t_param *param, t_info *info, t_list *sphere)
+void			inter_cone(t_param *param, t_info *info, t_list *cone)
 {
 	t_line		new;
-	t_sphere	*obj;
+	t_cone		*obj;
 	float		dist;
 
 	(void)param;
-	while (sphere)
+	while (cone)
 	{
-		obj = (t_sphere *)sphere->content;
+		obj = (t_cone *)cone->content;
 		new = get_new_equa(obj, info->line);
 		dist = delta(new, obj);
 		if (dist > 0 && (info->distance < 0 || dist < info->distance))
-			update_info(info, dist, sphere->content);
-		sphere = sphere->next;
+			update_info(info, dist, cone->content);
+		cone = cone->next;
 	}
 }

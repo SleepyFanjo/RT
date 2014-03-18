@@ -12,7 +12,7 @@ typedef struct	s_limit
 typedef struct		s_thread
 {
 	pthread_t		th;
-	t_limit			*limit;
+	t_limit			limit;
 	t_param			*p;
 }					t_thread;
 
