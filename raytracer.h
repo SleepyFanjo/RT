@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/18 15:54:47 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/18 18:00:25 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_list	*fill_cylinder_list(char *dir);
 t_list	*fill_cone_list(char *dir);
 int		*get_color(int color);
 int		next_number(char *line, int *i);
+int		first_number(char *line, int *i);
 t_list	*get_sphere(char *str);
 t_coord	init_cam(t_coord *rot, char *dir);
 int		expose_hook(t_param *param);
@@ -49,6 +50,7 @@ void	apply_rot_x(t_coord *vec, float rot_x);
 void	apply_rot_y(t_coord *vec, float rot_y);
 void	apply_rot_z(t_coord *vec, float rot_z);
 void	inter_sphere(t_param *param, t_info *info, t_list *sphere);
+float	limited_sphere(t_sphere *obj, t_line line, float dist);
 void	inter_plane(t_param *param, t_info *info, t_list *plane);
 void	inter_cylinder(t_param *param, t_info *info, t_list *cylinder);
 void	inter_cone(t_param *param, t_info *info, t_list *cone);

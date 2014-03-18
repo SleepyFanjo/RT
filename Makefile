@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/18 15:56:34 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/18 17:25:40 by qchevrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC= main.c \
 	 hook.c \
 	 init_info.c \
 	 inter_sphere.c \
+	 limited_sphere.c \
 	 inter_plane.c \
 	 inter_cylinder.c \
 	 inter_cone.c \

@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/18 17:00:10 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/18 17:56:32 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ typedef struct		s_img
 typedef struct		s_sphere
 {
 	int				radius;
+	float			lim_h_x;
+	float			lim_b_x;
+	float			lim_h_y;
+	float			lim_b_y;
+	float			lim_h_z;
+	float			lim_b_z;
 	t_coord			pos;
 	int				*color;
 }					t_sphere;

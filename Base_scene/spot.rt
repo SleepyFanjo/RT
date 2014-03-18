@@ -1,0 +1,2 @@
+# pos_x pos_y pos_z intensity (intensity must be between 0 and 1000)
+0 0 0 1000 0

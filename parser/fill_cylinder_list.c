@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 14:46:55 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/18 15:04:43 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/18 18:01:18 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_list	*get_cylinder(char *str)
 	if ((obj = (t_cylinder *)malloc(sizeof(t_cylinder))) == NULL)
 		ft_error("Error : can't malloc", NULL, 1);
 	i = 0;
-	obj->rot.x = ft_atoi(str + i);
+	obj->rot.x = ft_atoi(str + first_number(str, &i));
 	obj->rot.y = ft_atoi(str + next_number(str, &i));
 	obj->rot.z = ft_atoi(str + next_number(str, &i));
 	obj->pos.x = ft_atoi(str + next_number(str, &i));
