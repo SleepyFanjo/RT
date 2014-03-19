@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 14:46:55 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/18 18:01:02 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 10:39:26 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_list	*get_plane(char *str)
 	obj->pos.x = ft_atoi(str + next_number(str, &i));
 	obj->pos.y = ft_atoi(str + next_number(str, &i));
 	obj->pos.z = ft_atoi(str + next_number(str, &i));
-	obj->color = get_color(ft_atoi(str + next_number(str, &i)));
+	obj->color = get_color(str + next_number(str, &i));
 	elem->content = obj;
 	elem->next = NULL;
 	return (elem);

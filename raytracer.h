@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/18 18:00:25 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 10:40:25 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ t_list	*fill_spot_list(char *dir);
 t_list	*fill_plane_list(char *dir);
 t_list	*fill_cylinder_list(char *dir);
 t_list	*fill_cone_list(char *dir);
-int		*get_color(int color);
+int		*get_color(char *color);
+int		ft_hex_atoi(char *str);
 int		next_number(char *line, int *i);
 int		first_number(char *line, int *i);
 t_list	*get_sphere(char *str);
