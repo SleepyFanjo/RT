@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/18 17:48:09 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 10:15:51 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ static void		update_info(t_info *info, float dist, void *obj)
 	info->pos.x = info->line.pos.x + dist * info->line.vec.x;
 	info->pos.y = info->line.pos.y + dist * info->line.vec.y;
 	info->pos.z = info->line.pos.z + dist * info->line.vec.z;
+	info->vec_n.x = info->pos.x - sphere->pos.x;
+	info->vec_n.y = info->pos.y - sphere->pos.y;
+	info->vec_n.z = info->pos.z - sphere->pos.z;
 }
 
 static t_line	get_new_equa(t_sphere *obj, t_line line)
@@ -75,7 +78,7 @@ void			inter_sphere(t_param *param, t_info *info, t_list *sphere)
 		obj = (t_sphere *)sphere->content;
 		new = get_new_equa(obj, info->line);
 		dist = delta(new, obj);
-		dist = limited_sphere(obj, new, dist);
+//		dist = limited_sphere(obj, new, dist);
 		if (dist > 0 && (info->distance < 0 || dist < info->distance))
 			update_info(info, dist, sphere->content);
 		sphere = sphere->next;

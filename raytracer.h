@@ -16,6 +16,7 @@
 # define F_PI			(3.1415926535)
 # define WIDTH			(800)
 # define HEIGHT			(600)
+# define AMBL			0.2
 # define RAD(deg)			(deg * F_PI / 180)
 # define SQR(val)			(val * val)
 # include <mlx.h>
@@ -54,5 +55,7 @@ float	limited_sphere(t_sphere *obj, t_line line, float dist);
 void	inter_plane(t_param *param, t_info *info, t_list *plane);
 void	inter_cylinder(t_param *param, t_info *info, t_list *cylinder);
 void	inter_cone(t_param *param, t_info *info, t_list *cone);
+void	calc_intersection(t_param *param, t_info *info);
+void	calc_light(t_param *param, t_info *info, t_list *spot);
 
 #endif

@@ -22,6 +22,7 @@ SRC= main.c \
 	 inter_cylinder.c \
 	 inter_cone.c \
 	 write_on_img.c \
+	 light.c \
 	 raythrow.c \
 	 parser/fill_plan_list.c \
 	 parser/fill_spot_list.c \
@@ -47,7 +48,7 @@ $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LIB)
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $(INCLUDES) -o $@ $< -I./ -I$(DIR_LFT)/includes
+	$(CC) -c $(CFLAGS) $(INCLUDES) -o $@ $< -I./ -I$(DIR_LFT)/includes -I /usr/X11/include/
 
 clean:
 	@(cd $(DIR_LFT) ; make clean)
