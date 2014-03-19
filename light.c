@@ -14,6 +14,16 @@ double	dot_product(t_coord p1, t_coord p2)
 	return (tmp);
 }
 
+t_coord	calc_vec(t_coord p1, t_coord p2)
+{
+	t_coord	n_p;
+
+	n_p.x = p2.x - p1.x;
+	n_p.y = p2.y - p1.y;
+	n_p.z = p2.z - p1.z;
+	return (n_p);
+}
+
 double	ft_abs(double nb)
 {
 	if (nb < 0)
