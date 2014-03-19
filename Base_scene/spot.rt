@@ -1,3 +1,4 @@
 # pos_x pos_y pos_z intensity (intensity must be between 0 and 1000)
 400 200 0 500 0
 -400 200 0 500 0
+0 110 0 200 0
