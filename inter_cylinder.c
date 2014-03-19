@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/15 19:17:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 12:42:00 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 18:17:53 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_line	get_new_equa(t_cylinder *obj, t_line line)
 	new.vec.x = line.vec.x;
 	new.vec.y = line.vec.y;
 	new.vec.z = line.vec.z;
-	apply_rot(obj->rot, &new.vec, -1);
+	apply_rot(obj->rot, &new.vec,  -1);
 	apply_trans(obj->pos, &new.pos, -1);
 	return (new);
 }

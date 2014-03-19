@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:51:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/18 12:04:13 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 18:49:43 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,78 @@ static t_list	*get_thread_lst(t_limit *limit, t_param *p)
 	return (res);
 }
 
-static void		add_thread_lst(t_list **lst, int step, int *i_e, t_param *p)
+static t_list	*get_lst_thread(t_param *p, int *i_e, int step)
 {
-	t_limit		*limit;
+	int		pos;
+	t_limit	*lim;
+	t_list	*th;
 
-	if ((limit = (t_limit *)malloc(sizeof(t_limit))) == NULL)
+	th = NULL;
+	lim = NULL;
+	pos = i_e[0];
+	while (pos < i_e[1] - 1)
 	{
-		ft_printf("%rMalloc Fail\n");
-		exit(1);
+		lim = (t_limit *)j_malloc(sizeof(t_limit));
+		lim->s_i = pos % WIDTH;
+		lim->s_j = pos / WIDTH;
+		pos += step;
+		if (pos >= i_e[1])
+			pos = i_e[1] - 1;
+		lim->e_i = pos % WIDTH + 1;
+		lim->e_j = pos / WIDTH + 1;
+		ft_lstadd(&th, get_thread_lst(lim, p));
 	}
-	limit->s_i = i_e[0] % W;
-	limit->s_j = i_e [0] / W;
-	i_e[0] += step;
-	if (i_e[0] > end)
+	return (th);
+}
+
+static int		ft_min(int nb1, int nb2)
+{
+	if (nb1 < nb2)
+		return (nb1);
+	return (nb2);
+}
+
+static int		ft_max(int nb1, int nb2)
+{
+	if (nb1 > nb2)
+		return (nb1);
+	return (nb2);
+}
+
+static void		ft_connect_blur(t_list *lst)
+{
+	t_thread	*prvs;
+	t_thread	*cur;
+
+	if (lst == NULL)
+		return ;
+	prvs = (t_thread *)lst->content;
+	lst = lst->next;
+	while (lst != NULL)
 	{
-		limit->e_i = i_e[1]% W;
-		limit->e_j = i_e[1] / W;
+		cur = (t_thread *)lst->content;
+		cur->limit->s_j = ft_max(prvs->limit->e_j - 1, 0);
+		prvs = (t_thread *)lst->content;
+		lst = lst->next;
 	}
-	else
+}
+
+static void		ft_smooth_lst(t_list *res)
+{
+	t_thread		*th;
+	t_thread		*th_next;
+
+	while (res != NULL)
 	{
-		limit->e_i = i_e[0] % W;
-		limit->e_j = i_e[0] / W;
+		if (res->next != NULL)
+		{
+			th = (t_thread *)(res->content);
+			th_next = (t_thread *)(res->next->content);
+			th->limit->e_i = th_next->limit->s_i;
+			th->limit->e_j = th_next->limit->s_j;
+		}
+		res = res->next;
 	}
-	ft_lstadd(lst, get_thread_lst(limit, p));
 }
 
 t_list			*get_thread(t_param *param, int nb_t, int nb_t_tot, int nb_t_s)
@@ -69,14 +118,13 @@ t_list			*get_thread(t_param *param, int nb_t, int nb_t_tot, int nb_t_s)
 		ft_printf("%rNumber of thread is too small (%d)\n", nb_t);
 		exit(1);
 	}
-	res = NULL;
 	full_size = WIDTH * HEIGHT;
 	step = full_size / nb_t_tot;
-	step += 1;
+	step++;
 	i_e[0] = nb_t_s * step;
-	i_e[1] = step * (nb_t_s + nb_t);
-	while (index < end)
-		add_thread_lst(&res, step, index, end);
-	(void)param;
+	i_e[1] = ft_min(step * (nb_t_s + nb_t), full_size);
+	res = get_lst_thread(param, i_e, step);
+	ft_smooth_lst(res);
+	ft_connect_blur(res);
 	return (res);
 }
