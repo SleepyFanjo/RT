@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/19 10:37:02 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/19 11:23:00 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,15 @@ SRC= main.c \
 	 parser/fill_spot_list.c \
 	 parser/fill_cylinder_list.c \
 	 parser/fill_cone_list.c \
-	 parser/init_cam.c \
+	 parser/get_cam.c \
 	 parser/spheres.c \
 	 parser/init_param.c \
 	 parser/get_color.c \
 	 parser/ft_hex_atoi.c \
+	 parser/parser.c \
+	 parser/print_error.c \
+	 parser/get_size_tab.c \
+	 parser/get_obj.c \
 	 multithread/raytracer.c
 
 INCLUDES=-I includes/

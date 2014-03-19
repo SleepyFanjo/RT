@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 11:06:20 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 10:47:20 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/19 11:09:10 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,12 @@ int			next_number(char *line, int *i)
 	return (*i);
 }
 
-t_list		*get_sphere(char *str)
+void		get_sphere(t_obj *o, char *str)
 {
 	t_list		*elem;
 	int			i;
 	t_sphere	*obj;
 
-	if (str[0] == '#')
-		return (NULL);
 	if ((elem = (t_list *)malloc(sizeof(t_list))) == NULL)
 		ft_error("Error, can't malloc", NULL, 1);
 	if ((obj = (t_sphere *)malloc(sizeof(t_sphere))) == NULL)
@@ -65,5 +63,5 @@ t_list		*get_sphere(char *str)
 	add_limit(obj, str, &i);
 	elem->content = obj;
 	elem->next = NULL;
-	return (elem);
+	ft_lstadd(&(o->sphere), elem);
 }
