@@ -1,4 +1,4 @@
-#include "raytracer.h"
+#include "../raytracer.h"
 
 int			test_col_str(char *color)
 {
@@ -28,8 +28,8 @@ int			*get_color(char *color)
 		exit(1);
 	}
 	tab = (int *)j_malloc(sizeof(int) * 3);
-	tab[0] = ft_hex_atoi(color);
+	tab[2] = ft_hex_atoi(color);
 	tab[1] = ft_hex_atoi(color + 2);
-	tab[2] = ft_hex_atoi(color + 4);
+	tab[0] = ft_hex_atoi(color + 4);
 	return (tab);
 }

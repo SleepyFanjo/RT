@@ -1,8 +1,9 @@
 #include "../raytracer.h"
 
-static void		get_obj_line(t_obj *obj, char *line, void (*f)(t_obj *, char *))
+static void		get_obj_line(t_obj *obj, char *line, int (*f)(t_obj *, char *))
 {
-	f(obj, line);
+	if (f(obj, line) < 0)
+		ft_printf("%rUnable to get line: %s\n", line);
 }
 
 static void		get_obj_cd(int cur_obj, t_obj *obj, char *line)
@@ -10,13 +11,15 @@ static void		get_obj_cd(int cur_obj, t_obj *obj, char *line)
 	if (cur_obj == CD_SPHERE)
 		get_obj_line(obj, line, get_sphere);
 	else if (cur_obj == CD_PLAN)
-		get_obj_line(obj, line, get_plane);
+		get_obj_line(obj, line, get_plan);
 	else if (cur_obj == CD_SPOT)
 		get_obj_line(obj, line, get_spot);
 	else if (cur_obj == CD_CAM)
 		get_obj_line(obj, line, get_cam);
 	else if (cur_obj == CD_CYLINDER)
 		get_obj_line(obj, line, get_cylinder);
+	else if (cur_obj == CD_CONE)
+		get_obj_line(obj, line, get_cone);
 }
 
 static void		loop_get_struct(t_var_parser *var)
@@ -58,7 +61,7 @@ void	parser(char *filename, t_param *param)
 	t_obj	*obj;
 
 	if ((fd = open(filename, O_RDONLY)) < 0)
-		print_error("Unable to open the file\n");
+		print_error(filename, "Unable to open the file\n");
 	obj = get_struct_obj(fd);
 	param->cylinder = obj->cylinder;
 	param->plane = obj->plan;

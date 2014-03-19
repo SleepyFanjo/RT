@@ -6,19 +6,18 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 10:51:48 by qchevrin          #+#    #+#             */
-/*   Updated: 2013/11/28 14:15:35 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 14:57:53 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include <stdlib.h>
-#include "libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strnew(size_t size)
 {
 	char	*ptr;
 
-	if ((ptr = malloc(size * sizeof(char))) == NULL)
+	if ((ptr = malloc((size + 10) * sizeof(char))) == NULL)
 	{
 		return (NULL);
 	}

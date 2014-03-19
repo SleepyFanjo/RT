@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 11:23:57 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/19 15:10:54 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,21 @@
 # define CD_CAM 4
 # define CD_COM 5
 # define CD_CYLINDER 6
+# define CD_CONE 7
 
 void	init_param(t_param *param, char *dir);
+int		test_tab(char **tab, int s_i);
 int		get_type_obj(char *line);
 t_obj	*get_obj(void);
 int		get_size_tab(char **tab);
-void	print_error(char *str);
+void	print_error(char *str1, char *str2);
 void	add_in_list(t_list **list, t_list *elem);
-void	get_cone(t_obj *o, char *str);
-void	get_cylinder(t_obj *o, char *str);
-void	get_spot(t_obj *o, char *str);
-void	get_plane(t_obj *o, char *str);
-void	get_sphere(t_obj *o, char *str);
-void	get_cam(t_obj *obj, char *line);
+int		get_cone(t_obj *obj, char *str);
+int		get_cylinder(t_obj *obj, char *str);
+int		get_spot(t_obj *obj, char *str);
+int		get_plan(t_obj *obj, char *str);
+int		get_sphere(t_obj *obj, char *str);
+int		get_cam(t_obj *obj, char *line);
 int		*get_color(char *color);
 int		ft_hex_atoi(char *str);
 int		next_number(char *line, int *i);
