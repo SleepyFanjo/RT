@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/18 17:25:40 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/19 12:40:11 by qchevrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ SRC= main.c \
 	 inter_cone.c \
 	 write_on_img.c \
 	 light.c \
+	 calc_normal.c \
+	 vec_normal.c \
 	 raythrow.c \
 	 parser/fill_plan_list.c \
 	 parser/fill_spot_list.c \

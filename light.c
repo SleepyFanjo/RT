@@ -1,20 +1,20 @@
 #include "raytracer.h"
 
-float	norme(t_coord vect)
+double	norme(t_coord vect)
 {
 	return (sqrt(SQR(vect.x) + SQR(vect.y) + SQR(vect.z)));
 }
 
-float	dot_product(t_coord p1, t_coord p2)
+double	dot_product(t_coord p1, t_coord p2)
 {
-	float	tmp;
+	double	tmp;
 
 	tmp = p1.x * p2.x + p1.y * p2.y + p1.z * p2.z;
 	tmp = tmp / (norme(p1) * norme(p2));
 	return (tmp);
 }
 
-float	ft_abs(float nb)
+double	ft_abs(double nb)
 {
 	if (nb < 0)
 		return (-nb);
@@ -34,7 +34,7 @@ int		point_cmp(t_coord p1, t_coord p2)
 
 t_coord	calc_v_reflex(t_coord v_dir, t_coord v_nor)
 {
-	float	tmp;
+	double	tmp;
 	t_coord	v_reflex;
 
 	tmp = -2 * dot_product(v_dir, v_nor);
@@ -44,9 +44,9 @@ t_coord	calc_v_reflex(t_coord v_dir, t_coord v_nor)
 	return (v_reflex);
 }
 
-float	calc_shining(t_coord v_dir, t_coord v_nor, t_coord v_lum)
+double	calc_shining(t_coord v_dir, t_coord v_nor, t_coord v_lum)
 {
-	float	shining;
+	double	shining;
 	t_coord	v_reflex;
 
 	v_reflex = calc_v_reflex(v_dir, v_nor);
@@ -71,7 +71,7 @@ t_info	init_light(t_info *info, t_spot *spot)
 {
 	t_info	light;
 
-	light.line = init_line(info->pos, spot->coord);
+	light.r_line = init_line(info->r_pos, spot->coord);
 	light.distance = -1;
 	light.light = AMBL;
 	light.color = NULL;
@@ -82,8 +82,8 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 {
 	t_info	light;
 	t_spot	*o_spot;
-	float	fading;
-	float	shining;
+	double	fading;
+	double	shining;
 
 	if (info->distance < 0)
 		return ;
@@ -92,10 +92,10 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		o_spot = (t_spot *)spot->content;
 		light = init_light(info, o_spot);
 		calc_intersection(param, &light);
-		if (point_cmp(info->pos, light.pos) == 1)
+		if (point_cmp(info->r_pos, light.r_pos) == 1)
 		{
-			fading = ft_abs(dot_product(light.line.vec, info->vec_n));
-			shining = ft_abs(calc_shining(info->line.vec, light.vec_n, light.line.vec));
+			fading = ft_abs(dot_product(light.r_line.vec, info->vec_n));
+			shining = ft_abs(calc_shining(info->r_line.vec, light.vec_n, light.r_line.vec));
 			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining;
 		}

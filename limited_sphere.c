@@ -6,17 +6,17 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/18 17:18:46 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/18 17:56:20 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 11:46:54 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raytracer.h"
 
-float		limited_sphere(t_sphere *obj, t_line line, float dist)
+double		limited_sphere(t_sphere *obj, t_line line, double dist)
 {
-	float		pos_x;
-	float		pos_y;
-	float		pos_z;
+	double		pos_x;
+	double		pos_y;
+	double		pos_z;
 
 	if (dist < 0)
 		return (dist);

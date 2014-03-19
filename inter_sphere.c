@@ -6,13 +6,13 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 10:15:51 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/19 12:40:28 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raytracer.h"
 
-static void		update_info(t_info *info, float dist, void *obj)
+static void		update_info(t_info *info, double dist, void *obj, t_line new)
 {
 	t_sphere	*sphere;
 
@@ -21,12 +21,12 @@ static void		update_info(t_info *info, float dist, void *obj)
 	info->obj = obj;
 	sphere = (t_sphere *)obj;
 	info->color = sphere->color;
-	info->pos.x = info->line.pos.x + dist * info->line.vec.x;
-	info->pos.y = info->line.pos.y + dist * info->line.vec.y;
-	info->pos.z = info->line.pos.z + dist * info->line.vec.z;
-	info->vec_n.x = info->pos.x - sphere->pos.x;
-	info->vec_n.y = info->pos.y - sphere->pos.y;
-	info->vec_n.z = info->pos.z - sphere->pos.z;
+	info->s_line.pos.x = new.pos.x;
+	info->s_line.pos.y = new.pos.y;
+	info->s_line.pos.z = new.pos.z;
+	info->s_line.vec.x = new.vec.x;
+	info->s_line.vec.y = new.vec.y;
+	info->s_line.vec.z = new.vec.z;
 }
 
 static t_line	get_new_equa(t_sphere *obj, t_line line)
@@ -43,11 +43,11 @@ static t_line	get_new_equa(t_sphere *obj, t_line line)
 	return (new);
 }
 
-static float	delta(t_line new, t_sphere *obj)
+static double	delta(t_line new, t_sphere *obj)
 {
 	t_equa		e;
-	float		x1;
-	float		x2;
+	double		x1;
+	double		x2;
 
 	e.a = SQR(new.vec.x) + SQR(new.vec.y) + SQR(new.vec.z);
 	e.b = 2 * (new.pos.x * new.vec.x + new.pos.y * new.vec.y);
@@ -70,17 +70,17 @@ void			inter_sphere(t_param *param, t_info *info, t_list *sphere)
 {
 	t_line		new;
 	t_sphere	*obj;
-	float		dist;
+	double		dist;
 
 	(void)param;
 	while (sphere)
 	{
 		obj = (t_sphere *)sphere->content;
-		new = get_new_equa(obj, info->line);
+		new = get_new_equa(obj, info->r_line);
 		dist = delta(new, obj);
-//		dist = limited_sphere(obj, new, dist);
+		dist = limited_sphere(obj, new, dist);
 		if (dist > 0 && (info->distance < 0 || dist < info->distance))
-			update_info(info, dist, sphere->content);
+			update_info(info, dist, sphere->content, new);
 		sphere = sphere->next;
 	}
 }

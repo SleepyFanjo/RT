@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 10:58:21 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/19 12:46:30 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 
 typedef struct		s_coord
 {
-	float			x;
-	float			y;
-	float			z;
+	double			x;
+	double			y;
+	double			z;
 }					t_coord;
 
 typedef struct		s_lim
@@ -66,12 +66,12 @@ typedef struct		s_img
 typedef struct		s_sphere
 {
 	int				radius;
-	float			lim_h_x;
-	float			lim_b_x;
-	float			lim_h_y;
-	float			lim_b_y;
-	float			lim_h_z;
-	float			lim_b_z;
+	double			lim_h_x;
+	double			lim_b_x;
+	double			lim_h_y;
+	double			lim_b_y;
+	double			lim_h_z;
+	double			lim_b_z;
 	t_coord			pos;
 	int				*color;
 }					t_sphere;
@@ -79,7 +79,7 @@ typedef struct		s_sphere
 typedef struct		s_plane
 {
 	t_coord			vec;
-	float			d;
+	double			d;
 	int				*color;
 }					t_plane;
 
@@ -87,7 +87,7 @@ typedef struct		s_cylinder
 {
 	t_coord			pos;
 	t_coord			rot;
-	float			d;
+	double			d;
 	int				radius;
 	int				*color;
 }					t_cylinder;
@@ -102,27 +102,29 @@ typedef struct		s_cone
 
 typedef struct		s_equa
 {
-	float			a;
-	float			b;
-	float			c;
-	float			delta;
+	double			a;
+	double			b;
+	double			c;
+	double			delta;
 }					t_equa;
 
 typedef struct		s_spot
 {
 	t_coord			coord;
-	float			value;
+	double			value;
 	int				*color;
 }					t_spot;
 
 typedef struct		s_info
 {
-	t_line			line;
-	t_coord			pos;
+	t_line			r_line;
+	t_line			s_line;
+	t_coord			r_pos;
+	t_coord			s_pos;
 	t_coord			vec_n;
 	t_coord			vec_r;
-	float			distance;
-	float			light;
+	double			distance;
+	double			light;
 	int				*color;
 	int				obj_type;
 	void			*obj;
