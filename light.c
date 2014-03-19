@@ -60,7 +60,7 @@ float	calc_shining(t_coord v_dir, t_coord v_nor, t_coord v_lum)
 	t_coord	v_reflex;
 
 	v_reflex = calc_v_reflex(v_dir, v_nor);
-	shining = pow(-dot_product(v_lum, v_reflex), 100);
+	shining = pow(dot_product(v_lum, v_reflex), 100);
 	return (shining);
 }
 
@@ -105,7 +105,7 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		if (point_cmp(info->pos, light.pos) == 1)
 		{
 			fading = ft_abs(dot_product(light.line.vec, info->vec_n));
-			shining = ft_abs(calc_shining(info->line.vec, light.vec_n, light.line.vec));
+			shining = ft_abs(calc_shining(info->line.vec, info->vec_n, light.line.vec));
 			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining;
 		}
