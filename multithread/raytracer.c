@@ -1,11 +1,11 @@
 #include "../multithread.h"
-
+/*
 static void	*launch_thread(void *th)
 {
-	t_thread	*th;
+	t_thread	*thc;
 
-	th = (t_thread *)th;
-	raythrow(th);
+	thc = (t_thread *)th;
+	raythrow(thc);
 	return (NULL);
 }
 
@@ -28,11 +28,22 @@ static void	execute_thread(t_list *th)
 		th = th->next;
 	}
 }
-
-int			raytracer(t_param *param, int nb_thread)
+*/
+void			*print_thread(void *data)
 {
-	t_list		*thread;
+	t_thread	*th;
+	t_limit		*l;
 
-	thread = get_thread(param, 4, 4, 0);
-	execute_thread(thread);
+	th = (t_thread *)data;
+	l = th->limit;
+	printf("s_i: %d, s_j: %d, e_i: %d, e_j: %d\n", l->s_i, l->s_j, l->e_i, l->e_j);
+	return (data);
+}
+
+void			raytracer(t_param *param, int nbr_process)
+{
+	t_list		*th;
+
+	th = get_thread(param, nbr_process, nbr_process, 0);
+	ft_lstiter(th, print_thread);
 }

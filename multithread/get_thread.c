@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:51:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/11 18:42:23 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/19 16:46:14 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,27 @@ static t_list	*get_thread_lst(t_limit *limit, t_param *p)
 	return (res);
 }
 
-static void		add_thread_lst(t_list **lst, int step, int *i_e, t_param *p)
+static t_list	*get_lst_thread(t_param *p, int *i_e, int step)
 {
-	t_limit		*limit;
+	int		pos;
+	t_limit	*lim;
+	t_list	*th;
 
-	if ((limit = (t_limit *)malloc(sizeof(t_limit))) == NULL)
+	th = NULL;
+	pos = i_e[0];
+	while (pos < i_e[1])
 	{
-		ft_printf("%rMalloc Fail\n");
-		exit(1);
+		lim->s_i = pos % WIDTH;
+		lim->s_j = pos / WIDTH;
+		pos += step;
+		lim = (t_limit *)j_malloc(sizeof(t_limit));
+		if (pos > i_e[1])
+			pos = i_e[1];
+		lim->e_i = pos % WIDTH;
+		lim->e_j = pos / WIDTH;
+		ft_lstadd(&th, get_thread_lst(lim, p));
 	}
-	limit->s_i = i_e[0] % W;
-	limit->s_j = i_e [0] / W;
-	i_e[0] += step;
-	if (i_e[0] > end)
-	{
-		limit->e_i = i_e[1]% W;
-		limit->e_j = i_e[1] / W;
-	}
-	else
-	{
-		limit->e_i = i_e[0] % W;
-		limit->e_j = i_e[0] / W;
-	}
-	ft_lstadd(lst, get_thread_lst(limit, p));
+	return (th);
 }
 
 t_list			*get_thread(t_param *param, int nb_t, int nb_t_tot, int nb_t_s)
@@ -69,15 +67,11 @@ t_list			*get_thread(t_param *param, int nb_t, int nb_t_tot, int nb_t_s)
 		ft_printf("%rNumber of thread is too small (%d)\n", nb_t);
 		exit(1);
 	}
-	res = NULL;
-	full_size = W * H;
+	full_size = WIDTH * HEIGHT;
 	step = full_size / nb_t_tot;
-	step += 1;
+	step++;
 	i_e[0] = nb_t_s * step;
 	i_e[1] = step * (nb_t_s + nb_t);
-	while (index < end)
-	{
-		add_thread_lst(&res, step, index, end);
-	}
+	res = get_lst_thread(param, i_e, step);
 	return (res);
 }

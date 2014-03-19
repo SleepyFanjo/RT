@@ -2,6 +2,7 @@
 # define MULTITHREAD_STRUCT_H
 
 # include <pthread.h>
+# include "raytracer.h"
 
 typedef struct	s_limit
 {

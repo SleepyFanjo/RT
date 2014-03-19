@@ -1,22 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_obj.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/04 13:52:50 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/04 13:54:49 by vwatrelo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../rt.h"
+#include "../raytracer.h"
 
 static int		cmp_line(char *new_line)
 {
 	if (ft_strcmp(new_line, "sphere") == 0)
 		return (CD_SPHERE);
-	if (ft_strcmp(new_line, "plan") == 0)
+	if (ft_strcmp(new_line, "plane") == 0)
 		return (CD_PLAN);
 	if (ft_strcmp(new_line, "spot") == 0)
 		return (CD_SPOT);
@@ -24,6 +12,8 @@ static int		cmp_line(char *new_line)
 		return (CD_CAM);
 	if (ft_strcmp(new_line, "cylinder") == 0)
 		return (CD_CYLINDER);
+	if (ft_strcmp(new_line, "cone") == 0)
+		return (CD_CONE);
 	return (CD_ERROR);
 }
 
@@ -63,5 +53,6 @@ t_obj			*get_obj(void)
 	res->spot = NULL;
 	res->sphere = NULL;
 	res->cam = NULL;
+	res->cone = NULL;
 	return (res);
 }

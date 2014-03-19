@@ -6,11 +6,11 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:40:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/10 18:52:07 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/19 14:32:05 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../raytracer.h"
 
 static int		cam_test_tab(char **tab, int s_i)
 {
@@ -32,23 +32,23 @@ static int		cam_test_tab(char **tab, int s_i)
 	return (1);
 }
 
-int				v_get_cam(t_obj *obj, char *line)
+int				get_cam(t_obj *obj, char *line)
 {
 	char		**tab;
 	int			i;
 	t_cam		*plan;
 
 	if (obj->cam != NULL)
-		print_error("Cam was already defined\n");
+		print_error(line, "Cam was already defined\n");
 	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
-		print_error("Allocation Fail");
+		print_error(line, "Allocation Fail");
 	if (get_size_tab(tab) != 6)
-		print_error("Line \"%s\" has no six param");
+		print_error(line, "has no six param");
 	if (!cam_test_tab(tab, 6))
-		print_error("Line \"%s\" is not ok");
+		print_error(line, "is not ok");
 	if ((plan = (t_cam *)malloc(sizeof(t_cam))) == NULL)
-		print_error("Allocation Fail");
+		print_error(line, "Allocation Fail");
 	plan->point.x = ft_atoi(tab[0]);
 	plan->point.y = ft_atoi(tab[1]);
 	plan->point.z = ft_atoi(tab[2]);

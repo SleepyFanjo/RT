@@ -1,19 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/03 17:21:08 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/03 17:21:30 by vwatrelo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "../raytracer.h"
 
-#include "rt.h"
-
-void	print_error(char *str)
+void		print_error(char *str1, char *str2)
 {
-	ft_printf("%r%s\n", str);
+	ft_printf("%r%s: %s\n", str1, str2);
 	exit(1);
 }

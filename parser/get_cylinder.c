@@ -6,23 +6,22 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:29:34 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/04 13:52:00 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/19 15:04:59 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt.h"
+#include "../raytracer.h"
 
 static void	set_cylinder(t_cylinder *cylinder, char **tab)
 {
-	cylinder->vect.x = ft_atoi(tab[0]);
-	cylinder->vect.y = ft_atoi(tab[1]);
-	cylinder->vect.z = ft_atoi(tab[2]);
-	cylinder->rot[0] = ft_atoi(tab[3]);
-	cylinder->rot[1] = ft_atoi(tab[4]);
-	cylinder->rot[2] = ft_atoi(tab[5]);
+	cylinder->pos.x = ft_atoi(tab[0]);
+	cylinder->pos.y = ft_atoi(tab[1]);
+	cylinder->pos.z = ft_atoi(tab[2]);
+	cylinder->rot.x = ft_atoi(tab[3]);
+	cylinder->rot.y = ft_atoi(tab[4]);
+	cylinder->rot.z = ft_atoi(tab[5]);
 	cylinder->radius = ft_atoi(tab[6]);
-	cylinder->height = ft_atoi(tab[7]);
-	*(cylinder->color) = ft_atoi(tab[8]);
+	cylinder->color = get_color(tab[7]);
 }
 
 int			get_cylinder(t_obj *obj, char *line)
@@ -33,15 +32,15 @@ int			get_cylinder(t_obj *obj, char *line)
 
 	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
-		print_error("Allocation Fail");
-	if (get_size_tab(tab) != 9)
-		print_error("Cylinder has no five param");
-	if (!test_tab(tab, 8))
-		print_error("Cylinder is not ok");
+		print_error(line, "Allocation Fail");
+	if (get_size_tab(tab) != 8)
+		print_error(line, "Cylinder has no 8 param");
+	if (!test_tab(tab, 7))
+		print_error(line, "Cylinder is not ok");
 	if ((cylinder = (t_cylinder *)malloc(sizeof(t_cylinder))) == NULL)
-		print_error("Allocation Fail");
+		print_error(line, "Allocation Fail");
 	if ((cylinder->color = (int *)malloc(sizeof(int))) == NULL)
-		print_error("Allocation Fail\n");
+		print_error(line, "Allocation Fail\n");
 	set_cylinder(cylinder, tab);
 	ft_lstadd(&(obj->cylinder), ft_lstnew(cylinder, sizeof(t_cylinder)));
 	return (0);

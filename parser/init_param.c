@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_param.c                                       :+:      :+:    :+:   */
+/*   init_param.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/10 18:55:26 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/10 19:00:50 by qchevrin         ###   ########.fr       */
+/*   Created: 2014/01/23 16:27:09 by qchevrin          #+#    #+#             */
+/*   Updated: 2014/03/19 11:09:45 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raytracer.h"
+#include <fcntl.h>
 
-static t_env	get_env(void)
+t_env			get_env(void)
 {
-	t_env	env;
+	t_env		env;
 
-	if ((env.mlx = mlx_init()) == NULL)
+	env.mlx = mlx_init();
+	env.win = mlx_new_window(env.mlx, WIDTH, HEIGHT, "RtV1");
+	env.img = mlx_new_image(env.mlx, WIDTH, HEIGHT);
+	if (env.mlx == NULL || env.win == NULL || env.img == NULL)
 		ft_error("Error : can't init mlx", NULL, 1);
-	env.win = mlx_new_window(env.mlx, WIDTH, HEIGHT, "Raytracer");
-	if (env.win == NULL);
-		ft_error("Error : can't open window");
-	if ((env.img = mlx_new_image(env.mlx, WIDTH, HEIGHT)) == NULL)
-		ft_error("Error : can't create image");
 	return (env);
 }
 
-void			fill_param(t_param *param, char *str)
+void			init_param(t_param *param, char *dir)
 {
 	param->env = get_env();
-	parser(str, param);
+	parser(dir, param);
 }

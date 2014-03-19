@@ -6,15 +6,22 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/13 15:21:53 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/19 16:16:39 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
 # define X			(0)
 # define Y			(1)
 # define Z			(2)
+# include <list.h>
+# include <pthread.h>
+# define PIX		(img.pix)
+# define BPP		(img.bpp)
+# define LINE		(img.line)
+# define ENDIAN		(img.endian)
 # define SPHERE		(0)
 # define PLANE		(1)
 # define CYLINDER	(2)
@@ -63,22 +70,54 @@ typedef struct		s_img
 typedef struct		s_sphere
 {
 	int				radius;
+	float			lim_h_x;
+	float			lim_b_x;
+	float			lim_h_y;
+	float			lim_b_y;
+	float			lim_h_z;
+	float			lim_b_z;
 	t_coord			pos;
-	int				color;
+	int				*color;
 }					t_sphere;
 
 typedef struct		s_plane
 {
+	t_coord			vec;
+	t_coord			pos;
+	float			d;
+	int				*color;
+}					t_plane;
+
+typedef struct		s_cylinder
+{
 	t_coord			pos;
 	t_coord			rot;
-	int				color;
-}					t_plane;
+	float			d;
+	int				radius;
+	int				*color;
+}					t_cylinder;
+
+typedef struct		s_cone
+{
+	t_coord			pos;
+	t_coord			rot;
+	int				alpha;
+	int				*color;
+}					t_cone;
+
+typedef struct		s_equa
+{
+	float			a;
+	float			b;
+	float			c;
+	float			delta;
+}					t_equa;
 
 typedef struct		s_spot
 {
 	t_coord			coord;
 	float			value;
-	int				color;
+	int				*color;
 }					t_spot;
 
 typedef struct		s_info
@@ -89,6 +128,7 @@ typedef struct		s_info
 	t_coord			vec_r;
 	float			distance;
 	float			light;
+	int				*color;
 	int				obj_type;
 	void			*obj;
 }					t_info;
@@ -111,8 +151,18 @@ typedef struct		s_obj
 	t_list			*cylinder;
 	t_list			*spot;
 	t_list			*sphere;
+	t_list			*cone;
 	t_cam			*cam;
 }					t_obj;
+
+typedef struct		s_var_parser
+{
+	int				num_line;
+	int				cur_obj;
+	t_obj			*obj;
+	int				ret;
+	char			*line;
+}					t_var_parser;
 
 # include "multithread_struct.h"
 

@@ -1,24 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/03 14:25:12 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/10 18:52:06 by vwatrelo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../rt.h"
+#include "../raytracer.h"
 
 static void		get_obj_line(t_obj *obj, char *line, int (*f)(t_obj *, char *))
 {
 	if (f(obj, line) < 0)
-	{
-		ft_printf("%rFail to get the line: %s\n", line);
-		exit(1);
-	}
+		ft_printf("%rUnable to get line: %s\n", line);
 }
 
 static void		get_obj_cd(int cur_obj, t_obj *obj, char *line)
@@ -30,9 +15,11 @@ static void		get_obj_cd(int cur_obj, t_obj *obj, char *line)
 	else if (cur_obj == CD_SPOT)
 		get_obj_line(obj, line, get_spot);
 	else if (cur_obj == CD_CAM)
-		get_obj_line(obj, line, v_get_cam);
+		get_obj_line(obj, line, get_cam);
 	else if (cur_obj == CD_CYLINDER)
 		get_obj_line(obj, line, get_cylinder);
+	else if (cur_obj == CD_CONE)
+		get_obj_line(obj, line, get_cone);
 }
 
 static void		loop_get_struct(t_var_parser *var)
@@ -74,13 +61,13 @@ void	parser(char *filename, t_param *param)
 	t_obj	*obj;
 
 	if ((fd = open(filename, O_RDONLY)) < 0)
-		print_error("Unable to open the file\n");
+		print_error(filename, "Unable to open the file\n");
 	obj = get_struct_obj(fd);
 	param->cylinder = obj->cylinder;
-	param->plan = obj->plan;
+	param->plane = obj->plan;
 	param->spot = obj->spot;
 	param->sphere = obj->sphere;
-	param->cone = NULL;
+	param->cone = obj->cone;
 	param->cam = obj->cam->point;
-	ft_memcpy(param->rot_cam, obj->cam->rot, sizeof(t_coord));
+	ft_memcpy(&(param->rot_cam), &(obj->cam->rot), sizeof(t_coord));
 }
