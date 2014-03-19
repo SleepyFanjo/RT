@@ -21,7 +21,6 @@ int			*get_color(char *color)
 {
 	int		*tab;
 
-	printf("color: %s\n", color);
 	if (!test_col_str(color))
 	{
 		ft_putstr_fd("Get color fail\n", 2);

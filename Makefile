@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/19 16:42:15 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/19 17:45:09 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,10 @@ SRC= main.c \
 	 parser/get_cam.c \
 	 parser/get_sphere.c \
 	 multithread/raytracer.c \
-	 multithread/get_thread.c
+	 multithread/get_thread.c \
+	 multithread/print_first_line.c \
+	 multithread/one_line.c \
+	 multithread/print_middle.c
 
 INCLUDES=-I includes/
 OBJ= $(SRC:.c=.o)
