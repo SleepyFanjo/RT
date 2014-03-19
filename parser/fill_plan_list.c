@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 14:46:55 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/18 18:01:02 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 10:45:44 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static t_list	*get_plane(char *str)
 	if ((obj = (t_plane *)malloc(sizeof(t_plane))) == NULL)
 		ft_error("Error : can't malloc", NULL, 1);
 	i = 0;
-	obj->rot.x = ft_atoi(str + first_number(str, &i));
-	obj->rot.y = ft_atoi(str + next_number(str, &i));
-	obj->rot.z = ft_atoi(str + next_number(str, &i));
-	obj->pos.x = ft_atoi(str + next_number(str, &i));
-	obj->pos.y = ft_atoi(str + next_number(str, &i));
-	obj->pos.z = ft_atoi(str + next_number(str, &i));
+	obj->vec.x = ft_atoi(str + first_number(str, &i));
+	obj->vec.y = ft_atoi(str + next_number(str, &i));
+	obj->vec.z = ft_atoi(str + next_number(str, &i));
+	obj->d = -obj->vec.x * ft_atoi(str + next_number(str, &i));
+	obj->d = obj->d - (obj->vec.y * ft_atoi(str + next_number(str, &i)));
+	obj->d = obj->d - (obj->vec.z * ft_atoi(str + next_number(str, &i)));
 	obj->color = get_color(ft_atoi(str + next_number(str, &i)));
 	elem->content = obj;
 	elem->next = NULL;
