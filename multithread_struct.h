@@ -1,6 +1,8 @@
 #ifndef MULTITHREAD_STRUCT_H
 # define MULTITHREAD_STRUCT_H
 
+# include <pthread.h>
+
 typedef struct	s_limit
 {
 	int			s_i;

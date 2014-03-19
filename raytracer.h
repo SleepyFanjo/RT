@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/11 17:54:34 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/13 15:21:28 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define RAYTRACER_H
 # define F_PI			(3.1415926535)
 # define RAD(deg)			(deg * F_PI / 180)
-# include <libft.h>
+# include "libft/includes/libft.h"
+# include "libft/includes/ft_printf.h"
+# include "libft/includes/list.h"
 # include "struct.h"
 
 int		expose_hook(t_param *param);

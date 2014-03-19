@@ -2,6 +2,15 @@
 # define NETWORK_H
 
 # include "raytracer.h"
+# include <pthread.h>
+# include <sys/types.h>
+# include <netinet/in.h>
+# include <arpa/inet.h>
+# include <fcntl.h>
+
+# define WIDTH			1024
+# define HEIGHT			1024
+# define MAX_HOST_NAME	4095
 
 typedef struct		s_nb_th
 {
@@ -21,6 +30,7 @@ typedef struct		s_client
 	char			*stage;
 	int				sockfd;
 	int				*th_com;
+	pthread_mutex_t	*lock_th_com;
 }					t_client;
 
 typedef struct		s_info_serv
@@ -37,5 +47,9 @@ typedef struct		s_id_client
 	char			*ip;
 	int				port;
 }					t_id_client;
+
+char	*get_stage(char *filename);
+void	get_lst_cl(char *filename, t_list **lst_id_cl);
+void	get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf);
 
 #endif

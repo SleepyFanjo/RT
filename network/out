@@ -1,0 +1,30 @@
+Undefined symbols for architecture x86_64:
+  "_ft_atoi", referenced from:
+      _get_pars_cl in get_lst_cl-jzF0gh.o
+      _main in main_serv-J5yo9u.o
+  "_ft_bzero", referenced from:
+      _get_sockfd in get_cl_th-G46bVR.o
+  "_ft_lstadd", referenced from:
+      _get_cl_th in get_cl_th-G46bVR.o
+      _get_lst_cl in get_lst_cl-jzF0gh.o
+  "_ft_lstnew", referenced from:
+      _get_cl_th in get_cl_th-G46bVR.o
+      _get_lst_cl in get_lst_cl-jzF0gh.o
+  "_ft_printf", referenced from:
+      _get_cl_th in get_cl_th-G46bVR.o
+      _get_client in get_cl_th-G46bVR.o
+      _get_sockfd in get_cl_th-G46bVR.o
+      _get_pars_cl in get_lst_cl-jzF0gh.o
+      _main in main_serv-J5yo9u.o
+  "_ft_strjoin", referenced from:
+      _get_stage in get_stage-yIdWRa.o
+  "_ft_strlen", referenced from:
+      _cl_connect in get_cl_th-G46bVR.o
+  "_ft_strnew", referenced from:
+      _get_stage in get_stage-yIdWRa.o
+  "_ft_strsplit", referenced from:
+      _get_pars_cl in get_lst_cl-jzF0gh.o
+  "_get_next_line", referenced from:
+      _get_lst_cl in get_lst_cl-jzF0gh.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)

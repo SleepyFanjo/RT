@@ -29,19 +29,22 @@ static int		cl_connect(t_client *cl, t_id_client *id_cl)
 
 	if ((cl->sockfd = get_sockfd(id_cl->ip, id_cl->port)) < 0)
 		return (-1);
-	if ((write(cl->sockfd, cl->name_host_server)) < 0)
+	if ((write(cl->sockfd, cl->name_host_server, ft_strlen(cl->name_host_server))) < 0)
 		return (-1);
-	if ((cl->name_host_cl = (char *)malloc(sizeof(char ) * (MAX_HOST_NAME + 1))) == NULL)
+	cl->name_host_cl = (char *)malloc(sizeof(char ) * (MAX_HOST_NAME + 1));
+	if (cl->name_host_cl == NULL)
 		return (-1);
-	if ((ret = recv(sockfd, cl->name_host_cl, MAX_HOST_NAME, 0)) < 0)
+	if ((ret = recv(cl->sockfd, cl->name_host_cl, MAX_HOST_NAME, 0)) < 0)
 		return (-1);
 	(cl->name_host_cl)[ret] = '\0';
+	ft_printf("cl->name_host_cl: %s\n", cl->name_host_cl);
+	return (0);
 }
 
 static void		init_cl(t_client *cl, int id, t_info_serv *inf)
 {
 	cl->id = id;
-	cl->size_img = &(inf->size_img);
+	cl->size_img = inf->size_img;
 	cl->name_host_server = inf->name_serv;
 	cl->stage = inf->stage;
 	cl->name_host_cl = NULL;
@@ -60,9 +63,10 @@ static t_client	*get_client(t_id_client *id_cl, t_info_serv *inf, int nb_cl)
 	init_cl(cl, nb_cl, inf);
 	if (cl_connect(cl, id_cl) < 0)
 		return (NULL);
+	return (cl);
 }
 
-void			get_cl_th(t_list *lst_t, t_list *lst_cl, t_info_serv *inf)
+void			get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf)
 {
 	int			nb_cl;
 	t_client	*elem;
@@ -75,10 +79,10 @@ void			get_cl_th(t_list *lst_t, t_list *lst_cl, t_info_serv *inf)
 	{
 		cl_id = (t_id_client *)lst_cl->content;
 		ft_printf("Try connection, ip: %s:%d\n", cl_id->ip, cl_id->port);
-		elem = get_client(cl_id, inf);
+		elem = get_client(cl_id, inf, nb_cl);
 		if (elem != NULL)
 		{
-			ft_lstadd(&lst_th, ft_lstnew((void *)elem, sizeof(t_client)));
+			ft_lstadd(lst_th, ft_lstnew((void *)elem, sizeof(t_client)));
 			nb_cl_connected++;
 			ft_printf("Done\n");
 		}
