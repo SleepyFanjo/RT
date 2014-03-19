@@ -6,7 +6,7 @@
 #    By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/21 12:04:58 by vwatrelo          #+#    #+#              #
-#    Updated: 2014/02/21 15:17:48 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/19 19:24:26 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ all: $(NAME)
 $(NAME): libft
 
 libft: $(OBJ)
-	ar -q $(NAME) $^
+	ar rc $(NAME) $^
 	ranlib $(NAME)
 
 %.o: %.c
