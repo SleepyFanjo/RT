@@ -1,2 +1,6 @@
 #rot_x rot_y rot_z vec_x vec_y vec_z alpha color
+<<<<<<< HEAD
 #0 0 0 0 50 1000 30 65280
+=======
+0 0 0 0 50 1000 30 FF00FF
+>>>>>>> parser

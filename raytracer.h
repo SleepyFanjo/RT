@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/18 18:00:25 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 15:10:54 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,36 @@
 # include <mlx.h>
 # include <math.h>
 # include <libft.h>
+# include <fcntl.h>
 # include "struct.h"
+# include "libft/includes/ft_printf.h"
+# define CD_NOT_CMD -1
+# define CD_ERROR 0
+# define CD_SPHERE 1
+# define CD_PLAN 2
+# define CD_SPOT 3
+# define CD_CAM 4
+# define CD_COM 5
+# define CD_CYLINDER 6
+# define CD_CONE 7
 
 void	init_param(t_param *param, char *dir);
+int		test_tab(char **tab, int s_i);
+int		get_type_obj(char *line);
+t_obj	*get_obj(void);
+int		get_size_tab(char **tab);
+void	print_error(char *str1, char *str2);
 void	add_in_list(t_list **list, t_list *elem);
-t_list	*fill_spot_list(char *dir);
-t_list	*fill_plane_list(char *dir);
-t_list	*fill_cylinder_list(char *dir);
-t_list	*fill_cone_list(char *dir);
-int		*get_color(int color);
+int		get_cone(t_obj *obj, char *str);
+int		get_cylinder(t_obj *obj, char *str);
+int		get_spot(t_obj *obj, char *str);
+int		get_plan(t_obj *obj, char *str);
+int		get_sphere(t_obj *obj, char *str);
+int		get_cam(t_obj *obj, char *line);
+int		*get_color(char *color);
+int		ft_hex_atoi(char *str);
 int		next_number(char *line, int *i);
 int		first_number(char *line, int *i);
-t_list	*get_sphere(char *str);
 t_coord	init_cam(t_coord *rot, char *dir);
 int		expose_hook(t_param *param);
 int		key_hook(int keycode, t_param *param);
