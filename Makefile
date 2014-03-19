@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/19 18:56:57 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/19 19:01:57 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ SRC= main.c \
 	 matrix/apply_matrix.c \
 	 matrix/fill_matrix.c \
 	 matrix/multiply_matrix.c \
-	 multithread/raytracer.c
 	 parser/get_color.c \
 	 parser/ft_hex_atoi.c \
 	 parser/parser.c \

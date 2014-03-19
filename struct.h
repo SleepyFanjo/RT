@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 18:58:23 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/19 19:01:35 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,8 @@ typedef struct		s_sphere
 typedef struct		s_plane
 {
 	t_coord			vec;
-<<<<<<< HEAD
 	double			d;
-=======
 	t_coord			pos;
-	float			d;
->>>>>>> origin/network
 	int				*color;
 }					t_plane;
 

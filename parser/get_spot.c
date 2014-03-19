@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:37:17 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 14:36:29 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/19 19:04:46 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			get_spot(t_obj *obj, char *line)
 	spot->coord.x = ft_atoi(tab[0]);
 	spot->coord.y = ft_atoi(tab[1]);
 	spot->coord.z = ft_atoi(tab[2]);
-	spot->value = ft_atoi(tab[3]);
+	spot->value = ft_atoi(tab[3]) / 1000.0;
 	spot->color = get_color(tab[4]);
 	ft_lstadd(&(obj->spot), ft_lstnew(spot, sizeof(t_spot)));
 	return (0);
