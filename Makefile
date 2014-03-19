@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/19 12:40:11 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/19 18:16:13 by qchevrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,12 @@ SRC= main.c \
 	 parser/init_cam.c \
 	 parser/spheres.c \
 	 parser/init_param.c \
+	 matrix/apply_matrix.c \
+	 matrix/fill_matrix.c \
+	 matrix/multiply_matrix.c \
 	 multithread/raytracer.c
 
-INCLUDES=-I includes/
+INCLUDES=-I./includes/ -I./
 OBJ= $(SRC:.c=.o)
 NAME= Raytracer
 LIB=-L./libft -lft_core -lft_printf -lft_list -L/usr/X11/lib -lmlx -lXext -lX11

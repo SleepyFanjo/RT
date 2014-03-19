@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 14:11:52 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 18:25:42 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	calc_intersection(t_param *param, t_info *info)
 	inter_plane(param, info, param->plane);
 	inter_cylinder(param, info, param->cylinder);
 	inter_cone(param, info, param->cone);
-	ft_putendl("calcing vect");
 	calc_normal(info);
 }
 
@@ -62,7 +61,7 @@ int		put_pixel_to_img(t_param *param, int i, int j)
 
 	info = init_info(param, i, j);
 	calc_intersection(param, &info);
-	//calc_light(param, &info, param->spot);
-	write_on_img(param, calc_color(info.color, 1), i, j);
+	calc_light(param, &info, param->spot);
+	write_on_img(param, calc_color(info.color, info.light), i, j);
 	return (0);
 }

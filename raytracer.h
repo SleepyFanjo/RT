@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 12:39:51 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 18:30:42 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ t_info	init_info(t_param *param, int i, int j);
 void	write_on_img(t_param *param, int color, int i, int j);
 void	apply_trans(t_coord translation, t_coord *to_move, int mult);
 void	apply_rot(t_coord rotation, t_coord *to_turn, int mult);
-void	apply_rot_x(t_coord *vec, double rot_x);
-void	apply_rot_y(t_coord *vec, double rot_y);
-void	apply_rot_z(t_coord *vec, double rot_z);
+void	apply_rotrans(t_coord rot, t_coord trans, t_coord *move, int mult);
 void	inter_sphere(t_param *param, t_info *info, t_list *sphere);
 double	limited_sphere(t_sphere *obj, t_line line, double dist);
 void	inter_plane(t_param *param, t_info *info, t_list *plane);
