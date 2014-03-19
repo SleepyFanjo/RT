@@ -83,7 +83,7 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 	t_info	light;
 	t_spot	*o_spot;
 	float	fading;
-	float	shining;
+//	float	shining;
 
 	if (info->distance < 0)
 		return ;
@@ -95,9 +95,9 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		if (point_cmp(info->pos, light.pos) == 1)
 		{
 			fading = ft_abs(dot_product(light.line.vec, info->vec_n));
-			shining = ft_abs(calc_shining(info->line.vec, light.vec_n, light.line.vec));
+		//	shining = ft_abs(calc_shining(info->line.vec, light.vec_n, light.line.vec));
 			info->light += o_spot->value * fading;
-			info->light += o_spot->value * shining;
+	//		info->light += o_spot->value * shining;
 		}
 		spot = spot->next;
 	}
