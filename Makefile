@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/19 19:22:51 by lredoban         ###   ########.fr        #
+#    Updated: 2014/03/19 19:28:52 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,17 +26,29 @@ SRC= main.c \
 	 calc_normal.c \
 	 vec_normal.c \
 	 raythrow.c \
-	 parser/fill_plan_list.c \
-	 parser/fill_spot_list.c \
-	 parser/fill_cylinder_list.c \
-	 parser/fill_cone_list.c \
-	 parser/init_cam.c \
+	 parser/get_plan.c \
+	 parser/get_spot.c \
+	 parser/get_cylinder.c \
+	 parser/get_cone.c \
 	 parser/spheres.c \
 	 parser/init_param.c \
 	 matrix/apply_matrix.c \
 	 matrix/fill_matrix.c \
 	 matrix/multiply_matrix.c \
-	 multithread/raytracer.c
+	 parser/get_color.c \
+	 parser/ft_hex_atoi.c \
+	 parser/parser.c \
+	 parser/print_error.c \
+	 parser/get_size_tab.c \
+	 parser/get_obj.c \
+	 parser/test_tab.c \
+	 parser/get_cam.c \
+	 parser/get_sphere.c \
+	 multithread/raytracer.c \
+	 multithread/get_thread.c \
+	 multithread/print_first_line.c \
+	 multithread/one_line.c \
+	 multithread/print_middle.c
 
 INCLUDES=-I./includes/ -I./
 INC=multithread.h \

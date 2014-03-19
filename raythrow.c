@@ -6,11 +6,12 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 18:25:42 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 19:21:29 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raytracer.h"
+#include "multithread.h"
 
 void	calc_intersection(t_param *param, t_info *info)
 {
@@ -39,19 +40,17 @@ static int		calc_color(int *color, double light)
 
 int		raythrow(t_thread *thread)
 {
-	int		j;
+	t_limit	*l;
 
-	while (thread->limit.s_i <= thread->limit.e_i)
-	{
-		j = thread->limit.s_j;
-		while (j <= thread->limit.e_j)
-		{
-			if (put_pixel_to_img(thread->p, thread->limit.s_i, j))
-				return (-1);
-			j = j + 1;
-		}
-		thread->limit.s_i = thread->limit.s_i + 1;
-	}
+	l = thread->limit;
+	if (l->s_j == l->e_j)
+		return (one_line(thread, l));
+	if (print_first_line(thread, l) < 0)
+		return (-1);
+	if (print_middle(thread, l) < 0)
+		return (-1);
+	if (print_last_line(thread, l) < 0)
+		return (-1);
 	return (0);
 }
 

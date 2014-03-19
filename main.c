@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 11:17:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/18 15:04:46 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 19:06:18 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int			main(int argc, char **argv)
 {
 	t_param		param;
 
-	if (argc != 2)
+	if (argc != 3)
 	{
 		ft_putendl("Error : incorrect argument number");
-		ft_putendl("usage : ./RT file.rt");
+		ft_putendl("usage : ./RT scene.rt list.host");
 		return (1);
 	}
 	init_param(&param, argv[1]);

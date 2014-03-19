@@ -10,7 +10,6 @@ double	dot_product(t_coord p1, t_coord p2)
 	double	tmp;
 
 	tmp = p1.x * p2.x + p1.y * p2.y + p1.z * p2.z;
-	tmp = tmp / (norme(p1) * norme(p2));
 	return (tmp);
 }
 
@@ -54,13 +53,34 @@ t_coord	calc_v_reflex(t_coord v_dir, t_coord v_nor)
 	return (v_reflex);
 }
 
-double	calc_shining(t_coord v_dir, t_coord v_nor, t_coord v_lum)
+t_coord	turn_vect(t_coord vect)
+{
+	t_coord	n_vect;
+
+	n_vect.x = -vect.x;
+	n_vect.y = -vect.y;
+	n_vect.z = -vect.z;
+	return (n_vect);
+}
+
+double	calc_fading(t_coord v_dir, t_coord v_nor)
+{
+	double	tmp;
+
+	tmp = dot_product(v_dir, v_nor);
+	tmp = tmp / (norme(v_dir) * norme(v_nor));
+	return (tmp);
+}
+
+double	calc_shining(t_coord v_nor, t_coord v_lum)
 {
 	double	shining;
 	t_coord	v_reflex;
+	t_coord rv_lum;
 
-	v_reflex = calc_v_reflex(v_dir, v_nor);
-	shining = pow(-dot_product(v_lum, v_reflex), 100);
+	rv_lum = turn_vect(v_lum);
+	v_reflex = calc_v_reflex(v_lum, v_nor);
+	shining = pow(calc_fading(v_lum, v_reflex), 200);
 	return (shining);
 }
 
@@ -104,10 +124,10 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		calc_intersection(param, &light);
 		if (point_cmp(info->r_pos, light.r_pos) == 1)
 		{
-			fading = ft_abs(dot_product(light.r_line.vec, info->vec_n));
-			shining = ft_abs(calc_shining(info->r_line.vec, light.vec_n, light.r_line.vec));
+			fading = ft_abs(calc_fading(light.r_line.vec, info->vec_n));
+			shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
 			info->light += o_spot->value * fading;
-			info->light += o_spot->value * shining;
+			info->light += o_spot->value * shining * fading;
 		}
 		spot = spot->next;
 	}

@@ -3,66 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/02 10:36:24 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/08 14:34:34 by qchevrin         ###   ########.fr       */
+/*   Created: 2013/12/03 11:33:19 by jrenouf-          #+#    #+#             */
+/*   Updated: 2013/12/26 13:45:03 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	str_realloc_cat(char **dest, char *src)
+int				occ_test(char **occ, char *save)
 {
-	char	*buff;
-	int		size;
-
-	size = (int) ft_strlen(*dest) + (int) ft_strlen(src) + 1;
-	buff = *dest;
-	free(*dest);
-	if ((*dest = (char *) malloc(size * sizeof(char))) == NULL)
-		return (-1);
-	ft_strcpy(*dest, buff);
-	ft_strcat(*dest, src);
-	return (0);
-}
-
-static int	test_ret(char *buff)
-{
-	if (buff != NULL && *buff != '\0' && *buff != EOF)
+	if (*occ != NULL)
 	{
-		*buff = '\0';
+		**occ = '\0';
+		*occ += 1;
+		ft_strcpy(save, *occ);
 		return (1);
 	}
 	else
 		return (0);
 }
 
-int			get_next_line(int const fd, char **line)
+char			*dyn_alloc(char **line, int *ret)
 {
-	static char	old_char[BUFF_SIZE + 1] = "";
-	char		buff[BUFF_SIZE + 1];
-	char		*pos;
-	int			ret;
+	char		*str;
 
-	if ((*line = (char *) malloc((int) ft_strlen(old_char) + 1)) == NULL)
-		return (-1);
-	*line = ft_strcpy(*line, old_char);
-	while ((pos = ft_strchr(*line, '\n')) == NULL
-			&& (ret = read(fd, buff, BUFF_SIZE)))
+	str = (char *)malloc(sizeof(char) * (ft_strlen(*line) + *ret + 1));
+	if (str == NULL)
+		return (NULL);
+	str = ft_strcpy(str, *line);
+	free(*line);
+	return (str);
+}
+
+int				get_next_line(int const fd, char **line)
+{
+	char		buf[BUFF_SIZE + 1];
+	int			ret;
+	static char	save[BUFF_SIZE] = "";
+	char		*occ;
+
+	*line = (char *)malloc(sizeof(char *) * (BUFF_SIZE + ft_strlen(save) + 1));
+	*line = ft_strcpy(*line, save);
+	while (((occ = ft_strchr(*line, '\n')) == NULL) &&
+			((ret = read(fd, buf, BUFF_SIZE)) > 0))
 	{
-		if (ret == -1)
+		buf[ret] = '\0';
+		if ((*line = dyn_alloc(line, &ret)) == NULL)
 			return (-1);
-		buff[ret] = '\0';
-		if (str_realloc_cat(line, buff) == -1)
-			return (-1);
+		ft_strcat(*line, buf);
 	}
-	if (pos != NULL)
-	{
-		pos = ft_strchr(*line, '\n');
-		*pos = '\0';
-		ft_strcpy(old_char, pos + 1);
+	occ = ft_strchr(*line, '\n');
+	if (occ_test(&occ, save) == 1)
 		return (1);
-	}
-	return (test_ret(old_char));
+	if (ret == 0)
+		return (0);
+	else
+		return (-1);
 }

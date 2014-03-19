@@ -6,12 +6,16 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 15:29:21 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/19 19:01:35 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+# define X			(0)
+# define Y			(1)
+# define Z			(2)
 # include <list.h>
 # include <pthread.h>
 # define PIX		(img.pix)
@@ -80,6 +84,7 @@ typedef struct		s_plane
 {
 	t_coord			vec;
 	double			d;
+	t_coord			pos;
 	int				*color;
 }					t_plane;
 
@@ -148,8 +153,18 @@ typedef struct		s_obj
 	t_list			*cylinder;
 	t_list			*spot;
 	t_list			*sphere;
+	t_list			*cone;
 	t_cam			*cam;
 }					t_obj;
+
+typedef struct		s_var_parser
+{
+	int				num_line;
+	int				cur_obj;
+	t_obj			*obj;
+	int				ret;
+	char			*line;
+}					t_var_parser;
 
 # include "multithread_struct.h"
 

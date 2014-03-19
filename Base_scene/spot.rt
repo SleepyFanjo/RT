@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 # pos_x pos_y pos_z intensity (intensity must be between 0 and 1000)
 400 200 0 500 0
 -400 200 0 500 0
+<<<<<<< HEAD
+#0 110 0 200 0
+=======
 0 110 0 200 0
+=======
+# pos_x pos_y pos_z intensity (intensity must be between 0 and 1000) color
+0 0 0 1000 FF00FF
+>>>>>>> parser
+>>>>>>> 95792ca897c73026f957c6064a10830ade2c910b
