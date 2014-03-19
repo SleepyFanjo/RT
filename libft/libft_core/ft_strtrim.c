@@ -3,47 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/15 19:28:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/02/01 13:58:42 by qchevrin         ###   ########.fr       */
+/*   Created: 2013/11/24 15:47:43 by jrenouf-          #+#    #+#             */
+/*   Updated: 2013/11/26 16:25:58 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*del_space(char *str)
-{
-	while (*str == ' ' || *str == '\n' || *str == '\t')
-		str++;
-	return (str);
-}
-
 char		*ft_strtrim(char const *s)
 {
-	char			*str;
-	char			*str_start;
-	int				size;
-	int				i;
-	int				j;
+	char		*str;
+	size_t		i;
+	size_t		j;
+	size_t		len;
 
-	j = 0;
 	i = 0;
-	str_start = del_space((char *)s);
-	size = ft_strlen(str_start);
-	str = ft_strnew(ft_strlen(s));
-	if (size == 0)
-		return (str);
-	size--;
-	while (size - j >= 0
-			&& (str_start[size - j] == ' ' || str_start[size - j] == '\t'
-				|| str_start[size - j] == '\n'))
-		j++;
-	while (i < size - j + 1)
-	{
-		str[i] = str_start[i];
+	j = 0;
+	len = (ft_strlen(s) - 1);
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 		i++;
+	while (s[len] == ' ' || s[len] == '\n' || s[len] == '\t')
+		len--;
+	if ((s[0] == '\0') || (i == j && len == (ft_strlen(s) - 1)))
+	{
+		str = ft_strnew(ft_strlen(s));
+		str = ft_strcpy(str, s);
+		return (str);
 	}
-	str[i] = '\0';
+	str = ft_strnew(len - i + 1);
+	if (str == NULL)
+		return (NULL);
+	while (i <= len)
+		str[j++] = s[i++];
 	return (str);
 }
