@@ -58,7 +58,7 @@ INC=multithread.h \
 	struct.h
 OBJ= $(SRC:.c=.o)
 NAME= Raytracer
-LIB=-L./libft -lft_core -lft_printf -lft_list -L/usr/X11/lib -lmlx -lXext -lX11
+LIB=-L./libft -lft_core -lft_printf -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lpthread
 DIR_LFT=./libft
 
 .PHONY: clean fclean re all

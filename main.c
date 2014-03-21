@@ -45,7 +45,7 @@ int			main(int argc, char **argv)
 		return (1);
 	}
 	init_param(&param, argv[1]);
-	raytracer(&param, 4);
+	raytracer(&param, 1024);
 	expose_hook(&param);
 	mlx_expose_hook(param.env.win, expose_hook, &param);
 	mlx_key_hook(param.env.win, key_hook, &param);
