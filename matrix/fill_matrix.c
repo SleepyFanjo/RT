@@ -6,31 +6,11 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 15:49:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 18:40:26 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/21 13:08:01 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <matrix.h>
-
-void		fill_matrix_trans(double *matrix, t_coord trans)
-{
-    matrix[0] = 1;
-    matrix[1] = 0;
-    matrix[2] = 0;
-    matrix[3] = trans.x;
-    matrix[4] = 0;
-    matrix[5] = 1;
-    matrix[6] = 0;
-    matrix[7] = trans.y;
-    matrix[8] = 0;
-    matrix[9] = 0;
-    matrix[10] = 1;
-    matrix[11] = trans.z;
-    matrix[12] = 0;
-    matrix[13] = 0;
-    matrix[14] = 0;
-    matrix[15] = 1;
-}
 
 static void	apply_tab(double *tab, double *matrix)
 {
@@ -65,4 +45,16 @@ void		fill_matrix_rot(double *matrix, t_coord rot)
 	tab[6] = tab[0] * tab[3];
 	tab[7] = tab[1] * tab[3];
 	apply_tab(tab, matrix);
+}
+
+void		matrix_cpy(double *dest, double *src)
+{
+	int		i;
+
+	i = 0;
+	while (i < 16)
+	{
+		dest[i] = src[i];
+		i = i + 1;
+	}
 }

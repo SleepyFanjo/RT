@@ -46,6 +46,11 @@ static t_obj	*get_struct_obj(int fd)
 	var.obj = get_obj();
 	while ((var.ret = get_next_line(fd, &(var.line))) > 0)
 	{
+		if (ft_strlen(var.line) == 0)
+		{
+			free(var.line);
+			continue ;
+		}
 		(var.num_line) += 1;
 		loop_get_struct(&var);
 		free(var.line);
