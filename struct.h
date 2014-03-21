@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 19:01:35 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 12:53:04 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct		s_env
 	void			*mlx;
 	void			*win;
 	void			*img;
+	void			*ui;
 }					t_env;
 
 typedef struct		s_cam

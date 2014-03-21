@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/19 19:28:52 by lredoban         ###   ########.fr        #
+#    Updated: 2014/03/21 16:01:18 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,14 +48,17 @@ SRC= main.c \
 	 multithread/get_thread.c \
 	 multithread/print_first_line.c \
 	 multithread/one_line.c \
-	 multithread/print_middle.c
+	 multithread/print_middle.c \
+	 ui/key1.c \
+	 ui/ui.c
 
-INCLUDES=-I./includes/ -I./
+INCLUDES=-I./ui/ -I./
 INC=multithread.h \
 	multithread_struct.h \
 	matrix.h \
 	raytracer.h \
-	struct.h
+	struct.h \
+	ui/ui.h
 OBJ= $(SRC:.c=.o)
 NAME= Raytracer
 LIB=-L./libft -lft_core -lft_printf -lft_list -L/usr/X11/lib -lmlx -lXext -lX11

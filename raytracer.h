@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 18:58:10 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 12:56:05 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define F_PI			(3.1415926535)
 # define WIDTH			(800)
 # define HEIGHT			(600)
+# define H_UI			(200)
 # define AMBL			0.2
 # define RAD(deg)			(deg * F_PI / 180)
 # include "libft/includes/libft.h"

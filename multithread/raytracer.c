@@ -38,7 +38,7 @@ void			*print_thread(void *data)
 
 	th = (t_thread *)data;
 	l = th->limit;
-	printf("s_i: %d, s_j: %d, e_i: %d, e_j: %d\n", l->s_i, l->s_j, l->e_i, l->e_j);
+	//printf("s_i: %d, s_j: %d, e_i: %d, e_j: %d\n", l->s_i, l->s_j, l->e_i, l->e_j);
 	return (data);
 }
 
