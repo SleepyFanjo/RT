@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 19:01:35 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 18:56:13 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,24 @@ typedef struct		s_env
 typedef struct		s_cam
 {
 	t_coord			point;
-	int				rot[3];
+	t_coord			rot;
 }					t_cam;
 
 typedef struct		s_img
 {
-	char			*pix;
+	char			*addr;
 	int				bpp;
 	int				line;
 	int				endian;
 }					t_img;
+
+typedef struct		s_material
+{
+	double			shine;
+	double			reflex;
+	double			med_in;
+	double			refrax;
+}					t_material;
 
 typedef struct		s_sphere
 {
@@ -78,6 +86,7 @@ typedef struct		s_sphere
 	double			lim_b_z;
 	t_coord			pos;
 	int				*color;
+	t_material		mat;
 }					t_sphere;
 
 typedef struct		s_plane
@@ -86,6 +95,7 @@ typedef struct		s_plane
 	double			d;
 	t_coord			pos;
 	int				*color;
+	t_material		mat;
 }					t_plane;
 
 typedef struct		s_cylinder
@@ -95,6 +105,7 @@ typedef struct		s_cylinder
 	double			d;
 	int				radius;
 	int				*color;
+	t_material		mat;
 }					t_cylinder;
 
 typedef struct		s_cone
@@ -103,6 +114,7 @@ typedef struct		s_cone
 	t_coord			rot;
 	int				alpha;
 	int				*color;
+	t_material		mat;
 }					t_cone;
 
 typedef struct		s_equa
@@ -145,6 +157,7 @@ typedef struct		s_param
 	t_list			*plane;
 	t_list			*cylinder;
 	t_list			*cone;
+	t_img			v_img;
 }					t_param;
 
 typedef struct		s_obj

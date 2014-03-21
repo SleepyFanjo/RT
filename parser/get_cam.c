@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:40:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 14:32:05 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 18:56:38 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int				get_cam(t_obj *obj, char *line)
 	plan->point.x = ft_atoi(tab[0]);
 	plan->point.y = ft_atoi(tab[1]);
 	plan->point.z = ft_atoi(tab[2]);
-	plan->rot[0] = ft_atoi(tab[3]);
-	plan->rot[1] = ft_atoi(tab[4]);
-	plan->rot[2] = ft_atoi(tab[5]);
+	plan->rot.x = ft_atoi(tab[3]);
+	plan->rot.y = ft_atoi(tab[4]);
+	plan->rot.z = ft_atoi(tab[5]);
 	obj->cam = plan;
 	return (0);
 }

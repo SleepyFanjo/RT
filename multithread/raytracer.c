@@ -29,17 +29,6 @@ static void	execute_thread(t_list *th)
 	}
 }
 
-void			*print_thread(void *data)
-{
-	t_thread	*th;
-	t_limit		*l;
-
-	th = (t_thread *)data;
-	l = th->limit;
-	printf("s_i: %d, s_j: %d, e_i: %d, e_j: %d\n", l->s_i, l->s_j, l->e_i, l->e_j);
-	return (data);
-}
-
 void			raytracer(t_param *param, int nbr_process)
 {
 	t_list		*th;
@@ -47,6 +36,5 @@ void			raytracer(t_param *param, int nbr_process)
 
 	th = get_thread(param, nbr_process, nbr_process, 0);
 	tmp = th;
-	ft_lstiter(th, print_thread);
 	execute_thread(th);
 }

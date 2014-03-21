@@ -1,25 +1,29 @@
 #include "../raytracer.h"
 
-static void		get_obj_line(t_obj *obj, char *line, int (*f)(t_obj *, char *))
+static void		getobjln(t_obj *o, char *ln, int (*f)(t_obj *, char *), int nb)
 {
-	if (f(obj, line) < 0)
-		ft_printf("%rUnable to get line: %s\n", line);
+	if (f(o, ln) < 0)
+	{
+		ft_printf("%rUnable to get line ");
+		ft_printf("%r%d: ", nb);
+		ft_printf("%r%s\n", ln);
+	}
 }
 
-static void		get_obj_cd(int cur_obj, t_obj *obj, char *line)
+static void		get_obj_cd(int cur_obj, t_obj *obj, char *line, int n_l)
 {
 	if (cur_obj == CD_SPHERE)
-		get_obj_line(obj, line, get_sphere);
+		getobjln(obj, line, get_sphere, n_l);
 	else if (cur_obj == CD_PLAN)
-		get_obj_line(obj, line, get_plan);
+		getobjln(obj, line, get_plan, n_l);
 	else if (cur_obj == CD_SPOT)
-		get_obj_line(obj, line, get_spot);
+		getobjln(obj, line, get_spot, n_l);
 	else if (cur_obj == CD_CAM)
-		get_obj_line(obj, line, get_cam);
+		getobjln(obj, line, get_cam, n_l);
 	else if (cur_obj == CD_CYLINDER)
-		get_obj_line(obj, line, get_cylinder);
+		getobjln(obj, line, get_cylinder, n_l);
 	else if (cur_obj == CD_CONE)
-		get_obj_line(obj, line, get_cone);
+		getobjln(obj, line, get_cone, n_l);
 }
 
 static void		loop_get_struct(t_var_parser *var)
@@ -32,7 +36,7 @@ static void		loop_get_struct(t_var_parser *var)
 	if (var->ret == CD_COM)
 		return ;
 	if (var->ret == CD_NOT_CMD && var->cur_obj > 0)
-		get_obj_cd(var->cur_obj, var->obj, var->line);
+		get_obj_cd(var->cur_obj, var->obj, var->line, var->num_line);
 	else
 		var->cur_obj = var->ret;
 }
@@ -46,6 +50,11 @@ static t_obj	*get_struct_obj(int fd)
 	var.obj = get_obj();
 	while ((var.ret = get_next_line(fd, &(var.line))) > 0)
 	{
+		if (ft_strlen(var.line) == 0)
+		{
+			free(var.line);
+			continue ;
+		}
 		(var.num_line) += 1;
 		loop_get_struct(&var);
 		free(var.line);
@@ -68,6 +77,8 @@ void	parser(char *filename, t_param *param)
 	param->spot = obj->spot;
 	param->sphere = obj->sphere;
 	param->cone = obj->cone;
+	if (obj->cam == NULL)
+		print_error(filename, "Not find cam\n");
 	param->cam = obj->cam->point;
-	ft_memcpy(&(param->rot_cam), &(obj->cam->rot), sizeof(t_coord));
+	param->rot_cam = obj->cam->rot;
 }

@@ -17,6 +17,7 @@ typedef struct		s_thread
 	pthread_t		th;
 	t_limit			*limit;
 	t_param			*p;
+	int				id;
 }					t_thread;
 
 #endif

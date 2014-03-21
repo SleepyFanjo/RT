@@ -32,11 +32,11 @@ double	ft_abs(double nb)
 
 int		point_cmp(t_coord p1, t_coord p2)
 {
-	if (ft_abs(p1.x - p2.x) > 0.01)
+	if (ft_abs(p1.x - p2.x) > 0.0001)
 		return (0);
-	if (ft_abs(p1.y - p2.y) > 0.01)
+	if (ft_abs(p1.y - p2.y) > 0.0001)
 		return (0);
-	if (ft_abs(p1.z - p2.z) > 0.01)
+	if (ft_abs(p1.z - p2.z) > 0.0001)
 		return (0);
 	return (1);
 }
@@ -108,15 +108,65 @@ t_info	init_light(t_info *info, t_spot *spot)
 	return (light);
 }
 
+int 	*init_color(void)
+{
+	int *color;
+
+	color = (int *)j_malloc(sizeof(int) * 3);
+	color[0] = 0;
+	color[1] = 0;
+	color[2] = 0;
+	return (color);
+}
+
+void	calc_color(int **col, int *s_col, double s_light, double coef)
+{
+	(*col)[0] += s_light * s_col[0] * coef;
+	(*col)[1] += s_light * s_col[1] * coef;
+	(*col)[2] += s_light * s_col[2] * coef;
+}
+
+int 	*retrieve_col(int *col, int *obj_col, double coef)
+{
+	int 	*final_col;
+
+	final_col = (int *)j_malloc(sizeof(int) * 3);
+	final_col[0] = (1 - coef) * col[0] + obj_col[0] * coef;
+	final_col[1] = (1 - coef) * col[1] + obj_col[1] * coef;
+	final_col[2] = (1 - coef) * col[2] + obj_col[2] * coef;
+	if (final_col[0] > 255)
+		final_col[0] = 255;
+	if (final_col[1] > 255)
+		final_col[1] = 255;
+	if (final_col[2] > 255)
+		final_col[2] = 255;
+	return (final_col);
+}
+
+double	get_shine(t_info *info)
+{
+	if (info->obj_type == SPHERE)
+		return (1.0 - ((t_sphere *)(info->obj))->mat.shine);
+	if (info->obj_type == PLANE)
+		return (1.0 - ((t_plane *)(info->obj))->mat.shine);
+	if (info->obj_type == CYLINDER)
+		return (1.0 - ((t_cylinder *)(info->obj))->mat.shine);
+	if (info->obj_type == CONE)
+		return (1.0 - ((t_cone *)(info->obj))->mat.shine);
+	return (0.0);
+}
+
 void	calc_light(t_param *param, t_info *info, t_list *spot)
 {
 	t_info	light;
 	t_spot	*o_spot;
 	double	fading;
 	double	shining;
+	int 	*s_color;
 
 	if (info->distance < 0)
 		return ;
+	s_color = init_color();
 	while (spot)
 	{
 		o_spot = (t_spot *)spot->content;
@@ -128,7 +178,9 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 			shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
 			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining * fading;
+			calc_color(&s_color, o_spot->color, o_spot->value, fading);
 		}
 		spot = spot->next;
 	}
+	info->color = retrieve_col(s_color, info->color, get_shine(info));
 }
