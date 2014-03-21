@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 18:58:10 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 17:40:00 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define RAYTRACER_H
 # define LOADING		(0)
 # define F_PI			(3.1415926535)
-# define WIDTH			(800)
-# define HEIGHT			(600)
+# define WIDTH			(2300)
+# define HEIGHT			(1300)
 # define AMBL			0.2
 # define RAD(deg)			(deg * F_PI / 180)
 # include "libft/includes/libft.h"

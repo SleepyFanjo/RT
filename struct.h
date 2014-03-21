@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 19:01:35 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 17:45:13 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct		s_cam
 
 typedef struct		s_img
 {
-	char			*pix;
+	char			*addr;
 	int				bpp;
 	int				line;
 	int				endian;
@@ -145,6 +145,7 @@ typedef struct		s_param
 	t_list			*plane;
 	t_list			*cylinder;
 	t_list			*cone;
+	t_img			v_img;
 }					t_param;
 
 typedef struct		s_obj

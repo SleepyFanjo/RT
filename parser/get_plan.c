@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:19:28 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 15:26:04 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 12:50:13 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int			get_plan(t_obj *obj, char *line)
 	plan->vec.x = ft_atoi(tab[3]);
 	plan->vec.y = ft_atoi(tab[4]);
 	plan->vec.z = ft_atoi(tab[5]);
-	plan->d = -1 * (plan->pos.x * plan->vec.x) - (plan->pos.y * plan->vec.y);
+	plan->d = -1 * (plan->pos.x * plan->vec.x) - (plan->pos.y * plan->vec.y)
+		- (plan->pos.z * plan->vec.z);
 	if ((plan->color = (int *)malloc(sizeof(int))) == NULL)
 		print_error(line, "Allocation Fail\n");
 	plan->color = get_color(tab[6]);
