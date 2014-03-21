@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:29:34 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/21 15:38:12 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 16:16:09 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static void	set_cylinder(t_cylinder *cylinder, char **tab)
 	cylinder->rot.y = ft_atoi(tab[4]);
 	cylinder->rot.z = ft_atoi(tab[5]);
 	cylinder->radius = ft_atoi(tab[6]);
-	cylinder->mat.shine = ft_atoi(tab[7]) / 100;
-	cylinder->mat.reflex = ft_atoi(tab[8]) / 100;
-	cylinder->mat.med_in = ft_atoi(tab[9]) / 100;
-	cylinder->mat.refrax = ft_atoi(tab[10]) / 100;
+	cylinder->mat.shine = ft_atoi(tab[7]) / 100.0;
+	cylinder->mat.reflex = ft_atoi(tab[8]) / 100.0;
+	cylinder->mat.med_in = ft_atoi(tab[9]) / 100.0;
+	cylinder->mat.refrax = ft_atoi(tab[10]) / 100.0;
 	cylinder->color = get_color(tab[11]);
 }
 

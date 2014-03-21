@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:19:28 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/21 15:39:12 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 16:15:35 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void	set_plan(t_plane *plan, char **tab)
 	plan->vec.x = ft_atoi(tab[3]);
 	plan->vec.y = ft_atoi(tab[4]);
 	plan->vec.z = ft_atoi(tab[5]);
-	plan->mat.shine = ft_atoi(tab[6]) / 100;
-	plan->mat.reflex = ft_atoi(tab[7]) / 100;
-	plan->mat.med_in = ft_atoi(tab[8]) / 100;
-	plan->mat.refrax = ft_atoi(tab[9]) / 100;
+	plan->mat.shine = ft_atoi(tab[6]) / 100.0;
+	plan->mat.reflex = ft_atoi(tab[7]) / 100.0;
+	plan->mat.med_in = ft_atoi(tab[8]) / 100.0;
+	plan->mat.refrax = ft_atoi(tab[9]) / 100.0;
 	plan->color = get_color(tab[10]);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 15:47:13 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/21 15:41:35 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 16:15:51 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void	set_sphere(t_sphere *obj, char **tab)
 	obj->lim_b_y = ft_atoi(tab[7]);
 	obj->lim_h_z = ft_atoi(tab[8]);
 	obj->lim_b_z = ft_atoi(tab[9]);
-	obj->mat.shine = ft_atoi(tab[10]) / 100;
-	obj->mat.reflex = ft_atoi(tab[11]) / 100;
-	obj->mat.med_in = ft_atoi(tab[12]) / 100;
-	obj->mat.refrax = ft_atoi(tab[13]) / 100;
+	obj->mat.shine = ft_atoi(tab[10]) / 100.0;
+	obj->mat.reflex = ft_atoi(tab[11]) / 100.0;
+	obj->mat.med_in = ft_atoi(tab[12]) / 100.0;
+	obj->mat.refrax = ft_atoi(tab[13]) / 100.0;
 }
 
 int			get_sphere(t_obj *obj, char *line)

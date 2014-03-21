@@ -9,10 +9,10 @@ static void	set_cone(t_cone *cone, char **tab)
 	cone->rot.y = ft_atoi(tab[4]);
 	cone->rot.z = ft_atoi(tab[5]);
 	cone->alpha = ft_atoi(tab[6]);
-	cone->mat.shine = ft_atoi(tab[7]) / 100;
-	cone->mat.reflex = ft_atoi(tab[8]) / 100;
-	cone->mat.med_in = ft_atoi(tab[9]) / 100;
-	cone->mat.refrax = ft_atoi(tab[10]) / 100;
+	cone->mat.shine = ft_atoi(tab[7]) / 100.0;
+	cone->mat.reflex = ft_atoi(tab[8]) / 100.0;
+	cone->mat.med_in = ft_atoi(tab[9]) / 100.0;
+	cone->mat.refrax = ft_atoi(tab[10]) / 100.0;
 	cone->color = get_color(tab[11]);
 }
 
