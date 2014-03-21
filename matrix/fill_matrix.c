@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 15:49:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/21 13:08:01 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/21 17:52:36 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ static void	apply_tab(double *tab, double *matrix)
 
 void		fill_matrix_rot(double *matrix, t_coord rot)
 {
-	double		tab[8];
+	double		*tab;
 
+	tab = (double *)j_malloc(sizeof(double) * 8);
 	tab[0] = cos(RAD(rot.x));
 	tab[1] = sin(RAD(rot.x));
 	tab[2] = cos(RAD(rot.y));
@@ -45,16 +46,5 @@ void		fill_matrix_rot(double *matrix, t_coord rot)
 	tab[6] = tab[0] * tab[3];
 	tab[7] = tab[1] * tab[3];
 	apply_tab(tab, matrix);
-}
-
-void		matrix_cpy(double *dest, double *src)
-{
-	int		i;
-
-	i = 0;
-	while (i < 16)
-	{
-		dest[i] = src[i];
-		i = i + 1;
-	}
+	free(tab);
 }
