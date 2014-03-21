@@ -108,15 +108,46 @@ t_info	init_light(t_info *info, t_spot *spot)
 	return (light);
 }
 
+int 	*init_color(void)
+{
+	int *color;
+
+	color = (int *)j_malloc(sizeof(int) * 3);
+	color[0] = 0;
+	color[1] = 0;
+	color[2] = 0;
+	return (color);
+}
+
+void	calc_color(int **col, int *s_col, int s_light, int coef)
+{
+	*col[0] += s_light * s_col[0] * coef;
+	*col[1] += s_light * s_col[1] * coef;
+	*col[2] += s_light * s_col[2] * coef;
+}
+
+int 	*retrieve_col(int *col, int *obj_col, int coef)
+{
+	int 	*final_col;
+
+	final_col = (int *)j_malloc(sizeof(int) * 3);
+	final_col[0] = col[0] + obj_col[0] * coef;
+	final_col[1] = col[1] + obj_col[1] * coef;
+	final_col[2] = col[2] + obj_col[2] * coef;
+	return (final_col);
+}
+
 void	calc_light(t_param *param, t_info *info, t_list *spot)
 {
 	t_info	light;
 	t_spot	*o_spot;
 	double	fading;
 	double	shining;
+//	int 	*s_color;
 
 	if (info->distance < 0)
 		return ;
+//	s_color = init_color();
 	while (spot)
 	{
 		o_spot = (t_spot *)spot->content;
@@ -128,7 +159,9 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 			shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
 			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining * fading;
+//			calc_color(*s_color, o_spot->color, o_spot->value, fading);
 		}
 		spot = spot->next;
 	}
+//	info->color = retrieve_col(s_color, info->color, 0.4);
 }
