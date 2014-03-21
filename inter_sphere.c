@@ -6,13 +6,13 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 19:21:06 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/21 12:40:37 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raytracer.h"
 
-static void		update_info(t_info *info, double dist, void *obj, t_line new)
+static void		update_info(t_info *info, double dist, void *obj)
 {
 	t_sphere	*sphere;
 
@@ -21,12 +21,6 @@ static void		update_info(t_info *info, double dist, void *obj, t_line new)
 	info->obj = obj;
 	sphere = (t_sphere *)obj;
 	info->color = sphere->color;
-	info->s_line.pos.x = new.pos.x;
-	info->s_line.pos.y = new.pos.y;
-	info->s_line.pos.z = new.pos.z;
-	info->s_line.vec.x = new.vec.x;
-	info->s_line.vec.y = new.vec.y;
-	info->s_line.vec.z = new.vec.z;
 }
 
 static t_line	get_new_equa(t_sphere *obj, t_line line)
@@ -80,7 +74,7 @@ void			inter_sphere(t_param *param, t_info *info, t_list *sphere)
 		dist = delta(new, obj);
 	//	dist = limited_sphere(obj, new, dist);
 		if (dist > 0 && (info->distance < 0 || dist < info->distance))
-			update_info(info, dist, sphere->content, new);
+			update_info(info, dist, sphere->content);
 		sphere = sphere->next;
 	}
 }

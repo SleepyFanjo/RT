@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 16:46:21 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 18:19:25 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/21 13:09:10 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,9 @@ static double	m3_det(double *m)
 static double	m4_det(double *m)
 {
 	double	c[3];
-	double	*m3;
+	double	m3[16];
 	int		n;
 
-	m3 = (double *)j_malloc(sizeof(double) * 9);
 	c[1] = 0;
 	c[2] = 1;
 	n = 0;
@@ -73,19 +72,18 @@ static double	m4_det(double *m)
 		c[2] = -c[2];
 		n = n + 1;
 	}
-	free(m3);
 	return (c[1]);
 }
 
-void			invert_matrix(double *res, double *m)
+void			invert_matrix(double *m)
 {
 	double	det;
-	double	*m3;
+	double	res[16];
+	double	m3[16];
 	int		c[3];
 
 	det = m4_det(m);
 	c[0] = 0;
-	m3 = (double *)j_malloc(sizeof(double) * 9);
 	while (c[0] < 4)
 	{
 		c[1] = 0;
@@ -98,5 +96,5 @@ void			invert_matrix(double *res, double *m)
 		}
 		c[0] = c[0] + 1;
 	}
-	free(m3);
+	matrix_cpy(m, res);
 }
