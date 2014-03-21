@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 19:01:35 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 15:14:00 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,14 @@ typedef struct		s_img
 	int				line;
 	int				endian;
 }					t_img;
+
+typedef struct		s_material
+{
+	double			shine;
+	double			reflex;
+	double			med_in;
+	double			refrax;
+}					t_material;
 
 typedef struct		s_sphere
 {
