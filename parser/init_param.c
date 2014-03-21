@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 16:27:09 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 11:09:45 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 18:29:55 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ t_env			get_env(void)
 
 void			init_param(t_param *param, char *dir)
 {
-	param->env = get_env();
+	t_img		*img;
+
 	parser(dir, param);
+	param->env = get_env();
+	img = &(param->v_img);
+	img->addr = mlx_get_data_addr(param->env.img, &(img->bpp), &(img->line),
+			&(img->endian));
 }

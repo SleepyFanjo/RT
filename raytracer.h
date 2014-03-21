@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/21 15:15:39 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/21 17:48:52 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	write_on_img(t_param *param, int color, int i, int j);
 void	apply_trans(t_coord translation, t_coord *to_move, int mult);
 void	apply_rot(t_coord rotation, t_coord *to_turn, int mult);
 void	inter_sphere(t_param *param, t_info *info, t_list *sphere);
-double	limited_sphere(t_sphere *obj, t_line line, double dist);
+double	limited_sphere(t_sphere *obj, t_line line, double *dist);
 void	inter_plane(t_param *param, t_info *info, t_list *plane);
 void	inter_cylinder(t_param *param, t_info *info, t_list *cylinder);
 void	inter_cone(t_param *param, t_info *info, t_list *cone);
@@ -80,5 +80,6 @@ t_coord	plane_vec_n(t_plane *obj);
 t_coord	cylinder_vec_n(t_info *info, t_cylinder *obj);
 t_coord	cone_vec_n(t_info *info, t_cone *obj);
 void	calc_light(t_param *param, t_info *info, t_list *spot);
+void	swap_double(double *a, double *b);
 
 #endif

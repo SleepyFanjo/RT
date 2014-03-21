@@ -1,0 +1,31 @@
+//sphere
+#sphere pos_x pos_y pos_z radius lim_h_x lim_b_x lim_h_y lim_b_y lim_h_z lim_b_z shine relfex med_in refrax color
+        30    0     1500  100     1000   -1000    1000   -1000    1000   -1000   0    0     0     0     FFF0F0
+        -30    0     1500  100     1000   -1000    1000   -1000    1000   -1000   0    0     0     0     FFF0F0
+
+
+
+
+//cam
+#cam pos_x pos_y pos_z rot_x rot_y rot_z
+0 0 0 0 0 0
+//plane
+#plane pos_x pos_y pos_z rot_x rot_y rot_z shine relfex med_in refrax color
+#0 -300 0 0 1 0 100 100 100 100 FFFFFF
+
+
+
+
+//cylinder
+#cylinder pos_x pos_y pos_z rot_x rot_y rot_z radius shine relfex med_in refrax color
+          0     0     1500  0     0     0      0    0    0     0     0     FF0000
+
+
+
+
+//spot
+#spot pos_x pos_y pos_z value color
+0 0 100 500 FFFFFF
+400 200 0 500 FFFFFF
+//cone
+#cone pos_x pos_y pos_z rot_x rot_y rot_z alpha shine relfex med_in refrax color
