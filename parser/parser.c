@@ -72,7 +72,10 @@ void	parser(char *filename, t_param *param)
 	param->plane = obj->plan;
 	param->spot = obj->spot;
 	param->sphere = obj->sphere;
+	printf("param sphere: %p\n", obj->sphere);
 	param->cone = obj->cone;
+	if (obj->cam == NULL)
+		print_error(filename, "Not find cam\n");
 	param->cam = obj->cam->point;
 	ft_memcpy(&(param->rot_cam), &(obj->cam->rot), sizeof(t_coord));
 }

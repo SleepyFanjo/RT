@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/24 15:47:43 by jrenouf-          #+#    #+#             */
-/*   Updated: 2013/11/26 16:25:58 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/21 18:22:37 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ char		*ft_strtrim(char const *s)
 		str = ft_strcpy(str, s);
 		return (str);
 	}
-	str = ft_strnew(len - i + 1);
+	str = ft_strnew(len - i + 2);
 	if (str == NULL)
 		return (NULL);
 	while (i <= len)
 		str[j++] = s[i++];
+	str[j] = '\0';
 	return (str);
 }
