@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-# vec_x vec_y vec_z x y z color
-#0 1 0 0 -100 1000 14859380
-0 1 0 0 -100 1000 14859380
-=======
-# rot_x rot_y rot_z x y z color
-0 0 0 0 -100 0 0000FF
->>>>>>> parser

@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/21 17:45:13 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 17:49:09 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,14 @@ typedef struct		s_img
 	int				endian;
 }					t_img;
 
+typedef struct		s_material
+{
+	double			shine;
+	double			reflex;
+	double			med_in;
+	double			refrax;
+}					t_material;
+
 typedef struct		s_sphere
 {
 	int				radius;
@@ -78,6 +86,7 @@ typedef struct		s_sphere
 	double			lim_b_z;
 	t_coord			pos;
 	int				*color;
+	t_material		mat;
 }					t_sphere;
 
 typedef struct		s_plane
@@ -86,6 +95,7 @@ typedef struct		s_plane
 	double			d;
 	t_coord			pos;
 	int				*color;
+	t_material		mat;
 }					t_plane;
 
 typedef struct		s_cylinder
@@ -95,6 +105,7 @@ typedef struct		s_cylinder
 	double			d;
 	int				radius;
 	int				*color;
+	t_material		mat;
 }					t_cylinder;
 
 typedef struct		s_cone
@@ -103,6 +114,7 @@ typedef struct		s_cone
 	t_coord			rot;
 	int				alpha;
 	int				*color;
+	t_material		mat;
 }					t_cone;
 
 typedef struct		s_equa
