@@ -19,12 +19,14 @@ static void	execute_thread(t_list *th)
 	{
 		tmp_cl = (t_thread *)tmp->content;
 		pthread_create(&(tmp_cl->th), NULL, launch_thread, (void *)tmp_cl);
+		pthread_join(tmp_cl->th, NULL);
+	//	launch_thread((void *)tmp_cl);
 		tmp = tmp->next;
 	}
 	while (th != NULL)
 	{
 		tmp_cl = (t_thread *)th->content;
-		pthread_join(tmp_cl->th, NULL);
+	//	pthread_join(tmp_cl->th, NULL);
 		th = th->next;
 	}
 }

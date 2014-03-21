@@ -3,6 +3,7 @@
 0 0 1000 100 0 0 0 0 0 0 FF0000
 //cam
 #cam pos_x pos_y pos_z rot_x rot_y rot_z
+
 0 0 0 0 0 0
 //plane
 #plane pos_x pos_y pos_z rot_x rot_y rot_z color
