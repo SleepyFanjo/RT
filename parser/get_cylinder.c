@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:29:34 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/21 15:38:12 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 16:53:23 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			get_cylinder(t_obj *obj, char *line)
 	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		print_error(line, "Allocation Fail");
-	if (get_size_tab(tab) != 8)
+	if (get_size_tab(tab) != 12)
 		print_error(line, "Cylinder has no 12 param");
 	if (!test_tab(tab, 7))
 		print_error(line, "Cylinder is not ok");
