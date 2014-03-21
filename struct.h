@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/21 17:49:09 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/21 18:56:13 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct		s_env
 typedef struct		s_cam
 {
 	t_coord			point;
-	int				rot[3];
+	t_coord			rot;
 }					t_cam;
 
 typedef struct		s_img

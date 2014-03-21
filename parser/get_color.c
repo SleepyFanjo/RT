@@ -7,7 +7,7 @@ int			test_col_str(char *color)
 	i = 0;
 	*color = ft_toupper(*color);
 	while (color[i] != '\0'
-			&& (ft_isdigit(color[i]) || (color[i] > 'A' && color[i] <= 'F')))
+			&& (ft_isdigit(color[i]) || (color[i] >= 'A' && color[i] <= 'F')))
 	{
 		i++;
 		color[i] = ft_toupper(color[i]);
