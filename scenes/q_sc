@@ -8,10 +8,10 @@
 #0 -100 1500 0 1 0 FF00FF
 //cylinder
 #cylinder pos_x pos_y pos_z rot_x rot_y rot_z radius shine reflex med_in refrax color
-0 0 1500 0 10 0 50 50 50 50 50 00FF00
+0 0 1500 0 0 0 50 50 50 50 50 00FF00
 //spot
 #spot pos_x pos_y pos_z value color
 0 0 0 1000 FFFFFF
 //cone
 #cone pos_x pos_y pos_z rot_x rot_y rot_z alpha shine reflex med_in refrax color
-#0 0 1500 0 0 0 30 50 50 50 50 FF0000
+0 0 1500 0 0 0 30 50 50 50 50 FF0000
