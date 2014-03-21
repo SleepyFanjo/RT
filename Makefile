@@ -44,6 +44,7 @@ SRC= main.c \
 	 parser/test_tab.c \
 	 parser/get_cam.c \
 	 parser/get_sphere.c \
+	 parser/free_obj_lst.c \
 	 multithread/raytracer.c \
 	 multithread/get_thread.c \
 	 multithread/print_first_line.c \

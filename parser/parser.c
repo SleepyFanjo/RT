@@ -61,6 +61,7 @@ static t_obj	*get_struct_obj(int fd)
 	}
 	if (var.ret < 0)
 		return (NULL);
+	free(var.line);
 	return (var.obj);
 }
 

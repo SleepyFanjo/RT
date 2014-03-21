@@ -38,6 +38,7 @@
 # define CD_CYLINDER 6
 # define CD_CONE 7
 
+void	free_obj_lst(t_param *p);
 void	init_param(t_param *param, char *dir);
 int		test_tab(char **tab, int s_i);
 int		get_type_obj(char *line);
