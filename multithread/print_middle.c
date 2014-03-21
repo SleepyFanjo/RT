@@ -9,7 +9,7 @@ int		print_middle(t_thread *th, t_limit *l)
 	while (j < l->e_j - 1)
 	{
 		i = 0;
-		while (i < W)
+		while (i < WIDTH)
 		{
 			if (put_pixel_to_img(th->p, j, i))
 				return (-1);
