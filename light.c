@@ -176,7 +176,7 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		{
 			fading = ft_abs(calc_fading(light.r_line.vec, info->vec_n));
 			shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
-			info->light += o_spot->value * fadingt ;
+			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining * fading;
 			calc_color(&s_color, o_spot->color, o_spot->value, fading);
 		}
