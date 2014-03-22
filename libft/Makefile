@@ -14,10 +14,11 @@ CC=clang
 FLAGS=-Wall -Wextra -Werror
 NAME=libft.a
 INCLUDES=-I includes/
-LIB=ft_printf/libft_printf.a \
-	libft_core/libft_core.a \
+LIB=libft_core/libft_core.a \
 	list/libft_list.a \
 	percent/libft_print_percent.a
+#ft_printf/libft_printf.a \
+
 
 .PHONY: clean fclean all re
 
@@ -28,8 +29,8 @@ $(NAME): libft
 libft: $(LIB)
 	$(foreach var, $(LIB), mv $(var) $(notdir $(var)) ;)
 
-ft_printf/libft_printf.a:
-	(cd ft_printf && $(MAKE))
+##ft_printf/libft_printf.a:
+##	(cd ft_printf && $(MAKE))
 
 list/libft_list.a:
 	(cd list && $(MAKE))
@@ -42,7 +43,7 @@ percent/libft_print_percent.a:
 
 clean:
 	(cd libft_core && $(MAKE) clean)
-	(cd ft_printf && $(MAKE) clean)
+##	(cd ft_printf && $(MAKE) clean)
 	(cd list && $(MAKE) clean)
 	(cd percent && $(MAKE) clean)
 

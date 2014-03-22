@@ -23,8 +23,8 @@ int			*get_color(char *color)
 
 	if (!test_col_str(color))
 	{
-		ft_putstr_fd("Get color fail\n", 2);
-		exit(1);
+		ft_putstr_fd("Get color fail: ", 2);
+		return (NULL);
 	}
 	tab = (int *)j_malloc(sizeof(int) * 3);
 	tab[2] = ft_hex_atoi(color);

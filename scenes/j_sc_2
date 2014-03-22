@@ -17,3 +17,4 @@
 400 200 0 700 0000FF
 //cone
 #cone pos_x pos_y pos_z rot_x rot_y rot_z alpha color
+0 0 1000 0 0 0 10 FF00FF

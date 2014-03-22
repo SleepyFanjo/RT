@@ -24,7 +24,6 @@ static void	set_plan(t_plane *plan, char **tab)
 	plan->mat.reflex = ft_atoi(tab[7]) / 100.0;
 	plan->mat.med_in = ft_atoi(tab[8]) / 100.0;
 	plan->mat.refrax = ft_atoi(tab[9]) / 100.0;
-	plan->color = get_color(tab[10]);
 }
 
 int			get_plan(t_obj *obj, char *line)
@@ -35,14 +34,26 @@ int			get_plan(t_obj *obj, char *line)
 
 	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
-		print_error(line, "Allocation Fail");
+	{
+		ft_printf("%rAllocation Fail: ");
+		return (-1);
+	}
 	if (get_size_tab(tab) != 11)
-		print_error(line, "has no 11 param");
+	{
+		ft_printf("%rThis line has no 11 param: ");
+		return (-1);
+	}
 	if (!test_tab(tab, 10))
-		print_error(line, "Plane is not ok");
+		return (-1);
 	if ((plan = (t_plane *)malloc(sizeof(t_plane))) == NULL)
-		print_error(line, "Allocation Fail");
+	{
+		ft_printf("%rAllocation Fail");
+		return (-1);
+	}
 	set_plan(plan, tab);
+	plan->color = get_color(tab[10]);
+	if (plan->color == NULL)
+		return (-1);
 	plan->d = -(plan->pos.x * plan->vec.x) - (plan->pos.y * plan->vec.y)
 				- (plan->pos.z * plan->vec.z);
 	ft_lstadd(&(obj->plan), ft_lstnew(plan, sizeof(t_plane)));

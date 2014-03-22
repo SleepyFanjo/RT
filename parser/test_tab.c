@@ -14,14 +14,20 @@ int	test_tab(char **tab, int s_i)
 		while (j >= 0 && tab[i][j] == '-')
 			j--;
 		if (j >= 0)
+		{
+			ft_printf("%rNot a number: ");
 			return (0);
+		}
 		i++;
 	}
 	j = 0;
 	while (tab[s_i][j] != '\0')
 	{
 		if (!ft_isdigit(tab[s_i][j]) && tab[s_i][j] < 'a' && tab[s_i][j] > 'f')
+		{
+			ft_printf("%rNot an hexadecimal number: ");
 			return (0);
+		}
 		j++;
 	}
 	return (1);

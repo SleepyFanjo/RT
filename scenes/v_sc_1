@@ -11,7 +11,7 @@
 0 0 0 0 0 0
 //plane
 #plane pos_x pos_y pos_z rot_x rot_y rot_z shine relfex med_in refrax color
-#0 -300 0 0 1 0 100 100 100 100 FFFFFF
+0 -300 0 0 1 0 100 100 100 100 FFFFFF
 
 
 

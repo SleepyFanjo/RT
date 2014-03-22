@@ -14,6 +14,10 @@
 
 static void	set_sphere(t_sphere *obj, char **tab)
 {
+	obj->pos.x = ft_atoi(tab[0]);
+	obj->pos.y = ft_atoi(tab[1]);
+	obj->pos.z = ft_atoi(tab[2]);
+	obj->radius = ft_atoi(tab[3]);
 	obj->lim_h_x = ft_atoi(tab[4]);
 	obj->lim_b_x = ft_atoi(tab[5]);
 	obj->lim_h_y = ft_atoi(tab[6]);
@@ -34,19 +38,22 @@ int			get_sphere(t_obj *obj, char *line)
 
 	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
-		print_error(line, "Allocation Fail");
+	{
+		ft_printf("%rAllocation Fail: ");
+		return (-1);
+	}
 	if (get_size_tab(tab) != 15)
-		print_error(line, "has no 15 param");
+	{
+		ft_printf("%rThis line has no 15 param: ");
+	}
 	if (!test_tab(tab, 14))
-		print_error(line, "is not ok");
+		return (-1);
 	if ((sphere = (t_sphere *)malloc(sizeof(t_sphere))) == NULL)
-		print_error(line, "Allocation Fail");
-	sphere->pos.x = ft_atoi(tab[0]);
-	sphere->pos.y = ft_atoi(tab[1]);
-	sphere->pos.z = ft_atoi(tab[2]);
-	sphere->radius = ft_atoi(tab[3]);
-	sphere->color = get_color(tab[14]);
+		ft_printf("%rAllocation fail: ");
 	set_sphere(sphere, tab);
+	sphere->color = get_color(tab[14]);
+	if (sphere->color == NULL)
+		return (-1);
 	ft_lstadd(&(obj->sphere), ft_lstnew(sphere, sizeof(t_sphere)));
 	return (0);
 }

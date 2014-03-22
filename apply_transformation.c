@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 15:38:55 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/21 17:52:10 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/21 19:30:25 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,22 @@ void			apply_rot(t_coord rotation, t_coord *to_rot, int mult)
 	fill_matrix_rot(matrix, rotation);
 	if (mult == -1)
 		invert_matrix(matrix, matrix_cpy(cpy, matrix));
+	apply_matrix(matrix, to_rot);
+	free(matrix);
+	free(cpy);
+}
+
+void			apply_rot_norm(t_coord rotation, t_coord *to_rot, int mult)
+{
+	double		*matrix;
+	double		*cpy;
+
+	matrix = (double *)j_malloc(sizeof(double) * 16);
+	cpy = (double *)j_malloc(sizeof(double) * 16);
+	fill_matrix_rot(matrix, rotation);
+	if (mult == -1)
+		invert_matrix(matrix, matrix_cpy(cpy, matrix));
+	transpose_matrix(matrix, matrix_cpy(cpy, matrix));
 	apply_matrix(matrix, to_rot);
 	free(matrix);
 	free(cpy);

@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/21 20:43:06 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/22 11:21:42 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define CD_CYLINDER 6
 # define CD_CONE 7
 
+void	free_obj_lst(t_param *p);
 void	init_param(t_param *param, char *dir);
 int		test_tab(char **tab, int s_i);
 int		get_type_obj(char *line);
@@ -68,6 +69,7 @@ t_info	init_info(t_param *param, int i, int j);
 void	write_on_img(t_param *param, int color, int i, int j);
 void	apply_trans(t_coord translation, t_coord *to_move, int mult);
 void	apply_rot(t_coord rotation, t_coord *to_turn, int mult);
+void	apply_rot_norm(t_coord rotation, t_coord *to_turn, int mult);
 void	inter_sphere(t_param *param, t_info *info, t_list *sphere);
 double	limited_sphere(t_sphere *obj, t_line line, double *dist);
 void	inter_plane(t_param *param, t_info *info, t_list *plane);

@@ -25,7 +25,6 @@ static void	set_cylinder(t_cylinder *cylinder, char **tab)
 	cylinder->mat.reflex = ft_atoi(tab[8]) / 100.0;
 	cylinder->mat.med_in = ft_atoi(tab[9]) / 100.0;
 	cylinder->mat.refrax = ft_atoi(tab[10]) / 100.0;
-	cylinder->color = get_color(tab[11]);
 }
 
 int			get_cylinder(t_obj *obj, char *line)
@@ -36,16 +35,25 @@ int			get_cylinder(t_obj *obj, char *line)
 
 	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
-		print_error(line, "Allocation Fail");
+	{
+		ft_printf("%rAllocation Fail\n");
+		return (-1);
+	}
 	if (get_size_tab(tab) != 12)
-		print_error(line, "Cylinder has no 12 param");
+	{
+		ft_printf("%rCylinder has no 12 param");
+		return (-1);
+	}
 	if (!test_tab(tab, 11))
-		print_error(line, "Cylinder is not ok");
+		return (-1);
 	if ((cylinder = (t_cylinder *)malloc(sizeof(t_cylinder))) == NULL)
-		print_error(line, "Allocation Fail");
-	if ((cylinder->color = (int *)malloc(sizeof(int))) == NULL)
-		print_error(line, "Allocation Fail\n");
+	{
+		ft_printf("%rAllocation Fail\n");
+		return (-1);
+	}
 	set_cylinder(cylinder, tab);
+	if ((cylinder->color = get_color(tab[11])) == NULL)
+		return (-1);
 	ft_lstadd(&(obj->cylinder), ft_lstnew(cylinder, sizeof(t_cylinder)));
 	return (0);
 }
