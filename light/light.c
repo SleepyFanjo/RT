@@ -1,17 +1,4 @@
-#include "raytracer.h"
-
-double	norme(t_coord vect)
-{
-	return (sqrt(SQR(vect.x) + SQR(vect.y) + SQR(vect.z)));
-}
-
-double	dot_product(t_coord p1, t_coord p2)
-{
-	double	tmp;
-
-	tmp = p1.x * p2.x + p1.y * p2.y + p1.z * p2.z;
-	return (tmp);
-}
+#include "light.h"
 
 t_coord	calc_vec(t_coord p1, t_coord p2)
 {
@@ -32,16 +19,16 @@ double	ft_abs(double nb)
 
 int		point_cmp(t_coord p1, t_coord p2)
 {
-	if (ft_abs(p1.x - p2.x) > 0.01)
+	if (ft_abs(p1.x - p2.x) > 0.0001)
 		return (0);
-	if (ft_abs(p1.y - p2.y) > 0.01)
+	if (ft_abs(p1.y - p2.y) > 0.0001)
 		return (0);
-	if (ft_abs(p1.z - p2.z) > 0.01)
+	if (ft_abs(p1.z - p2.z) > 0.0001)
 		return (0);
 	return (1);
 }
 
-t_coord	calc_v_reflex(t_coord v_dir, t_coord v_nor)
+static t_coord	calc_v_reflex(t_coord v_dir, t_coord v_nor)
 {
 	double	tmp;
 	t_coord	v_reflex;
@@ -76,15 +63,13 @@ double	calc_shining(t_coord v_nor, t_coord v_lum)
 {
 	double	shining;
 	t_coord	v_reflex;
-	t_coord rv_lum;
 
-	rv_lum = turn_vect(v_lum);
 	v_reflex = calc_v_reflex(v_lum, v_nor);
 	shining = pow(calc_fading(v_lum, v_reflex), 200);
 	return (shining);
 }
 
-t_line	init_line(t_coord p1, t_coord p2)
+static t_line	init_line(t_coord p1, t_coord p2)
 {
 	t_line	line;
 
@@ -108,33 +93,41 @@ t_info	init_light(t_info *info, t_spot *spot)
 	return (light);
 }
 
-int 	*init_color(void)
+void	calc_color(int **col, int *s_col, double s_light, double coef)
 {
-	int *color;
-
-	color = (int *)j_malloc(sizeof(int) * 3);
-	color[0] = 0;
-	color[1] = 0;
-	color[2] = 0;
-	return (color);
+	(*col)[0] += s_light * s_col[0] * coef;
+	(*col)[1] += s_light * s_col[1] * coef;
+	(*col)[2] += s_light * s_col[2] * coef;
 }
 
-void	calc_color(int **col, int *s_col, int s_light, int coef)
-{
-	*col[0] += s_light * s_col[0] * coef;
-	*col[1] += s_light * s_col[1] * coef;
-	*col[2] += s_light * s_col[2] * coef;
-}
-
-int 	*retrieve_col(int *col, int *obj_col, int coef)
+int 	*retrieve_col(int *col, int *obj_col, double coef)
 {
 	int 	*final_col;
 
 	final_col = (int *)j_malloc(sizeof(int) * 3);
-	final_col[0] = col[0] + obj_col[0] * coef;
-	final_col[1] = col[1] + obj_col[1] * coef;
-	final_col[2] = col[2] + obj_col[2] * coef;
+	final_col[0] = coef * col[0] + obj_col[0] * (1 - coef);
+	final_col[1] = coef * col[1] + obj_col[1] * (1 - coef);
+	final_col[2] = coef * col[2] + obj_col[2] * (1 - coef);
+	if (final_col[0] > 255)
+		final_col[0] = 255;
+	if (final_col[1] > 255)
+		final_col[1] = 255;
+	if (final_col[2] > 255)
+		final_col[2] = 255;
 	return (final_col);
+}
+
+double	get_shine(t_info *info)
+{
+	if (info->obj_type == SPHERE)
+		return (1.0 - ((t_sphere *)(info->obj))->mat.shine);
+	if (info->obj_type == PLANE)
+		return (1.0 - ((t_plane *)(info->obj))->mat.shine);
+	if (info->obj_type == CYLINDER)
+		return (1.0 - ((t_cylinder *)(info->obj))->mat.shine);
+	if (info->obj_type == CONE)
+		return (1.0 - ((t_cone *)(info->obj))->mat.shine);
+	return (0.0);
 }
 
 void	calc_light(t_param *param, t_info *info, t_list *spot)
@@ -143,11 +136,11 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 	t_spot	*o_spot;
 	double	fading;
 	double	shining;
-//	int 	*s_color;
+	int 	*s_color;
 
 	if (info->distance < 0)
 		return ;
-//	s_color = init_color();
+	s_color = init_color();
 	while (spot)
 	{
 		o_spot = (t_spot *)spot->content;
@@ -159,9 +152,9 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 			shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
 			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining * fading;
-//			calc_color(*s_color, o_spot->color, o_spot->value, fading);
+			calc_color(&s_color, o_spot->color, o_spot->value, fading);
 		}
 		spot = spot->next;
 	}
-//	info->color = retrieve_col(s_color, info->color, 0.4);
+	info->color = retrieve_col(s_color, info->color, get_shine(info));
 }

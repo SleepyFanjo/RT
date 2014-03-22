@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 15:20:04 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 18:18:23 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/21 19:28:34 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@
 # define JD		3
 # include "raytracer.h"
 
-void	fill_matrix_trans(double *matrix, t_coord trans);
 void	fill_matrix_rot(double *matrix, t_coord rot);
-void	multiply_matrix(double *tot, double *m1, double *m2);
 void	apply_matrix(double *matrix, t_coord *move);
 void	invert_matrix(double *res, double *m);
+void	transpose_matrix(double *res, double *m);
 
 #endif

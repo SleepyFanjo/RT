@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/21 12:56:05 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/22 15:20:03 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define CD_CYLINDER 6
 # define CD_CONE 7
 
+void	free_obj_lst(t_param *p);
 void	init_param(t_param *param, char *dir);
 int		test_tab(char **tab, int s_i);
 int		get_type_obj(char *line);
@@ -69,9 +70,9 @@ t_info	init_info(t_param *param, int i, int j);
 void	write_on_img(t_param *param, int color, int i, int j);
 void	apply_trans(t_coord translation, t_coord *to_move, int mult);
 void	apply_rot(t_coord rotation, t_coord *to_turn, int mult);
-void	apply_rotrans(t_coord rot, t_coord trans, t_coord *move, int mult);
+void	apply_rot_norm(t_coord rotation, t_coord *to_turn, int mult);
 void	inter_sphere(t_param *param, t_info *info, t_list *sphere);
-double	limited_sphere(t_sphere *obj, t_line line, double dist);
+double	limited_sphere(t_sphere *obj, t_line line, double *dist);
 void	inter_plane(t_param *param, t_info *info, t_list *plane);
 void	inter_cylinder(t_param *param, t_info *info, t_list *cylinder);
 void	inter_cone(t_param *param, t_info *info, t_list *cone);
@@ -82,5 +83,7 @@ t_coord	plane_vec_n(t_plane *obj);
 t_coord	cylinder_vec_n(t_info *info, t_cylinder *obj);
 t_coord	cone_vec_n(t_info *info, t_cone *obj);
 void	calc_light(t_param *param, t_info *info, t_list *spot);
+void	calc_reflex(t_param *param, t_info *info);
+void	swap_double(double *a, double *b);
 
 #endif

@@ -6,20 +6,28 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 15:47:13 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/19 14:33:53 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/22 15:11:50 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../raytracer.h"
+#include "raytracer.h"
 
 static void	set_sphere(t_sphere *obj, char **tab)
 {
+	obj->pos.x = ft_atoi(tab[0]);
+	obj->pos.y = ft_atoi(tab[1]);
+	obj->pos.z = ft_atoi(tab[2]);
+	obj->radius = ft_atoi(tab[3]);
 	obj->lim_h_x = ft_atoi(tab[4]);
 	obj->lim_b_x = ft_atoi(tab[5]);
 	obj->lim_h_y = ft_atoi(tab[6]);
 	obj->lim_b_y = ft_atoi(tab[7]);
 	obj->lim_h_z = ft_atoi(tab[8]);
 	obj->lim_b_z = ft_atoi(tab[9]);
+	obj->mat.shine = ft_atoi(tab[10]) / 100.0;
+	obj->mat.reflex = ft_atoi(tab[11]) / 100.0;
+	obj->mat.med_in = ft_atoi(tab[12]) / 100.0;
+	obj->mat.refrax = ft_atoi(tab[13]) / 100.0;
 }
 
 int			get_sphere(t_obj *obj, char *line)
@@ -30,19 +38,22 @@ int			get_sphere(t_obj *obj, char *line)
 
 	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
-		print_error(line, "Allocation Fail");
-	if (get_size_tab(tab) != 11)
-		print_error(line, "has no five param");
-	if (!test_tab(tab, 10))
-		print_error(line, "is not ok");
+	{
+		ft_printf("%rAllocation Fail: ");
+		return (-1);
+	}
+	if (get_size_tab(tab) != 15)
+	{
+		ft_printf("%rThis line has no 15 param: ");
+	}
+	if (!test_tab(tab, 14))
+		return (-1);
 	if ((sphere = (t_sphere *)malloc(sizeof(t_sphere))) == NULL)
-		print_error(line, "Allocation Fail");
-	sphere->pos.x = ft_atoi(tab[0]);
-	sphere->pos.y = ft_atoi(tab[1]);
-	sphere->pos.z = ft_atoi(tab[2]);
-	sphere->radius = ft_atoi(tab[3]);
-	sphere->color = get_color(tab[10]);
+		ft_printf("%rAllocation fail: ");
 	set_sphere(sphere, tab);
+	sphere->color = get_color(tab[14]);
+	if (sphere->color == NULL)
+		return (-1);
 	ft_lstadd(&(obj->sphere), ft_lstnew(sphere, sizeof(t_sphere)));
 	return (0);
 }

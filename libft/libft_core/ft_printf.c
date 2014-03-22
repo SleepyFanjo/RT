@@ -3,87 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/21 11:34:48 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/10 11:20:50 by qchevrin         ###   ########.fr       */
+/*   Created: 2013/12/21 11:33:23 by vwatrelo          #+#    #+#             */
+/*   Updated: 2014/01/23 14:29:58 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
+#include "libft.h"
 
-static void		ft_string(t_printf_env *e, char *s)
+static char		*get_next(char *str, int *res, int fd)
 {
-	if (!s)
+	int		i;
+
+	i = 0;
+	while (str[i] != '%' && str[i] != '\0')
+		i++;
+	write(fd, str, i);
+	*res += i;
+	return (str + i);
+}
+
+static void		ft_num(int nb, int *res, int fd)
+{
+	int		size;
+
+	size = 0;
+	ft_putnbr_fd(nb, fd);
+	if (nb == 0)
+		return ;
+	if (nb < 0)
 	{
-		ft_putstr("(null)");
-		e->len += 6;
+		size++;
+		nb *= -1;
+	}
+	while (nb != 0)
+	{
+		nb = nb / 10;
+		size++;
+	}
+	*res += size;
+}
+
+static void		ft_applied(va_list ap, char c, int *nb_char, int fd)
+{
+	char	*res;
+
+	if (c == 'd')
+		ft_num(va_arg(ap, int), nb_char, fd);
+	else if (c == 's')
+	{
+		if ((res = va_arg(ap, char *)) == NULL)
+		{
+			nb_char += 6;
+			ft_putstr_fd("(null)", fd);
+			return ;
+		}
+		*nb_char += ft_strlen(res);
+		ft_putstr_fd(res, fd);
+	}
+	else if (c == 'c')
+	{
+		ft_putchar_fd((char)va_arg(ap, int), fd);
+		(*nb_char)++;
+	}
+	else if (c == '%')
+	{
+		ft_putchar_fd('%', fd);
+		(*nb_char)++;
+	}
+}
+
+int				ft_printf(const char *str, ...)
+{
+	va_list		ap;
+	char		*tmp;
+	int			res;
+	int			fd;
+
+	res = 0;
+	if (ft_strncmp(str, "%r", 2) == 0)
+	{
+		str += 2;
+		fd = 2;
 	}
 	else
+		fd = 1;
+	va_start(ap, str);
+	tmp = get_next((char *)str, &res, fd);
+	while (*tmp != '\0')
 	{
-		ft_putstr(s);
-		e->len += ft_strlen(s);
+		ft_applied(ap, *(tmp + 1), &res, fd);
+		tmp = get_next(tmp + 2, &res, fd);
 	}
-}
-
-static void		ft_char(t_printf_env *e, int c)
-{
-	ft_putchar(c);
-	e->len += 1;
-}
-
-static void		ft_pointer(t_printf_env *e, unsigned long p)
-{
-	ft_putstr("0x");
-	e->len += 2;
-	ft_unsigned(e, p, 16);
-}
-
-static void		ft_dispatch(t_printf_env *e, const char *format)
-{
-	e->pos += 1;
-	if (format[e->pos] == 'd' || format[e->pos] == 'i')
-		ft_num(e, (va_arg(e->ap, int)));
-	if (format[e->pos] == 'u')
-		ft_unsigned(e, (va_arg(e->ap, unsigned int)), 10);
-	if (format[e->pos] == 'o')
-		ft_unsigned(e, (va_arg(e->ap, unsigned int)), 8);
-	if (format[e->pos] == 'x')
-		ft_unsigned(e, (va_arg(e->ap, unsigned int)), 16);
-	if (format[e->pos] == 'X')
-		ft_maj_hexa(e, (va_arg(e->ap, unsigned int)));
-	if (format[e->pos] == 's')
-		ft_string(e, (va_arg(e->ap, char *)));
-	if (format[e->pos] == 'c')
-		ft_char(e, (va_arg(e->ap, int)));
-	if (format[e->pos] == 'p')
-		ft_pointer(e, (va_arg(e->ap, unsigned long)));
-	if (format[e->pos] == '%')
-	{
-		ft_putchar('%');
-		e->len += 1;
-	}
-}
-
-int				ft_printf(const char *format, ...)
-{
-	t_printf_env		e;
-
-	e.pos = 0;
-	e.len = 0;
-	va_start(e.ap, format);
-	while (format[e.pos] != '\0')
-	{
-		if (format[e.pos] == '%' && format[e.pos] != '\0')
-			ft_dispatch(&e, format);
-		else
-		{
-			ft_putchar(format[e.pos]);
-			e.len += 1;
-		}
-		e.pos += 1;
-	}
-	if (e.pos != 0)
-		va_end(e.ap);
-	return (e.len);
+	va_end(ap);
+	return (res);
 }

@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/21 16:01:18 by lredoban         ###   ########.fr        #
+#    Updated: 2014/03/22 15:18:16 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ SRC= main.c \
 	 inter_cylinder.c \
 	 inter_cone.c \
 	 write_on_img.c \
-	 light.c \
 	 calc_normal.c \
 	 vec_normal.c \
 	 raythrow.c \
+	 swap_double.c \
 	 parser/get_plan.c \
 	 parser/get_spot.c \
 	 parser/get_cylinder.c \
@@ -34,7 +34,6 @@ SRC= main.c \
 	 parser/init_param.c \
 	 matrix/apply_matrix.c \
 	 matrix/fill_matrix.c \
-	 matrix/multiply_matrix.c \
 	 parser/get_color.c \
 	 parser/ft_hex_atoi.c \
 	 parser/parser.c \
@@ -44,6 +43,9 @@ SRC= main.c \
 	 parser/test_tab.c \
 	 parser/get_cam.c \
 	 parser/get_sphere.c \
+	 parser/free_obj_lst.c \
+	 light/light.c \
+	 light/reflex.c \
 	 multithread/raytracer.c \
 	 multithread/get_thread.c \
 	 multithread/print_first_line.c \
@@ -52,7 +54,7 @@ SRC= main.c \
 	 ui/key1.c \
 	 ui/ui.c
 
-INCLUDES=-I./ui/ -I./
+INCLUDES=-I./ui/ -I./includes/
 INC=multithread.h \
 	multithread_struct.h \
 	matrix.h \
@@ -61,7 +63,7 @@ INC=multithread.h \
 	ui/ui.h
 OBJ= $(SRC:.c=.o)
 NAME= Raytracer
-LIB=-L./libft -lft_core -lft_printf -lft_list -L/usr/X11/lib -lmlx -lXext -lX11
+LIB=-L./libft -lft_core -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lpthread
 DIR_LFT=./libft
 
 .PHONY: clean fclean re all

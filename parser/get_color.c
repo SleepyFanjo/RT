@@ -1,4 +1,4 @@
-#include "../raytracer.h"
+#include "raytracer.h"
 
 int			test_col_str(char *color)
 {
@@ -7,7 +7,7 @@ int			test_col_str(char *color)
 	i = 0;
 	*color = ft_toupper(*color);
 	while (color[i] != '\0'
-			&& (ft_isdigit(color[i]) || (color[i] > 'A' && color[i] <= 'F')))
+			&& (ft_isdigit(color[i]) || (color[i] >= 'A' && color[i] <= 'F')))
 	{
 		i++;
 		color[i] = ft_toupper(color[i]);
@@ -23,8 +23,8 @@ int			*get_color(char *color)
 
 	if (!test_col_str(color))
 	{
-		ft_putstr_fd("Get color fail\n", 2);
-		exit(1);
+		ft_putstr_fd("Get color fail: ", 2);
+		return (NULL);
 	}
 	tab = (int *)j_malloc(sizeof(int) * 3);
 	tab[2] = ft_hex_atoi(color);
