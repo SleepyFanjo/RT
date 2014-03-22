@@ -21,7 +21,9 @@ int		compute(int socketfd)
 	char		buf[NET_BUFF_SIZE + 10];
 	int			ret;
 	char		*host;
+	t_inf_exec	*inf;
 
+	inf = malloc(sizeof(t_inf_exec));
 	if ((ret = read(socketfd, buf, NET_BUFF_SIZE)) < 0)
 	{
 		perror("read");
@@ -29,10 +31,14 @@ int		compute(int socketfd)
 	}
 	buf[ret] = '\0';
 	host = strdup(buf);
-	printf("Host: %s\n", host);
+	printf("Host connect: %s\n", host);
 	host = getenv("HOST");
+	if (host == NULL)
+		host = ft_strdup("unknow\n");
 	write(socketfd, host, strlen(host));
 	get_stage(socketfd);
+	get_core(inf, socketfd);
+	printf("inf: nb_th: %d, nb_tot_th: %d, nb_st_th: %d\n", inf->nb_th, inf->nb_tot_th, inf->nb_st_th);
 	return (0);
 }
 
@@ -44,7 +50,7 @@ int		ft_listen(int port)
 	socklen_t			lg;
 	struct sockaddr_in	that;
 	pid_t				pid;
-    
+
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd < 0)
 	{

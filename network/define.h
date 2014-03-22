@@ -8,4 +8,11 @@
 
 # define NAME_STAGE		"stage.tmp"
 
+typedef struct	s_inf_exec
+{
+	int			nb_th;
+	int			nb_tot_th;
+	int			nb_st_th;
+}				t_inf_exec;
+
 #endif

@@ -6,20 +6,23 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/22 15:43:59 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/22 15:41:16 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= clang
 CFLAGS= -Wall -Werror -Wextra -g
-SRC= tmp_client.c \
+SRC= main_serv.c \
+	 get_cl_th.c \
 	 get_stage.c \
+	 get_lst_cl.c \
+	 send_stage.c \
 	 send_mess.c \
-	 get_core.c
+	 send_inf_calc.c
 
 INCLUDES=-I../ -I./ -I../../ -I../../libft/includes
 OBJ= $(SRC:.c=.o)
-NAME=Client
+NAME=Server
 LIB=-L../../libft -lft_core -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lpthread
 DIR_LFT=../../libft
 

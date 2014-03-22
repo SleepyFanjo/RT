@@ -1,4 +1,4 @@
-#include "../network.h"
+#include "../../network.h"
 
 static int		get_sockfd(char *addr_ip, int port)
 {
@@ -37,7 +37,6 @@ static int		cl_connect(t_client *cl, t_id_client *id_cl)
 	if ((ret = recv(cl->sockfd, cl->name_host_cl, MAX_HOST_NAME, 0)) < 0)
 		return (-1);
 	(cl->name_host_cl)[ret] = '\0';
-	ft_printf("cl->name_host_cl: %s\n", cl->name_host_cl);
 	return (0);
 }
 
@@ -66,7 +65,7 @@ static t_client	*get_client(t_id_client *id_cl, t_info_serv *inf, int nb_cl)
 	return (cl);
 }
 
-void			get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf)
+int		get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf)
 {
 	int			nb_cl;
 	t_client	*elem;
@@ -86,11 +85,9 @@ void			get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf)
 			nb_cl_connected++;
 			ft_printf("Done\n");
 		}
-		else
-			ft_printf("Fail\n");
 		lst_cl = lst_cl->next;
 		nb_cl++;
 	}
 	ft_printf("%d/%d clients connected\n", nb_cl_connected, nb_cl);
-	ft_printf("Enter \"launch\" to launch compute\n");
+	return (nb_cl_connected);
 }
