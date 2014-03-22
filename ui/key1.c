@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/21 15:49:38 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/22 19:05:16 by lredoban         ###   ########.fr       */
+/*   Created: 2014/03/21 15:49:35 by lredoban          #+#    #+#             */
+/*   Updated: 2014/03/22 20:47:07 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,28 +99,28 @@ int		arrows(int keycode, t_param *param)
 	{
 		R = 0;
 		tmp = &CR_X;
-		*tmp -= 2;
+		*tmp -= 5;
 		return (1);
 	}
 	if (keycode == DOWN)
 	{
 		R = 0;
 		tmp = &CR_X;
-		*tmp += 2;
+		*tmp += 5;
 		return (1);
 	}
 	if (keycode == RIGHT)
 	{
 		R = 0;
 		tmp = &CR_Y;
-		*tmp += 2;
+		*tmp += 5;
 		return (1);
 	}
 	if (keycode == LEFT)
 	{
 		R = 0;
 		tmp = &CR_Y;
-		*tmp -= 2;
+		*tmp -= 5;
 		return (1);
 	}
 	return (0);

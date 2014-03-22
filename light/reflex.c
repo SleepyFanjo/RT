@@ -150,14 +150,12 @@ int		*reflexion(t_param *param, t_info *info, int *color, double o_ref)
 	return (reflexion(param, info, color, reflex));
 }
 */
-int		*reflexion(t_param *param, t_info *info, int i, int j)
+int		*reflexion(t_param *param, t_info *info)
 {
 	t_info ref;
 
 	ref = init_reflex(info->r_line, info->vec_n);
 	calc_intersection(param, &ref);
-	if (ref.obj_type == SPHERE)
-		printf("hit {%d ; %d}\n", i, j);
 	if (ref.distance != -1)
 		return (ref.color);
 	return (init_color());
@@ -174,7 +172,7 @@ int		*cpy_color(int *src)
 	return (color);
 }
 
-void	calc_reflex(t_param *param, t_info *info, int i, int j)
+void	calc_reflex(t_param *param, t_info *info)
 {
 	int		*color;
 //	t_info	ref;
@@ -185,7 +183,7 @@ void	calc_reflex(t_param *param, t_info *info, int i, int j)
 		return ;
 //	ref = init_reflex(info->r_line, info->vec_n);
 //	color = reflexion(param, &ref, cpy_color(info->color), reflex);
-	color = reflexion(param, info, i, j);
+	color = reflexion(param, info);
 //	if (color[0] == 0 && color[1] == 0 && color[2] == 0)
 //		color = info->color;
 	info->color = retrieve_col(color, info->color, reflex);
