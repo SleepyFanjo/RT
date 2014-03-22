@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/22 15:19:50 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/22 15:48:00 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,11 @@ typedef struct		s_info
 	void			*obj;
 }					t_info;
 
+typedef struct		s_ui
+{
+	int				render;
+}					t_ui;
+
 typedef struct		s_param
 {
 	t_env			env;
@@ -159,6 +164,7 @@ typedef struct		s_param
 	t_list			*cylinder;
 	t_list			*cone;
 	t_img			v_img;
+	t_ui			*ui;
 }					t_param;
 
 typedef struct		s_obj

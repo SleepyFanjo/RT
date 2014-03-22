@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 16:27:09 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 15:18:38 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/22 15:46:07 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void			init_param(t_param *param, char *dir)
 	img = &(param->v_img);
 	img->addr = mlx_get_data_addr(param->env.img, &(img->bpp), &(img->line),
 			&(img->endian));
+	init_ui(param);
 }

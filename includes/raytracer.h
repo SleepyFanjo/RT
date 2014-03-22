@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 15:20:03 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/22 15:45:53 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ t_coord	cone_vec_n(t_info *info, t_cone *obj);
 void	calc_light(t_param *param, t_info *info, t_list *spot);
 void	calc_reflex(t_param *param, t_info *info);
 void	swap_double(double *a, double *b);
+void	init_ui(t_param *param);
 
 #endif
