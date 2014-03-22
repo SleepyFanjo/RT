@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 14:16:57 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/22 20:34:10 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		raythrow(t_thread *thread)
 	t_limit	*l;
 
 	l = thread->limit;
+	printf("l->i: %d, l->j: %d\n", l->s_i, l->s_j);
 	if (l->s_j == l->e_j)
 		return (one_line(thread, l));
 	if (print_first_line(thread, l) < 0)
@@ -57,11 +58,14 @@ int		raythrow(t_thread *thread)
 int		put_pixel_to_img(t_param *param, int i, int j)
 {
 	t_info		info;
+	int			count[2];
 
 	info = init_info(param, i, j);
 	calc_intersection(param, &info);
 //	calc_reflex(param, &info);
 	calc_light(param, &info, param->spot);
+	count[0] = j;
+	count[1] = i;
 	write_on_img(param, calc_color(info.color, info.light), i, j);
 //	write_on_img(param, calc_color(info.color, 1), i, j);
 	return (0);

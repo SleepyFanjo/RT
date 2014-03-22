@@ -5,7 +5,6 @@ static int	get_fd_img(int sockfd)
 	int		fd;
 	int		ret;
 
-	ft_printf("is here\n");
 	if ((fd = open(NAME_STAGE, O_WRONLY | O_CREAT | O_TRUNC, 0644)) < 0)
 	{
 		ret = STAGE_FAIL;

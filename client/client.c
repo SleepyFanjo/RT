@@ -35,9 +35,11 @@ int		compute(int socketfd)
 	if (host == NULL)
 		host = ft_strdup("unknow\n");
 	write(socketfd, host, strlen(host));
+//	ft_printf("get stage\n");
 	get_stage(socketfd);
+//	ft_printf("get core\n");
 	get_core(inf, socketfd);
-				sleep(10);
+//	ft_printf("calc\n");
 	calc_multi_stage(socketfd, inf);
 //	printf("inf: nb_th: %d, nb_tot_th: %d, nb_st_th: %d\n", inf->nb_th, inf->nb_tot_th, inf->nb_st_th);
 	return (0);

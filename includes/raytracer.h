@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 17:27:14 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/22 20:30:51 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ int		raythrow(t_thread *thread);
 int		put_pixel_to_img(t_param *param, int i, int j);
 void	parser(char *filename, t_param *param);
 t_info	init_info(t_param *param, int i, int j);
-void	write_on_img(t_param *param, int color, int i, int j);
 void	apply_trans(t_coord translation, t_coord *to_move, int mult);
 void	apply_rot(t_coord rotation, t_coord *to_turn, int mult);
 void	apply_rot_norm(t_coord rotation, t_coord *to_turn, int mult);
 void	inter_sphere(t_param *param, t_info *info, t_list *sphere);
+void	write_on_img(t_param *param, int color, int i, int j);
 double	limited_sphere(t_sphere *obj, t_line line, double *dist);
 void	inter_plane(t_param *param, t_info *info, t_list *plane);
 void	inter_cylinder(t_param *param, t_info *info, t_list *cylinder);
@@ -85,5 +85,6 @@ void	calc_light(t_param *param, t_info *info, t_list *spot);
 void	calc_reflex(t_param *param, t_info *info);
 void	swap_double(double *a, double *b);
 int		ft_listen(int port);
+void	aff_sig(int sig);
 
 #endif
