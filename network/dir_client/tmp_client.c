@@ -6,7 +6,8 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <time.h>
-# define BUFF_SIZE 4096
+#include "client.h"
+# define NET_BUFF_SIZE 4096
 
 static void	ft_print_error(char *str, int kill)
 {
@@ -17,11 +18,11 @@ static void	ft_print_error(char *str, int kill)
 
 int		compute(int socketfd)
 {
-	char		buf[BUFF_SIZE + 10];
+	char		buf[NET_BUFF_SIZE + 10];
 	int			ret;
 	char		*host;
-    
-	if ((ret = read(socketfd, buf, BUFF_SIZE)) < 0)
+
+	if ((ret = read(socketfd, buf, NET_BUFF_SIZE)) < 0)
 	{
 		perror("read");
 		exit(1);
@@ -31,6 +32,7 @@ int		compute(int socketfd)
 	printf("Host: %s\n", host);
 	host = getenv("HOST");
 	write(socketfd, host, strlen(host));
+	get_stage(socketfd);
 	return (0);
 }
 
