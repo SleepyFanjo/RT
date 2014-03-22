@@ -1,6 +1,6 @@
-#include "../network.h"
+#include "../includes/network.h"
 
-static size_t	get_size_tab(char **tab)
+static size_t	v_get_size_tab(char **tab)
 {
 	size_t		i;
 
@@ -34,7 +34,7 @@ static t_id_client	*get_pars_cl(char *line)
 		ft_printf("%rFail to split\n");
 		return (NULL);
 	}
-	if (get_size_tab(tab) != 2)
+	if (v_get_size_tab(tab) != 2)
 	{
 		ft_printf("Line %s: Bad syntax, host was not import\n", line);
 		my_free_tab(tab);

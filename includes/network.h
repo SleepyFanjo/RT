@@ -7,9 +7,8 @@
 # include <netinet/in.h>
 # include <arpa/inet.h>
 # include <fcntl.h>
+# include "define.h"
 
-# define WIDTH			1024
-# define HEIGHT			1024
 # define MAX_HOST_NAME	4095
 
 typedef struct		s_nb_th
@@ -39,7 +38,9 @@ typedef struct		s_info_serv
 	int				nb_th;
 	int				th_com[2];
 	char			*stage;
+	int				size_stage;
 	char			*name_serv;
+	t_list			*fail_cl;
 }					t_info_serv;
 
 typedef struct		s_id_client
@@ -50,6 +51,9 @@ typedef struct		s_id_client
 
 char	*get_stage(char *filename);
 void	get_lst_cl(char *filename, t_list **lst_id_cl);
-void	get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf);
+int		get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf);
+int		send_message(int fd, size_t size, void *mess);
+int		send_stage(t_info_serv *inf, t_list *lst);
+int		send_inf_calc(t_list *list, t_info_serv *inf, int nb_cl);
 
 #endif

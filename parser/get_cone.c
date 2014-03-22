@@ -29,7 +29,7 @@ int			get_cone(t_obj *obj, char *line)
 	}
 	if (get_size_tab(tab) != 12)
 	{
-		ft_printf("%rCone has no 12 param: ");
+		ft_printf("%rCone has no 12 param(%d): ", get_size_tab(tab));
 		return (-1);
 	}
 	if (!test_tab(tab, 11))
