@@ -6,11 +6,11 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/21 16:23:45 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/22 10:44:54 by jrenouf-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC= clang
+CC= clang -g
 CFLAGS= -Wall -Werror -Wextra -g
 SRC= main.c \
 	 apply_transformation.c \
@@ -23,6 +23,7 @@ SRC= main.c \
 	 inter_cone.c \
 	 write_on_img.c \
 	 light.c \
+	 reflex.c \
 	 calc_normal.c \
 	 vec_normal.c \
 	 raythrow.c \

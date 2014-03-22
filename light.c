@@ -1,11 +1,11 @@
 #include "raytracer.h"
 
-double	norme(t_coord vect)
+static double	norme(t_coord vect)
 {
 	return (sqrt(SQR(vect.x) + SQR(vect.y) + SQR(vect.z)));
 }
 
-double	dot_product(t_coord p1, t_coord p2)
+static double	dot_product(t_coord p1, t_coord p2)
 {
 	double	tmp;
 
@@ -41,7 +41,7 @@ int		point_cmp(t_coord p1, t_coord p2)
 	return (1);
 }
 
-t_coord	calc_v_reflex(t_coord v_dir, t_coord v_nor)
+static t_coord	calc_v_reflex(t_coord v_dir, t_coord v_nor)
 {
 	double	tmp;
 	t_coord	v_reflex;
@@ -84,7 +84,7 @@ double	calc_shining(t_coord v_nor, t_coord v_lum)
 	return (shining);
 }
 
-t_line	init_line(t_coord p1, t_coord p2)
+static t_line	init_line(t_coord p1, t_coord p2)
 {
 	t_line	line;
 
@@ -108,7 +108,7 @@ t_info	init_light(t_info *info, t_spot *spot)
 	return (light);
 }
 
-int 	*init_color(void)
+static int 	*init_color(void)
 {
 	int *color;
 
@@ -176,7 +176,7 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		{
 			fading = ft_abs(calc_fading(light.r_line.vec, info->vec_n));
 			shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
-			info->light += o_spot->value * fadingt ;
+			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining * fading;
 			calc_color(&s_color, o_spot->color, o_spot->value, fading);
 		}
