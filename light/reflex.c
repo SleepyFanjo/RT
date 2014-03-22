@@ -127,7 +127,7 @@ void	calc_reflex_color(int **col, int *obj_col, double reflex)
 	(*col)[2] = reflex * obj_col[2] + (1 - reflex) * (*col)[2];
 }
 /*
-int		*reflexion(t_param *param, t_info *info, int *color, double o_ref)
+int		*rec_reflexion(t_param *param, t_info *info, int *color, double o_ref)
 {
 	static int	n = 10;
 	double	reflex;
@@ -137,19 +137,17 @@ int		*reflexion(t_param *param, t_info *info, int *color, double o_ref)
 	reflex = get_reflex(info);
 	if (info->distance != -1)
 	{
-		ft_putchar('o');
 		calc_reflex_color(&color, info->color, o_ref);
 	}
 	else if (reflex == -1.0 || n == 0)
 	{
-//		ft_putchar('a');
 		return (color);
 	}
 	n -= 1;
-//	ft_putchar('\n');
 	return (reflexion(param, info, color, reflex));
 }
 */
+
 int		*reflexion(t_param *param, t_info *info)
 {
 	t_info ref;
@@ -157,10 +155,27 @@ int		*reflexion(t_param *param, t_info *info)
 	ref = init_reflex(info->r_line, info->vec_n);
 	calc_intersection(param, &ref);
 	if (ref.distance != -1)
-		return (ref.color);
+		return (retrieve_col(ref.color, info->color, get_reflex(info)));
 	return (init_color());
 }
+/*
+int		*recursive(t_param *param, t_info *info, int *color)
+{
+	t_info	ref;
+	double	reflex;
+	static int	n = 1;
 
+	ref = init_reflex(info->r_line, info->vec_n);
+	calc_intersection(param, &ref);
+	reflex = get_reflex(&ref);
+	if (ref.distance != -1)
+		color = retrieve_col(ref.color, info->color, reflex);
+	else if (reflex == 0 || n == 0)
+		return (color);
+	n--;
+	return (recursive(param, &ref, color));
+}
+*/
 int		*cpy_color(int *src)
 {
 	int	*color;
@@ -182,9 +197,10 @@ void	calc_reflex(t_param *param, t_info *info)
 	if (reflex == -1.0 || reflex == 0.0)
 		return ;
 //	ref = init_reflex(info->r_line, info->vec_n);
-//	color = reflexion(param, &ref, cpy_color(info->color), reflex);
+//	color = recursive(param, info, init_color());
 	color = reflexion(param, info);
 //	if (color[0] == 0 && color[1] == 0 && color[2] == 0)
 //		color = info->color;
-	info->color = retrieve_col(color, info->color, reflex);
+//	info->color = retrieve_col(color, info->color, reflex);
+	info->color = color;
 }
