@@ -1,6 +1,6 @@
 //cam
 #pos_x pos_y pos_z rot_x rot_y rot_z
-0 0 0 0 0 0
+0 825  0 22 0 0
 
 //spot
 #spot pos_x pos_y pos_z value color

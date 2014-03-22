@@ -120,13 +120,13 @@ int 	*retrieve_col(int *col, int *obj_col, double coef)
 double	get_shine(t_info *info)
 {
 	if (info->obj_type == SPHERE)
-		return (1.0 - ((t_sphere *)(info->obj))->mat.shine);
+		return (((t_sphere *)(info->obj))->mat.shine);
 	if (info->obj_type == PLANE)
-		return (1.0 - ((t_plane *)(info->obj))->mat.shine);
+		return (((t_plane *)(info->obj))->mat.shine);
 	if (info->obj_type == CYLINDER)
-		return (1.0 - ((t_cylinder *)(info->obj))->mat.shine);
+		return (((t_cylinder *)(info->obj))->mat.shine);
 	if (info->obj_type == CONE)
-		return (1.0 - ((t_cone *)(info->obj))->mat.shine);
+		return (((t_cone *)(info->obj))->mat.shine);
 	return (0.0);
 }
 

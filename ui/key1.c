@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:49:38 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/22 16:07:13 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/22 19:05:16 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@ int		render(int keycode, t_param *param)
 	if (keycode != 114)
 		return (0);
 	R = 1;
+	return (1);
+}
+
+int		save(int keycode, t_param *param)
+{
+	char		*name;
+	int			fd;
+
+	if (keycode != 99)
+		return (0);
+	name = "mabite";
+	fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	put_cam(param, fd);
+	put_sphere(param, fd);
+	put_spot(param, fd);
+	put_plane(param, fd);
 	return (1);
 }
 
