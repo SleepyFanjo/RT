@@ -1,17 +1,4 @@
-#include "raytracer.h"
-
-static double	norme(t_coord vect)
-{
-	return (sqrt(SQR(vect.x) + SQR(vect.y) + SQR(vect.z)));
-}
-
-static double	dot_product(t_coord p1, t_coord p2)
-{
-	double	tmp;
-
-	tmp = p1.x * p2.x + p1.y * p2.y + p1.z * p2.z;
-	return (tmp);
-}
+#include "../light.h"
 
 t_coord	calc_vec(t_coord p1, t_coord p2)
 {
@@ -76,9 +63,7 @@ double	calc_shining(t_coord v_nor, t_coord v_lum)
 {
 	double	shining;
 	t_coord	v_reflex;
-	t_coord rv_lum;
 
-	rv_lum = turn_vect(v_lum);
 	v_reflex = calc_v_reflex(v_lum, v_nor);
 	shining = pow(calc_fading(v_lum, v_reflex), 200);
 	return (shining);
@@ -108,17 +93,6 @@ t_info	init_light(t_info *info, t_spot *spot)
 	return (light);
 }
 
-static int 	*init_color(void)
-{
-	int *color;
-
-	color = (int *)j_malloc(sizeof(int) * 3);
-	color[0] = 0;
-	color[1] = 0;
-	color[2] = 0;
-	return (color);
-}
-
 void	calc_color(int **col, int *s_col, double s_light, double coef)
 {
 	(*col)[0] += s_light * s_col[0] * coef;
@@ -131,9 +105,9 @@ int 	*retrieve_col(int *col, int *obj_col, double coef)
 	int 	*final_col;
 
 	final_col = (int *)j_malloc(sizeof(int) * 3);
-	final_col[0] = (1 - coef) * col[0] + obj_col[0] * coef;
-	final_col[1] = (1 - coef) * col[1] + obj_col[1] * coef;
-	final_col[2] = (1 - coef) * col[2] + obj_col[2] * coef;
+	final_col[0] = coef * col[0] + obj_col[0] * (1 - coef);
+	final_col[1] = coef * col[1] + obj_col[1] * (1 - coef);
+	final_col[2] = coef * col[2] + obj_col[2] * (1 - coef);
 	if (final_col[0] > 255)
 		final_col[0] = 255;
 	if (final_col[1] > 255)

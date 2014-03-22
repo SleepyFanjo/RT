@@ -1,4 +1,4 @@
-#include "raytracer.h"
+#include "../light.h"
 
 double	norme(t_coord vect)
 {
@@ -19,14 +19,14 @@ double	get_reflex(t_info *info)
 	if (info->obj_type == -1)
 		return (-1.0);
 	if (info->obj_type == SPHERE)
-		return (1.0 - ((t_sphere *)(info->obj))->mat.reflex);
+		return (((t_sphere *)(info->obj))->mat.reflex);
 	if (info->obj_type == PLANE)
-		return (1.0 - ((t_plane *)(info->obj))->mat.reflex);
+		return (((t_plane *)(info->obj))->mat.reflex);
 	if (info->obj_type == CYLINDER)
-		return (1.0 - ((t_cylinder *)(info->obj))->mat.reflex);
+		return (((t_cylinder *)(info->obj))->mat.reflex);
 	if (info->obj_type == CONE)
-		return (1.0 - ((t_cone *)(info->obj))->mat.reflex);
-	return (0.0);
+		return (((t_cone *)(info->obj))->mat.reflex);
+	return (-1.0);
 }
 
 t_coord	normalize(t_coord vec)
@@ -62,9 +62,9 @@ t_line	init_line(t_line old_line, t_coord v_nor)
 	t_line	line;
 
 	line.vec = calc_v_reflex(old_line.vec, v_nor);
-	line.pos.x = old_line.pos.x;
-	line.pos.y = old_line.pos.y;
-	line.pos.z = old_line.pos.z;
+	line.pos.x = old_line.pos.x * 1.1;
+	line.pos.y = old_line.pos.y * 1.1;
+	line.pos.z = old_line.pos.z * 1.1;
 	return (line);
 }
 
@@ -115,16 +115,26 @@ void	calc_reflex(t_param *param, t_info *info)
 {
 	int		*color;
 	double	reflex;
+	static	int i = 0;
 
 //ft_putstr("frst calc reflex\n");
 	reflex = get_reflex(info);
+	if (i < 10)
+		printf("   c[0] = %d, c[1] = %d, c[2] = %d\n", info->color[0], info->color[1], info->color[2]);
+	if (reflex == -1.0 || reflex == 0.0)
+		return ;
 	color = init_color();
 	color = reflexion(param, info);
+//	printf("color %p, info %p\n", color, info->color);
 //ft_putstr("Ldone\n");
-//	printf("c[0] = %d, c[1] = %d, c[2] = %d\n", color[0], color[1], color[2]);
-//	fflush(0);
-	info->color[0] = (1 - reflex) * color[0] + info->color[0] * reflex;
-	info->color[1] = (1 - reflex) * color[1] + info->color[1] * reflex;
-	info->color[2] = (1 - reflex) * color[2] + info->color[2] * reflex;
+//	printf("reflex = %f\n", reflex);
+	if (i < 10)
+		printf("=> c[0] = %d, c[1] = %d, c[2] = %d\n", info->color[0], info->color[1], info->color[2]);
+	info->color[0] = reflex * color[0] + info->color[0] * (1 - reflex);
+	info->color[1] = reflex * color[1] + info->color[1] * (1 - reflex);
+	info->color[2] = reflex * color[2] + info->color[2] * (1 - reflex);
+//	printf("c[0] = %d, c[1] = %d, c[2] = %d\n", info->color[0], info->color[1], info->color[2]);
+	fflush(0);
+	i++;
 //ft_putstr(" done\n");
 }

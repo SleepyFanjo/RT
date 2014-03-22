@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/22 11:22:16 by jrenouf-         ###   ########.fr        #
+#    Updated: 2014/03/22 14:27:56 by jrenouf-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,6 @@ SRC= main.c \
 	 inter_cylinder.c \
 	 inter_cone.c \
 	 write_on_img.c \
-	 light.c \
-	 reflex.c \
 	 calc_normal.c \
 	 vec_normal.c \
 	 raythrow.c \
@@ -46,6 +44,8 @@ SRC= main.c \
 	 parser/get_cam.c \
 	 parser/get_sphere.c \
 	 parser/free_obj_lst.c \
+	 light/light.c \
+	 light/reflex.c \
 	 multithread/raytracer.c \
 	 multithread/get_thread.c \
 	 multithread/print_first_line.c \
