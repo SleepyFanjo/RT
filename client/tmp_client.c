@@ -6,7 +6,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <time.h>
-#include "client.h"
+#include "../includes/client.h"
 # define NET_BUFF_SIZE 4096
 
 static void	ft_print_error(char *str, int kill)

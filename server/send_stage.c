@@ -1,5 +1,5 @@
-#include "../network.h"
-#include "../define.h"
+#include "../includes/network.h"
+#include "../includes/define.h"
 
 static void	send_stage_cl(t_client *cl, t_info_serv *inf)
 {

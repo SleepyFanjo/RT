@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/22 15:43:59 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/22 16:38:36 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,11 @@ SRC= tmp_client.c \
 	 send_mess.c \
 	 get_core.c
 
-INCLUDES=-I../ -I./ -I../../ -I../../libft/includes
+INCLUDES=-I../includes -I../libft/includes
 OBJ= $(SRC:.c=.o)
 NAME=Client
-LIB=-L../../libft -lft_core -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lpthread
-DIR_LFT=../../libft
+LIB=-L../libft -lft_core -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lpthread
+DIR_LFT=../libft
 
 .PHONY: clean fclean re all
 .SILENT:

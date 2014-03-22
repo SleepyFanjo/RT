@@ -1,4 +1,4 @@
-#include "../network.h"
+#include "../includes/network.h"
 
 int		send_inf_calc(t_list *list, t_info_serv *inf, int nb_cl)
 {

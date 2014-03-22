@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 11:21:42 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/22 16:35:34 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@
 # define HEIGHT			(600)
 # define AMBL			0.2
 # define RAD(deg)			(deg * F_PI / 180)
-# include "libft/includes/libft.h"
-# include "libft/includes/ft_printf.h"
-# include "libft/includes/list.h"
+# include "../libft/includes/libft.h"
+# include "../libft/includes/ft_printf.h"
+# include "../libft/includes/list.h"
 # define SQR(val)			(val * val)
 # include <mlx.h>
 # include <math.h>
 # include <libft.h>
 # include <fcntl.h>
 # include "struct.h"
-# include "libft/includes/ft_printf.h"
 # define CD_NOT_CMD -1
 # define CD_ERROR 0
 # define CD_SPHERE 1

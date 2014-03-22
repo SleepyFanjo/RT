@@ -1,4 +1,4 @@
-#include "../network.h"
+#include "../includes/network.h"
 
 char	*get_stage(char *filename)
 {
