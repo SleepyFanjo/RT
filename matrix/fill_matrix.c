@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 15:49:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/21 17:52:36 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/21 19:28:32 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,26 @@ static void	apply_tab(double *tab, double *matrix)
 	matrix[13] = 0;
 	matrix[14] = 0;
 	matrix[15] = 1;
+}
+
+static void	swap_line(double *res, double *m, int line)
+{
+	res[line * 4 + 0] = m[line];
+	res[line * 4 + 1] = m[line + 4];
+	res[line * 4 + 2] = m[line + 8];
+	res[line * 4 + 3] = m[line + 12];
+}
+
+void		transpose_matrix(double *res, double *m)
+{
+	int		i;
+
+	i = 0;
+	while (i < 4)
+	{
+		swap_line(res, m, i);
+		i = i + 1;
+	}
 }
 
 void		fill_matrix_rot(double *matrix, t_coord rot)

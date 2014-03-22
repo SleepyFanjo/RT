@@ -37,4 +37,5 @@ void			raytracer(t_param *param, int nbr_process)
 	th = get_thread(param, nbr_process, nbr_process, 0);
 	tmp = th;
 	execute_thread(th);
+//	free_obj_lst(param);
 }

@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 12:14:41 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/21 12:41:20 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/21 19:28:36 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_coord		cylinder_vec_n(t_info *info, t_cylinder *obj)
 	res.x = info->s_pos.x;
 	res.y = 0;
 	res.z = info->s_pos.z;
-	apply_rot(obj->rot, &res, -1);
+	apply_rot_norm(obj->rot, &res, -1);
 	return (res);
 }
 
@@ -51,6 +51,6 @@ t_coord		cone_vec_n(t_info *info, t_cone *obj)
 	res.y = tan(RAD(obj->alpha));
 	res.y = -SQR(res.y) * info->s_pos.y;
 	res.z = info->s_pos.z;
-	apply_rot(obj->rot, &res, -1);
+	apply_rot_norm(obj->rot, &res, -1);
 	return (res);
 }

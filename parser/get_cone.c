@@ -13,7 +13,6 @@ static void	set_cone(t_cone *cone, char **tab)
 	cone->mat.reflex = ft_atoi(tab[8]) / 100.0;
 	cone->mat.med_in = ft_atoi(tab[9]) / 100.0;
 	cone->mat.refrax = ft_atoi(tab[10]) / 100.0;
-	cone->color = get_color(tab[11]);
 }
 
 int			get_cone(t_obj *obj, char *line)
@@ -24,15 +23,24 @@ int			get_cone(t_obj *obj, char *line)
 
 	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
-		print_error(line, "Allocation Fail");
+	{
+		ft_printf("%rAllocation Fail: ");
+		return (-1);
+	}
 	if (get_size_tab(tab) != 12)
-		print_error(line, "Cone has no five param");
+	{
+		ft_printf("%rCone has no 12 param: ");
+		return (-1);
+	}
 	if (!test_tab(tab, 11))
-		print_error(line, "Cone is not ok");
+		return (-1);
 	if ((cone = (t_cone *)malloc(sizeof(t_cone))) == NULL)
-		print_error(line, "Allocation Fail");
-	if ((cone->color = (int *)malloc(sizeof(int))) == NULL)
-		print_error(line, "Allocation Fail\n");
+		ft_printf("%rAllocation Fail: ");
+	if ((cone->color = get_color(tab[11])) == NULL)
+	{
+		ft_printf("%rAllocation Fail: ");
+		return (-1);
+	}
 	set_cone(cone, tab);
 	ft_lstadd(&(obj->cone), ft_lstnew(cone, sizeof(t_cone)));
 	return (0);
