@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:49:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/22 20:47:07 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/22 23:02:03 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int		save(int keycode, t_param *param)
 	put_sphere(param, fd);
 	put_spot(param, fd);
 	put_plane(param, fd);
+	put_cone(param, fd);
+	put_cylinder(param, fd);
 	return (1);
 }
 

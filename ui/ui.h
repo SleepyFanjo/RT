@@ -6,12 +6,14 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:51:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/22 19:05:42 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/22 23:11:51 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UI_H
 # define UI_H
+
+# include "libftprintf.h"
 
 # define UP 65362
 # define DOWN 65364
@@ -48,4 +50,6 @@ void		put_sphere(t_param *param, int fd);
 void		put_cam(t_param *param, int fd);
 void		put_spot(t_param *param, int fd);
 void		put_plane(t_param *param, int fd);
+void		put_cone(t_param *param, int fd);
+void		put_cylinder(t_param *param, int fd);
 #endif

@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/22 18:13:28 by lredoban         ###   ########.fr        #
+#    Updated: 2014/03/22 21:31:51 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,12 @@ SRC= main.c \
 	 multithread/print_middle.c \
 	 ui/key1.c \
 	 ui/ui.c \
-	 ui/save.c
+	 ui/save.c \
+	 ui/l_printf.c \
+	 ui/ft_uitoa.c \
+	 ui/ft_hexa.c \
+	 ui/ft_num.c \
+	 ui/ft_putui.c
 
 INCLUDES=-I./ui/ -I./includes/
 INC=multithread.h \
