@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 16:27:09 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 20:38:09 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/22 21:11:40 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_env			get_env(void)
 	t_env		env;
 
 	env.mlx = mlx_init();
-	env.win = mlx_new_window(env.mlx, WIDTH, HEIGHT, "RtV1");
+//	env.win = mlx_new_window(env.mlx, WIDTH, HEIGHT, "RtV1");
 	env.img = mlx_new_image(env.mlx, WIDTH, HEIGHT);
 	if (env.mlx == NULL || env.win == NULL || env.img == NULL)
 		ft_error("Error : can't init mlx", NULL, 1);
@@ -34,4 +34,5 @@ void			init_param(t_param *param, char *dir)
 	img = &(param->v_img);
 	img->addr = mlx_get_data_addr(param->env.img, &(img->bpp), &(img->line),
 			&(img->endian));
+	img->addr = j_malloc((img->bpp / 8) * (WIDTH * HEIGHT));
 }

@@ -12,6 +12,7 @@ int		send_inf_calc(t_list *list, t_info_serv *inf, int nb_cl)
 	while (list != NULL)
 	{
 		cl = (t_client *)list->content;
+		add_lim(cl, exec);
 		write(cl->sockfd, exec, sizeof(t_inf_exec));
 		printf("nb_cl: %d, st_th: %d\n", nb_cl, exec->nb_st_th);
 		exec->nb_st_th += exec->nb_th;

@@ -30,6 +30,8 @@ typedef struct		s_client
 	int				sockfd;
 	int				*th_com;
 	pthread_mutex_t	*lock_th_com;
+	int				lim;
+	int				size;
 }					t_client;
 
 typedef struct		s_info_serv
@@ -66,5 +68,6 @@ int		get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf);
 int		send_message(int fd, size_t size, void *mess);
 int		send_stage(t_info_serv *inf, t_list *lst);
 int		send_inf_calc(t_list *list, t_info_serv *inf, int nb_cl);
+void	add_lim(t_client *cl, t_inf_exec *exec);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/22 17:32:44 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/22 21:29:19 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC= main_serv.c \
 	 get_lst_cl.c \
 	 send_stage.c \
 	 send_mess.c \
-	 send_inf_calc.c
+	 send_inf_calc.c \
+	 add_lim.c
 
 INCLUDES=-I../includes -I./../libft/includes
 OBJ= $(SRC:.c=.o)

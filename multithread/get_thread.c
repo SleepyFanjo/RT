@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:51:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/22 17:22:50 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/22 21:42:26 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int				ft_max(int nb1, int nb2)
 	return (nb2);
 }
 
-static void				ft_connect_blur(t_list *lst)
+static int	ft_connect_blur(t_list *lst)
 {
 	t_thread	*prvs;
 	t_thread	*cur;
