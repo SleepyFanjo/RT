@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/22 15:10:17 by jrenouf-         ###   ########.fr        #
+#    Updated: 2014/03/22 17:28:30 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,12 @@ SRC= main.c \
 	 multithread/get_thread.c \
 	 multithread/print_first_line.c \
 	 multithread/one_line.c \
-	 multithread/print_middle.c
+	 multithread/print_middle.c \
+	 client/client.c \
+	 client/get_stage.c \
+	 client/send_mess.c \
+	 client/get_core.c \
+	 client/calc_multi_stage.c
 
 INCLUDES=-I./includes/ -I./
 INC=multithread.h \

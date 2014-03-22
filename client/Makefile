@@ -6,13 +6,13 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/22 16:38:36 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/22 17:11:44 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= clang
 CFLAGS= -Wall -Werror -Wextra -g
-SRC= tmp_client.c \
+SRC= client.c \
 	 get_stage.c \
 	 send_mess.c \
 	 get_core.c

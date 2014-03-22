@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 16:35:34 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/22 17:27:14 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <libft.h>
 # include <fcntl.h>
 # include "struct.h"
+# include "define.h"
 # define CD_NOT_CMD -1
 # define CD_ERROR 0
 # define CD_SPHERE 1
@@ -60,7 +61,7 @@ int		expose_hook(t_param *param);
 int		key_hook(int keycode, t_param *param);
 void	ft_error(char *s1, char *s2, int mode);
 void	*j_malloc(size_t size);
-void	raytracer(t_param *param, int nbr_process);
+void	raytracer(t_param *param, t_inf_exec *inf);
 int		raythrow(t_thread *thread);
 int		put_pixel_to_img(t_param *param, int i, int j);
 void	parser(char *filename, t_param *param);
@@ -83,5 +84,6 @@ t_coord	cone_vec_n(t_info *info, t_cone *obj);
 void	calc_light(t_param *param, t_info *info, t_list *spot);
 void	calc_reflex(t_param *param, t_info *info);
 void	swap_double(double *a, double *b);
+int		ft_listen(int port);
 
 #endif

@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "../includes/client.h"
-# define NET_BUFF_SIZE 4096
 
 static void	ft_print_error(char *str, int kill)
 {
@@ -38,25 +37,18 @@ int		compute(int socketfd)
 	write(socketfd, host, strlen(host));
 	get_stage(socketfd);
 	get_core(inf, socketfd);
-	printf("inf: nb_th: %d, nb_tot_th: %d, nb_st_th: %d\n", inf->nb_th, inf->nb_tot_th, inf->nb_st_th);
+				sleep(10);
+	calc_multi_stage(socketfd, inf);
+//	printf("inf: nb_th: %d, nb_tot_th: %d, nb_st_th: %d\n", inf->nb_th, inf->nb_tot_th, inf->nb_st_th);
 	return (0);
 }
 
-int		ft_listen(int port)
+static int		init_socket(int sockfd, int port)
 {
-	struct sockaddr_in	this;
-	int					sockfd;
-	int					newsockfd;
-	socklen_t			lg;
-	struct sockaddr_in	that;
-	pid_t				pid;
 
-	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-	if (sockfd < 0)
-	{
-		printf("Server could not init socket\n");
-		return (-1);
-	}
+	struct sockaddr_in	this;
+
+
 	bzero(&this, sizeof(this));
 	this.sin_family = AF_INET;
 	this.sin_port = htons(port);
@@ -66,12 +58,20 @@ int		ft_listen(int port)
 		printf("Server could not init the connection\n");
 		return (-1);
 	}
-	if (listen(sockfd, 5) < 0)
+	if (listen(sockfd, 1) < 0)
 	{
 		printf("Server could not listen\n");
 		return (-1);
 	}
-	lg = (socklen_t)sizeof(that);
+	return (0);
+}
+
+static void		loop_listen(socklen_t lg, int sockfd)
+{
+	int					newsockfd;
+	struct sockaddr_in	that;
+	pid_t				pid;
+
 	while (1)
 	{
 		newsockfd = accept(sockfd, (struct sockaddr *)(&that), &lg);
@@ -97,13 +97,22 @@ int		ft_listen(int port)
 			exit(0);
 		}
 	}
-	return (0);
 }
 
-int		main(int argc, char **argv)
+int				ft_listen(int port)
 {
-	if (argc < 2)
-		return (1);
-	ft_listen(atoi(argv[1]));
+	int					sockfd;
+	socklen_t			lg;
+
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	if (sockfd < 0)
+	{
+		ft_printf("%rServer could not init socket\n");
+		return (-1);
+	}
+	if (init_socket(sockfd, port) < 0)
+		return (-1);
+	lg = (socklen_t)sizeof(struct sockaddr_in);
+	loop_listen(lg, sockfd);
 	return (0);
 }

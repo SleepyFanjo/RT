@@ -49,6 +49,17 @@ typedef struct		s_id_client
 	int				port;
 }					t_id_client;
 
+typedef struct		s_v_env
+{
+	void			*mlx;
+	void			*win;
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				line;
+	int				endian;
+}					t_v_env;
+
 char	*get_stage(char *filename);
 void	get_lst_cl(char *filename, t_list **lst_id_cl);
 int		get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf);

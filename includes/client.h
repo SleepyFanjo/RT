@@ -7,5 +7,6 @@
 void		send_message(int fd, size_t size, void *mess);
 void		get_stage(int fd);
 int			get_core(t_inf_exec *inf, int sockfd);
+void		calc_multi_stage(int socketfd, t_inf_exec *inf);
 
 #endif

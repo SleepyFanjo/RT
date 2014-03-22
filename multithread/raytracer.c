@@ -29,12 +29,12 @@ static void	execute_thread(t_list *th)
 	}
 }
 
-void			raytracer(t_param *param, int nbr_process)
+void			raytracer(t_param *param, t_inf_exec *inf)
 {
 	t_list		*th;
 	t_list		*tmp;
 
-	th = get_thread(param, nbr_process, nbr_process, 0);
+	th = get_thread(param, inf->nb_th, inf->nb_tot_th, inf->nb_st_th);
 	tmp = th;
 	execute_thread(th);
 //	free_obj_lst(param);
