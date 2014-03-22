@@ -57,6 +57,18 @@ t_coord	calc_v_reflex(t_coord ov_dir, t_coord ov_nor)
 	return (v_reflex);
 }
 
+t_line	*new_line(t_line old_line, t_coord v_nor)
+{
+	t_line	*line;
+
+	line = (t_line *)j_malloc(sizeof(t_line));
+	line->vec = calc_v_reflex(old_line.vec, v_nor);
+	line->pos.x = old_line.pos.x;
+	line->pos.y = old_line.pos.y;
+	line->pos.z = old_line.pos.z;
+	return (line);
+}
+
 t_line	init_line(t_line old_line, t_coord v_nor)
 {
 	t_line	line;
@@ -82,6 +94,21 @@ t_info	init_reflex(t_line old_line, t_coord v_nor)
 	return (reflex);
 }
 
+t_info	*new_vd(t_line old_line, t_coord v_nor)
+{
+	t_info	*reflex;
+
+	reflex = (t_info *)j_malloc(sizeof(t_info));
+//	reflex->r_line = new_line(old_line, v_nor);
+	reflex->r_line = init_line(old_line, v_nor);
+	reflex->distance = -1;
+	reflex->light = AMBL;
+	reflex->color = (int *)j_malloc(sizeof(int) * 3);
+	reflex->color = NULL;
+	reflex->obj_type = -1;
+	return (reflex);
+}
+
 int 	*init_color(void)
 {
 	int *color;
@@ -93,43 +120,73 @@ int 	*init_color(void)
 	return (color);
 }
 
-int		*reflexion(t_param *param, t_info *info)
+void	calc_reflex_color(int **col, int *obj_col, double reflex)
 {
-	t_info	ref;
+	(*col)[0] = reflex * obj_col[0] + (1 - reflex) * (*col)[0];
+	(*col)[1] = reflex * obj_col[1] + (1 - reflex) * (*col)[1];
+	(*col)[2] = reflex * obj_col[2] + (1 - reflex) * (*col)[2];
+}
+/*
+int		*reflexion(t_param *param, t_info *info, int *color, double o_ref)
+{
+	static int	n = 10;
 	double	reflex;
 
+	info = new_vd(info->r_line, info->vec_n);
+	calc_intersection(param, info);
 	reflex = get_reflex(info);
-//ft_putstr("done\n");
-	if (reflex == 0.0)
-		return (info->color);
-	if (reflex == -1.0)
-		return (init_color());
-//	printf("reflex = %f\n", reflex);
+	if (info->distance != -1)
+	{
+		ft_putchar('o');
+		calc_reflex_color(&color, info->color, o_ref);
+	}
+	else if (reflex == -1.0 || n == 0)
+	{
+//		ft_putchar('a');
+		return (color);
+	}
+	n -= 1;
+//	ft_putchar('\n');
+	return (reflexion(param, info, color, reflex));
+}
+*/
+int		*reflexion(t_param *param, t_info *info, int i, int j)
+{
+	t_info ref;
+
 	ref = init_reflex(info->r_line, info->vec_n);
 	calc_intersection(param, &ref);
-//	ft_putstr("calc_inter\n");
-	return (reflexion(param, &ref));
+//	if (ref.obj_type == SPHERE)
+//		printf("hit {%d ; %d}\n", i, j);
+	if (ref.distance != -1)
+		return (ref.color);
+	return (init_color());
 }
 
-void	calc_reflex(t_param *param, t_info *info)
+int		*cpy_color(int *src)
+{
+	int	*color;
+
+	color = (int *)j_malloc(sizeof(int) * 3);
+	color[0] = src[0];
+	color[1] = src[1];
+	color[2] = src[2];
+	return (color);
+}
+
+void	calc_reflex(t_param *param, t_info *info, int i, int j)
 {
 	int		*color;
+//	t_info	ref;
 	double	reflex;
-	static	int i = 0;
 
-//ft_putstr("frst calc reflex\n");
 	reflex = get_reflex(info);
-//	if (i < 10)
-//		printf("   c[0] = %d, c[1] = %d, c[2] = %d\n", info->color[0], info->color[1], info->color[2]);
 	if (reflex == -1.0 || reflex == 0.0)
 		return ;
-	color = init_color();
-	color = reflexion(param, info);
-//	printf("color %p, info %p\n", color, info->color);
-//ft_putstr("Ldone\n");
-//	printf("reflex = %f\n", reflex);
-	info->color[0] = reflex * color[0] + info->color[0] * (1 - reflex);
-	info->color[1] = reflex * color[1] + info->color[1] * (1 - reflex);
-	info->color[2] = reflex * color[2] + info->color[2] * (1 - reflex);
-	i++;
+//	ref = init_reflex(info->r_line, info->vec_n);
+//	color = reflexion(param, &ref, cpy_color(info->color), reflex);
+	color = reflexion(param, info, i, j);
+//	if (color[0] == 0 && color[1] == 0 && color[2] == 0)
+//		color = info->color;
+	info->color = retrieve_col(color, info->color, reflex);
 }
