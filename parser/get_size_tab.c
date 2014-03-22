@@ -1,4 +1,4 @@
-# include "../raytracer.h"
+# include "raytracer.h"
 
 int	get_size_tab(char **tab)
 {

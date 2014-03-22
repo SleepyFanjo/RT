@@ -1,4 +1,4 @@
-#include "../raytracer.h"
+#include "raytracer.h"
 
 static void		getobjln(t_obj *o, char *ln, int (*f)(t_obj *, char *), int nb)
 {

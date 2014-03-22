@@ -6,11 +6,11 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:51:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/22 11:09:46 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/22 16:02:01 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../multithread.h"
+#include "multithread.h"
 
 static t_list			*get_thread_lst(t_limit *limit, t_param *p, int id)
 {

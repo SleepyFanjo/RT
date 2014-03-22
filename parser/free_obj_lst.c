@@ -1,4 +1,4 @@
-#include "../raytracer.h"
+#include "raytracer.h"
 
 static void	*free_spot(void *data)
 {

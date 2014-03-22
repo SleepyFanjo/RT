@@ -6,11 +6,11 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:29:34 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/22 10:24:21 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/22 16:02:14 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../raytracer.h"
+#include "raytracer.h"
 
 static void	set_cylinder(t_cylinder *cylinder, char **tab)
 {

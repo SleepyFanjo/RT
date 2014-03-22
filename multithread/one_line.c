@@ -1,4 +1,4 @@
-#include "../raytracer.h"
+#include "raytracer.h"
 
 int		one_line(t_thread *th, t_limit *l)
 {

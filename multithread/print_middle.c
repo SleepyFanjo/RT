@@ -1,4 +1,4 @@
-#include "../multithread.h"
+#include "multithread.h"
 
 int		print_middle(t_thread *th, t_limit *l)
 {

@@ -1,4 +1,4 @@
-#include "../raytracer.h"
+#include "raytracer.h"
 
 static void	set_cone(t_cone *cone, char **tab)
 {

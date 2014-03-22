@@ -1,4 +1,4 @@
-#include "../multithread.h"
+#include "multithread.h"
 
 static void	*launch_thread(void *th)
 {

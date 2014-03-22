@@ -6,11 +6,11 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:19:28 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/21 18:54:49 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/22 15:10:36 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../raytracer.h"
+#include "raytracer.h"
 
 static void	set_plan(t_plane *plan, char **tab)
 {

@@ -1,4 +1,4 @@
-#include "../multithread.h"
+#include "multithread.h"
 
 int		print_first_line(t_thread *th, t_limit *l)
 {

@@ -6,11 +6,11 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:37:17 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/21 16:33:09 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/22 15:10:45 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../raytracer.h"
+#include "raytracer.h"
 
 int			get_spot(t_obj *obj, char *line)
 {
