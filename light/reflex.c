@@ -74,9 +74,9 @@ t_line	init_line(t_line old_line, t_coord v_nor)
 	t_line	line;
 
 	line.vec = calc_v_reflex(old_line.vec, v_nor);
-	line.pos.x = old_line.pos.x * 1.1;
-	line.pos.y = old_line.pos.y * 1.1;
-	line.pos.z = old_line.pos.z * 1.1;
+	line.pos.x = old_line.pos.x;
+	line.pos.y = old_line.pos.y;
+	line.pos.z = old_line.pos.z;
 	return (line);
 }
 
@@ -156,8 +156,8 @@ int		*reflexion(t_param *param, t_info *info, int i, int j)
 
 	ref = init_reflex(info->r_line, info->vec_n);
 	calc_intersection(param, &ref);
-//	if (ref.obj_type == SPHERE)
-//		printf("hit {%d ; %d}\n", i, j);
+	if (ref.obj_type == SPHERE)
+		printf("hit {%d ; %d}\n", i, j);
 	if (ref.distance != -1)
 		return (ref.color);
 	return (init_color());
