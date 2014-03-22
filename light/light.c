@@ -1,4 +1,4 @@
-#include "../light.h"
+#include "light.h"
 
 t_coord	calc_vec(t_coord p1, t_coord p2)
 {

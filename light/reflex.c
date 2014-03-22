@@ -1,4 +1,4 @@
-#include "../light.h"
+#include "light.h"
 
 double	norme(t_coord vect)
 {
@@ -119,8 +119,8 @@ void	calc_reflex(t_param *param, t_info *info)
 
 //ft_putstr("frst calc reflex\n");
 	reflex = get_reflex(info);
-	if (i < 10)
-		printf("   c[0] = %d, c[1] = %d, c[2] = %d\n", info->color[0], info->color[1], info->color[2]);
+//	if (i < 10)
+//		printf("   c[0] = %d, c[1] = %d, c[2] = %d\n", info->color[0], info->color[1], info->color[2]);
 	if (reflex == -1.0 || reflex == 0.0)
 		return ;
 	color = init_color();
@@ -128,13 +128,8 @@ void	calc_reflex(t_param *param, t_info *info)
 //	printf("color %p, info %p\n", color, info->color);
 //ft_putstr("Ldone\n");
 //	printf("reflex = %f\n", reflex);
-	if (i < 10)
-		printf("=> c[0] = %d, c[1] = %d, c[2] = %d\n", info->color[0], info->color[1], info->color[2]);
 	info->color[0] = reflex * color[0] + info->color[0] * (1 - reflex);
 	info->color[1] = reflex * color[1] + info->color[1] * (1 - reflex);
 	info->color[2] = reflex * color[2] + info->color[2] * (1 - reflex);
-//	printf("c[0] = %d, c[1] = %d, c[2] = %d\n", info->color[0], info->color[1], info->color[2]);
-	fflush(0);
 	i++;
-//ft_putstr(" done\n");
 }

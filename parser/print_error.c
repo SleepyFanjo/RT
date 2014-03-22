@@ -1,4 +1,4 @@
-#include "../raytracer.h"
+#include "raytracer.h"
 
 void		print_error(char *str1, char *str2)
 {

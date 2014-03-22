@@ -1,4 +1,4 @@
-#include "../raytracer.h"
+#include "raytracer.h"
 
 int	test_tab(char **tab, int s_i)
 {

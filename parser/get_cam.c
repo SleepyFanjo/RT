@@ -6,11 +6,11 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:40:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/21 18:56:38 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/22 15:11:22 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../raytracer.h"
+#include "raytracer.h"
 
 static int		cam_test_tab(char **tab, int s_i)
 {
