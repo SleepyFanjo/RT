@@ -117,17 +117,14 @@ int 	*retrieve_col(int *col, int *obj_col, double coef)
 	return (final_col);
 }
 
-double	get_shine(t_info *info)
+t_coord	new_vn(t_info *info)
 {
-	if (info->obj_type == SPHERE)
-		return (((t_sphere *)(info->obj))->mat.shine);
-	if (info->obj_type == PLANE)
-		return (((t_plane *)(info->obj))->mat.shine);
-	if (info->obj_type == CYLINDER)
-		return (((t_cylinder *)(info->obj))->mat.shine);
-	if (info->obj_type == CONE)
-		return (((t_cone *)(info->obj))->mat.shine);
-	return (0.0);
+	t_coord		vn;
+
+	vn.x = info->vec_n.x;
+	vn.z = info->vec_n.z;
+	vn.y = info->vec_n.y + cos((info->r_pos.y / 10.0)) * (norme(info->vec_n) / 10.0);
+	return (vn);
 }
 
 void	calc_light(t_param *param, t_info *info, t_list *spot)
@@ -137,7 +134,10 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 	double	fading;
 	double	shining;
 	int 	*s_color;
+	t_coord n_v;
+	int		ok;
 
+	ok = 0;
 	if (info->distance < 0)
 		return ;
 	s_color = init_color();
@@ -148,13 +148,23 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		calc_intersection(param, &light);
 		if (point_cmp(info->r_pos, light.r_pos) == 1)
 		{
-			fading = ft_abs(calc_fading(light.r_line.vec, info->vec_n));
-			shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
+			if (info->obj_type == PLANE && ok == 1)
+			{
+				n_v = new_vn(info);
+				fading = ft_abs(calc_fading(light.r_line.vec, n_v));
+				shining = ft_abs(calc_shining(n_v, light.r_line.vec));
+			}
+			else
+			{
+				fading = ft_abs(calc_fading(light.r_line.vec, info->vec_n));
+				shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
+			}
 			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining * fading;
 			calc_color(&s_color, o_spot->color, o_spot->value, fading);
 		}
 		spot = spot->next;
 	}
-	info->color = retrieve_col(s_color, info->color, get_shine(info));
+	info->color = retrieve_col(s_color, damer(info, info->r_pos), get_shine(info));
+//	info->color = retrieve_col(s_color, info->color, get_shine(info));
 }
