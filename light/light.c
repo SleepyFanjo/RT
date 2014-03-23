@@ -161,10 +161,10 @@ int		*damer(t_info *info, t_coord point)
 
 	if (get_med(info) == 0.0)
 		return (info->color);
-	tmp1 = sin(F_PI / 10.0) * sin((F_PI / 10) * point.z);
-	tmp2 = sin(F_PI / 10.0) * sin((F_PI / 10) * point.x);
+	tmp1 = sin(F_PI / 70.0) * sin((F_PI / 70.0) * point.x);
+	tmp2 = sin(F_PI / 70.0) * sin((F_PI / 70.0) * point.z);
 	color = (int *)j_malloc(sizeof(int) * 3);
-	if (tmp1 >= 0 && tmp2 >= 0)
+	if ((tmp1 >= 0 && tmp2 >= 0) || (tmp1 < 0 && tmp2 < 0))
 		return (init_color());
 	color[0] = 255;
 	color[1] = 255;
