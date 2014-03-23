@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/23 15:31:10 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/23 15:33:06 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		put_pixel_to_img(t_param *param, int i, int j)
 		write_on_img(param, final_color(info.color, 1), i, j);
 	else
 	{
-		final_color = calc_color_end(param, &info);
+		finl_color = calc_color_end(param, &info);
 		write_on_img(param, finl_color, i, j);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/23 15:31:30 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/23 15:32:44 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,7 @@ void	calc_light(t_param *param, t_info *info, t_list *spot);
 void	calc_reflex(t_param *param, t_info *info);
 int		calc_color_end(t_param *param, t_info *info);
 void	swap_double(double *a, double *b);
-<<<<<<< HEAD
 void	init_ui(t_param *param);
-=======
 int		final_color(int *color, double light);
->>>>>>> df60ae4477ba516e44b21c7d65f93d75df9115b2
 
 #endif
