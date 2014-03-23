@@ -41,7 +41,7 @@ double		get_reflex(t_info *info)
 	return (-1.0);
 }
 
-int			get_refrax(t_info *info)
+int			get_texture(t_info *info)
 {
 	if (info->obj_type == SPHERE)
 		return ((int)(10.0 * ((t_sphere *)(info->obj))->mat.refrax));

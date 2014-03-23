@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/23 12:11:49 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/23 15:28:13 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int		raythrow(t_thread *thread)
 int		put_pixel_to_img(t_param *param, int i, int j)
 {
 	t_info		info;
-	int			final_color;
+	int			finl_color;
 
 	info = init_info(param, i, j);
 	calc_intersection(param, &info);
-	final_color = calc_color_end(param, &info);
-	write_on_img(param, final_color, i, j);
-//	write_on_img(param, 1, i, j);
+	finl_color = calc_color_end(param, &info);
+	write_on_img(param, finl_color, i, j);
+//	write_on_img(param, final_color(info.color, 1), i, j);
 	return (0);
 }
