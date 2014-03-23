@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:51:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/23 15:22:13 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/23 15:51:09 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define CR_Z param->rot_cam.z
 # define R param->ui->render
 # define L param->ui->live
+# define OBJ param->ui->obj
 
 /*
 **	key1.c

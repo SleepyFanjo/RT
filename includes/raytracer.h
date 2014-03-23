@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/23 15:32:44 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/23 17:29:53 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		first_number(char *line, int *i);
 t_coord	init_cam(t_coord *rot, char *dir);
 int		expose_hook(t_param *param);
 int		key_hook(int keycode, t_param *param);
+int		mouse_hook(int button, int x, int y, t_param *param);
 void	ft_error(char *s1, char *s2, int mode);
 void	*j_malloc(size_t size);
 void	raytracer(t_param *param, int nbr_process);

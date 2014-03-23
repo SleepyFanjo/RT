@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/21 12:13:15 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/22 23:14:40 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/23 20:12:54 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void			ft_putstr(char const *s);
 void			ft_putnbr(int n);
 char			*ft_itoa(int n);
 void			ft_putui(unsigned long n, int base, int fd);
-char			*ft_uitoa(unsigned long n, int base, int fd);
+char			*ft_uitoa(unsigned long n, int base);
 void			ft_bzero(void *s, size_t n);
 char			*ft_strnew(size_t size);
 void			ft_putchar(char c);

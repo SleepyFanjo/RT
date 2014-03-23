@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:49:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/23 15:20:49 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/23 17:37:53 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,11 @@ int		zoom(int keycode, t_param *param)
 	if (keycode == PLUS)
 	{
 		C_Y += 25;
-		R = 0;
 		return (1);
 	}
 	if (keycode == MINUS)
 	{
 		C_Y -= 25;
-		R = 0;
 		return (1);
 	}
 	return (0);
@@ -76,27 +74,23 @@ int		wasd(int keycode, t_param *param)
 	if (keycode == W)
 	{
 		tmp = &C_Z;
-		R = 0;
 		*tmp += 25;
 		return (1);
 	}
 	if (keycode == S)
 	{
 		tmp = &C_Z;
-		R = 0;
 		*tmp -= 25;
 		return (1);
 	}
 	if (keycode == D)
 	{
-		R = 0;
 		tmp = &C_X;
 		*tmp += 25;
 		return (1);
 	}
 	if (keycode == A)
 	{
-		R = 0;
 		tmp = &C_X;
 		*tmp -= 25;
 		return (1);
@@ -110,28 +104,24 @@ int		arrows(int keycode, t_param *param)
 
 	if (keycode == UP)
 	{
-		R = 0;
 		tmp = &CR_X;
 		*tmp -= 5;
 		return (1);
 	}
 	if (keycode == DOWN)
 	{
-		R = 0;
 		tmp = &CR_X;
 		*tmp += 5;
 		return (1);
 	}
 	if (keycode == RIGHT)
 	{
-		R = 0;
 		tmp = &CR_Y;
 		*tmp += 5;
 		return (1);
 	}
 	if (keycode == LEFT)
 	{
-		R = 0;
 		tmp = &CR_Y;
 		*tmp -= 5;
 		return (1);
