@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/22 15:48:00 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/23 15:18:48 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ typedef struct		s_info
 typedef struct		s_ui
 {
 	int				render;
+	int				live;
 }					t_ui;
 
 typedef struct		s_param

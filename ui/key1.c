@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:49:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/22 23:02:03 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/23 15:20:49 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ int		render(int keycode, t_param *param)
 	if (keycode != 114)
 		return (0);
 	R = 1;
+	return (1);
+}
+
+int		live(int keycode, t_param *param)
+{
+	if (keycode != 108)
+		return (0);
+	if (L)
+		L = 0;
+	else
+		L = 1;
 	return (1);
 }
 

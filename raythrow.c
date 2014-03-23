@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/23 15:12:20 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/23 15:28:46 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		put_pixel_to_img(t_param *param, int i, int j)
 
 	info = init_info(param, i, j);
 	calc_intersection(param, &info);
-	if (!param->ui->render)
+	if (!param->ui->render && !param->ui->live)
 		write_on_img(param, 1, i, j);
 	else
 	{
