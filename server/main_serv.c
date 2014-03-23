@@ -6,6 +6,7 @@ int		main(int argc, char **argv)
 	t_list			*lst_id_cl;
 	t_list			*lst_th;
 	int				nb_cl;
+	t_v_env			*e;
 
 	inf = malloc(sizeof(t_info_serv));
 	lst_id_cl = NULL;
@@ -27,8 +28,11 @@ int		main(int argc, char **argv)
 	inf->size_img[1] = HEIGHT;
 	get_lst_cl(argv[2], &lst_id_cl);
 	nb_cl = get_cl_th(&lst_th, lst_id_cl, inf);
+	ft_printf("send env\n");
+	e = send_env(lst_th);
+	ft_printf("send stage\n");
 	send_stage(inf, lst_th);
 	send_inf_calc(lst_th, inf, nb_cl);
-	get_cl_stage(lst_th);
+	get_cl_stage(lst_th, e);
 	return (0);
 }

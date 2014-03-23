@@ -27,6 +27,7 @@ static int		cl_connect(t_client *cl, t_id_client *id_cl)
 {
 	int			ret;
 
+	ft_printf("send name\n");
 	if ((cl->sockfd = get_sockfd(id_cl->ip, id_cl->port)) < 0)
 		return (-1);
 	if ((write(cl->sockfd, cl->name_host_server, ft_strlen(cl->name_host_server))) < 0)

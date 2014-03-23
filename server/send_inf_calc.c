@@ -5,6 +5,7 @@ int		send_inf_calc(t_list *list, t_info_serv *inf, int nb_cl)
 	t_inf_exec	*exec;
 	t_client	*cl;
 
+	ft_printf("send core\n");
 	exec = malloc(sizeof(t_inf_exec));
 	exec->nb_tot_th = nb_cl * inf->nb_th;
 	exec->nb_st_th = 0;

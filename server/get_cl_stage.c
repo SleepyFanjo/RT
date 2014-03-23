@@ -19,11 +19,13 @@ static void	get_stage_read(int sockfd, int size, int start, t_v_env *env)
 	int			pos;
 	int			ret;
 	int			ask_size;
+	int			nb_loop;
 
 	buff = malloc(sizeof(char) * (NET_BUFF_SIZE + 10));
 	pos = 0;
 	cpy_to_img(start, NULL, -1, NULL);
 	ft_printf("size: %d\n", size);
+	nb_loop = 0;
 	while (pos < size)
 	{
 		ask_size = size - pos;
@@ -36,22 +38,28 @@ static void	get_stage_read(int sockfd, int size, int start, t_v_env *env)
 			ft_printf("Fail #1\n");
 			return ;
 		}
+		if (ret == 0)
+			nb_loop++;
+		else
+			nb_loop = 0;
+		if (nb_loop == LIM_NB_READ)
+		{
+			ft_printf("%r#15\n");
+			exit(15);
+		}
 		cpy_to_img(0, buff, ret, env);
 		pos += ret;
 	}
 }
 
-void		get_cl_stage(t_list *lst_th)
+void		get_cl_stage(t_list *lst_th, t_v_env *env)
 {
-	t_v_env		*env;
 	int			start;
 	int			end;
 	t_client	*cl;
 	int			size_tot;
 	int			ret_msg;
 
-	env = malloc(sizeof(t_v_env));
-	init_env(env);
 	size_tot = HEIGHT * env->line;
 	ft_printf("img->bpp: %d\n", env->line);
 	ft_printf("Height: %d, W: %d\n", HEIGHT, WIDTH);

@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/17 14:42:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 21:37:18 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/23 18:41:37 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ void		write_on_img(t_param *param, int color, int i, int j)
 	t_img			*img;
 
 	value = mlx_get_color_value(param->env.mlx, color);
-	if (value != 0 && LOADING)
-	{
-		mlx_pixel_put(param->env.mlx, param->env.win, j, i, value);
-		printf("FAIL\n");
-	}
 	img = &(param->v_img);
 	tmp = img->addr + (img->line * i) + (j * (img->bpp / 8));
 	if (test)

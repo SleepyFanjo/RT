@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/23 15:35:08 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/23 19:02:19 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ void	calc_light(t_param *param, t_info *info, t_list *spot);
 void	calc_reflex(t_param *param, t_info *info);
 void	swap_double(double *a, double *b);
 int		ft_listen(int port);
-void	aff_sig(int sig);
+void	get_env(int sockfd, t_img *img);
 
 #endif
