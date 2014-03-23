@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 18:40:20 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/23 12:11:49 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,6 @@ void	calc_intersection(t_param *param, t_info *info)
 	inter_cylinder(param, info, param->cylinder);
 	inter_cone(param, info, param->cone);
 	calc_normal(info);
-}
-
-static int		calc_color(int *color, double light)
-{
-	int		ret;
-	int		pop[3];
-
-	if (light > 1)
-		light = 1;
-	if (color == NULL)
-		return (0);
-	pop[0] = color[0] * light;
-	pop[1] = color[1] * light;
-	pop[2] = color[2] * light;
-	ret = pop[0] + 256 * pop[1]	+ 256 * 256 * pop[2];
-	return (ret);
 }
 
 int		raythrow(t_thread *thread)
@@ -57,12 +41,12 @@ int		raythrow(t_thread *thread)
 int		put_pixel_to_img(t_param *param, int i, int j)
 {
 	t_info		info;
+	int			final_color;
 
 	info = init_info(param, i, j);
 	calc_intersection(param, &info);
-	calc_reflex(param, &info, i, j);
-	calc_light(param, &info, param->spot);
-	write_on_img(param, calc_color(info.color, info.light), i, j);
-//	write_on_img(param, calc_color(info.color, 1), i, j);
+	final_color = calc_color_end(param, &info);
+	write_on_img(param, final_color, i, j);
+//	write_on_img(param, 1, i, j);
 	return (0);
 }

@@ -130,6 +130,48 @@ double	get_shine(t_info *info)
 	return (0.0);
 }
 
+t_coord	new_vn(t_info *info)
+{
+	t_coord		vn;
+
+	vn.x = info->vec_n.x;
+	vn.z = info->vec_n.z;
+	vn.y = info->vec_n.y + cos((info->r_pos.y / 10.0)) * (norme(info->vec_n) / 10.0);
+	return (vn);
+}
+
+double		get_med(t_info *info)
+{
+	if (info->obj_type == SPHERE)
+		return (((t_sphere *)(info->obj))->mat.med_in);
+	if (info->obj_type == PLANE)
+		return (((t_plane *)(info->obj))->mat.med_in);
+	if (info->obj_type == CYLINDER)
+		return (((t_cylinder *)(info->obj))->mat.med_in);
+	if (info->obj_type == CONE)
+		return (((t_cone *)(info->obj))->mat.med_in);
+	return (0.0);
+}
+
+int		*damer(t_info *info, t_coord point)
+{
+	double	tmp1;
+	double	tmp2;
+	int		*color;
+
+	if (get_med(info) == 0.0)
+		return (info->color);
+	tmp1 = sin(F_PI / 10.0) * sin((F_PI / 10) * point.z);
+	tmp2 = sin(F_PI / 10.0) * sin((F_PI / 10) * point.x);
+	color = (int *)j_malloc(sizeof(int) * 3);
+	if (tmp1 >= 0 && tmp2 >= 0)
+		return (init_color());
+	color[0] = 255;
+	color[1] = 255;
+	color[2] = 255;
+	return (color);
+}
+
 void	calc_light(t_param *param, t_info *info, t_list *spot)
 {
 	t_info	light;
@@ -137,7 +179,10 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 	double	fading;
 	double	shining;
 	int 	*s_color;
+	t_coord n_v;
+	int		ok;
 
+	ok = 0;
 	if (info->distance < 0)
 		return ;
 	s_color = init_color();
@@ -148,13 +193,23 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		calc_intersection(param, &light);
 		if (point_cmp(info->r_pos, light.r_pos) == 1)
 		{
-			fading = ft_abs(calc_fading(light.r_line.vec, info->vec_n));
-			shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
+			if (info->obj_type == PLANE && ok == 1)
+			{
+				n_v = new_vn(info);
+				fading = ft_abs(calc_fading(light.r_line.vec, n_v));
+				shining = ft_abs(calc_shining(n_v, light.r_line.vec));
+			}
+			else
+			{
+				fading = ft_abs(calc_fading(light.r_line.vec, info->vec_n));
+				shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
+			}
 			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining * fading;
 			calc_color(&s_color, o_spot->color, o_spot->value, fading);
 		}
 		spot = spot->next;
 	}
-	info->color = retrieve_col(s_color, info->color, get_shine(info));
+	info->color = retrieve_col(s_color, damer(info, info->r_pos), get_shine(info));
+//	info->color = retrieve_col(s_color, info->color, get_shine(info));
 }

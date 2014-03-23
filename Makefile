@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/22 15:10:17 by jrenouf-         ###   ########.fr        #
+#    Updated: 2014/03/23 12:08:56 by jrenouf-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC= main.c \
 	 parser/free_obj_lst.c \
 	 light/light.c \
 	 light/reflex.c \
+	 light/calc_color.c \
 	 multithread/raytracer.c \
 	 multithread/get_thread.c \
 	 multithread/print_first_line.c \

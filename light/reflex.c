@@ -155,7 +155,7 @@ int		*reflexion(t_param *param, t_info *info)
 	ref = init_reflex(info->r_line, info->vec_n);
 	calc_intersection(param, &ref);
 	if (ref.distance != -1)
-		return (retrieve_col(ref.color, info->color, get_reflex(info)));
+		return (retrieve_col(damer(&ref, ref.r_pos), info->color, get_reflex(info)));
 	return (init_color());
 }
 /*

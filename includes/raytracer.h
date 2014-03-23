@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 20:48:14 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/23 12:10:41 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_coord	cylinder_vec_n(t_info *info, t_cylinder *obj);
 t_coord	cone_vec_n(t_info *info, t_cone *obj);
 void	calc_light(t_param *param, t_info *info, t_list *spot);
 void	calc_reflex(t_param *param, t_info *info);
+int		calc_color_end(t_param *param, t_info *info);
 void	swap_double(double *a, double *b);
 
 #endif
