@@ -117,19 +117,6 @@ int 	*retrieve_col(int *col, int *obj_col, double coef)
 	return (final_col);
 }
 
-double	get_shine(t_info *info)
-{
-	if (info->obj_type == SPHERE)
-		return (((t_sphere *)(info->obj))->mat.shine);
-	if (info->obj_type == PLANE)
-		return (((t_plane *)(info->obj))->mat.shine);
-	if (info->obj_type == CYLINDER)
-		return (((t_cylinder *)(info->obj))->mat.shine);
-	if (info->obj_type == CONE)
-		return (((t_cone *)(info->obj))->mat.shine);
-	return (0.0);
-}
-
 t_coord	new_vn(t_info *info)
 {
 	t_coord		vn;
@@ -138,38 +125,6 @@ t_coord	new_vn(t_info *info)
 	vn.z = info->vec_n.z;
 	vn.y = info->vec_n.y + cos((info->r_pos.y / 10.0)) * (norme(info->vec_n) / 10.0);
 	return (vn);
-}
-
-double		get_med(t_info *info)
-{
-	if (info->obj_type == SPHERE)
-		return (((t_sphere *)(info->obj))->mat.med_in);
-	if (info->obj_type == PLANE)
-		return (((t_plane *)(info->obj))->mat.med_in);
-	if (info->obj_type == CYLINDER)
-		return (((t_cylinder *)(info->obj))->mat.med_in);
-	if (info->obj_type == CONE)
-		return (((t_cone *)(info->obj))->mat.med_in);
-	return (0.0);
-}
-
-int		*damer(t_info *info, t_coord point)
-{
-	double	tmp1;
-	double	tmp2;
-	int		*color;
-
-	if (get_med(info) == 0.0)
-		return (info->color);
-	tmp1 = sin(F_PI / 70.0) * sin((F_PI / 70.0) * point.x);
-	tmp2 = sin(F_PI / 70.0) * sin((F_PI / 70.0) * point.z);
-	color = (int *)j_malloc(sizeof(int) * 3);
-	if ((tmp1 >= 0 && tmp2 >= 0) || (tmp1 < 0 && tmp2 < 0))
-		return (init_color());
-	color[0] = 255;
-	color[1] = 255;
-	color[2] = 255;
-	return (color);
 }
 
 void	calc_light(t_param *param, t_info *info, t_list *spot)

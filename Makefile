@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/23 12:08:56 by jrenouf-         ###   ########.fr        #
+#    Updated: 2014/03/23 14:41:41 by jrenouf-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ SRC= main.c \
 	 light/light.c \
 	 light/reflex.c \
 	 light/calc_color.c \
+	 light/get_mat.c \
+	 light/textures.c \
 	 multithread/raytracer.c \
 	 multithread/get_thread.c \
 	 multithread/print_first_line.c \

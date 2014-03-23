@@ -13,22 +13,6 @@ double	dot_product(t_coord p1, t_coord p2)
 	return (tmp);
 }
 
-double	get_reflex(t_info *info)
-{
-//ft_putstr("get reflex -->");
-	if (info->obj_type == -1)
-		return (-1.0);
-	if (info->obj_type == SPHERE)
-		return (((t_sphere *)(info->obj))->mat.reflex);
-	if (info->obj_type == PLANE)
-		return (((t_plane *)(info->obj))->mat.reflex);
-	if (info->obj_type == CYLINDER)
-		return (((t_cylinder *)(info->obj))->mat.reflex);
-	if (info->obj_type == CONE)
-		return (((t_cone *)(info->obj))->mat.reflex);
-	return (-1.0);
-}
-
 t_coord	normalize(t_coord vec)
 {
 	t_coord	n_vec;
@@ -161,19 +145,19 @@ int		*reflexion(t_param *param, t_info *info)
 /*
 int		*recursive(t_param *param, t_info *info, int *color)
 {
-	t_info	ref;
+	t_info	*ref;
 	double	reflex;
 	static int	n = 1;
 
-	ref = init_reflex(info->r_line, info->vec_n);
-	calc_intersection(param, &ref);
-	reflex = get_reflex(&ref);
-	if (ref.distance != -1)
-		color = retrieve_col(ref.color, info->color, reflex);
+	ref = new_vd(info->r_line, info->vec_n);
+	calc_intersection(param, ref);
+	reflex = get_reflex(ref);
+	if (ref->distance != -1)
+		color = retrieve_col(ref->color, info->color, reflex);
 	else if (reflex == 0 || n == 0)
 		return (color);
 	n--;
-	return (recursive(param, &ref, color));
+	return (recursive(param, ref, color));
 }
 */
 int		*cpy_color(int *src)
