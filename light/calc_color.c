@@ -1,6 +1,6 @@
 #include "light.h"
 
-static int		final_color(int *color, double light)
+int			final_color(int *color, double light)
 {
 	int		ret;
 	int		pop[3];
