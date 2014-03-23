@@ -32,7 +32,7 @@ static void	get_stage_read(int sockfd, int size)
 		ask_size = size - pos;
 		if (ask_size > BUFF_SIZE)
 			ask_size = BUFF_SIZE;
-		ret = read(sockfd, buff, BUFF_SIZE);
+		ret = read(sockfd, buff, ask_size);
 		if (ret < 0)
 		{
 			ret = STAGE_FAIL;
@@ -65,7 +65,7 @@ void		get_stage(int fd)
 
 	if ((ret = read(fd, &size, sizeof(int))) != sizeof(int))
 	{
-		ft_printf("%rFail to get size\n");
+		ft_printf("%rFail #2\n");
 		ret = SIZE_FAIL;
 		send_message(fd, sizeof(int), (void *)(&ret));
 		exit(1);

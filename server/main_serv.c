@@ -29,5 +29,6 @@ int		main(int argc, char **argv)
 	nb_cl = get_cl_th(&lst_th, lst_id_cl, inf);
 	send_stage(inf, lst_th);
 	send_inf_calc(lst_th, inf, nb_cl);
+	get_cl_stage(lst_th);
 	return (0);
 }

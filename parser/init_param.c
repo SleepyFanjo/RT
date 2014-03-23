@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 16:27:09 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/23 15:04:25 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/23 16:57:30 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ t_env			get_env(void)
 		ft_printf("%r#6\n");
 		exit(6);
 	}
-	env.win = mlx_new_window(env->mlx, WIDTH, HEIGHT, "RT");
-	if (env->win == NULL)
-	{
-		ft_printf("%r#7\n");
-		exit(7);
-	}
-	env.img = mlx_new_image(env->mlx, WIDTH, HEIGHT);
+//	env.win = mlx_new_window(env.mlx, WIDTH, HEIGHT, "RT");
+//	if (env.win == NULL)
+//	{
+//		ft_printf("%r#7\n");
+//		exit(7);
+//	}
+	env.img = mlx_new_image(env.mlx, WIDTH, HEIGHT);
 	if (env.img == NULL)
 	{
 		ft_printf("%r#8\n");
@@ -47,5 +47,5 @@ void			init_param(t_param *param, char *dir)
 	img = &(param->v_img);
 	img->addr = mlx_get_data_addr(param->env.img, &(img->bpp), &(img->line),
 			&(img->endian));
-	img->addr = j_malloc((img->bpp / 8) * (WIDTH * HEIGHT));
+	img->addr = j_malloc(img->line * HEIGHT);
 }

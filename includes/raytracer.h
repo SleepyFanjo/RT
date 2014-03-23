@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 20:30:51 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/23 15:35:08 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int		expose_hook(t_param *param);
 int		key_hook(int keycode, t_param *param);
 void	ft_error(char *s1, char *s2, int mode);
 void	*j_malloc(size_t size);
-void	raytracer(t_param *param, t_inf_exec *inf);
 int		raythrow(t_thread *thread);
 int		put_pixel_to_img(t_param *param, int i, int j);
 void	parser(char *filename, t_param *param);
+int		raytracer(t_param *param, t_inf_exec *inf, int sockfd);
 t_info	init_info(t_param *param, int i, int j);
 void	apply_trans(t_coord translation, t_coord *to_move, int mult);
 void	apply_rot(t_coord rotation, t_coord *to_turn, int mult);

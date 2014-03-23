@@ -68,6 +68,8 @@ int		get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf);
 int		send_message(int fd, size_t size, void *mess);
 int		send_stage(t_info_serv *inf, t_list *lst);
 int		send_inf_calc(t_list *list, t_info_serv *inf, int nb_cl);
-void	add_lim(t_client *cl, t_inf_exec *exec);
+void	get_cl_stage(t_list *lst_th);
+void	init_env(t_v_env *env);
+int		get_value(int fd, void *buf, size_t size);
 
 #endif

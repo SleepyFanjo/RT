@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 11:17:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 20:28:22 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/23 15:50:36 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void		*j_malloc(size_t size)
 }
 int			main(int argc, char **argv)
 {
-	signal(SIGPIPE, aff_sig);
 	if (argc != 2)
 	{
 		ft_putendl("Error : incorrect argument number");
