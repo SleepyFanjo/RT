@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 16:46:21 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/21 17:49:33 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/24 20:19:06 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 void			apply_matrix(double *matrix, t_coord *move)
 {
-	move->x = matrix[0] * move->x + matrix[1] * move->y + matrix[2] * move->z;
-	move->y = matrix[4] * move->x + matrix[5] * move->y + matrix[6] * move->z;
-	move->z = matrix[8] * move->x + matrix[9] * move->y + matrix[10] * move->z;
+	t_coord		tmp;
+
+	tmp.x = matrix[0] * move->x + matrix[1] * move->y + matrix[2] * move->z;
+	tmp.y = matrix[4] * move->x + matrix[5] * move->y + matrix[6] * move->z;
+	tmp.z = matrix[8] * move->x + matrix[9] * move->y + matrix[10] * move->z;
+	move->x = tmp.x;
+	move->y = tmp.y;
+	move->z = tmp.z;
 }
 
 static void		sub_matrix(double *m4, double *m3, int i, int j)
