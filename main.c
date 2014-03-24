@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 11:17:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/24 11:09:14 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/24 14:56:04 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int			main(int argc, char **argv)
 		return (1);
 	}
 	init_param(&param, argv[1]);
-	ft_putendl("c'est pas ton parser");
 	raytracer(&param, 1);
 	expose_hook(&param);
 	mlx_expose_hook(param.env.win, expose_hook, &param);
