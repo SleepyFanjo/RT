@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/23 20:32:56 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/24 11:53:20 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct		s_textures
 {
 	void			*img;
 	char            *data;
+	char			*file;
 	int             bpp;
 	int             sizeline;
 	int             endian;

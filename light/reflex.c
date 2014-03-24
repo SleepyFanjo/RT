@@ -138,36 +138,29 @@ int		*reflexion(t_param *param, t_info *info)
 
 	ref = init_reflex(info->r_line, info->vec_n);
 	calc_intersection(param, &ref);
+	calc_light(param, &ref, param->spot);
 	if (ref.distance != -1)
 		return (retrieve_col(damer(param, &ref, ref.r_pos), info->color, get_reflex(info)));
 	return (init_color());
 }
 
-int		*re()
-{
-	int		*color;
-
-	color = 
-}
-
-/*
 int		*recursive(t_param *param, t_info *info, int *color)
 {
-	t_info	*ref;
+	t_info	ref;
 	double	reflex;
 	static int	n = 1;
 
-	ref = new_vd(info->r_line, info->vec_n);
-	calc_intersection(param, ref);
-	reflex = get_reflex(ref);
-	if (ref->distance != -1)
-		color = retrieve_col(ref->color, info->color, reflex);
+	ref = init_reflex(info->r_line, info->vec_n);
+	calc_intersection(param, &ref);
+	reflex = get_reflex(&ref);
+	if (ref.distance != -1)
+		color = retrieve_col(ref.color, info->color, reflex);
 	else if (reflex == 0 || n == 0)
 		return (color);
 	n--;
-	return (recursive(param, ref, color));
+	return (recursive(param, &ref, color));
 }
-*/
+
 int		*cpy_color(int *src)
 {
 	int	*color;

@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 14:26:09 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/24 10:11:01 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/24 15:22:31 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ double		dot_product(t_coord p1, t_coord p2);
 int 		*init_color(void);
 int 		*retrieve_col(int *col, int *obj_col, double coef);
 int			*damer(t_param *param, t_info *info, t_coord point);
+t_coord		calc_v_reflex(t_coord ov_dir, t_coord ov_nor);
 
 double		get_shine(t_info *info);
 double		get_med(t_info *info);
