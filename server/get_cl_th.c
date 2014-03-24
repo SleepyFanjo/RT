@@ -29,7 +29,9 @@ static int		cl_connect(t_client *cl, t_id_client *id_cl)
 
 	if ((cl->sockfd = get_sockfd(id_cl->ip, id_cl->port)) < 0)
 		return (-1);
-	if ((write(cl->sockfd, cl->name_host_server, ft_strlen(cl->name_host_server))) < 0)
+	ret = write(cl->sockfd, cl->name_host_server,
+			ft_strlen(cl->name_host_server));
+	if (ret < 0)
 		return (-1);
 	cl->name_host_cl = (char *)malloc(sizeof(char ) * (MAX_HOST_NAME + 1));
 	if (cl->name_host_cl == NULL)

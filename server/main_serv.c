@@ -1,16 +1,17 @@
 #include "network.h"
 
-int		main(int argc, char **argv)
+static void	ending_mlx(t_v_env *e)
 {
-	t_info_serv		*inf;
-	t_list			*lst_id_cl;
-	t_list			*lst_th;
-	int				nb_cl;
-	t_v_env			*e;
+	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
+	mlx_key_hook(e->win, key_hook, e);
+	mlx_expose_hook(e->win, expose_hook, e);
+	ft_printf("End of compute, press esc to exit\n");
+	mlx_loop(e->mlx);
+}
 
-	inf = malloc(sizeof(t_info_serv));
-	lst_id_cl = NULL;
-	lst_th = NULL;
+static int	get_init_value(int argc, char **argv, t_info_serv *inf)
+{
+
 	if (argc != 4)
 	{
 		ft_printf("%rBad usage: ./RT scene.rt list.host nb_thread\n");
@@ -28,6 +29,22 @@ int		main(int argc, char **argv)
 		ft_printf("Number of thread is too small (min 1)\n");
 		return (1);
 	}
+	return (0);
+}
+
+int			main(int argc, char **argv)
+{
+	t_info_serv		*inf;
+	t_list			*lst_id_cl;
+	t_list			*lst_th;
+	int				nb_cl;
+	t_v_env			*e;
+
+	inf = malloc(sizeof(t_info_serv));
+	lst_id_cl = NULL;
+	lst_th = NULL;
+	if (get_init_value(argc, argv, inf))
+		return (1);
 	inf->size_img[0] = WIDTH;
 	inf->size_img[1] = HEIGHT;
 	get_lst_cl(argv[2], &lst_id_cl);
@@ -36,5 +53,6 @@ int		main(int argc, char **argv)
 	send_stage(inf, lst_th);
 	send_inf_calc(lst_th, inf, nb_cl);
 	get_cl_stage(lst_th, e);
+	ending_mlx(e);
 	return (0);
 }

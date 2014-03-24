@@ -16,6 +16,17 @@ static int	get_fd_img(int sockfd)
 	return (fd);
 }
 
+static void	v_fail(int sockfd)
+{
+	int		ret;
+
+	ret = STAGE_FAIL;
+	ft_printf("%r18\n");
+	send_message(sockfd, sizeof(int), (void *)(&ret));
+	close(sockfd);
+	exit(1);
+}
+
 static void	get_stage_read(int sockfd, int size)
 {
 	char		*buff;
@@ -34,13 +45,7 @@ static void	get_stage_read(int sockfd, int size)
 			ask_size = BUFF_SIZE;
 		ret = read(sockfd, buff, ask_size);
 		if (ret < 0)
-		{
-			ret = STAGE_FAIL;
-			ft_printf("%r18\n");
-			send_message(sockfd, sizeof(int), (void *)(&ret));
-			close(sockfd);
-			exit(1);
-		}
+			v_fail(sockfd);
 		write(fd, buff, ret);
 		pos += ret;
 	}

@@ -23,26 +23,42 @@ static void		my_free_tab(char **tab)
 	free(tab);
 }
 
-static t_id_client	*get_pars_cl(char *line)
+static char			**get_tab(char *line)
 {
+	char		*str;
 	char		**tab;
-	t_id_client	*id_cl;
-	int			port;
 
-	if ((tab = ft_strsplit(line, ':')) == NULL)
+	if ((str = ft_strtrim(line)) == NULL)
+		return (NULL);
+	if ((tab = ft_strsplit(str, ':')) == NULL)
 	{
 		ft_printf("%rFail to split\n");
+		free(str);
 		return (NULL);
 	}
 	if (v_get_size_tab(tab) != 2)
 	{
 		ft_printf("Line %s: Bad syntax, host was not import\n", line);
 		my_free_tab(tab);
+		free(str);
 		return (NULL);
 	}
+	free(str);
+	return (tab);
+}
+
+static t_id_client	*get_pars_cl(char *line)
+{
+	char		**tab;
+	t_id_client	*id_cl;
+	int			port;
+
+	if ((tab = get_tab(line)) == NULL)
+		return (NULL);
 	if ((port = ft_atoi(tab[1])) <= 1024 || port >= 65535)
 	{
-		ft_printf("%rLine %s: Need a port number > 1024 and < 65535, host was not import\n");
+		ft_printf("%rLine %s: Need a port number > \
+				1024 and < 65535, host was not import\n");
 		my_free_tab(tab);
 		return (NULL);
 	}
