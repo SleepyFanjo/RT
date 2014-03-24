@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 16:27:09 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/24 11:03:08 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 19:13:12 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_env			get_env(void)
 	int			y;
 
 	env.mlx = mlx_init();
-	env.win = mlx_new_window(env.mlx, WIDTH, HEIGHT + H_UI, "RtV1");
+	env.win = mlx_new_window(env.mlx, WIDTH, HEIGHT + H_UI, "Fuckin' Raytrcer");
 	env.img = mlx_new_image(env.mlx, WIDTH, HEIGHT);
 	env.ui = mlx_xpm_file_to_image(env.mlx, "ui/ui.xpm", &x, &y);
 	if (env.mlx == NULL || env.win == NULL || env.img == NULL)

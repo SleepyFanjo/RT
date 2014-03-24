@@ -6,12 +6,13 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/24 18:28:08 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 19:24:29 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYTRACER_H
 # define RAYTRACER_H
+# include "./ui/libftprintf.h"
 # define LOADING		(0)
 # define F_PI			(3.1415926535)
 # define WIDTH			(800)

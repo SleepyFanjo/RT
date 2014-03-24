@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 12:51:11 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/24 11:32:59 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 19:10:53 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ void		init_ui(t_param *param)
 		exit (0);
 	R = 1;
 	L = 0;
-	FOCUS = NULL;
+	POS = &(param->cam);
+	ROT = &(param->rot_cam);
+	B_ROT = 1;
 }

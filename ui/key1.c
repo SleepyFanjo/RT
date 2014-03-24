@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:49:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/24 11:54:16 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 20:00:45 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,16 @@
 
 #include <stdio.h>
 
-int		render(int keycode, t_param *param, t_coord *pos, t_coord *rot)
+int		render(int keycode, t_param *param)
 {
-	(void)pos;
-	(void)rot;
 	if (keycode != 114)
 		return (0);
 	R = 1;
 	return (1);
 }
 
-int		live(int keycode, t_param *param, t_coord *pos, t_coord *rot)
+int		live(int keycode, t_param *param)
 {
-	(void)pos;
-	(void)rot;
 	if (keycode != 108)
 		return (0);
 	if (L)
@@ -38,10 +34,8 @@ int		live(int keycode, t_param *param, t_coord *pos, t_coord *rot)
 	return (1);
 }
 
-int		save(int keycode, t_param *param, t_coord *pos, t_coord *rot)
+int		save(int keycode, t_param *param)
 {
-	(void)pos;
-	(void)rot;
 	char		*name;
 	int			fd;
 
@@ -58,85 +52,80 @@ int		save(int keycode, t_param *param, t_coord *pos, t_coord *rot)
 	return (1);
 }
 
-int		zoom(int keycode, t_param *param, t_coord *pos, t_coord *rot)
+int		how_high(int keycode, t_param *param)
 {
-	(void)pos;
-	(void)rot;
 	if (keycode == PLUS)
 	{
-		C_Y += 25;
+		POS->y += 25;
 		return (1);
 	}
 	if (keycode == MINUS)
 	{
-		C_Y -= 25;
+		POS->y -= 25;
 		return (1);
 	}
 	return (0);
 }
 
-int		wasd(int keycode, t_param *param, t_coord *pos, t_coord *rot)
+int		wasd(int keycode, t_param *param)
 {
-	(void)pos;
-	(void)rot;
-	double		*tmp;
-
 	if (keycode == W)
 	{
-		tmp = &C_Z;
-		*tmp += 25;
+		POS->z += 25;
 		return (1);
 	}
 	if (keycode == S)
 	{
-		tmp = &C_Z;
-		*tmp -= 25;
+		POS->z -= 25;
 		return (1);
 	}
 	if (keycode == D)
 	{
-		tmp = &C_X;
-		*tmp += 25;
+		POS->x += 25;
 		return (1);
 	}
 	if (keycode == A)
 	{
-		tmp = &C_X;
-		*tmp -= 25;
+		POS->x -= 25;
 		return (1);
 	}
 	return (0);
 }
 
-int		arrows(int keycode, t_param *param, t_coord *pos, t_coord *rot)
+int		arrows(int keycode, t_param *param)
 {
-	(void)pos;
-	(void)rot;
-	double		*tmp;
-
-	if (keycode == UP)
+	if (B_ROT)
 	{
-		tmp = &CR_X;
-		*tmp -= 5;
-		return (1);
-	}
-	if (keycode == DOWN)
-	{
-		tmp = &CR_X;
-		*tmp += 5;
-		return (1);
-	}
-	if (keycode == RIGHT)
-	{
-		tmp = &CR_Y;
-		*tmp += 5;
-		return (1);
-	}
-	if (keycode == LEFT)
-	{
-		tmp = &CR_Y;
-		*tmp -= 5;
-		return (1);
+		if (keycode == UP)
+		{
+			ROT->x -= 5;
+			return (1);
+		}
+		if (keycode == DOWN)
+		{
+			ROT->x += 5;
+			return (1);
+		}
+		if (keycode == RIGHT)
+		{
+			ROT->y += 5;
+			return (1);
+		}
+		if (keycode == LEFT)
+		{
+			ROT->y -= 5;
+			return (1);
+		}
 	}
 	return (0);
+}
+
+int		back_to_cam(int keycode, t_param *param)
+{
+	if (keycode != 118)
+		return (0);
+	POS = &(param->cam);
+	ROT = &(param->rot_cam);
+	B_ROT = 1;
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:51:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/24 11:41:29 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 20:03:55 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,20 @@
 # define R param->ui->render
 # define L param->ui->live
 # define OBJ param->ui->obj
-# define FOCUS param->ui->focus
+# define POS param->ui->pos
+# define ROT param->ui->rot
+# define B_ROT param->ui->b_rot
 
 /*
 **	key1.c
 */
-int		arrows(int keycode, t_param *param, t_coord *pos, t_coord *rot);
-int		zoom(int keycode, t_param *param, t_coord *pos, t_coord *rot);
-int		wasd(int keycode, t_param *param, t_coord *pos, t_coord *rot);
-int		render(int keycode, t_param *param, t_coord *pos, t_coord *rot);
-int		save(int keycode, t_param *param, t_coord *pos, t_coord *rot);
-int		live(int keycode, t_param *param, t_coord *pos, t_coord *rot);
+int		arrows(int keycode, t_param *param);
+int		how_high(int keycode, t_param *param);
+int		wasd(int keycode, t_param *param);
+int		render(int keycode, t_param *param);
+int		save(int keycode, t_param *param);
+int		live(int keycode, t_param *param);
+int		back_to_cam(int keycode, t_param *param);
 
 /*
 **	save.c
@@ -56,4 +59,12 @@ void		put_spot(t_param *param, int fd);
 void		put_plane(t_param *param, int fd);
 void		put_cone(t_param *param, int fd);
 void		put_cylinder(t_param *param, int fd);
+
+/*
+**  clic.c
+*/
+void		clic_sphere(t_param *param, t_info *info);
+void		clic_plane(t_param *param, t_info *info);
+void		clic_cylinder(t_param *param, t_info *info);
+void		clic_cone(t_param *param, t_info *info);
 #endif

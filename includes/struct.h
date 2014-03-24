@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/24 18:27:53 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 19:08:02 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,9 @@ typedef struct		s_info
 
 typedef struct		s_ui
 {
-	void			*focus;
+	t_coord			*pos;
+	t_coord			*rot;
+	int				b_rot;
 	int				render;
 	int				live;
 }					t_ui;
