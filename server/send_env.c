@@ -17,7 +17,6 @@ t_v_env		*send_env(t_list *lst)
 	img->endian = env->endian;
 	img->decrgb = mlx->decrgb;
 	img->depth = mlx->depth;
-	printf("mlx->depth: %d\n", mlx->depth);
 	while (lst != NULL)
 	{
 		cl = (t_client *)lst->content;

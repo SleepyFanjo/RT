@@ -24,14 +24,12 @@ static void	get_stage_read(int sockfd, int size, int start, t_v_env *env)
 	buff = malloc(sizeof(char) * (NET_BUFF_SIZE + 10));
 	pos = 0;
 	cpy_to_img(start, NULL, -1, NULL);
-	ft_printf("size: %d\n", size);
 	nb_loop = 0;
 	while (pos < size)
 	{
 		ask_size = size - pos;
 		if (ask_size > NET_BUFF_SIZE)
 			ask_size = NET_BUFF_SIZE;
-		ft_printf("loop: pos: %d, ask_size: %d\n", pos, ask_size);
 		ret = read(sockfd, buff, ask_size);
 		if (ret < 0)
 		{
@@ -45,7 +43,7 @@ static void	get_stage_read(int sockfd, int size, int start, t_v_env *env)
 		if (nb_loop == LIM_NB_READ)
 		{
 			ft_printf("%r#15\n");
-			exit(15);
+			return ;
 		}
 		cpy_to_img(0, buff, ret, env);
 		pos += ret;
@@ -61,8 +59,6 @@ void		get_cl_stage(t_list *lst_th, t_v_env *env)
 	int			ret_msg;
 
 	size_tot = HEIGHT * env->line;
-	ft_printf("img->bpp: %d\n", env->line);
-	ft_printf("Height: %d, W: %d\n", HEIGHT, WIDTH);
 	while (lst_th != NULL)
 	{
 		cl = (t_client *)lst_th->content;
@@ -78,7 +74,6 @@ void		get_cl_stage(t_list *lst_th, t_v_env *env)
 			lst_th = lst_th->next;
 			continue ;
 		}
-		ft_printf("start: %d, end: %d, size_tot: %d\n", start, end, size_tot);
 		if (end > size_tot)
 		{
 			ft_printf("%r#5 cl: %s\n",
@@ -88,15 +83,14 @@ void		get_cl_stage(t_list *lst_th, t_v_env *env)
 		}
 		ret_msg = SIZE_SUCCES;
 		send_message(cl->sockfd, sizeof(int), &ret_msg);
-		ft_printf("get_stage\n");
 		get_stage_read(cl->sockfd, (end - start), start, env);
-		ft_printf("end get_stage\n");
 		ret_msg = STAGE_SUCCES;
-		ft_printf("send confirm\n");
 		send_message(cl->sockfd, sizeof(int), &ret_msg);
-		ft_printf("end send confirm\n");
 		lst_th = lst_th->next;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
+	mlx_key_hook(env->win, key_hook, env);
+	mlx_expose_hook(env->win, expose_hook, env);
+	ft_printf("End of compute\n");
 	mlx_loop(env->mlx);
 }

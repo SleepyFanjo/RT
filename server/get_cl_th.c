@@ -8,7 +8,7 @@ static int		get_sockfd(char *addr_ip, int port)
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd < 0)
 	{
-		ft_printf("%rUnable to create socket\n");
+		ft_printf("%r\e[0;31mUnable to create socket\e[0;m\n");
 		return (-1);
 	}
 	ft_bzero(&that, sizeof(that));
@@ -17,7 +17,7 @@ static int		get_sockfd(char *addr_ip, int port)
 	that.sin_addr.s_addr = inet_addr(addr_ip);
 	if (connect(sockfd, (struct sockaddr *)(&that), sizeof(that)) < 0)
 	{
-		ft_printf("%rFail to open the socket\n");
+		ft_printf("%r\e[0;31mFail to open the socket\e[0;m\n");
 		return (-1);
 	}
 	return (sockfd);
@@ -27,7 +27,6 @@ static int		cl_connect(t_client *cl, t_id_client *id_cl)
 {
 	int			ret;
 
-	ft_printf("send name\n");
 	if ((cl->sockfd = get_sockfd(id_cl->ip, id_cl->port)) < 0)
 		return (-1);
 	if ((write(cl->sockfd, cl->name_host_server, ft_strlen(cl->name_host_server))) < 0)
@@ -84,7 +83,7 @@ int		get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf)
 		{
 			ft_lstadd(lst_th, ft_lstnew((void *)elem, sizeof(t_client)));
 			nb_cl_connected++;
-			ft_printf("Done\n");
+			ft_printf("\e[0;32mDone\e[0;m\n");
 		}
 		lst_cl = lst_cl->next;
 		nb_cl++;

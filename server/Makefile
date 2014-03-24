@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/23 18:56:34 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/24 14:00:50 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC= main_serv.c \
 	 get_cl_stage.c \
 	 get_value.c \
 	 init_env.c \
+	 hook.c \
 	 send_env.c
 
 INCLUDES=-I../includes -I./../libft/includes

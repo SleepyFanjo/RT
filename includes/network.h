@@ -91,5 +91,7 @@ void	init_env(t_v_env *env);
 int		get_value(int fd, void *buf, size_t size);
 t_v_env	*send_env(t_list *lst);
 void	get_cl_stage(t_list *lst_th, t_v_env *env);
+int		key_hook(int keycode, t_v_env *e);
+int		expose_hook(void *env);
 
 #endif

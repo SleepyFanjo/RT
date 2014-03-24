@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/23 19:02:19 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/24 14:01:22 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ int		ft_hex_atoi(char *str);
 int		next_number(char *line, int *i);
 int		first_number(char *line, int *i);
 t_coord	init_cam(t_coord *rot, char *dir);
-int		expose_hook(t_param *param);
-int		key_hook(int keycode, t_param *param);
 void	ft_error(char *s1, char *s2, int mode);
 void	*j_malloc(size_t size);
 int		raythrow(t_thread *thread);
