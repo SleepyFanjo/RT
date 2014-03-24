@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:49:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/23 17:37:53 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 11:54:16 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,20 @@
 
 #include <stdio.h>
 
-int		render(int keycode, t_param *param)
+int		render(int keycode, t_param *param, t_coord *pos, t_coord *rot)
 {
+	(void)pos;
+	(void)rot;
 	if (keycode != 114)
 		return (0);
 	R = 1;
 	return (1);
 }
 
-int		live(int keycode, t_param *param)
+int		live(int keycode, t_param *param, t_coord *pos, t_coord *rot)
 {
+	(void)pos;
+	(void)rot;
 	if (keycode != 108)
 		return (0);
 	if (L)
@@ -34,8 +38,10 @@ int		live(int keycode, t_param *param)
 	return (1);
 }
 
-int		save(int keycode, t_param *param)
+int		save(int keycode, t_param *param, t_coord *pos, t_coord *rot)
 {
+	(void)pos;
+	(void)rot;
 	char		*name;
 	int			fd;
 
@@ -52,8 +58,10 @@ int		save(int keycode, t_param *param)
 	return (1);
 }
 
-int		zoom(int keycode, t_param *param)
+int		zoom(int keycode, t_param *param, t_coord *pos, t_coord *rot)
 {
+	(void)pos;
+	(void)rot;
 	if (keycode == PLUS)
 	{
 		C_Y += 25;
@@ -67,8 +75,10 @@ int		zoom(int keycode, t_param *param)
 	return (0);
 }
 
-int		wasd(int keycode, t_param *param)
+int		wasd(int keycode, t_param *param, t_coord *pos, t_coord *rot)
 {
+	(void)pos;
+	(void)rot;
 	double		*tmp;
 
 	if (keycode == W)
@@ -98,8 +108,10 @@ int		wasd(int keycode, t_param *param)
 	return (0);
 }
 
-int		arrows(int keycode, t_param *param)
+int		arrows(int keycode, t_param *param, t_coord *pos, t_coord *rot)
 {
+	(void)pos;
+	(void)rot;
 	double		*tmp;
 
 	if (keycode == UP)

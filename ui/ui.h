@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:51:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/23 15:51:09 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 11:41:29 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,17 @@
 # define R param->ui->render
 # define L param->ui->live
 # define OBJ param->ui->obj
+# define FOCUS param->ui->focus
 
 /*
 **	key1.c
 */
-int		arrows(int keycode, t_param *param);
-int		zoom(int keycode, t_param *param);
-int		wasd(int keycode, t_param *param);
-int		render(int keycode, t_param *param);
-int		save(int keycode, t_param *param);
-int		live(int keycode, t_param *param);
+int		arrows(int keycode, t_param *param, t_coord *pos, t_coord *rot);
+int		zoom(int keycode, t_param *param, t_coord *pos, t_coord *rot);
+int		wasd(int keycode, t_param *param, t_coord *pos, t_coord *rot);
+int		render(int keycode, t_param *param, t_coord *pos, t_coord *rot);
+int		save(int keycode, t_param *param, t_coord *pos, t_coord *rot);
+int		live(int keycode, t_param *param, t_coord *pos, t_coord *rot);
 
 /*
 **	save.c

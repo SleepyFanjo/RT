@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 11:17:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/23 15:09:59 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 12:51:06 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int			main(int argc, char **argv)
 	expose_hook(&param);
 	mlx_expose_hook(param.env.win, expose_hook, &param);
 	mlx_key_hook(param.env.win, key_hook, &param);
+	mlx_mouse_hook(param.env.win, mouse_hook, &param);
 	mlx_loop(param.env.mlx);
 	return (0);
 }
