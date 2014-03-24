@@ -143,13 +143,6 @@ int		*reflexion(t_param *param, t_info *info)
 	return (init_color());
 }
 
-int		*re()
-{
-	int		*color;
-
-	color = 
-}
-
 /*
 int		*recursive(t_param *param, t_info *info, int *color)
 {
