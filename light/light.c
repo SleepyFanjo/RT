@@ -137,7 +137,7 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 	t_coord n_v;
 	int		ok;
 
-	ok = 0;
+	ok = 1;
 	if (info->distance < 0)
 		return ;
 	s_color = init_color();

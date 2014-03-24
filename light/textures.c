@@ -149,23 +149,23 @@ int		*damer(t_param *param, t_info *info, t_coord point)
 
 	if ((tmp = get_texture(info)) == DAMIER)
 		return (checker(info, point));
-	if (get_texture(info) == TEXT_1)
+	if (get_texture(info) == TEXT_0)
 		return (apply_text_sphere(point, (t_sphere *)info->obj, T0));
-	if (get_texture(info) == TEXT_2)
+	if (get_texture(info) == TEXT_1)
 		return (apply_text_sphere(point, (t_sphere *)info->obj, T1));
-	if (get_texture(info) == TEXT_3)
+	if (get_texture(info) == TEXT_2)
 		return (apply_text_sphere(point, (t_sphere *)info->obj, T2));
-	if (get_texture(info) == TEXT_4)
+	if (get_texture(info) == TEXT_3)
 		return (apply_text_sphere(point, (t_sphere *)info->obj, T3));
-	if (get_texture(info) == TEXT_5)
+	if (get_texture(info) == TEXT_4)
 		return (apply_text_sphere(point, (t_sphere *)info->obj, T4));
-	if (get_texture(info) == TEXT_6)
+	if (get_texture(info) == TEXT_5)
 		return (apply_text_sphere(point, (t_sphere *)info->obj, T5));
-	if (get_texture(info) == TEXT_7)
+	if (get_texture(info) == TEXT_6)
 		return (apply_text_sphere(point, (t_sphere *)info->obj, T6));
-	if (get_texture(info) == TEXT_8)
+	if (get_texture(info) == TEXT_7)
 		return (apply_text_sphere(point, (t_sphere *)info->obj, T7));
-//	if (get_texture(info) == TEXT_9)
-//		return (apply_text_sphere(point, (t_sphere *)info->obj, T8));
+	if (get_texture(info) == TEXT_8)
+		return (apply_text_sphere(point, (t_sphere *)info->obj, T8));
 	return (info->color);
 }

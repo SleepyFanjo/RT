@@ -142,6 +142,14 @@ int		*reflexion(t_param *param, t_info *info)
 		return (retrieve_col(damer(param, &ref, ref.r_pos), info->color, get_reflex(info)));
 	return (init_color());
 }
+
+int		*re()
+{
+	int		*color;
+
+	color = 
+}
+
 /*
 int		*recursive(t_param *param, t_info *info, int *color)
 {

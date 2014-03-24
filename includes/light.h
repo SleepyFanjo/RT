@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 14:26:09 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/23 20:35:22 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/24 10:11:01 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 # include "raytracer.h"
 
 # define DAMIER		1
-# define TEXT_1		2
-# define TEXT_2		3
-# define TEXT_3		4
-# define TEXT_4		5
-# define TEXT_5		6
-# define TEXT_6		7
-# define TEXT_7		8
-# define TEXT_8		9
+# define TEXT_0		2
+# define TEXT_1		3
+# define TEXT_2		4
+# define TEXT_3		5
+# define TEXT_4		6
+# define TEXT_5		7
+# define TEXT_6		8
+# define TEXT_7		9
+# define TEXT_8		10
 
 #define T0			param->text[0]
 #define T1			param->text[1]
