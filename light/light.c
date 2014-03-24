@@ -28,18 +28,6 @@ int		point_cmp(t_coord p1, t_coord p2)
 	return (1);
 }
 
-static t_coord	calc_v_reflex(t_coord v_dir, t_coord v_nor)
-{
-	double	tmp;
-	t_coord	v_reflex;
-
-	tmp = -2 * dot_product(v_dir, v_nor);
-	v_reflex.x = v_dir.x + tmp * v_nor.x;
-	v_reflex.y = v_dir.y + tmp * v_nor.y;
-	v_reflex.z = v_dir.z + tmp * v_nor.z;
-	return (v_reflex);
-}
-
 t_coord	turn_vect(t_coord vect)
 {
 	t_coord	n_vect;
@@ -65,7 +53,7 @@ double	calc_shining(t_coord v_nor, t_coord v_lum)
 	t_coord	v_reflex;
 
 	v_reflex = calc_v_reflex(v_lum, v_nor);
-	shining = pow(calc_fading(v_lum, v_reflex), 200);
+	shining = pow(calc_fading(v_lum, v_reflex), 100);
 	return (shining);
 }
 
@@ -134,10 +122,7 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 	double	fading;
 	double	shining;
 	int 	*s_color;
-	t_coord n_v;
-	int		ok;
 
-	ok = 0;
 	if (info->distance < 0)
 		return ;
 	s_color = init_color();
@@ -148,23 +133,15 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		calc_intersection(param, &light);
 		if (point_cmp(info->r_pos, light.r_pos) == 1)
 		{
-			if (info->obj_type == PLANE && ok == 1)
-			{
-				n_v = new_vn(info);
-				fading = ft_abs(calc_fading(light.r_line.vec, n_v));
-				shining = ft_abs(calc_shining(n_v, light.r_line.vec));
-			}
-			else
-			{
-				fading = ft_abs(calc_fading(light.r_line.vec, info->vec_n));
-				shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
-			}
+			fading = ft_abs(calc_fading(light.r_line.vec, info->vec_n));
+			shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
 			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining * fading;
 			calc_color(&s_color, o_spot->color, o_spot->value, fading);
 		}
 		spot = spot->next;
 	}
-	info->color = retrieve_col(s_color, damer(param, info, info->r_pos), get_shine(info));
+	info->color = retrieve_col(s_color, damer(param, info, info->r_pos),
+		   			get_shine(info));
 //	info->color = retrieve_col(s_color, info->color, get_shine(info));
 }

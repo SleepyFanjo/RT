@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 14:26:09 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/23 20:35:22 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/24 15:22:31 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 # include "raytracer.h"
 
 # define DAMIER		1
-# define TEXT_1		2
-# define TEXT_2		3
-# define TEXT_3		4
-# define TEXT_4		5
-# define TEXT_5		6
-# define TEXT_6		7
-# define TEXT_7		8
-# define TEXT_8		9
+# define TEXT_0		2
+# define TEXT_1		3
+# define TEXT_2		4
+# define TEXT_3		5
+# define TEXT_4		6
+# define TEXT_5		7
+# define TEXT_6		8
+# define TEXT_7		9
+# define TEXT_8		10
 
 #define T0			param->text[0]
 #define T1			param->text[1]
@@ -41,6 +42,7 @@ double		dot_product(t_coord p1, t_coord p2);
 int 		*init_color(void);
 int 		*retrieve_col(int *col, int *obj_col, double coef);
 int			*damer(t_param *param, t_info *info, t_coord point);
+t_coord		calc_v_reflex(t_coord ov_dir, t_coord ov_nor);
 
 double		get_shine(t_info *info);
 double		get_med(t_info *info);
