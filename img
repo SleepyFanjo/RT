@@ -1,0 +1,7 @@
+./raythrow.c:48:	if (!param->ui->render && !param->ui->live)
+./ui/ui.h:35:# define R param->ui->render
+./ui/ui.h:36:# define L param->ui->live
+./ui/ui.h:37:# define OBJ param->ui->obj
+./ui/ui.h:38:# define POS param->ui->pos
+./ui/ui.h:39:# define ROT param->ui->rot
+./ui/ui.h:40:# define B_ROT param->ui->b_rot

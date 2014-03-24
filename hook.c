@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:10:44 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/24 20:03:43 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 20:43:12 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		expose_hook(t_param *param)
 		return (0);
 	env = param->env;
 	mlx_put_image_to_window(env.mlx, env.win, env.img, 0, 0);
-	mlx_put_image_to_window(env.mlx, env.win, env.ui, 0, HEIGHT);
+	//mlx_put_image_to_window(env.mlx, env.win, env.ui, 0, HEIGHT);
 	return (0);
 }
 

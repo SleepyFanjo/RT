@@ -6,12 +6,11 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/24 19:56:57 by lredoban         ###   ########.fr        #
+#    Updated: 2014/03/24 20:48:20 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= clang
-CFLAGS= -Wall -Werror -Wextra -g
 SRC= main.c \
 	 apply_transformation.c \
 	 hook.c \
@@ -88,7 +87,7 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	echo "\t\xF0\x9F\x94\xA7   Building \033[34m $@ \033[0m"
-	$(CC) -c $(CFLAGS) $(INCLUDES) -o $@ $< -I./ -I$(DIR_LFT)/includes -I /usr/X11/include/
+	$(CC) -c  $(INCLUDES) -o $@ $< -I./ -I$(DIR_LFT)/includes -I /usr/X11/include/
 
 clean:
 	echo "\t\xF0\x9F\x92\xA3   Cleaning"
