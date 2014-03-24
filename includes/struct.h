@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/23 19:02:19 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/24 11:50:19 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef struct		s_img
 	int				bpp;
 	int				line;
 	int				endian;
+	int				*decrgb;
+	int				depth;
 }					t_img;
 
 typedef struct		s_material

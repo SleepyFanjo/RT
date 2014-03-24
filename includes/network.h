@@ -7,6 +7,7 @@
 # include <netinet/in.h>
 # include <arpa/inet.h>
 # include <fcntl.h>
+# include <X11/Xlib.h>
 # include "define.h"
 
 # define MAX_HOST_NAME	4095
@@ -61,6 +62,24 @@ typedef struct		s_v_env
 	int				line;
 	int				endian;
 }					t_v_env;
+
+typedef struct	s_my_mlx
+{
+    Display		*display;
+    Window		root;
+    int			screen;
+    int			depth;
+    Visual		*visual;
+    Colormap	cmap;
+    int			private_cmap;
+    void		*win_list;
+    int			(*loop_hook)();
+    void		*loop_param;
+    int			use_xshm;
+    int			pshm_format;
+    int			do_flush;
+    int			decrgb[6];
+}				t_my_mlx;
 
 char	*get_stage(char *filename);
 void	get_lst_cl(char *filename, t_list **lst_id_cl);

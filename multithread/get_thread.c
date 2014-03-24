@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:51:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/23 17:32:43 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/24 10:31:28 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	ft_connect_blur(t_list *lst)
 		return (0);
 	prvs = (t_thread *)lst->content;
 	lst = lst->next;
-	while (1)
+	while (lst != NULL)
 	{
 		cur = (t_thread *)lst->content;
 		cur->limit->s_j = ft_max(prvs->limit->e_j - 1, 0);
