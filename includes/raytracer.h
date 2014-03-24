@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/23 17:29:53 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 11:03:50 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ int		calc_color_end(t_param *param, t_info *info);
 void	swap_double(double *a, double *b);
 void	init_ui(t_param *param);
 int		final_color(int *color, double light);
+void	get_textures(t_param *param, t_env e);
 
 #endif

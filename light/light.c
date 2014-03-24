@@ -165,6 +165,6 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		}
 		spot = spot->next;
 	}
-	info->color = retrieve_col(s_color, damer(info, info->r_pos), get_shine(info));
+	info->color = retrieve_col(s_color, damer(param, info, info->r_pos), get_shine(info));
 //	info->color = retrieve_col(s_color, info->color, get_shine(info));
 }

@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/23 20:21:32 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/24 11:03:36 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define PLANE		(1)
 # define CYLINDER	(2)
 # define CONE		(3)
+# define NB_T		(9)
 
 typedef struct		s_coord
 {
@@ -67,6 +68,17 @@ typedef struct		s_img
 	int				line;
 	int				endian;
 }					t_img;
+
+typedef struct		s_textures
+{
+	void			*img;
+	char            *data;
+	int             bpp;
+	int             sizeline;
+	int             endian;
+	int             size_x;
+	int             size_y;
+}					t_textures;
 
 typedef struct		s_material
 {
@@ -167,6 +179,7 @@ typedef struct		s_param
 	t_list			*cone;
 	t_img			v_img;
 	t_ui			*ui;
+	t_textures		text[NB_T];
 }					t_param;
 
 typedef struct		s_obj
