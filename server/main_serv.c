@@ -23,7 +23,11 @@ int		main(int argc, char **argv)
 		ft_printf("HOST var not defined\n");
 		return (1);
 	}
-	inf->nb_th = ft_atoi(argv[3]);
+	if ((inf->nb_th = ft_atoi(argv[3])) < 1)
+	{
+		ft_printf("Number of thread is too small (min 1)\n");
+		return (1);
+	}
 	inf->size_img[0] = WIDTH;
 	inf->size_img[1] = HEIGHT;
 	get_lst_cl(argv[2], &lst_id_cl);

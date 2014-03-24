@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:51:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/24 10:31:28 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/24 17:10:03 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static int	ft_connect_blur(t_list *lst)
 	if (lst == NULL)
 		return (0);
 	prvs = (t_thread *)lst->content;
+	img = &(prvs->p->v_img);
 	lst = lst->next;
 	while (lst != NULL)
 	{
@@ -92,7 +93,6 @@ static int	ft_connect_blur(t_list *lst)
 		prvs = (t_thread *)lst->content;
 		if (lst->next == NULL)
 		{
-			img = &(cur->p->v_img);
 			if (cur->limit->e_j > 0)
 				res = (cur->limit->e_j  - 1)* img->line;
 			else
@@ -102,7 +102,12 @@ static int	ft_connect_blur(t_list *lst)
 		}
 		lst = lst->next;
 	}
-	return (0);
+	if (prvs->limit->e_j > 0)
+		res = (prvs->limit->e_j  - 1) * img->line;
+	else
+		res = 0;
+	res += prvs->limit->e_i * (img->bpp / 8);
+	return (res);
 }
 
 static void		ft_smooth_lst(t_list *res)
@@ -132,7 +137,7 @@ t_list		*get_thread(t_param *param, t_inf_exec *inf, int *end, int *start)
 
 	if (inf->nb_th < 1)
 	{
-		ft_printf("%rNumber of thread is too small (%d)\n", inf->nb_th);
+		ft_printf("%rNumber of thread is too small (min 1) (%d)\n", inf->nb_th);
 		exit(1);
 	}
 	full_size = WIDTH * HEIGHT;

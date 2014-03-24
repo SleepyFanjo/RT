@@ -22,7 +22,6 @@ typedef struct		s_nb_th
 typedef struct		s_client
 {
 	int				id;
-	pthread_t		th;
 	t_nb_th			nb_th;
 	int				*size_img;
 	char			*name_host_server;
@@ -33,6 +32,9 @@ typedef struct		s_client
 	pthread_mutex_t	*lock_th_com;
 	int				lim;
 	int				size;
+	pthread_t		th;
+	int				start;
+	int				end;
 }					t_client;
 
 typedef struct		s_info_serv

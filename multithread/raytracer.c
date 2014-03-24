@@ -38,9 +38,7 @@ int		raytracer(t_param *param, t_inf_exec *inf, int sockfd)
 	int			start;
 	int			tmp_ret;
 
-	ft_printf("start raytracer\n");
 	th = get_thread(param, inf, &end, &start);
-	ft_printf("start: %d, end: %d\n", start, end);
 	send_message(sockfd, sizeof(int), &start);
 	send_message(sockfd, sizeof(int), &end);
 	if (get_value(sockfd, &tmp_ret, sizeof(int)) < 0 || tmp_ret != SIZE_SUCCES)
@@ -48,17 +46,14 @@ int		raytracer(t_param *param, t_inf_exec *inf, int sockfd)
 		ft_printf("%r#12\n");
 		exit(12);
 	}
-	ft_printf("get_thread end\n");
 	tmp = th;
-	ft_printf("execute thread\n");
 	execute_thread(th);
-	printf("start: %d, end: %d\n", start, end);
 	send_stage(sockfd, param, start, end);
 	if (get_value(sockfd, &tmp_ret, sizeof(int)) < 0 || tmp_ret != STAGE_SUCCES)
 	{
 		ft_printf("%r#13\n");
 		exit(12);
 	}
-//	free_obj_lst(param);
+	free_obj_lst(param);
 	return (0);
 }

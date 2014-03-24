@@ -36,15 +36,10 @@ int		compute(int socketfd)
 	if (host == NULL)
 		host = ft_strdup("unknow\n");
 	write(socketfd, host, strlen(host));
-	ft_printf("get env\n");
 	get_env(socketfd, &img);
-	ft_printf("get stage\n");
 	get_stage(socketfd);
-	ft_printf("get core\n");
 	get_core(inf, socketfd);
-	ft_printf("calc\n");
 	calc_multi_stage(socketfd, inf, &img);
-	printf("inf: nb_th: %d, nb_tot_th: %d, nb_st_th: %d\n", inf->nb_th, inf->nb_tot_th, inf->nb_st_th);
 	return (0);
 }
 
@@ -76,6 +71,7 @@ static void		loop_listen(socklen_t lg, int sockfd)
 	int					newsockfd;
 	struct sockaddr_in	that;
 	pid_t				pid;
+	int					ret;
 
 	while (1)
 	{
@@ -95,13 +91,12 @@ static void		loop_listen(socklen_t lg, int sockfd)
 				exit(0);
 			}
 			else
-				wait(NULL);
-			printf("close sockfd\n");
+				wait(&ret);
+			ft_printf("Compute end with status: %d\n", ret);
 			close(newsockfd);
-			close(sockfd);
-			exit(0);
 		}
 	}
+	close(sockfd);
 }
 
 int				ft_listen(int port)

@@ -8,7 +8,7 @@ static int	get_fd_img(int sockfd)
 	if ((fd = open(NAME_STAGE, O_WRONLY | O_CREAT | O_TRUNC, 0644)) < 0)
 	{
 		ret = STAGE_FAIL;
-		ft_printf("Fail\n");
+		ft_printf("%19\n");
 		send_message(sockfd, sizeof(int), (void *)(&ret));
 		close(sockfd);
 		exit(1);
@@ -36,7 +36,7 @@ static void	get_stage_read(int sockfd, int size)
 		if (ret < 0)
 		{
 			ret = STAGE_FAIL;
-			ft_printf("Fail\n");
+			ft_printf("%r18\n");
 			send_message(sockfd, sizeof(int), (void *)(&ret));
 			close(sockfd);
 			exit(1);
