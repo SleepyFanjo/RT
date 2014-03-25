@@ -14,6 +14,7 @@ static t_img	*v_init_img(t_v_env *env)
 	img->decrgb = mlx->decrgb;
 	img->depth = mlx->depth;
 	img->addr = NULL;
+	img->live_mod = env->live_mod;
 	return (img);
 }
 

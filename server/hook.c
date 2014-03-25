@@ -55,6 +55,7 @@ int		key_hook(int keycode, t_v_env *e)
 			break ;
 		i++;
 	}
+	e->live_mod = e->p->live_mod;
 	if (i != 5)
 	{
 		save(param);

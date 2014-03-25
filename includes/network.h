@@ -57,6 +57,7 @@ typedef struct		s_v_env
 	char			*addr;
 	int				bpp;
 	int				line;
+	int				live_mod;
 	int				endian;
 	t_textures		text[NB_T];
 	t_param			*p;
