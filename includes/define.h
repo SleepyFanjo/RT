@@ -8,7 +8,7 @@
 # define MOD_CLIENT		0
 
 # define NAME_STAGE		"stage.tmp"
-# define NET_BUFF_SIZE	1000000
+# define NET_BUFF_SIZE	100000
 # define LIM_NB_WRITE	10
 # define LIM_NB_READ	10
 

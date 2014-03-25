@@ -60,7 +60,6 @@ static t_client	*get_client(t_id_client *id_cl, t_info_serv *inf, int nb_cl)
 		exit(1);
 	}
 	init_cl(cl, nb_cl, inf);
-	ft_printf("cl->name_host_server: %s\n", cl->name_host_server);
 	if (cl_connect(cl, id_cl) < 0)
 		return (NULL);
 	return (cl);
@@ -73,7 +72,6 @@ int		get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf)
 	t_id_client	*cl_id;
 	int			nb_cl_connected;
 
-	ft_printf("inf: %s\n", inf->name_serv);
 	nb_cl = 0;
 	nb_cl_connected = 0;
 	while (lst_cl != NULL)

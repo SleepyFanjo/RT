@@ -6,6 +6,7 @@ int		send_inf_calc(t_list *list, t_info_serv *inf, int nb_cl)
 	t_client	*cl;
 
 	exec = j_malloc(sizeof(t_inf_exec));
+	bzero(exec, sizeof(t_inf_exec));
 	exec->nb_tot_th = nb_cl * inf->nb_th;
 	exec->nb_st_th = 0;
 	exec->nb_th = inf->nb_th;

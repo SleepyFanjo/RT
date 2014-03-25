@@ -57,6 +57,7 @@ static void	get_stage_read(int sockfd, int size, int start, t_v_env *env)
 		}
 		cpy_to_img(0, buff, ret, env);
 	}
+	free(buff);
 }
 
 static void	get_lim_cl(t_list *lst)
