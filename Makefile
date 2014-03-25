@@ -117,7 +117,8 @@ SRC2= server/main_serv.c \
 	 ui/ft_num.c \
 	 ui/ft_putui.c \
 	 ui/clic.c \
-	 ft_error.c
+	 ft_error.c \
+	 server/calc_img.c
 
 INCLUDES=-I./ui/ -I./includes/
 INC=multithread.h \

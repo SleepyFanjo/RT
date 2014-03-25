@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/25 15:40:52 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/25 16:50:44 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		raythrow(t_thread *thread)
 	l = thread->limit;
 	if (l->s_j == l->e_j)
 	{
-		printf("end\n");
 		return (one_line(thread, l));
 	}
 	if (print_first_line(thread, l) < 0)
@@ -38,7 +37,6 @@ int		raythrow(t_thread *thread)
 		return (-1);
 	if (print_last_line(thread, l) < 0)
 		return (-1);
-	printf("end\n");
 	return (0);
 }
 

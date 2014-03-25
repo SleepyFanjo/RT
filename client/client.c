@@ -70,9 +70,7 @@ static void		loop_listen(socklen_t lg, int sockfd)
 				close(newsockfd);
 				wait(&ret);
 			}
-			close(sockfd);
 			ft_printf("Compute end with status: %d\n", ret);
-			exit(0);
 		}
 	}
 	close(sockfd);

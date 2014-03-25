@@ -27,6 +27,7 @@ static int		send_textures(int sockfd, t_v_env *env)
 	while (i < NB_T)
 	{
 		tex = ((t_textures *)(env->text)) + i;
+		bzero(tex, sizeof(t_textures));
 		if (send_long_message(sockfd, tex, sizeof(t_textures)) < 0)
 			return (-1);
 		size = tex->size_y * tex->sizeline;
@@ -67,21 +68,17 @@ static void		loop_send_env(t_client *cl, t_img *img, t_v_env *env)
 	}
 }
 
-t_v_env			*send_env(t_list *lst)
+void		send_env(t_list *lst, t_v_env *e)
 {
 	t_client	*cl;
 	t_img		*img;
-	t_v_env		*env;
 
-	env = j_malloc(sizeof(t_v_env));
-	init_env(env);
-	img = v_init_img(env);
+	img = v_init_img(e);
 	while (lst != NULL)
 	{
 		cl = (t_client *)lst->content;
-		loop_send_env(cl, img, env);
+		loop_send_env(cl, img, e);
 		lst = lst->next;
 	}
 	free(img);
-	return (env);
 }

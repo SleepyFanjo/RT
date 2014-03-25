@@ -59,6 +59,9 @@ typedef struct		s_v_env
 	int				line;
 	int				endian;
 	t_textures		text[NB_T];
+	t_param			*p;
+	t_info_serv		*inf;
+	t_list			*lst_id_cl;
 }					t_v_env;
 
 typedef struct	s_my_mlx
@@ -87,13 +90,15 @@ int		send_stage(t_info_serv *inf, t_list *lst);
 int		send_inf_calc(t_list *list, t_info_serv *inf, int nb_cl);
 void	init_env(t_v_env *env);
 int		get_value(int fd, void *buf, size_t size);
-t_v_env	*send_env(t_list *lst);
+void	send_env(t_list *lst, t_v_env *e);
 void	get_cl_stage(t_list *lst_th, t_v_env *env);
 int		key_hook(int keycode, t_v_env *e);
 int		expose_hook(void *env);
+int		mouse_hook(int button, int x, int y, t_v_env *e);
 void	free_cl(t_list *lst_cl);
 void	*j_malloc(size_t size);
 void	get_textures(t_v_env *param, void *e);
 int		send_long_message(int sockfd, void *mess, int size);
+void	calc_img(t_list *lst_host, t_info_serv *inf, t_v_env *e);
 
 #endif
