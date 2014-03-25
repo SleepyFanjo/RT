@@ -70,14 +70,16 @@ static t_line	init_line(t_coord p1, t_coord p2)
 	return (line);
 }
 
-t_info	init_light(t_info *info, t_spot *spot)
+t_info	*init_light(t_info *info, t_spot *spot)
 {
-	t_info	light;
+	t_info	*light;
 
-	light.r_line = init_line(info->r_pos, spot->coord);
-	light.distance = -1;
-	light.light = AMBL;
-	light.color = NULL;
+	light = (t_info *)j_malloc(sizeof(t_info));
+	light->r_line = init_line(info->r_pos, spot->coord);
+	light->distance = -1;
+	light->light = AMBL;
+	light->color = (int *)j_malloc(sizeof(int) * 3);
+	light->obj_type = -1;
 	return (light);
 }
 
@@ -105,19 +107,9 @@ int 	*retrieve_col(int *col, int *obj_col, double coef)
 	return (final_col);
 }
 
-t_coord	new_vn(t_info *info)
-{
-	t_coord		vn;
-
-	vn.x = info->vec_n.x;
-	vn.z = info->vec_n.z;
-	vn.y = info->vec_n.y + cos((info->r_pos.y / 10.0)) * (norme(info->vec_n) / 10.0);
-	return (vn);
-}
-
 void	calc_light(t_param *param, t_info *info, t_list *spot)
 {
-	t_info	light;
+	t_info	*light;
 	t_spot	*o_spot;
 	double	fading;
 	double	shining;
@@ -130,11 +122,11 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 	{
 		o_spot = (t_spot *)spot->content;
 		light = init_light(info, o_spot);
-		calc_intersection(param, &light);
-		if (point_cmp(info->r_pos, light.r_pos) == 1)
+		calc_intersection(param, light);
+		if (point_cmp(info->r_pos, light->r_pos) == 1)
 		{
-			fading = ft_abs(calc_fading(light.r_line.vec, info->vec_n));
-			shining = ft_abs(calc_shining(info->vec_n, light.r_line.vec));
+			fading = ft_abs(calc_fading(light->r_line.vec, info->vec_n));
+			shining = ft_abs(calc_shining(info->vec_n, light->r_line.vec));
 			info->light += o_spot->value * fading;
 			info->light += o_spot->value * shining * fading;
 			calc_color(&s_color, o_spot->color, o_spot->value, fading);
