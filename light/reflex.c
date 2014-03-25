@@ -152,6 +152,8 @@ int		*recursive(t_param *param, t_info *info, int *color, int n, int fd)
 	r_info = get_reflex(info);
 	if (ref->distance != -1 && r_ref > 0 && n != 0)
 		info->color = recursive(param, ref, color, n - 1, fd);
+	if (ref->distance == -1)
+		return (init_color());
 dprintf(fd, "i = %d, obj_type = %d - reflex = %f\n",n,  ref->obj_type, r_ref);
 	calc_light(param, ref, param->spot);
 	color = retrieve_col(damer(param, ref, ref->r_pos), info->color, r_info);

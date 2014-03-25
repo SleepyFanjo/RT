@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/24 19:08:02 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/25 15:39:23 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ typedef struct		s_img
 	int				bpp;
 	int				line;
 	int				endian;
+	int				*decrgb;
+	int				depth;
 }					t_img;
 
 typedef struct		s_textures
@@ -182,7 +184,7 @@ typedef struct		s_param
 	t_list			*cone;
 	t_img			v_img;
 	t_ui			*ui;
-	t_textures		text[NB_T];
+	t_textures		*text;
 }					t_param;
 
 typedef struct		s_obj

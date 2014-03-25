@@ -7,6 +7,7 @@
 # include <netinet/in.h>
 # include <arpa/inet.h>
 # include <fcntl.h>
+# include <X11/Xlib.h>
 # include "define.h"
 
 # define MAX_HOST_NAME	4095
@@ -21,20 +22,19 @@ typedef struct		s_nb_th
 typedef struct		s_client
 {
 	int				id;
-	pthread_t		th;
 	t_nb_th			nb_th;
-	int				*size_img;
 	char			*name_host_server;
 	char			*name_host_cl;
 	char			*stage;
 	int				sockfd;
-	int				*th_com;
-	pthread_mutex_t	*lock_th_com;
+	int				lim;
+	int				size;
+	int				start;
+	int				end;
 }					t_client;
 
 typedef struct		s_info_serv
 {
-	int				size_img[2];
 	int				nb_th;
 	int				th_com[2];
 	char			*stage;
@@ -49,11 +49,51 @@ typedef struct		s_id_client
 	int				port;
 }					t_id_client;
 
+typedef struct		s_v_env
+{
+	void			*mlx;
+	void			*win;
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				line;
+	int				endian;
+	t_textures		text[NB_T];
+}					t_v_env;
+
+typedef struct	s_my_mlx
+{
+    Display		*display;
+    Window		root;
+    int			screen;
+    int			depth;
+    Visual		*visual;
+    Colormap	cmap;
+    int			private_cmap;
+    void		*win_list;
+    int			(*loop_hook)();
+    void		*loop_param;
+    int			use_xshm;
+    int			pshm_format;
+    int			do_flush;
+    int			decrgb[6];
+}				t_my_mlx;
+
 char	*get_stage(char *filename);
 void	get_lst_cl(char *filename, t_list **lst_id_cl);
 int		get_cl_th(t_list **lst_th, t_list *lst_cl, t_info_serv *inf);
 int		send_message(int fd, size_t size, void *mess);
 int		send_stage(t_info_serv *inf, t_list *lst);
 int		send_inf_calc(t_list *list, t_info_serv *inf, int nb_cl);
+void	init_env(t_v_env *env);
+int		get_value(int fd, void *buf, size_t size);
+t_v_env	*send_env(t_list *lst);
+void	get_cl_stage(t_list *lst_th, t_v_env *env);
+int		key_hook(int keycode, t_v_env *e);
+int		expose_hook(void *env);
+void	free_cl(t_list *lst_cl);
+void	*j_malloc(size_t size);
+void	get_textures(t_v_env *param, void *e);
+int		send_long_message(int sockfd, void *mess, int size);
 
 #endif
