@@ -34,7 +34,6 @@ static int	get_serv_tex(int sockfd, t_textures **tex)
 		if (get_serv_text(sockfd, my_tex + i, sizeof(t_textures)) < 0)
 			return (-1);
 		size = my_tex[i].sizeline * my_tex[i].size_y;
-		printf("size: %d\n", size);
 		my_tex[i].data = j_malloc(size);
 		if (get_serv_text(sockfd, my_tex[i].data, size) < 0)
 			return (-1);

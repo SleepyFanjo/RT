@@ -27,7 +27,6 @@ static int		send_textures(int sockfd, t_v_env *env)
 	while (i < NB_T)
 	{
 		tex = ((t_textures *)(env->text)) + i;
-		bzero(tex, sizeof(t_textures));
 		if (send_long_message(sockfd, tex, sizeof(t_textures)) < 0)
 			return (-1);
 		size = tex->size_y * tex->sizeline;
