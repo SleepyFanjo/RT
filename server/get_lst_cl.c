@@ -95,4 +95,5 @@ void				get_lst_cl(char *filename, t_list **lst_id_cl)
 			ft_lstadd(lst_id_cl, ft_lstnew((void *)cl_id, sizeof(t_id_client)));
 		free(line);
 	}
+	close(fd);
 }
