@@ -15,34 +15,6 @@ static void	ft_print_error(char *str, int kill)
 		_exit(kill);
 }
 
-int		compute(int socketfd)
-{
-	char		buf[NET_BUFF_SIZE + 10];
-	int			ret;
-	char		*host;
-	t_inf_exec	*inf;
-	t_img		img;
-
-	inf = malloc(sizeof(t_inf_exec));
-	if ((ret = read(socketfd, buf, NET_BUFF_SIZE)) < 0)
-	{
-		perror("read");
-		exit(1);
-	}
-	buf[ret] = '\0';
-	host = strdup(buf);
-	printf("Host connect: %s\n", host);
-	host = getenv("HOST");
-	if (host == NULL)
-		host = ft_strdup("unknow\n");
-	write(socketfd, host, strlen(host));
-	get_env(socketfd, &img);
-	get_stage(socketfd);
-	get_core(inf, socketfd);
-	calc_multi_stage(socketfd, inf, &img);
-	return (0);
-}
-
 static int		init_socket(int sockfd, int port)
 {
 
@@ -66,6 +38,14 @@ static int		init_socket(int sockfd, int port)
 	return (0);
 }
 
+static void		v_child(int newsockfd, int sockfd)
+{
+	close(sockfd);
+	compute(newsockfd);
+	close(newsockfd);
+	exit(0);
+}
+
 static void		loop_listen(socklen_t lg, int sockfd)
 {
 	int					newsockfd;
@@ -83,13 +63,7 @@ static void		loop_listen(socklen_t lg, int sockfd)
 			if ((pid = fork()) < 0)
 				ft_print_error("fork error\n", 1);
 			if (pid == 0)
-			{
-				close(sockfd);
-				compute(newsockfd);
-				close(newsockfd);
-				close(sockfd);
-				exit(0);
-			}
+				v_child(newsockfd, sockfd);
 			else
 				wait(&ret);
 			ft_printf("Compute end with status: %d\n", ret);

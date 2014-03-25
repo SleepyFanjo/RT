@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/24 11:40:47 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/24 19:49:04 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRC= main.c \
 	 client/get_value.c \
 	 client/get_env.c \
 	 client/my_mlx_get_color_value.c \
+	 client/compute.c \
 	 client/calc_multi_stage.c
 
 INCLUDES=-I./includes/ -I./

@@ -14,4 +14,6 @@ int			get_core(t_inf_exec *inf, int sockfd);
 void		calc_multi_stage(int socketfd, t_inf_exec *inf, t_img *img);
 int			my_mlx_get_color_value(int color, int *decrgb, int depth);
 
+int			compute(int socketfd);
+
 #endif
