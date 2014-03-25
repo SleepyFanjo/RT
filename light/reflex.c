@@ -135,6 +135,5 @@ void	calc_reflex(t_param *param, t_info *info)
 	if (reflex <= 0.0001)
 		return ;
 	color = recursive(param, info, init_color(), 15);
-//	color = reflexion(param, info);
 	info->color = color;
 }

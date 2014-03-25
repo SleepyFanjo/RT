@@ -5,16 +5,26 @@ static int	get_fd_img(int sockfd)
 	int		fd;
 	int		ret;
 
-	ft_printf("is here\n");
 	if ((fd = open(NAME_STAGE, O_WRONLY | O_CREAT | O_TRUNC, 0644)) < 0)
 	{
 		ret = STAGE_FAIL;
-		ft_printf("Fail\n");
+		ft_printf("%19\n");
 		send_message(sockfd, sizeof(int), (void *)(&ret));
 		close(sockfd);
 		exit(1);
 	}
 	return (fd);
+}
+
+static void	v_fail(int sockfd)
+{
+	int		ret;
+
+	ret = STAGE_FAIL;
+	ft_printf("%r18\n");
+	send_message(sockfd, sizeof(int), (void *)(&ret));
+	close(sockfd);
+	exit(1);
 }
 
 static void	get_stage_read(int sockfd, int size)
@@ -33,15 +43,9 @@ static void	get_stage_read(int sockfd, int size)
 		ask_size = size - pos;
 		if (ask_size > BUFF_SIZE)
 			ask_size = BUFF_SIZE;
-		ret = read(sockfd, buff, BUFF_SIZE);
+		ret = read(sockfd, buff, ask_size);
 		if (ret < 0)
-		{
-			ret = STAGE_FAIL;
-			ft_printf("Fail\n");
-			send_message(sockfd, sizeof(int), (void *)(&ret));
-			close(sockfd);
-			exit(1);
-		}
+			v_fail(sockfd);
 		write(fd, buff, ret);
 		pos += ret;
 	}
@@ -66,7 +70,7 @@ void		get_stage(int fd)
 
 	if ((ret = read(fd, &size, sizeof(int))) != sizeof(int))
 	{
-		ft_printf("%rFail to get size\n");
+		ft_printf("%rFail #2\n");
 		ret = SIZE_FAIL;
 		send_message(fd, sizeof(int), (void *)(&ret));
 		exit(1);

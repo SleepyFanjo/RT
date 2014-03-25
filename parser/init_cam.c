@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/11 15:58:58 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/19 11:29:38 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/25 19:40:30 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_coord	get_rot(char *str, int i)
 	return (rot);
 }
 
-t_coord			init_cam(t_coord *rot, char *dir)
+/*t_coord			init_cam(t_coord *rot, char *dir)
 {
 	t_coord		cam;
 	int			fd;
@@ -47,4 +47,4 @@ t_coord			init_cam(t_coord *rot, char *dir)
 	if (i == 0)
 		ft_error("Error : can't init cam, incorrect file", NULL, 1);
 	return (cam);
-}
+}*/

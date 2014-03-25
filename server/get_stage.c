@@ -20,8 +20,12 @@ char	*get_stage(char *filename)
 		buff[ret] = '\0';
 		tmp = res;
 		if ((res = ft_strjoin(res, buff)) == NULL)
+		{
+			close(fd);
 			return (NULL);
+		}
 		free(tmp);
 	}
+	close(fd);
 	return (res);
 }

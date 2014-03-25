@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 12:14:41 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/25 12:27:34 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/25 20:16:31 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_coord		sphere_vec_n(t_info *info, t_sphere *obj)
 	return (res);
 }
 
-t_coord		plane_vec_n(t_info *info, t_plane *obj)
+t_coord		plane_vec_n(t_plane *obj)
 {
 	t_coord		res;
 

@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 11:33:19 by jrenouf-          #+#    #+#             */
-/*   Updated: 2013/12/26 13:45:03 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/25 10:44:33 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int				get_next_line(int const fd, char **line)
 	char		*occ;
 
 	*line = (char *)malloc(sizeof(char *) * (BUFF_SIZE + ft_strlen(save) + 1));
+	if (line == NULL)
+		return (-1);
 	*line = ft_strcpy(*line, save);
 	while (((occ = ft_strchr(*line, '\n')) == NULL) &&
 			((ret = read(fd, buf, BUFF_SIZE)) > 0))
