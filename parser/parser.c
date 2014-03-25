@@ -84,4 +84,5 @@ void	parser(char *filename, t_param *param)
 	param->rot_cam = obj->cam->rot;
 	bzero(&param->env, sizeof(t_env));
 	param->text = NULL;
+	close(fd);
 }

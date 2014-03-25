@@ -107,6 +107,7 @@ void		get_cl_stage(t_list *lst_th, t_v_env *env)
 		get_stage_read(cl->sockfd, (cl->end - cl->start), cl->start, env);
 		ret_msg = STAGE_SUCCES;
 		send_message(cl->sockfd, sizeof(int), &ret_msg);
+		close(cl->sockfd);
 		lst_th = lst_th->next;
 	}
 }

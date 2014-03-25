@@ -8,6 +8,7 @@ static int		get_sockfd(char *addr_ip, int port)
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd < 0)
 	{
+		close(sockfd);
 		ft_printf("%r\e[0;31mUnable to create socket\e[0;m\n");
 		return (-1);
 	}
@@ -17,6 +18,7 @@ static int		get_sockfd(char *addr_ip, int port)
 	that.sin_addr.s_addr = inet_addr(addr_ip);
 	if (connect(sockfd, (struct sockaddr *)(&that), sizeof(that)) < 0)
 	{
+		close(sockfd);
 		ft_printf("%r\e[0;31mFail to open the socket\e[0;m\n");
 		return (-1);
 	}
