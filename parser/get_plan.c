@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:19:28 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/22 15:10:36 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/25 11:49:45 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ int			get_plan(t_obj *obj, char *line)
 	plan->color = get_color(tab[10]);
 	if (plan->color == NULL)
 		return (-1);
-	plan->d = -(plan->pos.x * plan->vec.x) - (plan->pos.y * plan->vec.y)
-				- (plan->pos.z * plan->vec.z);
 	ft_lstadd(&(obj->plan), ft_lstnew(plan, sizeof(t_plane)));
 	return (0);
 }

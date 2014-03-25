@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/24 19:08:02 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/25 11:49:32 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ typedef struct		s_sphere
 typedef struct		s_plane
 {
 	t_coord			vec;
-	double			d;
 	t_coord			pos;
 	int				*color;
 	t_material		mat;
