@@ -23,23 +23,18 @@ typedef struct		s_client
 {
 	int				id;
 	t_nb_th			nb_th;
-	int				*size_img;
 	char			*name_host_server;
 	char			*name_host_cl;
 	char			*stage;
 	int				sockfd;
-	int				*th_com;
-	pthread_mutex_t	*lock_th_com;
 	int				lim;
 	int				size;
-	pthread_t		th;
 	int				start;
 	int				end;
 }					t_client;
 
 typedef struct		s_info_serv
 {
-	int				size_img[2];
 	int				nb_th;
 	int				th_com[2];
 	char			*stage;
@@ -95,5 +90,7 @@ t_v_env	*send_env(t_list *lst);
 void	get_cl_stage(t_list *lst_th, t_v_env *env);
 int		key_hook(int keycode, t_v_env *e);
 int		expose_hook(void *env);
+void	free_cl(t_list *lst_cl);
+void	*j_malloc(size_t size);
 
 #endif

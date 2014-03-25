@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/24 14:00:50 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/25 10:29:28 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SRC= main_serv.c \
 	 get_value.c \
 	 init_env.c \
 	 hook.c \
-	 send_env.c
+	 send_env.c \
+	 j_malloc.c \
+	 free_cl.c
 
 INCLUDES=-I../includes -I./../libft/includes
 OBJ= $(SRC:.c=.o)
