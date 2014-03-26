@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 12:02:11 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 10:43:13 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 10:55:36 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		calc_normal(t_info *info)
 	if (info->obj_type == SPHERE)
 		info->vec_n = sphere_vec_n(info, (t_sphere *)info->obj);
 	if (info->obj_type == PLANE)
-		info->vec_n = plane_vec_n((t_plane *)info->obj);
+		info->vec_n = plane_vec_n(info, (t_plane *)info->obj);
 	if (info->obj_type == CYLINDER)
 		info->vec_n = cylinder_vec_n(info, (t_cylinder *)info->obj);
 	if (info->obj_type == CONE)

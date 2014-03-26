@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 10:42:56 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 10:46:14 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	inter_cone(t_param *param, t_info *info, t_list *cone);
 void	calc_intersection(t_param *param, t_info *info);
 void	calc_normal(t_info *info);
 t_coord	sphere_vec_n(t_info *info, t_sphere *obj);
-t_coord	plane_vec_n(t_plane *obj);
+t_coord	plane_vec_n(t_info *info, t_plane *obj);
 t_coord	cylinder_vec_n(t_info *info, t_cylinder *obj);
 t_coord	cone_vec_n(t_info *info, t_cone *obj);
 void	calc_light(t_param *param, t_info *info, t_list *spot);
