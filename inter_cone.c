@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/15 19:17:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 20:31:48 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 21:18:47 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static double	*delta(t_line new, t_cone *obj)
 	t_equa		e;
 	double		tan_al;
 	double		*x;
+	double		x1;
+	double		x2;
 
 	x = (double *)j_malloc(sizeof(double) * 2);
 	x[0] = -1;
@@ -64,11 +66,11 @@ static double	*delta(t_line new, t_cone *obj)
 		return (x);
 	if (e.delta > -0.00001 && e.delta < 0.00001)
 	{
-		x[0] = -e.b / (2 * e.a);
+		x[0] = (-e.b / (2 * e.a));
 		return (x);
 	}
 	x[0] = (-e.b - sqrt(e.delta)) / (2 * e.a);
-	x[0] = (-e.b + sqrt(e.delta)) / (2 * e.a);
+	x[1] = (-e.b + sqrt(e.delta)) / (2 * e.a);
 	if (x[0] < x[1] && x[0] > 0)
 		return (x);
 	swap_double(&(x[0]), &(x[1]));
@@ -89,7 +91,6 @@ void			inter_cone(t_info *info, t_list *cone)
 		dist[0] = limited_cone(obj, new, dist);
 		if (dist[0] > 0.001 && (info->distance < 0 || dist[0] < info->distance))
 			update_info(info, dist[0], cone->content, new);
-		free(dist);
 		cone = cone->next;
 	}
 }
