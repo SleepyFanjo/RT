@@ -6,11 +6,21 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/15 19:17:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 21:18:47 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 21:48:58 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raytracer.h"
+
+static double	*init_delta(void)
+{
+	double		*d;
+
+	d = (double *)j_malloc(sizeof(double));
+	d[0] = -1;
+	d[1] = -1;
+	return (d);
+}
 
 static void		update_info(t_info *info, double dist, void *obj, t_line new)
 {
@@ -49,12 +59,8 @@ static double	*delta(t_line new, t_cone *obj)
 	t_equa		e;
 	double		tan_al;
 	double		*x;
-	double		x1;
-	double		x2;
 
-	x = (double *)j_malloc(sizeof(double) * 2);
-	x[0] = -1;
-	x[1] = -1;
+	x = init_delta();
 	tan_al = tan(RAD(obj->alpha));
 	tan_al = SQR(tan_al);
 	e.a = SQR(new.vec.x) + SQR(new.vec.z) - (SQR(new.vec.y) * tan_al);

@@ -15,7 +15,7 @@
 
 //cam
 #cam pos_x pos_y pos_z rot_x rot_y rot_z
-0 300 -1000 0 0 0
+0 400 -1000 0 0 0
 //plane
 #plane pos_x pos_y pos_z rot_x rot_y rot_z shine reflex med_in refrax trans texture color
 #200 -100 0 0 0 90 30 0 0 0 0 0 FF00FF
@@ -31,7 +31,6 @@
 -800 0 1500 0 0 0 120 0 200 90 0 0 0 0 0 0 EEEEEE
 -600 0 2200 0 0 0 120 0 200 90 0 0 0 0 0 0 EEEEEE
 -300 0 2700 0 0 0 120 0 200 90 0 0 0 0 0 0 EEEEEE
-0 100 800 0 0 0 80 1 200 -200 0 0 0 0 0 0 FFFFFF
 #800 0 7500 0 0 0 120 0 200 90 0 0 0 0 0 0 007FFF
 #0 0 1500 0 0 60 50 1 0 -200 30 0 0 0 0 0 F0FF00
 //spot
@@ -39,6 +38,9 @@
 -400 400 0 40 FFFFFF
 0 1500 1600 30 FFFFFF
 400 400 0 40 FFFFFF
+#0 0 0 100 FFFFFF
 //cone
 #cone pos_x pos_y pos_z rot_x rot_y rot_z alpha is_lim lim_h lim_b shine reflex med_in refrax trans texture color
-#0 0 1500 0 0 0 30 1 0 -600 30 0 0 0 0 0 FF0000
+0 10 1500 0 0 0 20 1 0 -600 30 0 0 0 0 0 555555
+-400 10 1500 0 0 0 20 1 0 -600 30 0 0 0 0 0 555555
+400 10 1500 0 0 0 20 1 0 -600 30 0 0 0 0 0 555555

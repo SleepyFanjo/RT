@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 20:31:51 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 21:46:58 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static double	*delta(t_line new, t_sphere *obj)
 	swap_double(&(ret[0]), &(ret[1]));
 	return (ret);
 }
-
 
 void			inter_sphere(t_info *info, t_list *sphere)
 {
