@@ -2,6 +2,7 @@
 # define MULTITHREAD_STRUCT_H
 
 # include <pthread.h>
+# include "struct.h"
 # include "raytracer.h"
 
 typedef struct	s_limit
@@ -20,4 +21,5 @@ typedef struct		s_thread
 	int				id;
 }					t_thread;
 
+int		raythrow(t_thread *thread);
 #endif

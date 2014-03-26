@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 12:10:07 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:22:15 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define X			(0)
 # define Y			(1)
 # define Z			(2)
-# include <list.h>
+# include "../libft/includes/list.h"
 # include <pthread.h>
 # define PIX		(img.pix)
 # define BPP		(img.bpp)

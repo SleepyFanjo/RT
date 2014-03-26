@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 15:20:04 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 13:49:28 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:13:57 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # define TJ		1
 # define ID		2
 # define JD		3
-# include <raytracer.h>
+# include <struct.h>
+# include "raytracer.h"
 
 void	fill_matrix_rot(double *matrix, t_coord rot);
 void	apply_matrix(double *matrix, t_coord *move);

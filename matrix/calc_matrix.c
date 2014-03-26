@@ -6,11 +6,11 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/26 11:54:07 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 13:50:00 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:12:17 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <matrix.h>
+#include "../includes/matrix.h"
 
 void		calc_matrix_sphere(double *m, double *m_i, t_sphere *obj)
 {

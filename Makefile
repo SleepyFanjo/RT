@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/26 13:54:16 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/26 14:23:34 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC1=apply_transformation.c \
 	 matrix/apply_matrix.c \
 	 matrix/fill_matrix.c \
 	 matrix/transformation.c \
-	 matrix/calc_matrix \
+	 matrix/calc_matrix.c \
 	 parser/get_color.c \
 	 parser/ft_hex_atoi.c \
 	 parser/parser.c \
@@ -103,7 +103,7 @@ SRC2=server/main_serv.c \
 	 matrix/apply_matrix.c \
 	 matrix/fill_matrix.c \
 	 matrix/transformation.c \
-	 matrix/calc_matrix \
+	 matrix/calc_matrix.c \
 	 parser/get_color.c \
 	 parser/ft_hex_atoi.c \
 	 parser/parser.c \
@@ -136,12 +136,12 @@ SRC2=server/main_serv.c \
 	 ft_error.c \
 	 server/calc_img.c
 
-INCLUDES=-I ui/ -I includes/ -I libft/includes -I ./
+INCLUDES=-I./ui/ -I./includes/ -I./libft/includes/
 OBJ1= $(SRC1:.c=.o)
 OBJ2= $(SRC2:.c=.o)
 NAME1= Exec_client
 NAME2= Raytracer
-LIB=-L./libft -lft_core -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lpthread
+LIB=-L./libft -lft_core -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lpthread -I /usr/X11/include/
 DIR_LFT=./libft
 
 .PHONY: clean fclean re all
@@ -162,7 +162,8 @@ $(NAME2): $(OBJ2)
 
 %.o: %.c
 	echo "\t\xF0\x9F\x94\xA7   Building \033[34m $@ \033[0m"
-	$(CC) -c $(FLAG) -o $@ $< $(INCLUDES)
+#	$(CC) -c $(FLAG) -o $@ $< $(INCLUDES)
+	$(CC) -c $(FLAGS)  $(INCLUDES) -o $@ $< $(LIB)
 
 clean:
 	echo "\t\xF0\x9F\x92\xA3   Cleaning"
