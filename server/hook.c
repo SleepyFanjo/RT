@@ -5,18 +5,10 @@ int		mouse_hook(int button, int x, int y, t_v_env *e)
 {
 	t_info		*info;
 	t_param		*param;
+	static void	(*obj_tab[4])(t_param *, t_info *) =
+		{&clic_sphere, &clic_plane, &clic_cylinder, &clic_cone};
 
 	param = e->p;
-	static void	(*obj_tab[4])(t_param *, t_info *) =
-	{
-		&clic_sphere, &clic_plane, &clic_cylinder, &clic_cone
-	};
-
-	(void)button;
-	info = init_info(param, y, x);
-	calc_intersection(param, info);
-	if (info->obj_type == -1)
-
 	(void)button;
 	info = init_info(param, y, x);
 	calc_intersection(param, info);
