@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/26 14:50:00 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/26 16:45:37 by qchevrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC1=apply_transformation.c \
 	 init_info.c \
 	 inter_sphere.c \
 	 limited_sphere.c \
+	 limited_cylinder.c \
 	 inter_plane.c \
 	 inter_cylinder.c \
 	 inter_cone.c \
@@ -86,6 +87,7 @@ SRC2=server/main_serv.c \
 	 init_info.c \
 	 inter_sphere.c \
 	 limited_sphere.c \
+	 limited_cylinder.c \
 	 inter_plane.c \
 	 inter_cylinder.c \
 	 inter_cone.c \

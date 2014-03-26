@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 15:21:42 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:49:16 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct		s_material
 typedef struct		s_sphere
 {
 	int				radius;
+	int				is_limited;
 	double			lim_h_x;
 	double			lim_b_x;
 	double			lim_h_y;
@@ -135,6 +136,9 @@ typedef struct		s_cylinder
 	double			d;
 	double			*m;
 	double			*m_i;
+	int				is_limited;
+	double			lim_h;
+	double			lim_b;
 	int				radius;
 	int				*color;
 	t_material		mat;
@@ -146,6 +150,9 @@ typedef struct		s_cone
 	t_coord			rot;
 	double			*m;
 	double			*m_i;
+	int				is_limited;
+	double			lim_h;
+	double			lim_b;
 	int				alpha;
 	int				*color;
 	t_material		mat;

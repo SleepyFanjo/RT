@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/18 17:18:46 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/21 16:33:24 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 16:43:07 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ double		limited_sphere(t_sphere *obj, t_line line, double *dist)
 {
 	t_coord		pos;
 
-	if (dist[0] < 0)
+	if (dist[0] < 0 || !obj->is_limited)
 		return (dist[0]);
 	pos.x = line.pos.x + dist[0] * line.vec.x;
 	pos.y = line.pos.y + dist[0] * line.vec.y;

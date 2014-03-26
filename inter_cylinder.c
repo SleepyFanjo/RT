@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/15 19:17:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 15:16:01 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 16:45:48 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void			inter_cylinder(t_info *info, t_list *cylinder)
 		obj = (t_cylinder *)cylinder->content;
 		new = get_new_equa(obj, info->r_line);
 		dist = delta(new, obj);
+		dist = limited_cylinder(obj, new, dist);
 		if (dist > 0.001 && (info->distance < 0 || dist < info->distance))
 			update_info(info, dist, cylinder->content, new);
 		cylinder = cylinder->next;
