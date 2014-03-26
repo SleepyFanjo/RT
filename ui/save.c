@@ -12,7 +12,8 @@ void		put_cam(t_param *param, int fd)
 
 static void lil_put_sphere(t_sphere *s, int fd)
 {
-	l_printf("%q%d %d %d %d ", fd, (int)s->pos.x, (int)s->pos.y, (int)s->pos.z
+	l_printf("%q%d %d %d ", fd, (int)s->pos.x, (int)s->pos.y, (int)s->pos.z);
+	l_printf("%q%d %d %d %d ", fd, (int)s->rot.x, (int)s->rot.y, (int)s->rot.z
 		, s->radius);
 	l_printf("%q%d %d %d %d %d %d ", fd, (int)s->lim_h_x, (int)s->lim_b_x
 		, (int)s->lim_h_y, (int)s->lim_b_y, (int)s->lim_h_z, (int)s->lim_b_z);

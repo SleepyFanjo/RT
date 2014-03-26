@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 12:12:38 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:42:15 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static t_line	get_new_equa(t_sphere *obj, t_line line)
 	new.vec.y = line.vec.y;
 	new.vec.z = line.vec.z;
 	apply_trans(obj->m_i, &(new.pos));
+	apply_rot(obj->m_i, &(new.vec));
 	return (new);
 }
 
