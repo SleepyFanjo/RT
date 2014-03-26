@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/24 19:49:45 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/24 20:04:55 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:05:34 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		clic_sphere(t_param *param, t_info *info)
 
 	s = info->obj;
 	POS = &(s->pos);
-	B_ROT = 0;
+	ROT = &(s->rot);
 }
 
 void		clic_plane(t_param *param, t_info *info)
@@ -29,7 +29,6 @@ void		clic_plane(t_param *param, t_info *info)
 	p = info->obj;
 	POS = &(p->pos);
 	ROT = &(p->vec);
-	B_ROT = 1;
 }
 
 void		clic_cylinder(t_param *param, t_info *info)
@@ -39,7 +38,6 @@ void		clic_cylinder(t_param *param, t_info *info)
 	c = info->obj;
 	POS = &(c->pos);
 	ROT = &(c->rot);
-	B_ROT = 1;
 }
 
 void		clic_cone(t_param *param, t_info *info)
@@ -49,5 +47,4 @@ void		clic_cone(t_param *param, t_info *info)
 	c = info->obj;
 	POS = &(c->pos);
 	ROT = &(c->rot);
-	B_ROT = 1;
 }

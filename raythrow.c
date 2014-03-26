@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 15:15:25 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:16:56 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		put_pixel_to_img(t_param *param, int i, int j)
 
 	info = init_info(param, i, j);
 	calc_intersection(param, info);
-	if (param->t->render)
+	if (param->t->render || param->t->live)
 	{
 		finl_color = calc_color_end(param, info);
 		write_on_img(param, finl_color, i, j);
