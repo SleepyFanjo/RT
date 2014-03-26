@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:29:34 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 12:13:25 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:23:11 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	set_cylinder(t_cylinder *cylinder, char **tab)
 	cylinder->mat.reflex = ft_atoi(tab[8]) / 100.0;
 	cylinder->mat.med_in = ft_atoi(tab[9]) / 100.0;
 	cylinder->mat.refrax = ft_atoi(tab[10]) / 100.0;
+	cylinder->mat.trans = ft_atoi(tab[11]) / 100.0;
+	cylinder->mat.texture = ft_atoi(tab[12]);
 }
 
 int			get_cylinder(t_obj *obj, char *line)
@@ -37,12 +39,12 @@ int			get_cylinder(t_obj *obj, char *line)
 		ft_printf("%rAllocation Fail\n");
 		return (-1);
 	}
-	if (get_size_tab(tab) != 12)
+	if (get_size_tab(tab) != 14)
 	{
-		ft_printf("%rCylinder has no 12 param");
+		ft_printf("%rCylinder has no 14 param");
 		return (-1);
 	}
-	if (!test_tab(tab, 11))
+	if (!test_tab(tab, 13))
 		return (-1);
 	if ((cylinder = (t_cylinder *)malloc(sizeof(t_cylinder))) == NULL)
 	{
@@ -50,7 +52,7 @@ int			get_cylinder(t_obj *obj, char *line)
 		return (-1);
 	}
 	set_cylinder(cylinder, tab);
-	if ((cylinder->color = get_color(tab[11])) == NULL)
+	if ((cylinder->color = get_color(tab[13])) == NULL)
 		return (-1);
 	calc_matrix((void *)cylinder, CYLINDER);
 	ft_lstadd(&(obj->cylinder), ft_lstnew(cylinder, sizeof(t_cylinder)));

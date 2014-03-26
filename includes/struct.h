@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 15:03:52 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:21:42 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ typedef struct		s_material
 	double			reflex;
 	double			med_in;
 	double			refrax;
+	double			trans;
+	int				texture;
 }					t_material;
 
 typedef struct		s_sphere
