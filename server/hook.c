@@ -55,13 +55,13 @@ int		key_hook(int keycode, t_v_env *e)
 	if (keycode == 65307)
 		exit(0);
 	R = 0;
-	while (i != 5)
+	while (i != 6)
 	{
 		if (key_tab[i](keycode, param))
 			break ;
 		i++;
 	}
-	if (i != 5)
+	if (i != 6)
 	{
 		save(param);
 		if ((e->inf->stage = get_stage("save")) == NULL)
