@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 12:17:47 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 14:42:00 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:58:32 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void			inter_plane(t_param *param, t_info *info, t_list *plane)
 		obj = (t_plane *)plane->content;
 		new = get_new_equa(obj, info->r_line);
 		dist = delta(obj, new);
-		if (dist > 0.1 && (info->distance < 0 || dist < info->distance))
+		if (dist > 0.001 && (info->distance < 0 || dist < info->distance))
 			update_info(info, dist, plane->content, new);
 		plane = plane->next;
 	}

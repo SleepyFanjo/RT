@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 14:42:15 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:58:26 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void			inter_sphere(t_param *param, t_info *info, t_list *sphere)
 		new = get_new_equa(obj, info->r_line);
 		dist = delta(new, obj);
 		dist[0] = limited_sphere(obj, new, dist);
-		if (dist[0] > 0.1 && (info->distance < 0 || dist[0] < info->distance))
+		if (dist[0] > 0.001 && (info->distance < 0 || dist[0] < info->distance))
 			update_info(info, dist[0], sphere->content);
 		sphere = sphere->next;
 		free(dist);

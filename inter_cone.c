@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/15 19:17:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 11:34:21 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:58:47 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void			inter_cone(t_param *param, t_info *info, t_list *cone)
 		obj = (t_cone *)cone->content;
 		new = get_new_equa(obj, info->r_line);
 		dist = delta(new, obj);
-		if (dist > 0.1 && (info->distance < 0 || dist < info->distance))
+		if (dist > 0.001 && (info->distance < 0 || dist < info->distance))
 			update_info(info, dist, cone->content, new);
 		cone = cone->next;
 	}
