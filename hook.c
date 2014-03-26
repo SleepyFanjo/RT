@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:10:44 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/24 20:43:12 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/26 11:31:15 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,29 @@ int		expose_hook(t_param *param)
 		return (0);
 	env = param->env;
 	mlx_put_image_to_window(env.mlx, env.win, env.img, 0, 0);
-	//mlx_put_image_to_window(env.mlx, env.win, env.ui, 0, HEIGHT);
 	return (0);
 }
 
 int		key_hook(int keycode, t_param *param)
 {
 	int			i;
-	static int	(*key_tab[7])(int, t_param *) =
+	static int	(*key_tab[6])(int, t_param *) =
 	{
-		&arrows, &how_high, &wasd, &render, &save, &live, &back_to_cam
+		&arrows, &how_high, &wasd, &render, &live, &back_to_cam
 	};
 
 	i = 0;
 	if (keycode == 65307)
 		exit(0);
 	R = 0;
-	while (i != 7)
+	while (i != 6)
 	{
 
 		if (key_tab[i](keycode, param))
 			break ;
 		i++;
 	}
-	if (i != 7)
+	if (i != 6)
 	{
 		raytracer(param, 4);
 		expose_hook(param);

@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:49:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/25 19:58:35 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 11:30:16 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int		save(t_param *param)
 	name = "save";
 	if ((fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, 0644)) < 0)
 			exit (0);
-l_printf("###########%d###########", fd);
 	put_cam(param, fd);
 	put_sphere(param, fd);
 	put_spot(param, fd);
