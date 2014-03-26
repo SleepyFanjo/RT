@@ -1,6 +1,6 @@
 //sphere
 #sphere pos_x pos_y pos_z radius lim_h_x lim_b_x lim_h_y lim_b_y lim_h_z lim_b_z shine relfex med_in refrax color
-        30    0     1500  100     1000   -1000    1000   -1000    1000   -1000   0    0     0     0     FFA0A0
+        30    0     1500  0 0 0 100     1000   -1000    1000   -1000    1000   -1000   0    0     0     0     FFA0A0
 #        -30    0     1500  100     1000   -1000    1000   -1000    1000   -1000   0    0     0     0     FFA0A0
 
 
