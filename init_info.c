@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 15:18:04 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 11:30:27 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 18:03:17 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_info			*init_info(t_param *param, int i, int j)
 	info->distance = -1;
 	info->light = 0.0f;
 	info->color = NULL;
+	info->obj = NULL;
 	info->obj_type = -1;
 	return (info);
 }
