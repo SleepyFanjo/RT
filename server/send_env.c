@@ -14,7 +14,6 @@ static t_img	*v_init_img(t_v_env *env)
 	img->decrgb = mlx->decrgb;
 	img->depth = mlx->depth;
 	img->addr = NULL;
-	img->live_mod = env->live_mod;
 	return (img);
 }
 
@@ -60,6 +59,9 @@ static void		loop_send_env(t_client *cl, t_img *img, t_v_env *env)
 	}
 	if (send_textures(cl->sockfd, env) < 0)
 		v_exit("%rError #23\n", 23);
+	ft_printf("render: %d\n", env->p->t->render);
+	if (send_long_message(cl->sockfd, env->p->t, sizeof(t_event)) < 0)
+		v_exit("%rError #26\n", 26);
 	if (get_value(cl->sockfd, &test, sizeof(int)) < 0 ||
 			test != SIZE_SUCCES)
 	{

@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 10:40:15 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:04:03 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define Z			(2)
 # include <list.h>
 # include <pthread.h>
+# include "define.h"
 # define PIX		(img.pix)
 # define BPP		(img.bpp)
 # define LINE		(img.line)
@@ -55,6 +56,11 @@ typedef struct		s_env
 	void			*ui;
 }					t_env;
 
+typedef struct		s_event
+{
+	int				render;
+}					t_event;
+
 typedef struct		s_cam
 {
 	t_coord			point;
@@ -69,7 +75,6 @@ typedef struct		s_img
 	int				endian;
 	int				*decrgb;
 	int				depth;
-	int				live_mod;
 }					t_img;
 
 typedef struct		s_textures
@@ -184,9 +189,9 @@ typedef struct		s_param
 	t_list			*cylinder;
 	t_list			*cone;
 	t_img			v_img;
-	int				live_mod;
 	t_ui			*ui;
 	t_textures		*text;
+	t_event			*t;
 }					t_param;
 
 typedef struct		s_obj
@@ -207,6 +212,14 @@ typedef struct		s_var_parser
 	int				ret;
 	char			*line;
 }					t_var_parser;
+
+typedef struct		s_inf_env
+{
+	t_img		*img;
+	t_inf_exec	*inf;
+	t_textures	*t;
+	t_event		*event;
+}					t_inf_env;
 
 # include "multithread_struct.h"
 

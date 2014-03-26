@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 10:46:14 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 12:03:06 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ void	swap_double(double *a, double *b);
 void	init_ui(t_param *param);
 int		final_color(int *color, double light);
 int		ft_listen(int port);
-void	get_env(int sockfd, t_img *img, t_textures **tex);
+void	get_env(int sockfd, t_inf_env *e);
 
 #endif

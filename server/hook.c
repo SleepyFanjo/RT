@@ -16,6 +16,11 @@ int		mouse_hook(int button, int x, int y, t_v_env *e)
 	info = init_info(param, y, x);
 	calc_intersection(param, info);
 	if (info->obj_type == -1)
+
+	(void)button;
+	info = init_info(param, y, x);
+	calc_intersection(param, info);
+	if (info->obj_type == -1)
 	{
 		free(info);
 		return (0);
@@ -35,6 +40,7 @@ int		expose_hook(void *env)
 		mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 		return (0);
 }
+
 int		key_hook(int keycode, t_v_env *e)
 {
 	int			i;
@@ -55,7 +61,6 @@ int		key_hook(int keycode, t_v_env *e)
 			break ;
 		i++;
 	}
-	e->live_mod = e->p->live_mod;
 	if (i != 5)
 	{
 		save(param);
