@@ -9,16 +9,14 @@ static void	send_stage_cl(t_client *cl, t_info_serv *inf)
 	buf = -1;
 	fd = cl->sockfd;
 	if (send_message(fd, sizeof(int), (void *)(&(inf->size_stage))) < 0)
-	{
 		return ;
-	}
 	read(fd, &buf, sizeof(int));
 	if (buf != SIZE_SUCCES)
 	{
 		ft_printf("Fail\n");
 		return ;
 	}
-	if (send_message(fd, inf->size_stage, inf->stage) < 0)
+	if (send_long_message(fd, inf->stage, inf->size_stage) < 0)
 		return ;
 	read(fd, &buf, sizeof(int));
 	if (buf != STAGE_SUCCES)

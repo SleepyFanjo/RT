@@ -57,12 +57,10 @@ t_info	*new_vd(t_line old_line, t_coord v_nor)
 	t_info	*reflex;
 
 	reflex = (t_info *)j_malloc(sizeof(t_info));
-//	reflex->r_line = new_line(old_line, v_nor);
 	reflex->r_line = init_line(old_line, v_nor);
 	reflex->distance = -1;
 	reflex->light = AMBL;
 	reflex->color = (int *)j_malloc(sizeof(int) * 3);
-	reflex->color = NULL;
 	reflex->obj_type = -1;
 	return (reflex);
 }
@@ -85,27 +83,6 @@ void	calc_reflex_color(int **col, int *obj_col, double reflex)
 	(*col)[2] = reflex * obj_col[2] + (1 - reflex) * (*col)[2];
 }
 /*
-int		*rec_reflexion(t_param *param, t_info *info, int *color, double o_ref)
-{
-	static int	n = 10;
-	double	reflex;
-
-	info = new_vd(info->r_line, info->vec_n);
-	calc_intersection(param, info);
-	reflex = get_reflex(info);
-	if (info->distance != -1)
-	{
-		calc_reflex_color(&color, info->color, o_ref);
-	}
-	else if (reflex == -1.0 || n == 0)
-	{
-		return (color);
-	}
-	n -= 1;
-	return (reflexion(param, info, color, reflex));
-}
-*/
-
 int		*reflexion(t_param *param, t_info *info)
 {
 	t_info *ref;
@@ -118,41 +95,21 @@ int		*reflexion(t_param *param, t_info *info)
 				   info->color, get_reflex(info)));
 	return (init_color());
 }
-/*
-int		*recursive(t_param *param, t_info *info, int *color, int n)
-{
-	t_info	*ref;
-	double	reflex;
-
-ft_putstr_fd("L\n", open("toto", O_WRONLY | O_CREAT | O_APPEND, 0644));
-	ref = new_vd(info->r_line, info->vec_n);
-	calc_intersection(param, ref);
-	reflex = get_reflex(ref);
-	if (ref->distance != -1)
-	{
-//		ref->color = reflexion(param, info);
-		calc_light(param, ref, param->spot);
-		color = retrieve_col(ref->color, info->color, reflex);
-	}
-	if (reflex == 0 || n == 0)
-		return (color = retrieve_col(ref->color, info->color, reflex));
-	return (recursive(param, ref, color, n - 1));
-}
 */
-int		*recursive(t_param *param, t_info *info, int *color, int n, int fd)
+int		*recursive(t_param *param, t_info *info, int *color, int n)
 {
 	t_info	*ref;
 	double	r_info;
 	double	r_ref;
 
-//dprintf(fd, "round in recursivity\n");
 	ref = new_vd(info->r_line, info->vec_n);
 	calc_intersection(param, ref);
 	r_ref = get_reflex(ref);
 	r_info = get_reflex(info);
 	if (ref->distance != -1 && r_ref > 0 && n != 0)
-		info->color = recursive(param, ref, color, n - 1, fd);
-dprintf(fd, "i = %d, obj_type = %d - reflex = %f\n",n,  ref->obj_type, r_ref);
+		info->color = recursive(param, ref, color, n - 1);
+	if (ref->distance == -1)
+		return (init_color());
 	calc_light(param, ref, param->spot);
 	color = retrieve_col(damer(param, ref, ref->r_pos), info->color, r_info);
 	return (color);
@@ -172,21 +129,11 @@ int		*cpy_color(int *src)
 void	calc_reflex(t_param *param, t_info *info)
 {
 	int		*color;
-//	t_info	ref;
 	double	reflex;
-int fd;
 
-fd = open("toto", O_WRONLY | O_CREAT | O_APPEND, 0644);
 	reflex = get_reflex(info);
-//dprintf(fd, "obj_type = %d - reflex = %e\n", info->obj_type, reflex);
 	if (reflex <= 0.0001)
 		return ;
-//dprintf(fd, "obj_type = %d - reflex = %f\n", info->obj_type, reflex);
-//	ref = init_reflex(info->r_line, info->vec_n);
-	color = recursive(param, info, init_color(), 15, fd);
-//	color = reflexion(param, info);
-//	if (color[0] == 0 && color[1] == 0 && color[2] == 0)
-//		color = info->color;
-//	info->color = retrieve_col(color, info->color, reflex);
+	color = recursive(param, info, init_color(), 15);
 	info->color = color;
 }

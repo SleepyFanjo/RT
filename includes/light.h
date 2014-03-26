@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 14:26:09 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/24 15:22:31 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/25 12:23:32 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,6 @@
 # define TEXT_6		8
 # define TEXT_7		9
 # define TEXT_8		10
-
-#define T0			param->text[0]
-#define T1			param->text[1]
-#define T2			param->text[2]
-#define T3			param->text[3]
-#define T4			param->text[4]
-#define T5			param->text[5]
-#define T6			param->text[6]
-#define T7			param->text[7]
-#define T8			param->text[8]
 
 double		norme(t_coord vect);
 t_coord		normalize(t_coord vec);
