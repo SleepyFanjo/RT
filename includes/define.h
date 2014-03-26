@@ -11,7 +11,7 @@
 # define NET_BUFF_SIZE	100000
 # define LIM_NB_WRITE	10
 # define LIM_NB_READ	10
-# define START_MODE		0
+# define START_MODE		1
 
 #define T0			(param->text[0])
 #define T1			(param->text[1])
