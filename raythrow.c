@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 14:12:31 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:15:25 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 void	calc_intersection(t_param *param, t_info *info)
 {
-	inter_sphere(param, info, param->sphere);
-	inter_plane(param, info, param->plane);
-	inter_cylinder(param, info, param->cylinder);
-	inter_cone(param, info, param->cone);
+	inter_sphere(info, param->sphere);
+	inter_plane(info, param->plane);
+	inter_cylinder(info, param->cylinder);
+	inter_cone(info, param->cone);
 	calc_normal(info);
 }
 

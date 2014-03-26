@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/15 19:17:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 14:58:39 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:16:01 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,12 @@ static double	delta(t_line new, t_cylinder *obj)
 	return (x2);
 }
 
-void			inter_cylinder(t_param *param, t_info *info, t_list *cylinder)
+void			inter_cylinder(t_info *info, t_list *cylinder)
 {
 	t_line		new;
 	t_cylinder	*obj;
 	double		dist;
 
-	(void)param;
 	while (cylinder)
 	{
 		obj = (t_cylinder *)cylinder->content;
