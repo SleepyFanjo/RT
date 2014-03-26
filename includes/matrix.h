@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 15:20:04 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 10:24:12 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:13:57 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define TJ		1
 # define ID		2
 # define JD		3
+# include <struct.h>
 # include "raytracer.h"
 
 void	fill_matrix_rot(double *matrix, t_coord rot);
@@ -32,5 +33,10 @@ void	invert_matrix(double *res, double *m);
 void	transpose_matrix(double *res, double *m);
 void	fill_matrix_trans(double *matrix, t_coord trans);
 void	apply_transformation(double *m, t_coord *p);
+void	calc_matrix_sphere(double *m, double *m_i, t_sphere *obj);
+void	calc_matrix_plane(double *m, double *m_i, t_plane *obj);
+void	calc_matrix_cone(double *m, double *m_i, t_cone *obj);
+void	calc_matrix_cylinder(double *m, double *m_i, t_cylinder *obj);
+void	calc_matrix_cam(double *m, double *m_i, t_param *obj);
 
 #endif

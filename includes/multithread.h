@@ -2,7 +2,7 @@
 # define MULTITHREAD_H
 
 # include "raytracer.h"
-# include "libft/includes/ft_printf.h"
+# include <ft_printf.h>
 # include <pthread.h>
 
 t_list		*get_thread(t_param *param, t_inf_exec *inf, int *end, int *start);

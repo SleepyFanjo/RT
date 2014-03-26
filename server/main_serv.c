@@ -43,11 +43,11 @@ int			main(int argc, char **argv)
 
 	inf = j_malloc(sizeof(t_info_serv));
 	p = j_malloc(sizeof(t_param));
+	p->t = j_malloc(sizeof(t_event));
 	lst_id_cl = NULL;
 	if (get_init_value(argc, argv, inf))
 		return (1);
 	parser(argv[1], p);
-	p->live_mod = 0;
 	e = j_malloc(sizeof(t_v_env));
 	init_env(e);
 	get_lst_cl(argv[2], &lst_id_cl);

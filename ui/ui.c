@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 12:51:11 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/25 15:58:10 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:12:25 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,10 @@ void		init_ui(t_param *param)
 	POS = &(param->cam);
 	ROT = &(param->rot_cam);
 	B_ROT = 1;
+	param->t->render = START_MODE;
+}
+
+void		reinit_ui(t_param *param)
+{
+	param->t->render = START_MODE;
 }

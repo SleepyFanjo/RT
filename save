@@ -2,11 +2,10 @@
 #cam pos_x pos_y pos_z rot_x rot_y rot_z
 0 0 0 0 0 0
 //sphere
+30 0 1500 100 1000 -1000 1000 -1000 1000 -1000 0 0 0 0 FFA0A0
 //spot
-0 0 1000 1000 FFFFFF
+0 0 100 500 FFFFFF
+400 200 0 500 FFFFFF
 //plane
-200 -100 0 0 0 90 30 0 0 0 FF00FF
-100 -100 0 0 0 45 30 0 0 0 F0FF00
-200 -100 0 0 0 0 30 0 0 0 FFF00F
 //cone
-//sphere
+//cylinder

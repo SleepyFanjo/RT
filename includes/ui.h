@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:51:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/25 18:19:48 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:15:27 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,7 @@ void		clic_sphere(t_param *param, t_info *info);
 void		clic_plane(t_param *param, t_info *info);
 void		clic_cylinder(t_param *param, t_info *info);
 void		clic_cone(t_param *param, t_info *info);
+
+void		reinit_ui(t_param *param);
+
 #endif

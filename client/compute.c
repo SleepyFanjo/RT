@@ -1,15 +1,15 @@
-#include "../includes/client.h"
+#include "client.h"
 
 int		compute(int socketfd)
 {
 	char		buf[NET_BUFF_SIZE + 10];
 	int			ret;
 	char		*host;
-	t_inf_exec	*inf;
-	t_img		img;
-	t_textures	*tex;
+	t_inf_env	*inf_env;
 
-	inf = j_malloc(sizeof(t_inf_exec));
+	inf_env = (t_inf_env *)j_malloc(sizeof(t_inf_env));
+	inf_env->inf = j_malloc(sizeof(t_inf_exec));
+	inf_env->img = (t_img *)j_malloc(sizeof(t_img));
 	if ((ret = read(socketfd, buf, NET_BUFF_SIZE)) < 0)
 	{
 		perror("read");
@@ -22,9 +22,9 @@ int		compute(int socketfd)
 	if (host == NULL)
 		host = ft_strdup("Unknow\n");
 	write(socketfd, host, strlen(host));
-	get_env(socketfd, &img, &tex);
+	get_env(socketfd, inf_env);
 	get_stage(socketfd);
-	get_core(inf, socketfd);
-	calc_multi_stage(socketfd, inf, &img, tex);
+	get_core(inf_env->inf, socketfd);
+	calc_multi_stage(socketfd, inf_env);
 	return (0);
 }

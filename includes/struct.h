@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 10:40:15 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:30:35 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 # define X			(0)
 # define Y			(1)
 # define Z			(2)
-# include <list.h>
+# include "../libft/includes/list.h"
 # include <pthread.h>
+# include "define.h"
 # define PIX		(img.pix)
 # define BPP		(img.bpp)
 # define LINE		(img.line)
@@ -26,6 +27,7 @@
 # define PLANE		(1)
 # define CYLINDER	(2)
 # define CONE		(3)
+# define CAM		(4)
 # define NB_T		(9)
 
 typedef struct		s_coord
@@ -55,6 +57,11 @@ typedef struct		s_env
 	void			*ui;
 }					t_env;
 
+typedef struct		s_event
+{
+	int				render;
+}					t_event;
+
 typedef struct		s_cam
 {
 	t_coord			point;
@@ -69,7 +76,6 @@ typedef struct		s_img
 	int				endian;
 	int				*decrgb;
 	int				depth;
-	int				live_mod;
 }					t_img;
 
 typedef struct		s_textures
@@ -101,7 +107,10 @@ typedef struct		s_sphere
 	double			lim_b_y;
 	double			lim_h_z;
 	double			lim_b_z;
+	double			*m;
+	double			*m_i;
 	t_coord			pos;
+	t_coord			rot;
 	int				*color;
 	t_material		mat;
 }					t_sphere;
@@ -110,7 +119,8 @@ typedef struct		s_plane
 {
 	t_coord			vec;
 	t_coord			pos;
-	double			d;
+	double			*m;
+	double			*m_i;
 	int				*color;
 	t_material		mat;
 }					t_plane;
@@ -120,6 +130,8 @@ typedef struct		s_cylinder
 	t_coord			pos;
 	t_coord			rot;
 	double			d;
+	double			*m;
+	double			*m_i;
 	int				radius;
 	int				*color;
 	t_material		mat;
@@ -129,6 +141,8 @@ typedef struct		s_cone
 {
 	t_coord			pos;
 	t_coord			rot;
+	double			*m;
+	double			*m_i;
 	int				alpha;
 	int				*color;
 	t_material		mat;
@@ -178,15 +192,16 @@ typedef struct		s_param
 	t_env			env;
 	t_coord			cam;
 	t_coord			rot_cam;
+	double			*m_cam;
 	t_list			*spot;
 	t_list			*sphere;
 	t_list			*plane;
 	t_list			*cylinder;
 	t_list			*cone;
 	t_img			v_img;
-	int				live_mod;
 	t_ui			*ui;
 	t_textures		*text;
+	t_event			*t;
 }					t_param;
 
 typedef struct		s_obj
@@ -207,6 +222,14 @@ typedef struct		s_var_parser
 	int				ret;
 	char			*line;
 }					t_var_parser;
+
+typedef struct		s_inf_env
+{
+	t_img		*img;
+	t_inf_exec	*inf;
+	t_textures	*t;
+	t_event		*event;
+}					t_inf_env;
 
 # include "multithread_struct.h"
 

@@ -1,4 +1,5 @@
 #include "../includes/network.h"
+#include "../includes/ui.h"
 
 void		calc_img(t_list *lst_host, t_info_serv *inf, t_v_env *e)
 {
@@ -11,4 +12,5 @@ void		calc_img(t_list *lst_host, t_info_serv *inf, t_v_env *e)
 	send_stage(inf, lst_th);
 	send_inf_calc(lst_th, inf, nb_cl);
 	get_cl_stage(lst_th, e);
+	reinit_ui(e->p);
 }

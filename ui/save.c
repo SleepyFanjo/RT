@@ -130,7 +130,7 @@ void		put_cylinder(t_param *param, int fd)
 	t_list			*list;
 
 	list = param->cylinder;
-	ft_putendl_fd("//sphere", fd);
+	ft_putendl_fd("//cylinder", fd);
 	while (list != NULL)
 	{
 		s = list->content;

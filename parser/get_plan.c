@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:19:28 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/25 16:00:40 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 12:12:57 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ static void	set_plan(t_plane *plan, char **tab)
 int			get_plan(t_obj *obj, char *line)
 {
 	char		**tab;
-	int			i;
 	t_plane		*plan;
 
-	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 	{
 		ft_printf("%rAllocation Fail: ");
@@ -54,7 +52,7 @@ int			get_plan(t_obj *obj, char *line)
 	plan->color = get_color(tab[10]);
 	if (plan->color == NULL)
 		return (-1);
-	plan->d = -(plan->pos.y);
+	calc_matrix((void *)plan, PLANE);
 	ft_lstadd(&(obj->plan), ft_lstnew(plan, sizeof(t_plane)));
 	return (0);
 }
