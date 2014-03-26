@@ -6,7 +6,7 @@ int	test_tab(char **tab, int s_i)
 	int		j;
 
 	i = 0;
-	while (i < s_i)
+	while (tab[i] != NULL && i < s_i)
 	{
 		j = ft_strlen(tab[i]) - 1;
 		while (j >= 0 && ft_isdigit(tab[i][j]))

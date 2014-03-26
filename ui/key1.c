@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:49:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/26 15:27:43 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/26 18:51:31 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,20 @@ int		roll(int keycode, t_param *param)
 {
 	if (keycode == NINE)
 	{
-		ROT->z += 25;
+		ROT->z += 5;
+		if (ROT->z < 0)
+			ROT->z += 360;
+		if (ROT->z > 360)
+			ROT->z -= 360;
 		return (1);
 	}
 	if (keycode == SIX)
 	{
-		ROT->z -= 25;
+		ROT->z -= 5;
+		if (ROT->z < 0)
+			ROT->z += 360;
+		if (ROT->z > 360)
+			ROT->z -= 360;
 		return (1);
 	}
 	return (0);
@@ -112,21 +120,37 @@ int		arrows(int keycode, t_param *param)
 	if (keycode == UP)
 	{
 		ROT->x -= 5;
+		if (ROT->x < 0)
+			ROT->x += 360;
+		if (ROT->x > 360)
+			ROT->x -= 360;
 		return (1);
 	}
 	if (keycode == DOWN)
 	{
 		ROT->x += 5;
+		if (ROT->x < 0)
+			ROT->x += 360;
+		if (ROT->x > 360)
+			ROT->x -= 360;
 		return (1);
 	}
 	if (keycode == RIGHT)
 	{
 		ROT->y -= 5;
+		if (ROT->y < 0)
+			ROT->y += 360;
+		if (ROT->y > 360)
+			ROT->y -= 360;
 		return (1);
 	}
 	if (keycode == LEFT)
 	{
 		ROT->y += 5;
+		if (ROT->y < 0)
+			ROT->y += 360;
+		if (ROT->y > 360)
+			ROT->y -= 360;
 		return (1);
 	}
 	return (0);

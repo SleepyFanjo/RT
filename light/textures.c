@@ -15,7 +15,7 @@ int			get_texture(t_info *info)
 	return (0);
 }
 
-int		*checker(t_coord point)
+int		*checker(t_coord point, t_info *info)
 {
 	double	tmp1;
 	double	tmp2;
@@ -25,7 +25,7 @@ int		*checker(t_coord point)
 	tmp2 = sin(F_PI / 70.0) * sin((F_PI / 70.0) * point.z);
 	color = (int *)j_malloc(sizeof(int) * 3);
 	if ((tmp1 >= 0 && tmp2 >= 0) || (tmp1 < 0 && tmp2 < 0))
-		return (init_color());
+		return (info->color);
 	color[0] = 255;
 	color[1] = 255;
 	color[2] = 255;
@@ -149,7 +149,7 @@ int		*damer(t_param *param, t_info *info, t_coord point)
 	int	tmp;
 
 	if ((tmp = get_texture(info)) == DAMIER)
-		return (checker(point));
+		return (checker(point, info));
 	if (tmp == 0)
 		return (info->color);
 	if (get_texture(info) == TEXT_0)

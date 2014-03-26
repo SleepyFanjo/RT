@@ -13,8 +13,8 @@ void		put_cam(t_param *param, int fd)
 static void lil_put_sphere(t_sphere *s, int fd)
 {
 	l_printf("%q%d %d %d ", fd, (int)s->pos.x, (int)s->pos.y, (int)s->pos.z);
-	l_printf("%q%d %d %d %d ", fd, (int)s->rot.x, (int)s->rot.y, (int)s->rot.z
-		, s->radius);
+	l_printf("%q%d %d %d %d %d ", fd, (int)s->rot.x, (int)s->rot.y
+			, (int)s->rot.z, s->radius, s->is_limited);
 	l_printf("%q%d %d %d %d %d %d ", fd, (int)s->lim_h_x, (int)s->lim_b_x
 		, (int)s->lim_h_y, (int)s->lim_b_y, (int)s->lim_h_z, (int)s->lim_b_z);
 	l_printf("%q%d %d %d %d ", fd, (int)(s->mat.shine * 100)
@@ -93,8 +93,9 @@ void		put_plane(t_param *param, int fd)
 static void lil_put_cone(t_cone *s, int fd)
 {
 	l_printf("%q%d %d %d ", fd, (int)s->pos.x, (int)s->pos.y, (int)s->pos.z);
-	l_printf("%q%d %d %d %d ", fd, (int)s->rot.x, (int)s->rot.y, (int)s->rot.z
-			, s->alpha);
+	l_printf("%q%d %d %d %d %d ", fd, (int)s->rot.x, (int)s->rot.y
+			, (int)s->rot.z, s->alpha, s->is_limited);
+	l_printf("%q%d %d  ", fd, (int)s->lim_h, (int)s->lim_b);
 	l_printf("%q%d %d %d %d ", fd, (int)(s->mat.shine * 100)
 			, (int)(s->mat.reflex * 100), (int)(s->mat.med_in * 100)
 			, (int)(s->mat.refrax * 100));
@@ -120,8 +121,9 @@ void		put_cone(t_param *param, int fd)
 static void lil_put_cylinder(t_cylinder *s, int fd)
 {
 	l_printf("%q%d %d %d ", fd, (int)s->pos.x, (int)s->pos.y, (int)s->pos.z);
-	l_printf("%q%d %d %d %d ", fd, (int)s->rot.x, (int)s->rot.y, (int)s->rot.z
-		, s->radius);
+	l_printf("%q%d %d %d %d %d ", fd, (int)s->rot.x, (int)s->rot.y
+			, (int)s->rot.z, s->radius, s->is_limited);
+	l_printf("%q%d %d  ", fd, (int)s->lim_h, (int)s->lim_b);
 	l_printf("%q%d %d %d %d ", fd, (int)(s->mat.shine * 100)
 			, (int)(s->mat.reflex * 100), (int)(s->mat.med_in * 100)
 			, (int)(s->mat.refrax * 100));
