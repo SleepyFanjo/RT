@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/15 19:17:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 16:45:48 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 20:32:26 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,41 +44,48 @@ static t_line	get_new_equa(t_cylinder *obj, t_line line)
 	return (new);
 }
 
-static double	delta(t_line new, t_cylinder *obj)
+static double	*delta(t_line new, t_cylinder *obj)
 {
 	t_equa		e;
-	double		x1;
-	double		x2;
+	double		*x;
 
+	x = (double *)j_malloc(sizeof(double) * 2);
+	x[0] = -1;
+	x[1] = -1;
 	e.a = SQR(new.vec.x) + SQR(new.vec.z);
 	e.b = 2 * (new.pos.x * new.vec.x + new.pos.z * new.vec.z);
 	e.c = SQR(new.pos.x) + SQR(new.pos.z) - SQR(obj->radius);
 	e.delta = SQR(e.b) - 4 * e.a * e.c;
 	if (e.delta < -0.00001)
-		return (-1);
+		return (x);
 	if (e.delta > -0.00001 && e.delta < 0.00001)
-		return (-e.b / (2 * e.a));
-	x1 = (-e.b - sqrt(e.delta)) / (2 * e.a);
-	x2 = (-e.b + sqrt(e.delta)) / (2 * e.a);
-	if (x1 < x2 && x1 > 0)
-		return (x1);
-	return (x2);
+	{
+		x[0] = (-e.b / (2 * e.a));
+		return (x);
+	}
+	x[0] = (-e.b - sqrt(e.delta)) / (2 * e.a);
+	x[1] = (-e.b + sqrt(e.delta)) / (2 * e.a);
+	if (x[0] < x[1] && x[0] > 0)
+		return (x);
+	swap_double(&(x[0]), &(x[1]));
+	return (x);
 }
 
 void			inter_cylinder(t_info *info, t_list *cylinder)
 {
 	t_line		new;
 	t_cylinder	*obj;
-	double		dist;
+	double		*dist;
 
 	while (cylinder)
 	{
 		obj = (t_cylinder *)cylinder->content;
 		new = get_new_equa(obj, info->r_line);
 		dist = delta(new, obj);
-		dist = limited_cylinder(obj, new, dist);
-		if (dist > 0.001 && (info->distance < 0 || dist < info->distance))
-			update_info(info, dist, cylinder->content, new);
+		dist[0] = limited_cylinder(obj, new, dist);
+		if (dist[0] > 0.001 && (info->distance < 0 || dist[0] < info->distance))
+			update_info(info, dist[0], cylinder->content, new);
 		cylinder = cylinder->next;
+		free(dist);
 	}
 }
