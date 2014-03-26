@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:29:34 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/22 16:02:14 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 12:13:25 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ static void	set_cylinder(t_cylinder *cylinder, char **tab)
 int			get_cylinder(t_obj *obj, char *line)
 {
 	char		**tab;
-	int			i;
 	t_cylinder	*cylinder;
 
-	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 	{
 		ft_printf("%rAllocation Fail\n");
@@ -54,6 +52,7 @@ int			get_cylinder(t_obj *obj, char *line)
 	set_cylinder(cylinder, tab);
 	if ((cylinder->color = get_color(tab[11])) == NULL)
 		return (-1);
+	calc_matrix((void *)cylinder, CYLINDER);
 	ft_lstadd(&(obj->cylinder), ft_lstnew(cylinder, sizeof(t_cylinder)));
 	return (0);
 }

@@ -6,13 +6,11 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/26 10:57:14 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/26 14:31:33 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC= clang
-SRC= main.c \
-CC=clang
+CC= gcc
 FLAG=-Wall -Wextra -Werror -g
 SRC1=apply_transformation.c \
 	 init_info.c \
@@ -35,6 +33,7 @@ SRC1=apply_transformation.c \
 	 matrix/apply_matrix.c \
 	 matrix/fill_matrix.c \
 	 matrix/transformation.c \
+	 matrix/calc_matrix.c \
 	 parser/get_color.c \
 	 parser/ft_hex_atoi.c \
 	 parser/parser.c \
@@ -68,7 +67,7 @@ SRC1=apply_transformation.c \
 	 ft_error.c \
 	 main.c
 
-SRC2= server/main_serv.c \
+SRC2=server/main_serv.c \
 	 server/get_cl_th.c \
 	 server/get_stage.c \
 	 server/get_lst_cl.c \
@@ -104,6 +103,7 @@ SRC2= server/main_serv.c \
 	 matrix/apply_matrix.c \
 	 matrix/fill_matrix.c \
 	 matrix/transformation.c \
+	 matrix/calc_matrix.c \
 	 parser/get_color.c \
 	 parser/ft_hex_atoi.c \
 	 parser/parser.c \
@@ -136,18 +136,12 @@ SRC2= server/main_serv.c \
 	 ft_error.c \
 	 server/calc_img.c
 
-INCLUDES=-I./ui/ -I./includes/
-INC=multithread.h \
-	multithread_struct.h \
-	matrix.h \
-	raytracer.h \
-	struct.h \
-	ui/ui.h
+INCLUDES=-I./ui/ -I./includes/ -I./libft/includes/
 OBJ1= $(SRC1:.c=.o)
 OBJ2= $(SRC2:.c=.o)
 NAME1= Exec_client
 NAME2= Raytracer
-LIB=-L./libft -lft_core -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lpthread
+LIB=-L./libft -lft_core -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lpthread -I /usr/X11/include/
 DIR_LFT=./libft
 
 .PHONY: clean fclean re all
@@ -158,7 +152,7 @@ all: $(NAME1) $(NAME2)
 
 $(NAME1): $(OBJ1)
 	(cd $(DIR_LFT) ; make)
-	$(CC) -o $(NAME1) $(OBJ1) $(LIB)
+	$(CC) -o $(NAME1) $(OBJ1) $(LIB) $(FLAG)
 	echo "\t\xF0\x9F\x8F\x81   Compiling \033[35m$(NAME1) \033[0mDONE!"
 
 $(NAME2): $(OBJ2)
@@ -168,7 +162,8 @@ $(NAME2): $(OBJ2)
 
 %.o: %.c
 	echo "\t\xF0\x9F\x94\xA7   Building \033[34m $@ \033[0m"
-	$(CC) -c  $(INCLUDES) -o $@ $< -I./ -I$(DIR_LFT)/includes -I /usr/X11/include/ $(FLAG)
+#	$(CC) -c $(FLAG) -o $@ $< $(INCLUDES)
+	$(CC) -c $(FLAGS)  $(INCLUDES) -o $@ $< $(LIB)
 
 clean:
 	echo "\t\xF0\x9F\x92\xA3   Cleaning"

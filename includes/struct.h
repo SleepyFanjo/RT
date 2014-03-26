@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 14:04:03 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:30:35 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define X			(0)
 # define Y			(1)
 # define Z			(2)
-# include <list.h>
+# include "../libft/includes/list.h"
 # include <pthread.h>
 # include "define.h"
 # define PIX		(img.pix)
@@ -27,6 +27,7 @@
 # define PLANE		(1)
 # define CYLINDER	(2)
 # define CONE		(3)
+# define CAM		(4)
 # define NB_T		(9)
 
 typedef struct		s_coord
@@ -106,7 +107,10 @@ typedef struct		s_sphere
 	double			lim_b_y;
 	double			lim_h_z;
 	double			lim_b_z;
+	double			*m;
+	double			*m_i;
 	t_coord			pos;
+	t_coord			rot;
 	int				*color;
 	t_material		mat;
 }					t_sphere;
@@ -115,7 +119,8 @@ typedef struct		s_plane
 {
 	t_coord			vec;
 	t_coord			pos;
-	double			d;
+	double			*m;
+	double			*m_i;
 	int				*color;
 	t_material		mat;
 }					t_plane;
@@ -125,6 +130,8 @@ typedef struct		s_cylinder
 	t_coord			pos;
 	t_coord			rot;
 	double			d;
+	double			*m;
+	double			*m_i;
 	int				radius;
 	int				*color;
 	t_material		mat;
@@ -134,6 +141,8 @@ typedef struct		s_cone
 {
 	t_coord			pos;
 	t_coord			rot;
+	double			*m;
+	double			*m_i;
 	int				alpha;
 	int				*color;
 	t_material		mat;
@@ -183,6 +192,7 @@ typedef struct		s_param
 	t_env			env;
 	t_coord			cam;
 	t_coord			rot_cam;
+	double			*m_cam;
 	t_list			*spot;
 	t_list			*sphere;
 	t_list			*plane;
