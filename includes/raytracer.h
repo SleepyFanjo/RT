@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/25 11:43:54 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 10:28:23 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		put_pixel_to_img(t_param *param, int i, int j);
 void	parser(char *filename, t_param *param);
 t_info	*init_info(t_param *param, int i, int j);
 void	write_on_img(t_param *param, int color, int i, int j);
-void	apply_trans(t_coord translation, t_coord *to_move, int mult);
+void	apply_trans(t_coord tr, t_coord rot, t_coord *to_move, int mult);
 void	apply_rot(t_coord rotation, t_coord *to_turn, int mult);
 void	apply_rot_norm(t_coord rotation, t_coord *to_turn, int mult);
 void	inter_sphere(t_param *param, t_info *info, t_list *sphere);

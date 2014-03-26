@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 15:20:04 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/21 19:28:34 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 10:24:12 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ void	fill_matrix_rot(double *matrix, t_coord rot);
 void	apply_matrix(double *matrix, t_coord *move);
 void	invert_matrix(double *res, double *m);
 void	transpose_matrix(double *res, double *m);
+void	fill_matrix_trans(double *matrix, t_coord trans);
+void	apply_transformation(double *m, t_coord *p);
 
 #endif

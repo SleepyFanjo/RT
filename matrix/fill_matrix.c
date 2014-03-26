@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 15:49:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/22 15:13:57 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/25 18:10:02 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	apply_tab(double *tab, double *matrix)
 {
 	matrix[0] = tab[P_C] * tab[P_E];
 	matrix[1] = -tab[P_C] * tab[P_F];
-	matrix[2] = tab[P_D];
+	matrix[2] = -tab[P_D];
 	matrix[4] = -tab[P_BD] * tab[P_E] + tab[P_A] * tab[P_F];
 	matrix[5] = tab[P_BD] * tab[P_F] + tab[P_A] * tab[P_E];
 	matrix[6] = -tab[P_B] * tab[P_C];

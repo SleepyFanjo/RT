@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 12:17:47 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/25 11:50:05 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 10:32:23 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ static void		update_info(t_info *info, double dist, void *obj, t_line new)
 
 static double	delta(t_plane *plane, t_line new)
 {
-	(void) plane;
+	(void)plane;
+	if (new.vec.y > -0.0001 && new.vec.y < 0.0001)
+		return (-1);
 	return (-(new.pos.y / new.vec.y));
 }
 
@@ -45,8 +47,8 @@ static t_line	get_new_equa(t_plane *obj, t_line line)
 	new.vec.x = line.vec.x;
 	new.vec.y = line.vec.y;
 	new.vec.z = line.vec.z;
+	apply_trans(obj->pos, obj->vec, &new.pos, -1);
 	apply_rot(obj->vec, &new.vec, -1);
-	apply_trans(obj->pos, &new.pos, -1);
 	return (new);
 }
 

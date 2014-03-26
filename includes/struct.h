@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/25 11:49:32 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/25 15:59:44 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ typedef struct		s_plane
 {
 	t_coord			vec;
 	t_coord			pos;
+	double			d;
 	int				*color;
 	t_material		mat;
 }					t_plane;

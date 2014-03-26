@@ -6,11 +6,11 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/24 20:48:20 by lredoban         ###   ########.fr        #
+#    Updated: 2014/03/26 10:24:29 by qchevrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC= clang
+CC= clang -Wall -Wextra -Werror
 SRC= main.c \
 	 apply_transformation.c \
 	 hook.c \
@@ -33,6 +33,7 @@ SRC= main.c \
 	 parser/init_param.c \
 	 matrix/apply_matrix.c \
 	 matrix/fill_matrix.c \
+	 matrix/transformation.c \
 	 parser/get_color.c \
 	 parser/ft_hex_atoi.c \
 	 parser/parser.c \
