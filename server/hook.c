@@ -10,6 +10,7 @@ int		mouse_hook(int button, int x, int y, t_v_env *e)
 
 	param = e->p;
 	(void)button;
+	calc_matrix((void *)param, CAM);
 	info = init_info(param, y, x);
 	calc_intersection(param, info);
 	if (info->obj_type == -1)
