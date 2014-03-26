@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 14:30:35 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:21:42 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct		s_env
 typedef struct		s_event
 {
 	int				render;
+	int				live;
 }					t_event;
 
 typedef struct		s_cam
@@ -96,6 +97,8 @@ typedef struct		s_material
 	double			reflex;
 	double			med_in;
 	double			refrax;
+	double			trans;
+	int				texture;
 }					t_material;
 
 typedef struct		s_sphere
@@ -182,9 +185,7 @@ typedef struct		s_ui
 {
 	t_coord			*pos;
 	t_coord			*rot;
-	int				b_rot;
-	int				render;
-	int				live;
+	int				obj;
 }					t_ui;
 
 typedef struct		s_param

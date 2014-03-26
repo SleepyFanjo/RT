@@ -20,6 +20,7 @@ static void lil_put_sphere(t_sphere *s, int fd)
 	l_printf("%q%d %d %d %d ", fd, (int)(s->mat.shine * 100)
 			, (int)(s->mat.reflex * 100), (int)(s->mat.med_in * 100)
 			, (int)(s->mat.refrax * 100));
+	l_printf("%q%d %d ", fd, (int)(s->mat.trans * 100), s->mat.texture);
 	l_printf("%q%X%X%X\n", fd, s->color[2], s->color[1], s->color[0]);
 }
 
@@ -42,7 +43,7 @@ static void lil_put_spot(t_spot *s, int fd)
 {
 	int		value;
 
-	value = (int)(s->value * 1000);
+	value = (int)(s->value * 100);
 	l_printf("%q%d %d %d %d ", fd, (int)s->coord.x, (int)s->coord.y
 			, (int)s->coord.z, value);
 	l_printf("%q%X%X%X\n", fd, s->color[2], s->color[1], s->color[0]);
@@ -70,6 +71,7 @@ static void lil_put_plane(t_plane *p, int fd)
 	l_printf("%q%d %d %d %d ", fd, (int)(p->mat.shine * 100)
 			, (int)(p->mat.reflex * 100), (int)(p->mat.med_in * 100)
 			, (int)(p->mat.refrax * 100));
+	l_printf("%q%d %d ", fd, (int)(p->mat.trans * 100), p->mat.texture);
 	l_printf("%q%X%X%X\n", fd, p->color[2], p->color[1], p->color[0]);
 }
 
@@ -96,6 +98,7 @@ static void lil_put_cone(t_cone *s, int fd)
 	l_printf("%q%d %d %d %d ", fd, (int)(s->mat.shine * 100)
 			, (int)(s->mat.reflex * 100), (int)(s->mat.med_in * 100)
 			, (int)(s->mat.refrax * 100));
+	l_printf("%q%d %d ", fd, (int)(s->mat.trans * 100), s->mat.texture);
 	l_printf("%q%X%X%X\n", fd, s->color[2], s->color[1], s->color[0]);
 }
 
@@ -122,6 +125,7 @@ static void lil_put_cylinder(t_cylinder *s, int fd)
 	l_printf("%q%d %d %d %d ", fd, (int)(s->mat.shine * 100)
 			, (int)(s->mat.reflex * 100), (int)(s->mat.med_in * 100)
 			, (int)(s->mat.refrax * 100));
+	l_printf("%q%d %d ", fd, (int)(s->mat.trans * 100), s->mat.texture);
 	l_printf("%q%X%X%X\n", fd, s->color[2], s->color[1], s->color[0]);
 }
 

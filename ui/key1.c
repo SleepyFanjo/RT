@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:49:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/26 11:40:15 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:27:43 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		render(int keycode, t_param *param)
 {
 	if (keycode != 114)
 		return (0);
-	param->t->render = 1;
+	R = 1;
 	return (1);
 }
 
@@ -41,7 +41,7 @@ int		save(t_param *param)
 
 	name = "save";
 	if ((fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, 0644)) < 0)
-			exit (0);
+		exit (0);
 	put_cam(param, fd);
 	put_sphere(param, fd);
 	put_spot(param, fd);
@@ -62,6 +62,21 @@ int		how_high(int keycode, t_param *param)
 	if (keycode == MINUS)
 	{
 		POS->y -= 25;
+		return (1);
+	}
+	return (0);
+}
+
+int		roll(int keycode, t_param *param)
+{
+	if (keycode == NINE)
+	{
+		ROT->z += 25;
+		return (1);
+	}
+	if (keycode == SIX)
+	{
+		ROT->z -= 25;
 		return (1);
 	}
 	return (0);
@@ -94,28 +109,25 @@ int		wasd(int keycode, t_param *param)
 
 int		arrows(int keycode, t_param *param)
 {
-	if (B_ROT)
+	if (keycode == UP)
 	{
-		if (keycode == UP)
-		{
-			ROT->x -= 5;
-			return (1);
-		}
-		if (keycode == DOWN)
-		{
-			ROT->x += 5;
-			return (1);
-		}
-		if (keycode == RIGHT)
-		{
-			ROT->y += 5;
-			return (1);
-		}
-		if (keycode == LEFT)
-		{
-			ROT->y -= 5;
-			return (1);
-		}
+		ROT->x -= 5;
+		return (1);
+	}
+	if (keycode == DOWN)
+	{
+		ROT->x += 5;
+		return (1);
+	}
+	if (keycode == RIGHT)
+	{
+		ROT->y -= 5;
+		return (1);
+	}
+	if (keycode == LEFT)
+	{
+		ROT->y += 5;
+		return (1);
 	}
 	return (0);
 }
@@ -126,6 +138,5 @@ int		back_to_cam(int keycode, t_param *param)
 		return (0);
 	POS = &(param->cam);
 	ROT = &(param->rot_cam);
-	B_ROT = 1;
 	return (1);
 }

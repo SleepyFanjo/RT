@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/15 19:17:52 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 11:34:21 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:16:11 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,18 @@ static double	delta(t_line new, t_cone *obj)
 	return (x2);
 }
 
-void			inter_cone(t_param *param, t_info *info, t_list *cone)
+void			inter_cone(t_info *info, t_list *cone)
 {
 	t_line		new;
 	t_cone		*obj;
 	double		dist;
 
-	(void)param;
 	while (cone)
 	{
 		obj = (t_cone *)cone->content;
 		new = get_new_equa(obj, info->r_line);
 		dist = delta(new, obj);
-		if (dist > 0.1 && (info->distance < 0 || dist < info->distance))
+		if (dist > 0.001 && (info->distance < 0 || dist < info->distance))
 			update_info(info, dist, cone->content, new);
 		cone = cone->next;
 	}

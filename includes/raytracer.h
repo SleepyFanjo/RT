@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 14:29:43 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:15:23 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ void	apply_trans(double *m, t_coord *move);
 void	apply_rot(double *m, t_coord *move);
 void	apply_rot_norm(double *m, t_coord *move);
 void	calc_matrix(void *obj, int obj_type);
-void	inter_sphere(t_param *param, t_info *info, t_list *sphere);
+void	inter_sphere(t_info *info, t_list *sphere);
 void	write_on_img(t_param *param, int color, int i, int j);
 double	limited_sphere(t_sphere *obj, t_line line, double *dist);
-void	inter_plane(t_param *param, t_info *info, t_list *plane);
-void	inter_cylinder(t_param *param, t_info *info, t_list *cylinder);
-void	inter_cone(t_param *param, t_info *info, t_list *cone);
+void	inter_plane(t_info *info, t_list *plane);
+void	inter_cylinder(t_info *info, t_list *cylinder);
+void	inter_cone(t_info *info, t_list *cone);
 void	calc_intersection(t_param *param, t_info *info);
 void	calc_normal(t_info *info);
 t_coord	sphere_vec_n(t_info *info, t_sphere *obj);

@@ -82,20 +82,7 @@ void	calc_reflex_color(int **col, int *obj_col, double reflex)
 	(*col)[1] = reflex * obj_col[1] + (1 - reflex) * (*col)[1];
 	(*col)[2] = reflex * obj_col[2] + (1 - reflex) * (*col)[2];
 }
-/*
-int		*reflexion(t_param *param, t_info *info)
-{
-	t_info *ref;
 
-	ref = new_vd(info->r_line, info->vec_n);
-	calc_intersection(param, ref);
-	calc_light(param, ref, param->spot);
-	if (ref->distance != -1)
-		return (retrieve_col(damer(param, ref, ref->r_pos),
-				   info->color, get_reflex(info)));
-	return (init_color());
-}
-*/
 int		*recursive(t_param *param, t_info *info, int *color, int n)
 {
 	t_info	*ref;
@@ -111,7 +98,7 @@ int		*recursive(t_param *param, t_info *info, int *color, int n)
 	if (ref->distance == -1)
 		return (init_color());
 	calc_light(param, ref, param->spot);
-	color = retrieve_col(damer(param, ref, ref->r_pos), info->color, r_info);
+	color = retrieve_col(damer(param, ref, ref->s_pos), info->color, r_info);
 	return (color);
 }
 
@@ -135,5 +122,6 @@ void	calc_reflex(t_param *param, t_info *info)
 	if (reflex <= 0.0001)
 		return ;
 	color = recursive(param, info, init_color(), 15);
+//	color = reflexion(param, info);
 	info->color = color;
 }

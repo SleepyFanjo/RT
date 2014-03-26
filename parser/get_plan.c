@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:19:28 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 12:12:57 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:24:15 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	set_plan(t_plane *plan, char **tab)
 	plan->mat.reflex = ft_atoi(tab[7]) / 100.0;
 	plan->mat.med_in = ft_atoi(tab[8]) / 100.0;
 	plan->mat.refrax = ft_atoi(tab[9]) / 100.0;
+	plan->mat.trans = ft_atoi(tab[10]) / 100.0;
+	plan->mat.texture = ft_atoi(tab[11]);
 }
 
 int			get_plan(t_obj *obj, char *line)
@@ -36,12 +38,12 @@ int			get_plan(t_obj *obj, char *line)
 		ft_printf("%rAllocation Fail: ");
 		return (-1);
 	}
-	if (get_size_tab(tab) != 11)
+	if (get_size_tab(tab) != 13)
 	{
-		ft_printf("%rThis line has no 11 param: ");
+		ft_printf("%rThis line has no 13 param: ");
 		return (-1);
 	}
-	if (!test_tab(tab, 10))
+	if (!test_tab(tab, 12))
 		return (-1);
 	if ((plan = (t_plane *)malloc(sizeof(t_plane))) == NULL)
 	{
@@ -49,7 +51,7 @@ int			get_plan(t_obj *obj, char *line)
 		return (-1);
 	}
 	set_plan(plan, tab);
-	plan->color = get_color(tab[10]);
+	plan->color = get_color(tab[12]);
 	if (plan->color == NULL)
 		return (-1);
 	calc_matrix((void *)plan, PLANE);

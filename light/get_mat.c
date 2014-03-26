@@ -2,6 +2,8 @@
 
 double		get_shine(t_info *info)
 {
+	if (info->obj_type == -1)
+		return (0.0);
 	if (info->obj_type == SPHERE)
 		return (((t_sphere *)(info->obj))->mat.shine);
 	if (info->obj_type == PLANE)
@@ -10,19 +12,6 @@ double		get_shine(t_info *info)
 		return (((t_cylinder *)(info->obj))->mat.shine);
 	if (info->obj_type == CONE)
 		return (((t_cone *)(info->obj))->mat.shine);
-	return (0.0);
-}
-
-double		get_med(t_info *info)
-{
-	if (info->obj_type == SPHERE)
-		return (((t_sphere *)(info->obj))->mat.med_in);
-	if (info->obj_type == PLANE)
-		return (((t_plane *)(info->obj))->mat.med_in);
-	if (info->obj_type == CYLINDER)
-		return (((t_cylinder *)(info->obj))->mat.med_in);
-	if (info->obj_type == CONE)
-		return (((t_cone *)(info->obj))->mat.med_in);
 	return (0.0);
 }
 
@@ -41,15 +30,47 @@ double		get_reflex(t_info *info)
 	return (-1.0);
 }
 
-int			get_texture(t_info *info)
+double		get_med(t_info *info)
 {
+	if (info->obj_type == -1)
+		return (0.0);
 	if (info->obj_type == SPHERE)
-		return ((int)(10.0 * ((t_sphere *)(info->obj))->mat.refrax));
+		return (((t_sphere *)(info->obj))->mat.med_in);
 	if (info->obj_type == PLANE)
-		return ((int)(10.0 * ((t_plane *)(info->obj))->mat.refrax));
+		return (((t_plane *)(info->obj))->mat.med_in);
 	if (info->obj_type == CYLINDER)
-		return ((int)(10.0 * ((t_cylinder *)(info->obj))->mat.refrax));
+		return (((t_cylinder *)(info->obj))->mat.med_in);
 	if (info->obj_type == CONE)
-		return ((int)(10.0 * ((t_cone *)(info->obj))->mat.refrax));
-	return (0);
+		return (((t_cone *)(info->obj))->mat.med_in);
+	return (0.0);
+}
+
+double		get_refrax(t_info *info)
+{
+	if (info->obj_type == -1)
+		return (0.0);
+	if (info->obj_type == SPHERE)
+		return (((t_sphere *)(info->obj))->mat.refrax);
+	if (info->obj_type == PLANE)
+		return (((t_plane *)(info->obj))->mat.refrax);
+	if (info->obj_type == CYLINDER)
+		return (((t_cylinder *)(info->obj))->mat.refrax);
+	if (info->obj_type == CONE)
+		return (((t_cone *)(info->obj))->mat.refrax);
+	return (0.0);
+}
+
+double		get_trans(t_info *info)
+{
+	if (info->obj_type == -1)
+		return (0.0);
+	if (info->obj_type == SPHERE)
+		return (((t_sphere *)(info->obj))->mat.trans);
+	if (info->obj_type == PLANE)
+		return (((t_plane *)(info->obj))->mat.trans);
+	if (info->obj_type == CYLINDER)
+		return (((t_cylinder *)(info->obj))->mat.trans);
+	if (info->obj_type == CONE)
+		return (((t_cone *)(info->obj))->mat.trans);
+	return (0.0);
 }

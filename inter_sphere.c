@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 14:42:15 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:15:36 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,19 @@ static double	*delta(t_line new, t_sphere *obj)
 }
 
 
-void			inter_sphere(t_param *param, t_info *info, t_list *sphere)
+void			inter_sphere(t_info *info, t_list *sphere)
 {
 	t_line		new;
 	t_sphere	*obj;
 	double		*dist;
 
-	(void)param;
 	while (sphere)
 	{
 		obj = (t_sphere *)sphere->content;
 		new = get_new_equa(obj, info->r_line);
 		dist = delta(new, obj);
 		dist[0] = limited_sphere(obj, new, dist);
-		if (dist[0] > 0.1 && (info->distance < 0 || dist[0] < info->distance))
+		if (dist[0] > 0.001 && (info->distance < 0 || dist[0] < info->distance))
 			update_info(info, dist[0], sphere->content);
 		sphere = sphere->next;
 		free(dist);

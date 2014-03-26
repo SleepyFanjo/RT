@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:51:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/26 14:15:27 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:29:33 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define A 97
 # define S 115
 # define D 100
+# define NINE 65462
+# define SIX 65507
 
 # define C_X param->cam.x
 # define C_Y param->cam.y
@@ -32,12 +34,11 @@
 # define CR_X param->rot_cam.x
 # define CR_Y param->rot_cam.y
 # define CR_Z param->rot_cam.z
-# define R param->ui->render
-# define L param->ui->live
+# define R param->t->render
+# define L param->t->live
 # define OBJ param->ui->obj
 # define POS param->ui->pos
 # define ROT param->ui->rot
-# define B_ROT param->ui->b_rot
 
 /*
 **	key1.c
@@ -49,6 +50,7 @@ int		render(int keycode, t_param *param);
 int		save(t_param *param);
 int		live(int keycode, t_param *param);
 int		back_to_cam(int keycode, t_param *param);
+int		roll(int keycode, t_param *param);
 
 /*
 **	save.c

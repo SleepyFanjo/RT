@@ -76,12 +76,9 @@ t_info	*init_light(t_info *info, t_spot *spot)
 
 	light = (t_info *)j_malloc(sizeof(t_info));
 	light->r_line = init_line(info->r_pos, spot->coord);
-	light->r_pos.x = 0;
-	light->r_pos.y = 0;
-	light->r_pos.z = 0;
 	light->distance = -1;
 	light->light = AMBL;
-	light->color = NULL;
+	light->color = (int *)j_malloc(sizeof(int) * 3);
 	light->obj_type = -1;
 	return (light);
 }
@@ -136,7 +133,6 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		}
 		spot = spot->next;
 	}
-	info->color = retrieve_col(s_color, damer(param, info, info->r_pos),
+	info->color = retrieve_col(s_color, damer(param, info, info->s_pos),
 		   			get_shine(info));
-//	info->color = retrieve_col(s_color, info->color, get_shine(info));
 }
