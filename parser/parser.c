@@ -85,5 +85,6 @@ void	parser(char *filename, t_param *param)
 	calc_matrix((void *)param, CAM);
 	bzero(&param->env, sizeof(t_env));
 	param->text = NULL;
+	free(obj);
 	close(fd);
 }

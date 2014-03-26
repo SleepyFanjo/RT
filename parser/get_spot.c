@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:37:17 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 12:13:10 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:08:51 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			get_spot(t_obj *obj, char *line)
 {
 	char		**tab;
 	t_spot		*spot;
-	
+
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 	{
 		ft_printf("%rAllocation Fail ");
@@ -38,5 +38,6 @@ int			get_spot(t_obj *obj, char *line)
 	if ((spot->color = get_color(tab[4])) == NULL)
 		return (-1);
 	ft_lstadd(&(obj->spot), ft_lstnew(spot, sizeof(t_spot)));
+	free(tab);
 	return (0);
 }
