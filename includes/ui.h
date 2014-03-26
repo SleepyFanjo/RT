@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:51:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/24 20:03:55 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/25 18:19:48 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		arrows(int keycode, t_param *param);
 int		how_high(int keycode, t_param *param);
 int		wasd(int keycode, t_param *param);
 int		render(int keycode, t_param *param);
-int		save(int keycode, t_param *param);
+int		save(t_param *param);
 int		live(int keycode, t_param *param);
 int		back_to_cam(int keycode, t_param *param);
 

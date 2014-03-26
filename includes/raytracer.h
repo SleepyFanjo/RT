@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/25 11:43:54 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 10:46:14 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <libft.h>
 # include <fcntl.h>
 # include "struct.h"
+# include "define.h"
 # define CD_NOT_CMD -1
 # define CD_ERROR 0
 # define CD_SPHERE 1
@@ -58,21 +59,19 @@ int		ft_hex_atoi(char *str);
 int		next_number(char *line, int *i);
 int		first_number(char *line, int *i);
 t_coord	init_cam(t_coord *rot, char *dir);
-int		expose_hook(t_param *param);
-int		key_hook(int keycode, t_param *param);
-int		mouse_hook(int button, int x, int y, t_param *param);
 void	ft_error(char *s1, char *s2, int mode);
 void	*j_malloc(size_t size);
-void	raytracer(t_param *param, int nbr_process);
 int		raythrow(t_thread *thread);
 int		put_pixel_to_img(t_param *param, int i, int j);
 void	parser(char *filename, t_param *param);
 t_info	*init_info(t_param *param, int i, int j);
 void	write_on_img(t_param *param, int color, int i, int j);
-void	apply_trans(t_coord translation, t_coord *to_move, int mult);
+void	apply_trans(t_coord tr, t_coord rot, t_coord *to_move, int mult);
+int		raytracer(t_param *param, t_inf_exec *inf, int sockfd);
 void	apply_rot(t_coord rotation, t_coord *to_turn, int mult);
 void	apply_rot_norm(t_coord rotation, t_coord *to_turn, int mult);
 void	inter_sphere(t_param *param, t_info *info, t_list *sphere);
+void	write_on_img(t_param *param, int color, int i, int j);
 double	limited_sphere(t_sphere *obj, t_line line, double *dist);
 void	inter_plane(t_param *param, t_info *info, t_list *plane);
 void	inter_cylinder(t_param *param, t_info *info, t_list *cylinder);
@@ -89,6 +88,7 @@ int		calc_color_end(t_param *param, t_info *info);
 void	swap_double(double *a, double *b);
 void	init_ui(t_param *param);
 int		final_color(int *color, double light);
-void	get_textures(t_param *param, t_env e);
+int		ft_listen(int port);
+void	get_env(int sockfd, t_img *img, t_textures **tex);
 
 #endif

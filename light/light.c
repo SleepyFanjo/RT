@@ -76,9 +76,12 @@ t_info	*init_light(t_info *info, t_spot *spot)
 
 	light = (t_info *)j_malloc(sizeof(t_info));
 	light->r_line = init_line(info->r_pos, spot->coord);
+	light->r_pos.x = 0;
+	light->r_pos.y = 0;
+	light->r_pos.z = 0;
 	light->distance = -1;
 	light->light = AMBL;
-	light->color = (int *)j_malloc(sizeof(int) * 3);
+	light->color = NULL;
 	light->obj_type = -1;
 	return (light);
 }

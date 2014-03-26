@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/24 11:12:55 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 10:26:53 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void		update_info(t_info *info, double dist, void *obj)
 static t_line	get_new_equa(t_sphere *obj, t_line line)
 {
 	t_line		new;
+	t_coord		rot;
 
 	new.pos.x = line.pos.x;
 	new.pos.y = line.pos.y;
@@ -33,7 +34,10 @@ static t_line	get_new_equa(t_sphere *obj, t_line line)
 	new.vec.x = line.vec.x;
 	new.vec.y = line.vec.y;
 	new.vec.z = line.vec.z;
-	apply_trans(obj->pos, &(new.pos), -1);
+	rot.x = 0;
+	rot.z = 0;
+	rot.z = 0;
+	apply_trans(obj->pos, rot, &(new.pos), -1);
 	return (new);
 }
 
