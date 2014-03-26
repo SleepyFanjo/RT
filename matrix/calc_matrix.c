@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/26 11:54:07 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 14:12:17 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:28:22 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,12 @@ void		calc_matrix_cylinder(double *m, double *m_i, t_cylinder *obj)
 	invert_matrix(m_i, m);
 	obj->m = m;
 	obj->m_i = m_i;
+}
+
+void		calc_matrix_cam(double *m, double *m_i, t_param *obj)
+{
+	free(m_i);
+	fill_matrix_rot(m, obj->rot_cam);
+	fill_matrix_trans(m, obj->cam);
+	obj->m_cam = m;
 }
