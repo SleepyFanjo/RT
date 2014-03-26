@@ -44,9 +44,9 @@ int		expose_hook(void *env)
 int		key_hook(int keycode, t_v_env *e)
 {
 	int			i;
-	static int	(*key_tab[6])(int, t_param *) =
+	static int	(*key_tab[7])(int, t_param *) =
 	{
-		&arrows, &how_high, &wasd, &render, &live, &back_to_cam
+		&arrows, &how_high, &wasd, &render, &live, &back_to_cam, &roll
 	};
 	t_param		*param;
 
@@ -55,13 +55,13 @@ int		key_hook(int keycode, t_v_env *e)
 	if (keycode == 65307)
 		exit(0);
 	R = 0;
-	while (i != 6)
+	while (i != 7)
 	{
 		if (key_tab[i](keycode, param))
 			break ;
 		i++;
 	}
-	if (i != 6)
+	if (i != 7)
 	{
 		save(param);
 		if ((e->inf->stage = get_stage("save")) == NULL)

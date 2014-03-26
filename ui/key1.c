@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:49:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/26 15:05:01 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:27:43 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,21 @@ int		how_high(int keycode, t_param *param)
 	if (keycode == MINUS)
 	{
 		POS->y -= 25;
+		return (1);
+	}
+	return (0);
+}
+
+int		roll(int keycode, t_param *param)
+{
+	if (keycode == NINE)
+	{
+		ROT->z += 25;
+		return (1);
+	}
+	if (keycode == SIX)
+	{
+		ROT->z -= 25;
 		return (1);
 	}
 	return (0);
