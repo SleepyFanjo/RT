@@ -54,6 +54,6 @@ int		raytracer(t_param *param, t_inf_exec *inf, int sockfd)
 		ft_printf("%r#13\n");
 		exit(12);
 	}
-	free_obj_lst(param);
+//	free_obj_lst(param);
 	return (0);
 }
