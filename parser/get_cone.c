@@ -18,10 +18,8 @@ static void	set_cone(t_cone *cone, char **tab)
 int			get_cone(t_obj *obj, char *line)
 {
 	char		**tab;
-	int			i;
 	t_cone		*cone;
 
-	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 	{
 		ft_printf("%rAllocation Fail: ");
@@ -42,6 +40,7 @@ int			get_cone(t_obj *obj, char *line)
 		return (-1);
 	}
 	set_cone(cone, tab);
+	calc_matrix((void *)cone, CONE);
 	ft_lstadd(&(obj->cone), ft_lstnew(cone, sizeof(t_cone)));
 	return (0);
 }

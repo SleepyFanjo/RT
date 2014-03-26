@@ -6,13 +6,12 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 10:46:14 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 13:49:17 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYTRACER_H
 # define RAYTRACER_H
-# include "./ui/libftprintf.h"
 # define LOADING		(0)
 # define F_PI			(3.1415926535)
 # define WIDTH			(800)
@@ -26,9 +25,8 @@
 # define SQR(val)			(val * val)
 # include <mlx.h>
 # include <math.h>
-# include <libft.h>
 # include <fcntl.h>
-# include "struct.h"
+# include <struct.h>
 # include "define.h"
 # define CD_NOT_CMD -1
 # define CD_ERROR 0
@@ -66,10 +64,11 @@ int		put_pixel_to_img(t_param *param, int i, int j);
 void	parser(char *filename, t_param *param);
 t_info	*init_info(t_param *param, int i, int j);
 void	write_on_img(t_param *param, int color, int i, int j);
-void	apply_trans(t_coord tr, t_coord rot, t_coord *to_move, int mult);
 int		raytracer(t_param *param, t_inf_exec *inf, int sockfd);
-void	apply_rot(t_coord rotation, t_coord *to_turn, int mult);
-void	apply_rot_norm(t_coord rotation, t_coord *to_turn, int mult);
+void	apply_trans(double *m, t_coord *move);
+void	apply_rot(double *m, t_coord *move);
+void	apply_rot_norm(double *m, t_coord *move);
+void	calc_matrix(void *obj, int obj_type);
 void	inter_sphere(t_param *param, t_info *info, t_list *sphere);
 void	write_on_img(t_param *param, int color, int i, int j);
 double	limited_sphere(t_sphere *obj, t_line line, double *dist);

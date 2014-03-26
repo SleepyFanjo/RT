@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:37:17 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/22 15:10:45 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/26 12:13:10 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int			get_spot(t_obj *obj, char *line)
 {
 	char		**tab;
-	int			i;
 	t_spot		*spot;
-
-	i = 0;
+	
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 	{
 		ft_printf("%rAllocation Fail ");

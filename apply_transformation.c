@@ -6,69 +6,48 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 15:38:55 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 10:30:58 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 12:12:24 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raytracer.h"
+#include <raytracer.h>
 #include <matrix.h>
 
-static double	*matrix_cpy(double *dest, double *src)
+void			apply_trans(double *m, t_coord *move)
 {
-	int			i;
-
-	i = 0;
-	while (i < 16)
-	{
-		dest[i] = src[i];
-		i = i + 1;
-	}
-	return (dest);
+	apply_transformation(m, move);
 }
 
-void			apply_trans(t_coord tr, t_coord rot, t_coord *move, int mult)
+void			apply_rot(double *m, t_coord *move)
 {
-	double		*matrix;
-	double		*cpy;
-
-	matrix = (double *)j_malloc(sizeof(double) * 16);
-	cpy = (double *)j_malloc(sizeof(double) * 16);
-	fill_matrix_rot(matrix, rot);
-	fill_matrix_trans(matrix, tr);
-	if (mult == -1)
-		invert_matrix(matrix, matrix_cpy(cpy, matrix));
-	apply_transformation(matrix, move);
-	free(matrix);
-	free(cpy);
+	apply_matrix(m, move);
 }
 
-void			apply_rot(t_coord rotation, t_coord *to_rot, int mult)
+void			apply_rot_norm(double *m, t_coord *move)
 {
-	double		*matrix;
-	double		*cpy;
+	double		*tmp;
 
-	matrix = (double *)j_malloc(sizeof(double) * 16);
-	cpy = (double *)j_malloc(sizeof(double) * 16);
-	fill_matrix_rot(matrix, rotation);
-	if (mult == -1)
-		invert_matrix(matrix, matrix_cpy(cpy, matrix));
-	apply_matrix(matrix, to_rot);
-	free(matrix);
-	free(cpy);
+	tmp = (double *)j_malloc(sizeof(double) * 16);
+	transpose_matrix(tmp, m);
+	apply_matrix(tmp, move);
+	free(tmp);
 }
 
-void			apply_rot_norm(t_coord rotation, t_coord *to_rot, int mult)
+void			calc_matrix(void *obj, int obj_type)
 {
-	double		*matrix;
-	double		*cpy;
+	double		*m;
+	double		*m_i;
 
-	matrix = (double *)j_malloc(sizeof(double) * 16);
-	cpy = (double *)j_malloc(sizeof(double) * 16);
-	fill_matrix_rot(matrix, rotation);
-	if (mult == -1)
-		invert_matrix(matrix, matrix_cpy(cpy, matrix));
-	transpose_matrix(matrix, matrix_cpy(cpy, matrix));
-	apply_matrix(matrix, to_rot);
-	free(matrix);
-	free(cpy);
+	m = (double *)j_malloc(sizeof(double) * 16);
+	m_i = (double *)j_malloc(sizeof(double) * 16);
+	if (obj_type == SPHERE)
+		calc_matrix_sphere(m, m_i, (t_sphere *)obj);
+	else if (obj_type == PLANE)
+		calc_matrix_plane(m, m_i, (t_plane *)obj);
+	else if (obj_type == CONE)
+		calc_matrix_cone(m, m_i, (t_cone *)obj);
+	else if (obj_type == CYLINDER)
+		calc_matrix_cylinder(m, m_i, (t_cylinder *)obj);
+	else
+		calc_matrix_cam(m, m_i, (t_param *)obj);
 }
