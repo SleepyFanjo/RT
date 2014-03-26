@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 12:02:11 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 11:34:28 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 18:05:48 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ void		calc_normal(t_info *info)
 	if (info->distance < 0)
 		return ;
 	get_r_pos(info, &(info->r_pos));
-	if (info->obj_type == CYLINDER || info->obj_type == CONE)
-		get_s_pos(info, &(info->s_pos));
-	else if (info->obj_type == PLANE)
-		get_s_pos(info, &(info->s_pos));
+	get_s_pos(info, &(info->s_pos));
 	if (info->obj_type == SPHERE)
 		info->vec_n = sphere_vec_n(info, (t_sphere *)info->obj);
 	if (info->obj_type == PLANE)

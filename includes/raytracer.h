@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 15:15:23 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 17:11:52 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	calc_matrix(void *obj, int obj_type);
 void	inter_sphere(t_info *info, t_list *sphere);
 void	write_on_img(t_param *param, int color, int i, int j);
 double	limited_sphere(t_sphere *obj, t_line line, double *dist);
+double	limited_cylinder(t_cylinder *obj, t_line line, double dist);
+double	limited_cone(t_cone *obj, t_line line, double dist);
 void	inter_plane(t_info *info, t_list *plane);
 void	inter_cylinder(t_info *info, t_list *cylinder);
 void	inter_cone(t_info *info, t_list *cone);

@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 12:14:41 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 11:36:59 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 18:06:53 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ t_coord			sphere_vec_n(t_info *info, t_sphere *obj)
 {
 	t_coord		res;
 
-	res.x = info->r_pos.x - obj->pos.x;
-	res.y = info->r_pos.y - obj->pos.y;
-	res.z = info->r_pos.z - obj->pos.z;
+	res.x = info->s_pos.x;
+	res.y = info->s_pos.y;
+	res.z = info->s_pos.z;
 	apply_rot_norm(obj->m_i, &res);
 	return (normal(res));
 }
