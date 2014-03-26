@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:37:17 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 15:54:40 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 17:44:31 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int			get_spot(t_obj *obj, char *line)
 		return (-1);
 	}
 	if (get_size_tab(tab) != 5)
+	{
 		ft_printf("%rThis line has no five param\n");
+		return (-1);
+	}
 	if (!test_tab(tab, 4))
 		return (-1);
 	if ((spot = (t_spot *)malloc(sizeof(t_spot))) == NULL)

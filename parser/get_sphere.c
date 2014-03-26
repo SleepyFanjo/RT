@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 15:47:13 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 15:28:59 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/26 17:44:18 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int			get_sphere(t_obj *obj, char *line)
 	if (get_size_tab(tab) != 20)
 	{
 		ft_printf("%rThis line has no 20 param: ");
+		return (-1);
 	}
 	if (!test_tab(tab, 19))
 		return (-1);
