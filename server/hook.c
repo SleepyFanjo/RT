@@ -12,7 +12,10 @@ int		mouse_hook(int button, int x, int y, t_v_env *e)
 	(void)button;
 	calc_matrix((void *)param, CAM);
 	info = init_info(param, y, x);
+int fd = open("save", O_WRONLY | O_APPEND | O_CREAT, 0644);
+l_printf("%q# le type est %d avant\n", fd, info->obj_type);
 	calc_intersection(param, info);
+l_printf("%q# le type est %d apres\n", fd, info->obj_type);
 	if (info->obj_type == -1)
 	{
 		free(info);
