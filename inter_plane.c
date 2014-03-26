@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 12:17:47 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 14:58:32 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:15:49 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,12 @@ static t_line	get_new_equa(t_plane *obj, t_line line)
 	return (new);
 }
 
-void			inter_plane(t_param *param, t_info *info, t_list *plane)
+void			inter_plane(t_info *info, t_list *plane)
 {
 	t_plane		*obj;
 	t_line		new;
 	double		dist;
 
-	(void)param;
 	while (plane)
 	{
 		obj = (t_plane *)plane->content;

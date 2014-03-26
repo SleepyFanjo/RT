@@ -1,5 +1,20 @@
 #include "light.h"
 
+int			get_texture(t_info *info)
+{
+	if (info->obj_type == -1)
+		return (0.0);
+	if (info->obj_type == SPHERE)
+		return (((t_sphere *)(info->obj))->mat.texture);
+	if (info->obj_type == PLANE)
+		return (((t_plane *)(info->obj))->mat.texture);
+	if (info->obj_type == CYLINDER)
+		return (((t_cylinder *)(info->obj))->mat.texture);
+	if (info->obj_type == CONE)
+		return (((t_cone *)(info->obj))->mat.texture);
+	return (0);
+}
+
 int		*checker(t_coord point)
 {
 	double	tmp1;

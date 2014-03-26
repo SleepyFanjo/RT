@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 17:07:16 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 14:58:26 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:15:36 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,12 @@ static double	*delta(t_line new, t_sphere *obj)
 }
 
 
-void			inter_sphere(t_param *param, t_info *info, t_list *sphere)
+void			inter_sphere(t_info *info, t_list *sphere)
 {
 	t_line		new;
 	t_sphere	*obj;
 	double		*dist;
 
-	(void)param;
 	while (sphere)
 	{
 		obj = (t_sphere *)sphere->content;

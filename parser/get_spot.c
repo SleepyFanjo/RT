@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:37:17 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 12:13:10 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:28:58 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			get_spot(t_obj *obj, char *line)
 {
 	char		**tab;
 	t_spot		*spot;
-	
+
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 	{
 		ft_printf("%rAllocation Fail ");
@@ -34,7 +34,7 @@ int			get_spot(t_obj *obj, char *line)
 	spot->coord.x = ft_atoi(tab[0]);
 	spot->coord.y = ft_atoi(tab[1]);
 	spot->coord.z = ft_atoi(tab[2]);
-	spot->value = ft_atoi(tab[3]) / 1000.0;
+	spot->value = ft_atoi(tab[3]) / 100.0;
 	if ((spot->color = get_color(tab[4])) == NULL)
 		return (-1);
 	ft_lstadd(&(obj->spot), ft_lstnew(spot, sizeof(t_spot)));
