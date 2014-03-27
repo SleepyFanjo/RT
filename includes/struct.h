@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 03:19:00 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/27 07:18:44 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define BPP		(img.bpp)
 # define LINE		(img.line)
 # define ENDIAN		(img.endian)
+# define TRI		(e->mesh->tri)
 # define SPHERE		(0)
 # define PLANE		(1)
 # define CYLINDER	(2)
@@ -30,6 +31,19 @@
 # define CAM		(4)
 # define MESH		(5)
 # define NB_T		(9)
+
+typedef struct		s_triangle
+{
+	double			vert0[3];
+	double			vert1[3];
+	double			vert2[3];
+	double			vecn[3];
+}					t_triangle;
+
+typedef struct		s_mesh
+{
+	t_triangle		**tri;
+}					t_mesh;
 
 typedef struct		s_coord
 {
@@ -79,14 +93,6 @@ typedef struct		s_img
 	int				*decrgb;
 	int				depth;
 }					t_img;
-
-typedef struct		s_triangle
-{
-	double			vert0[3];
-	double			vert1[3];
-	double			vert2[3];
-	double			vecn[3];
-}					t_triangle;
 
 typedef struct		s_textures
 {
@@ -205,10 +211,15 @@ typedef struct		s_ui
 	int				focus;
 }					t_ui;
 
-typedef struct		s_mesh
+typedef struct		s_parse_mesh
 {
-	t_triangle		**tri;
-}					t_mesh;
+	int				i;
+	int				header;
+	int				nbr_ver;
+	int				nbr_face;
+	char			*str;
+	t_mesh			*mesh;
+}					t_parse_mesh;
 
 typedef struct		s_param
 {
