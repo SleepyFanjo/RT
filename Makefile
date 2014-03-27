@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/27 10:50:02 by lredoban         ###   ########.fr        #
+#    Updated: 2014/03/27 14:27:59 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRC1=apply_transformation.c \
 	 multithread/print_first_line.c \
 	 multithread/one_line.c \
 	 multithread/print_middle.c \
+	 multithread/fucking_norm_1.c \
 	 client/get_stage.c \
 	 client/send_mess.c \
 	 client/get_core.c \
@@ -67,6 +68,7 @@ SRC1=apply_transformation.c \
 	 client/compute.c \
 	 client/calc_multi_stage.c \
 	 client/client.c \
+	 client/new_file_for_norme.c \
 	 ft_error.c \
 	 main.c
 
@@ -130,6 +132,7 @@ SRC2=server/main_serv.c \
 	 multithread/print_first_line.c \
 	 multithread/one_line.c \
 	 multithread/print_middle.c \
+	 multithread/fucking_norm_1.c \
 	 ui/key1.c \
 	 ui/ui.c \
 	 ui/save.c \
@@ -145,6 +148,8 @@ SRC2=server/main_serv.c \
 	 ui/key3.c \
 	 ui/find_obj.c \
 	 ui/copy.c \
+	 ui/dup_sp.c \
+	 ui/dup_cc.c \
 	 ft_error.c \
 	 server/calc_img.c
 

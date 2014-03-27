@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:51:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 09:43:32 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:04:54 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,24 @@
 /*
 **	key1.c
 */
-int		render(int keycode, t_param *param);
-int		save(t_param *param);
-int		live(int keycode, t_param *param);
-int		how_high(int keycode, t_param *param);
-int		back_to_cam(int keycode, t_param *param);
+int			render(int keycode, t_param *param);
+int			save(t_param *param);
+int			live(int keycode, t_param *param);
+int			how_high(int keycode, t_param *param);
+int			back_to_cam(int keycode, t_param *param);
 
 /*
 **	key2.c
 */
-int		wasd(int keycode, t_param *param);
-int		arrows(int keycode, t_param *param);
-int		roll(int keycode, t_param *param);
+int			wasd(int keycode, t_param *param);
+int			arrows(int keycode, t_param *param);
+int			roll(int keycode, t_param *param);
 
 /*
 **	key3.c
 */
-int		rad(int keycode, t_param *param);
-int		del(int keycode, t_param *param);
+int			rad(int keycode, t_param *param);
+int			del(int keycode, t_param *param);
 
 /*
 **	find_obj.c
@@ -77,7 +77,8 @@ t_list		*find_sphere(t_param *param, t_list *l);
 /*
 **	copy.c
 */
-int		copy(int keycode, t_param *param);
+int			copy(int keycode, t_param *param);
+int			*cpy_col(int *col);
 
 /*
 **	save.c
@@ -104,4 +105,16 @@ void		put_cone(t_param *param, int fd);
 */
 void		put_sphere(t_param *param, int fd);
 void		put_plane(t_param *param, int fd);
+
+/*
+**  dup_sp.c
+*/
+void		dup_sphere(t_param *param, t_list *l);
+void		dup_plane(t_param *param, t_list *l);
+
+/*
+**  dup_cc.c
+*/
+void		dup_cone(t_param *param, t_list *l);
+void		dup_cylinder(t_param *param, t_list *l);
 #endif

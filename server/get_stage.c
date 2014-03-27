@@ -1,6 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_stage.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/27 12:01:15 by vwatrelo          #+#    #+#             */
+/*   Updated: 2014/03/27 12:01:16 by vwatrelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/network.h"
 
-char	*get_stage(char *filename)
+static char	*return_val_norm(int fd)
+{
+	close(fd);
+	return (NULL);
+}
+
+char		*get_stage(char *filename)
 {
 	int		fd;
 	char	buff[BUFF_SIZE];
@@ -20,10 +38,7 @@ char	*get_stage(char *filename)
 		buff[ret] = '\0';
 		tmp = res;
 		if ((res = ft_strjoin(res, buff)) == NULL)
-		{
-			close(fd);
-			return (NULL);
-		}
+			return (return_val_norm(fd));
 		free(tmp);
 	}
 	close(fd);

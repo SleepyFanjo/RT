@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   multithread.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/27 14:58:38 by lredoban          #+#    #+#             */
+/*   Updated: 2014/03/27 14:58:43 by lredoban         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MULTITHREAD_H
 # define MULTITHREAD_H
 
@@ -10,5 +22,9 @@ int			print_last_line(t_thread *th, t_limit *l);
 int			print_first_line(t_thread *th, t_limit *l);
 int			print_middle(t_thread *th, t_limit *l);
 int			one_line(t_thread *th, t_limit *l);
+t_list		*get_thread_lst(t_limit *limit, t_param *p, int id);
+t_list		*get_lst_thread(t_param *p, int *i_e, int step);
+int			ft_min(int nb1, int nb2);
+int			ft_max(int nb1, int nb2);
 
 #endif
