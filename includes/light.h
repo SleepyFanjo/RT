@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 14:26:09 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/25 12:23:32 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/26 17:56:03 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ double		get_shine(t_info *info);
 double		get_med(t_info *info);
 double		get_reflex(t_info *info);
 int			get_texture(t_info *info);
+
+typedef struct		s_map
+{
+	double			u;
+	double			v;
+}					t_map;
 #endif

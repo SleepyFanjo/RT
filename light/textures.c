@@ -15,7 +15,7 @@ int			get_texture(t_info *info)
 	return (0);
 }
 
-int		*checker(t_coord point)
+int		*checker(t_coord point, t_info *info)
 {
 	double	tmp1;
 	double	tmp2;
@@ -25,44 +25,80 @@ int		*checker(t_coord point)
 	tmp2 = sin(F_PI / 70.0) * sin((F_PI / 70.0) * point.z);
 	color = (int *)j_malloc(sizeof(int) * 3);
 	if ((tmp1 >= 0 && tmp2 >= 0) || (tmp1 < 0 && tmp2 < 0))
-		return (init_color());
+		return (info->color);
 	color[0] = 255;
 	color[1] = 255;
 	color[2] = 255;
 	return (color);
 }
 
-t_coord	get_polar(t_coord center, t_coord contact)
+t_coord	cross_product(t_coord v1, t_coord v2)
 {
-	t_coord polar;
+	t_coord	v_n;
+	t_coord	new;
+	double	norm_v1;
+	double	norm_v2;
 
-	polar.x = contact.x - center.x;
-	polar.y = contact.y - center.y;
-	polar.z = contact.z - center.z;
-	return (polar);
+	v_n.x = 0;
+	v_n.y = 0;
+	v_n.z = 1;
+	norm_v1 = norme(v1);
+	norm_v2 = norme(v2);
+	new.x = norm_v1 * norm_v2 * v_n.x;
+	new.y = norm_v1 * norm_v2 * v_n.y;
+	new.z = norm_v1 * norm_v2 * v_n.z;
+	return (new);
+}
+
+int		*convert_color(int color)
+{
+	int	*col;
+
+	col = (int *)j_malloc(sizeof(int) * 3);
+	col[0] = color % 256;
+	color /= 256;
+	col[1] = color % 256;
+	color /= 256;
+	col[2] = color % 256;
+	return (col);
 }
 
 int		*apply_text_sphere(t_coord point, t_sphere *s, t_textures t)
 {
-	int		*color;
+	t_coord	v_n;
+	t_coord	v_e;
+	t_coord new_point;
+	double	phi;
+	double	theta;
+	t_map	text;
 	int		t_x;
 	int		t_y;
-	double	tmp_x;
-	double	tmp_y;
-	t_coord	p;
+	char	*color;
 
-	p = get_polar(s->pos, point);
-	tmp_x = ((acos(p.z / s->radius) / F_PI));
-	tmp_y = ((acos(p.x / (s->radius * sin(tmp_x * F_PI))) / (2 * F_PI)));
-	t_x = (int)(tmp_x * t.size_x);
-	t_y = (int)(tmp_y * t.size_y);
+	v_n.x = 0;
+	v_n.y = 1;
+	v_n.z = 0;
+	v_e.x = 1;
+	v_e.y = 0;
+	v_e.z = 0;
+	new_point = normalize(point);
+	phi = acos(-dot_product(v_n, new_point));
+	text.v = phi / F_PI;
+	theta = (acos(dot_product(new_point, v_e) / sin(phi))) / (2 * F_PI);
+	if (dot_product(cross_product(v_n, v_e), point) > 0)
+		text.u = theta;
+	else
+		text.u = 1 - theta;
+	t_x = (int)(text.u * (double)t.size_x);
+	t_y = (int)(text.v * (double)t.size_y);
 	if ((t_x < 0 || t_x > t.size_x) || (t_y < 0 || t_y > t.size_y))
 		return (init_color());
-	color = (int *)j_malloc(sizeof(int) * 3);
+	color = (char *)j_malloc(sizeof(char) * 4);
 	color[0] = (int)(t.data[(t_y * t.sizeline + t_x * (t.bpp / 8))]);
 	color[1] = (int)(t.data[(t_y * t.sizeline + t_x * (t.bpp / 8) + 1)]);
 	color[2] = (int)(t.data[(t_y * t.sizeline + t_x * (t.bpp / 8) + 2)]);
-	return (color);
+	color[3] = 0;
+	return (convert_color(*(int *)color));
 }
 
 int		*damer(t_param *param, t_info *info, t_coord point)
@@ -70,7 +106,7 @@ int		*damer(t_param *param, t_info *info, t_coord point)
 	int	tmp;
 
 	if ((tmp = get_texture(info)) == DAMIER)
-		return (checker(point));
+		return (checker(point, info));
 	if (tmp == 0)
 		return (info->color);
 	if (get_texture(info) == TEXT_0)
