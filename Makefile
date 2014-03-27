@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/27 07:47:10 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/27 08:33:22 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC1=apply_transformation.c \
 	 parser/test_tab.c \
 	 parser/get_cam.c \
 	 parser/get_sphere.c \
+	 parser/get_mesh.c \
 	 parser/free_obj_lst.c \
 	 light/light.c \
 	 light/reflex.c \
@@ -65,6 +66,10 @@ SRC1=apply_transformation.c \
 	 client/compute.c \
 	 client/calc_multi_stage.c \
 	 client/client.c \
+	 mesh/calc_inter_mesh.c \
+	 mesh/calc_inter_tri.c \
+	 mesh/moller.c \
+	 mesh/prequel_inter.c \
 	 ft_error.c \
 	 main.c
 
@@ -115,6 +120,7 @@ SRC2=server/main_serv.c \
 	 parser/test_tab.c \
 	 parser/get_cam.c \
 	 parser/get_sphere.c \
+	 parser/get_mesh.c \
 	 parser/free_obj_lst.c \
 	 light/light.c \
 	 light/reflex.c \
@@ -136,6 +142,10 @@ SRC2=server/main_serv.c \
 	 ui/ft_putui.c \
 	 ui/clic.c \
 	 ft_error.c \
+	 mesh/calc_inter_mesh.c \
+	 mesh/calc_inter_tri.c \
+	 mesh/moller.c \
+	 mesh/prequel_inter.c \
 	 server/calc_img.c
 
 INCLUDES=-I./ui/ -I./includes/ -I./libft/includes/

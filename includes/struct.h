@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 05:26:33 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 08:48:35 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define CYLINDER	(2)
 # define CONE		(3)
 # define CAM		(4)
+# define MESH		(5)
 # define NB_T		(9)
 
 typedef struct		s_triangle

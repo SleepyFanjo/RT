@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 15:16:56 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/27 08:48:35 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	calc_intersection(t_param *param, t_info *info)
 	inter_plane(info, param->plane);
 	inter_cylinder(info, param->cylinder);
 	inter_cone(info, param->cone);
+	calc_inter_mesh(info, param->mesh);
 	calc_normal(info);
 }
 
@@ -47,13 +48,13 @@ int		put_pixel_to_img(t_param *param, int i, int j)
 
 	info = init_info(param, i, j);
 	calc_intersection(param, info);
-	if (param->t->render || param->t->live)
-	{
+//	if (param->t->render || param->t->live)
+//	{
 		finl_color = calc_color_end(param, info);
 		write_on_img(param, finl_color, i, j);
-	}
-	else
-		write_on_img(param, final_color(info->color, 1), i, j);
+//	}
+//	else
+//		write_on_img(param, final_color(info->color, 1), i, j);
 	free(info);
 	return (0);
 }
