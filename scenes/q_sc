@@ -18,9 +18,6 @@
 0 400 -1500 0 0 0
 //plane
 #plane pos_x pos_y pos_z rot_x rot_y rot_z shine reflex med_in refrax trans texture color
-#200 -100 0 0 0 90 30 0 0 0 0 0 FF00FF
-#100 -100 0 0 0 45 30 0 0 0 0 0 F0FF00
-#200 -100 0 0 0 0 30 0 0 0 0 0 FFF00F
 0 -100 0 0 0 0 30 0 0 0 0 1 222222
 //cylinder
 #cylinder pos_x pos_y pos_z rot_x rot_y rot_z radius is_lim lim_h lim_b shine reflex med_in refrax trans texture color
@@ -31,8 +28,6 @@
 -800 0 1800 0 0 0 120 0 200 90 0 0 0 0 0 0 EEEEEE
 -600 0 2500 0 0 0 120 0 200 90 0 0 0 0 0 0 EEEEEE
 -300 0 3000 0 0 0 120 0 200 90 0 0 0 0 0 0 EEEEEE
-#800 0 7500 0 0 0 120 0 200 90 0 0 0 0 0 0 007FFF
-#0 0 1500 0 0 60 50 1 0 -200 30 0 0 0 0 0 F0FF00
 //spot
 #spot pos_x pos_y pos_z value color
 -400 400 0 40 FFFFFF
