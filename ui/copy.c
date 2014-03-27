@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 09:43:55 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 10:41:38 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 12:42:15 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ l_printf("%q# X%d Y%d Z%d\n", fd, (int)s->pos.x, (int)s->pos.y, (int)s->pos.z);
 		}
 		l = l->next;
 	}
-	calc_matrix((void *)s, SPHERE);
+	calc_matrix((void *)new, SPHERE);
 printf("@@m:%p mi%p\n", s->m, s->m_i);
 	ft_lstadd(&l, ft_lstnew(new, sizeof(t_sphere)));
 }
@@ -91,5 +91,4 @@ int			copy(int keycode, t_param *param)
 	if (FOCUS == CONE)
 		supp(param, CONE);*/
 	return (1);
-
 }
