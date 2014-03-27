@@ -32,11 +32,11 @@ int					l_check_end(t_parse_mesh *e)
 	if (e->nbr_ver == 0 || e->nbr_face == 0)
 		return (-1);
 	nbr = e->nbr_ver / 3;
-	e->nbr_ver = nbr;
+	e->nbr_ver = nbr * 3;
 	e->mesh->tri = (t_triangle **)j_malloc(sizeof(t_triangle *) * (nbr + 1));
 	i = 0;
-printf("nbr:%d", nbr);
-	while(i < nbr)
+printf("nbr:%d  ver:%d", nbr, e->nbr_ver);
+	while(i <= nbr)
 	{
 		(e->mesh->tri)[i] = NULL;
 		i++;
@@ -174,7 +174,7 @@ int					get_mesh(t_obj *obj, char *line)
 				if (!get_info(&e, e.str))
 					return (l_error("Do not like your head...er", -1));
 			}
-			else if(e.nbr_face < (e.nbr_ver * 3))
+			else if(e.nbr_face < e.nbr_ver)
 			{
 				if (!do_the_ver_dance(&e, e.str))
 					return (l_error("You ain't got no rhythm", -1));
