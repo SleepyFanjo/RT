@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 12:51:11 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 01:07:26 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 09:33:29 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,4 @@ void		init_ui(t_param *param)
 	ROT = &(param->rot_cam);
 	RADIUS = NULL;
 	FOCUS = -1;
-}
-
-void		reinit_ui(t_param *param)
-{
-	(void)param;
 }

@@ -28,5 +28,4 @@ void		calc_img(t_list *lst_host, t_info_serv *inf, t_v_env *e)
 	get_cl_stage(lst_th, e);
 	ft_lstiter(lst_th, free_th);
 	ft_lstdel(&lst_th, lst_th);
-	reinit_ui(e->p);
 }

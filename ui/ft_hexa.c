@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/21 22:10:51 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/22 23:14:28 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 09:05:52 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,3 @@ void			ft_string(t_printf_env *e, char *s)
 		e->len += ft_strlen(s);
 	}
 }
-

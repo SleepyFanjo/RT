@@ -5,22 +5,15 @@ int		mouse_hook(int button, int x, int y, t_v_env *e)
 {
 	t_info		*info;
 	t_param		*param;
-int fd=open("save", O_WRONLY | O_CREAT | O_APPEND);
 	static void	(*obj_tab[4])(t_param *, t_info *) =
 		{&clic_sphere, &clic_plane, &clic_cylinder, &clic_cone};
 
-l_printf("%qfocus in mouse:\n", fd);
 	param = e->p;
 	(void)button;
-l_printf("%qfocus in mouse:\n", fd);
 	calc_matrix((void *)param, CAM);
-l_printf("%qfocus in mouse:\n", fd);
 	info = init_info(param, y, x);
-l_printf("%qfocus in mouse:\n", fd);
 	calc_intersection(param, info);
-l_printf("%qfocus in mouse:\n", fd);
 	FOCUS = info->obj_type;
-l_printf("%qfocus in mouse:\n", fd);
 	if (FOCUS == -1)
 	{
 		free(info);

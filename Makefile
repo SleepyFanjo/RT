@@ -6,12 +6,12 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/27 02:55:55 by jrenouf-         ###   ########.fr        #
+#    Updated: 2014/03/27 09:47:58 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= gcc
-FLAG=-Wall -Wextra -Werror -g
+FLAGS=-Wall -Wextra -g
 SRC1=apply_transformation.c \
 	 init_info.c \
 	 inter_sphere.c \
@@ -138,7 +138,13 @@ SRC2=server/main_serv.c \
 	 ui/ft_hexa.c \
 	 ui/ft_num.c \
 	 ui/ft_putui.c \
+	 ui/save_cc.c \
+	 ui/save_cp.c \
 	 ui/clic.c \
+	 ui/key2.c \
+	 ui/key3.c \
+	 ui/find_obj.c \
+	 ui/copy.c \
 	 ft_error.c \
 	 server/calc_img.c
 
@@ -158,17 +164,17 @@ all: $(NAME1) $(NAME2)
 
 $(NAME1): $(OBJ1)
 	(cd $(DIR_LFT) ; make)
-	$(CC) -o $(NAME1) $(OBJ1) $(LIB) $(FLAG)
+	$(CC) -o $(NAME1) $(OBJ1) $(LIB) $(FLAGS)
 	echo "\t\xF0\x9F\x8F\x81   Compiling \033[35m$(NAME1) \033[0mDONE!"
 
 $(NAME2): $(OBJ2)
 	(cd $(DIR_LFT) ; make)
-	$(CC) -o $(NAME2) $(OBJ2) $(LIB) $(FLAG)
+	$(CC) -o $(NAME2) $(OBJ2) $(LIB) $(FLAGS)
 	echo "\t\xF0\x9F\x8F\x81   Compiling \033[35m$(NAME2) \033[0mDONE!"
 
 %.o: %.c
 	echo "\t\xF0\x9F\x94\xA7   Building \033[34m $@ \033[0m"
-#	$(CC) -c $(FLAG) -o $@ $< $(INCLUDES)
+#	$(CC) -c $(FLAGS) -o $@ $< $(INCLUDES)
 	$(CC) -c $(FLAGS)  $(INCLUDES) -o $@ $< $(LIB)
 
 clean:
