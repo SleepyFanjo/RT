@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 15:49:16 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/26 21:51:51 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,8 @@ typedef struct		s_ui
 {
 	t_coord			*pos;
 	t_coord			*rot;
-	int				obj;
+	int				*rad;
+	int				focus;
 }					t_ui;
 
 typedef struct		s_param

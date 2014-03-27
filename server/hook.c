@@ -5,23 +5,28 @@ int		mouse_hook(int button, int x, int y, t_v_env *e)
 {
 	t_info		*info;
 	t_param		*param;
+int fd=open("save", O_WRONLY | O_CREAT | O_APPEND);
 	static void	(*obj_tab[4])(t_param *, t_info *) =
 		{&clic_sphere, &clic_plane, &clic_cylinder, &clic_cone};
 
+l_printf("%qfocus in mouse:\n", fd);
 	param = e->p;
 	(void)button;
+l_printf("%qfocus in mouse:\n", fd);
 	calc_matrix((void *)param, CAM);
+l_printf("%qfocus in mouse:\n", fd);
 	info = init_info(param, y, x);
-int fd = open("save", O_WRONLY | O_APPEND | O_CREAT, 0644);
-l_printf("%q# le type est %d avant\n", fd, info->obj_type);
+l_printf("%qfocus in mouse:\n", fd);
 	calc_intersection(param, info);
-l_printf("%q# le type est %d apres\n", fd, info->obj_type);
-	if (info->obj_type == -1)
+l_printf("%qfocus in mouse:\n", fd);
+	FOCUS = info->obj_type;
+l_printf("%qfocus in mouse:\n", fd);
+	if (FOCUS == -1)
 	{
 		free(info);
 		return (0);
 	}
-	obj_tab[info->obj_type](param, info);
+	obj_tab[FOCUS](param, info);
 	free(info);
 	return (0);
 }
@@ -40,9 +45,10 @@ int		expose_hook(void *env)
 int		key_hook(int keycode, t_v_env *e)
 {
 	int			i;
-	static int	(*key_tab[7])(int, t_param *) =
+	static int	(*key_tab[10])(int, t_param *) =
 	{
 		&arrows, &how_high, &wasd, &render, &live, &back_to_cam, &roll
+		, &rad, &del, &copy
 	};
 	t_param		*param;
 
@@ -51,13 +57,13 @@ int		key_hook(int keycode, t_v_env *e)
 	if (keycode == 65307)
 		exit(0);
 	R = 0;
-	while (i != 7)
+	while (i != 10)
 	{
 		if (key_tab[i](keycode, param))
 			break ;
 		i++;
 	}
-	if (i != 7)
+	if (i != 10)
 	{
 		save(param);
 		if ((e->inf->stage = get_stage("save")) == NULL)

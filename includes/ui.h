@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:51:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/26 15:43:01 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 00:00:56 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@
 # define A 97
 # define S 115
 # define D 100
+# define C 99
 # define NINE 65465
 # define SIX 65462
+# define DEL 65288
 
 # define C_X param->cam.x
 # define C_Y param->cam.y
@@ -39,6 +41,8 @@
 # define OBJ param->ui->obj
 # define POS param->ui->pos
 # define ROT param->ui->rot
+# define RADIUS param->ui->rad
+# define FOCUS param->ui->focus
 
 /*
 **	key1.c
@@ -51,6 +55,9 @@ int		save(t_param *param);
 int		live(int keycode, t_param *param);
 int		back_to_cam(int keycode, t_param *param);
 int		roll(int keycode, t_param *param);
+int		rad(int keycode, t_param *param);
+int		del(int keycode, t_param *param);
+int		copy(int keycode, t_param *param);
 
 /*
 **	save.c
