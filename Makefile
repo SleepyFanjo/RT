@@ -6,12 +6,12 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/26 16:45:37 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/27 07:47:10 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= gcc
-FLAG=-Wall -Wextra -Werror -g
+FLAG=-Wall -Wextra -g
 SRC1=apply_transformation.c \
 	 init_info.c \
 	 inter_sphere.c \
@@ -165,7 +165,7 @@ $(NAME2): $(OBJ2)
 %.o: %.c
 	echo "\t\xF0\x9F\x94\xA7   Building \033[34m $@ \033[0m"
 #	$(CC) -c $(FLAG) -o $@ $< $(INCLUDES)
-	$(CC) -c $(FLAGS)  $(INCLUDES) -o $@ $< $(LIB)
+	$(CC) -c $(FLAG)  $(INCLUDES) -o $@ $< $(LIB)
 
 clean:
 	echo "\t\xF0\x9F\x92\xA3   Cleaning"
