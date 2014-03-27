@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/26 16:45:37 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/27 02:55:55 by jrenouf-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,8 @@ SRC1=apply_transformation.c \
 	 light/calc_color.c \
 	 light/get_mat.c \
 	 light/textures.c \
+	 light/vec_calc.c \
+	 light/vec_ope.c \
 	 multithread/raytracer.c \
 	 multithread/get_thread.c \
 	 multithread/print_first_line.c \
@@ -121,6 +123,8 @@ SRC2=server/main_serv.c \
 	 light/calc_color.c \
 	 light/get_mat.c \
 	 light/textures.c \
+	 light/vec_calc.c \
+	 light/vec_ope.c \
 	 multithread/raytracer.c \
 	 multithread/get_thread.c \
 	 multithread/print_first_line.c \

@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 14:26:09 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/26 17:56:03 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/27 03:19:11 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ int 		*init_color(void);
 int 		*retrieve_col(int *col, int *obj_col, double coef);
 int			*damer(t_param *param, t_info *info, t_coord point);
 t_coord		calc_v_reflex(t_coord ov_dir, t_coord ov_nor);
+double		ft_abs(double nb);
+int			point_cmp(t_coord p1, t_coord p2);
+void		calc_color(int **col, int *s_col, double s_light, double coef);
+int			*convert_color(int color);
+t_coord		init_vec_tx(double x, double y, double z);
 
 double		get_shine(t_info *info);
 double		get_med(t_info *info);
@@ -43,5 +48,17 @@ typedef struct		s_map
 {
 	double			u;
 	double			v;
+	int				t_x;
+	int				t_y;
+	double			phi;
+	double			theta;
+	t_coord			new_point;
 }					t_map;
+
+typedef struct		s_lum
+{
+	double			fading;
+	double			shining;
+}					t_lum;
+
 #endif

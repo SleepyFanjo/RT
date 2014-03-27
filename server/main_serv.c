@@ -22,10 +22,7 @@ static int	get_init_value(int argc, char **argv, t_info_serv *inf)
 	if ((inf->stage = get_stage(argv[1])) == NULL)
 		return (1);
 	if ((inf->name_serv = getenv("HOST")) == NULL)
-	{
-		ft_printf("HOST var not defined\n");
-		return (1);
-	}
+		inf->name_serv = ft_strdup("Crazy Killa");
 	if ((inf->nb_th = ft_atoi(argv[3])) < 1)
 	{
 		ft_printf("Number of thread is too small (min 1)\n");

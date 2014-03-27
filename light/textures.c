@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   textures.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/27 02:58:29 by jrenouf-          #+#    #+#             */
+/*   Updated: 2014/03/27 03:19:45 by jrenouf-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "light.h"
 
 int			get_texture(t_info *info)
@@ -50,53 +62,31 @@ t_coord	cross_product(t_coord v1, t_coord v2)
 	return (new);
 }
 
-int		*convert_color(int color)
-{
-	int	*col;
-
-	col = (int *)j_malloc(sizeof(int) * 3);
-	col[0] = color % 256;
-	color /= 256;
-	col[1] = color % 256;
-	color /= 256;
-	col[2] = color % 256;
-	return (col);
-}
-
-int		*apply_text_sphere(t_coord point, t_sphere *s, t_textures t)
+int		*apply_text_sphere(t_coord point, t_sphere *s, t_textures tx)
 {
 	t_coord	v_n;
 	t_coord	v_e;
-	t_coord new_point;
-	double	phi;
-	double	theta;
-	t_map	text;
-	int		t_x;
-	int		t_y;
 	char	*color;
+	t_map	t;
 
-	v_n.x = 0;
-	v_n.y = 1;
-	v_n.z = 0;
-	v_e.x = 1;
-	v_e.y = 0;
-	v_e.z = 0;
-	new_point = normalize(point);
-	phi = acos(-dot_product(v_n, new_point));
-	text.v = phi / F_PI;
-	theta = (acos(dot_product(new_point, v_e) / sin(phi))) / (2 * F_PI);
+	v_n = init_vec_tx(0, 1, 0);
+	v_e = init_vec_tx(1, 0, 0);
+	t.new_point = normalize(point);
+	t.phi = acos(-dot_product(v_n, t.new_point));
+	t.v = t.phi / F_PI;
+	t.theta = (acos(dot_product(t.new_point, v_e) / sin(t.phi))) / (2 * F_PI);
 	if (dot_product(cross_product(v_n, v_e), point) > 0)
-		text.u = theta;
+		t.u = t.theta;
 	else
-		text.u = 1 - theta;
-	t_x = (int)(text.u * (double)t.size_x);
-	t_y = (int)(text.v * (double)t.size_y);
-	if ((t_x < 0 || t_x > t.size_x) || (t_y < 0 || t_y > t.size_y))
+		t.u = 1 - t.theta;
+	t.t_x = (int)(t.u * (double)tx.size_x);
+	t.t_y = (int)(t.v * (double)tx.size_y);
+	if ((t.t_x < 0 || t.t_x > tx.size_x) || (t.t_y < 0 || t.t_y > tx.size_y))
 		return (init_color());
 	color = (char *)j_malloc(sizeof(char) * 4);
-	color[0] = (int)(t.data[(t_y * t.sizeline + t_x * (t.bpp / 8))]);
-	color[1] = (int)(t.data[(t_y * t.sizeline + t_x * (t.bpp / 8) + 1)]);
-	color[2] = (int)(t.data[(t_y * t.sizeline + t_x * (t.bpp / 8) + 2)]);
+	color[0] = (int)(tx.data[(t.t_y * tx.sizeline + t.t_x * (tx.bpp / 8))]);
+	color[1] = (int)(tx.data[(t.t_y * tx.sizeline + t.t_x * (tx.bpp / 8) + 1)]);
+	color[2] = (int)(tx.data[(t.t_y * tx.sizeline + t.t_x * (tx.bpp / 8) + 2)]);
 	color[3] = 0;
 	return (convert_color(*(int *)color));
 }
