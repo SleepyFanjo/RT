@@ -14,6 +14,8 @@ static int		cmp_line(char *new_line)
 		return (CD_CYLINDER);
 	if (ft_strcmp(new_line, "cone") == 0)
 		return (CD_CONE);
+	if (ft_strcmp(new_line, "mesh") == 0)
+		return (CD_MESH);
 	return (CD_ERROR);
 }
 

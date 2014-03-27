@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 20:35:33 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/27 06:56:39 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define CD_COM 5
 # define CD_CYLINDER 6
 # define CD_CONE 7
+# define CD_MESH 8
 
 void	free_obj_lst(t_param *p);
 void	init_param(t_param *param, char *dir);
@@ -91,5 +92,6 @@ void	init_ui(t_param *param);
 int		final_color(int *color, double light);
 int		ft_listen(int port);
 void	get_env(int sockfd, t_inf_env *e);
+int		get_mesh(t_obj *obj, char *line);
 
 #endif

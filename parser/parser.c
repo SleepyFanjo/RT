@@ -24,6 +24,8 @@ static void		get_obj_cd(int cur_obj, t_obj *obj, char *line, int n_l)
 		getobjln(obj, line, get_cylinder, n_l);
 	else if (cur_obj == CD_CONE)
 		getobjln(obj, line, get_cone, n_l);
+	else if (cur_obj == CD_MESH)
+		getobjln(obj, line, get_mesh, n_l);
 }
 
 static void		loop_get_struct(t_var_parser *var)
@@ -78,6 +80,7 @@ void	parser(char *filename, t_param *param)
 	param->spot = obj->spot;
 	param->sphere = obj->sphere;
 	param->cone = obj->cone;
+	param->mesh = obj->mesh;
 	if (obj->cam == NULL)
 		print_error(filename, "Not find cam\n");
 	param->cam = obj->cam->point;

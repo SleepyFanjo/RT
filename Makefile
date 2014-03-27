@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/26 16:45:37 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/27 06:56:40 by jrenouf-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC1=apply_transformation.c \
 	 parser/get_obj.c \
 	 parser/test_tab.c \
 	 parser/get_cam.c \
+	 parser/get_mesh.c \
 	 parser/get_sphere.c \
 	 parser/free_obj_lst.c \
 	 light/light.c \
@@ -115,6 +116,7 @@ SRC2=server/main_serv.c \
 	 parser/test_tab.c \
 	 parser/get_cam.c \
 	 parser/get_sphere.c \
+	 parser/get_mesh.c \
 	 parser/free_obj_lst.c \
 	 light/light.c \
 	 light/reflex.c \
