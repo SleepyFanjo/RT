@@ -1,5 +1,8 @@
 #include <raytracer.h>
 
+
+//thtfhfth
+#include <stdio.h>
 static void			init_struct(t_parse_mesh *e)
 {
 	t_mesh			*mesh;
@@ -32,7 +35,8 @@ int					l_check_end(t_parse_mesh *e)
 	e->nbr_ver = nbr;
 	e->mesh->tri = (t_triangle **)j_malloc(sizeof(t_triangle *) * (nbr + 1));
 	i = 0;
-	while(i <= (nbr + 1))
+printf("nbr:%d", nbr);
+	while(i < nbr)
 	{
 		(e->mesh->tri)[i] = NULL;
 		i++;
@@ -61,6 +65,7 @@ int					get_info(t_parse_mesh *e, char *str)
 	if (!(ft_strncmp(str, "format", 5)) || !(ft_strncmp(str, "comment", 7))
 			|| !(ft_strncmp(str, "property", 8)))
 		return (1);
+printf("##%s\n", str);
 	if (!(ft_strncmp(str, "end_header", 10)))
 		return (l_check_end(e));
 	tab = ft_strsplit(str, ' ');
@@ -71,6 +76,7 @@ int					get_info(t_parse_mesh *e, char *str)
 	v_clear_tab(tab);
 	return (1);
 }
+
 
 void				l_putin_ver(double ver[3], char **tab)
 {
@@ -113,6 +119,10 @@ int					do_the_ver_dance(t_parse_mesh *e, char *str)
 	if ((tab = ft_strsplit(str, ' ')) == NULL)
 		return (l_error("Couldn't split", 0));
 	size = get_size_tab(tab);
+int fd=open("YO", O_WRONLY | O_APPEND | O_CREAT, 0644);
+ft_putnbr_fd(e->nbr_face, fd);
+ft_putendl_fd("", fd);
+close (fd);
 	if (size == 6)
 	{
 		get_vertex(e, tab);
@@ -132,6 +142,7 @@ void		test_print(t_parse_mesh *e)
 
 	while(TRI[i] != NULL)
 		{
+			printf("ligne %d\n", i);
 			printf("%f %f %f %f %f %f\n %f %f %f\n%f %f %f\n", TRI[i]->vert0[0], TRI[i]->vert0[1]
 		, TRI[i]->vert0[2], TRI[i]->vecn[0], TRI[i]->vecn[1], TRI[i]->vecn[2], TRI[i]->vert1[0]
 		, TRI[i]->vert1[1], TRI[i]->vert1[2], TRI[i]->vert2[0], TRI[i]->vert2[1], TRI[i]->vert2[2]);
@@ -163,7 +174,7 @@ int					get_mesh(t_obj *obj, char *line)
 				if (!get_info(&e, e.str))
 					return (l_error("Do not like your head...er", -1));
 			}
-			else if(e.nbr_face < e.nbr_ver)
+			else if(e.nbr_face < (e.nbr_ver * 3))
 			{
 				if (!do_the_ver_dance(&e, e.str))
 					return (l_error("You ain't got no rhythm", -1));
@@ -173,5 +184,14 @@ int					get_mesh(t_obj *obj, char *line)
 	}
 	test_print(&e);
 	ft_lstadd(&(obj->mesh), ft_lstnew(e.mesh, sizeof(t_mesh)));
+	return (0);
+}
+
+int		main(void)
+{
+	t_obj *obj=NULL;
+	char line[] = "3dmesh/susanne.ply";
+
+	printf("retour de la fonction%d\n", get_mesh(obj, line));
 	return (0);
 }
