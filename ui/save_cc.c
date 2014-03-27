@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 09:12:58 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 09:20:56 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 10:19:00 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void lil_put_cylinder(t_cylinder *s, int fd)
 {
 	l_printf("%q%d %d %d ", fd, (int)s->pos.x, (int)s->pos.y, (int)s->pos.z);
 	l_printf("%q%d %d %d %d %d ", fd, (int)s->rot.x, (int)s->rot.y
-			, (int)s->rot.z, s->radius, s->is_limited);
+		, (int)s->rot.z, s->radius, s->is_limited);
 	l_printf("%q%d %d  ", fd, (int)s->lim_h, (int)s->lim_b);
 	l_printf("%q%d %d %d %d ", fd, (int)(s->mat.shine * 100)
-			, (int)(s->mat.reflex * 100), (int)(s->mat.med_in * 100)
-			, (int)(s->mat.refrax * 100));
+		, (int)(s->mat.reflex * 100), (int)(s->mat.med_in * 100)
+		, (int)(s->mat.refrax * 100));
 	l_printf("%q%d %d ", fd, (int)(s->mat.trans * 100), s->mat.texture);
 	l_printf("%q%X%X%X\n", fd, s->color[2], s->color[1], s->color[0]);
 }
@@ -45,11 +45,11 @@ static void lil_put_cone(t_cone *s, int fd)
 {
 	l_printf("%q%d %d %d ", fd, (int)s->pos.x, (int)s->pos.y, (int)s->pos.z);
 	l_printf("%q%d %d %d %d %d ", fd, (int)s->rot.x, (int)s->rot.y
-			, (int)s->rot.z, s->alpha, s->is_limited);
+		, (int)s->rot.z, s->alpha, s->is_limited);
 	l_printf("%q%d %d  ", fd, (int)s->lim_h, (int)s->lim_b);
 	l_printf("%q%d %d %d %d ", fd, (int)(s->mat.shine * 100)
-			, (int)(s->mat.reflex * 100), (int)(s->mat.med_in * 100)
-			, (int)(s->mat.refrax * 100));
+		, (int)(s->mat.reflex * 100), (int)(s->mat.med_in * 100)
+		, (int)(s->mat.refrax * 100));
 	l_printf("%q%d %d ", fd, (int)(s->mat.trans * 100), s->mat.texture);
 	l_printf("%q%X%X%X\n", fd, s->color[2], s->color[1], s->color[0]);
 }

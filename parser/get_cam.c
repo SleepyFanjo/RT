@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:40:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 18:36:21 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/27 10:51:11 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,10 @@ static int		cam_test_tab(char **tab, int s_i)
 int				get_cam(t_obj *obj, char *line)
 {
 	char		**tab;
-	int			i;
 	t_cam		*plan;
 
 	if (obj->cam != NULL)
 		print_error(line, "Cam was already defined\n");
-	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 		print_error(line, "Allocation Fail");
 	if (get_size_tab(tab) != 6)

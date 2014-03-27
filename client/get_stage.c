@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 11:05:21 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 11:06:10 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/27 11:55:11 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,8 @@ static void	get_stage_read(int sockfd, int size)
 
 static void	get_content(int fd, int size)
 {
-	char	*stage;
 	int		ret;
 
-	stage = malloc(sizeof(char) * (size + 10));
 	get_stage_read(fd, size);
 	ret = STAGE_SUCCES;
 	send_message(fd, sizeof(int), (void *)(&ret));

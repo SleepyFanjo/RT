@@ -6,14 +6,16 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:51:51 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 10:38:32 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/27 11:54:55 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "multithread.h"
 
-static int	loop_con_blur(int res, t_thread *cur, t_img *img)
+static int	loop_con_blur(t_thread *cur, t_img *img)
 {
+	int		res;
+
 	if (cur->limit->e_j > 0)
 		res = (cur->limit->e_j - 1) * img->line;
 	else
@@ -40,7 +42,7 @@ static int	ft_connect_blur(t_list *lst)
 		cur->limit->s_j = ft_max(prvs->limit->e_j - 1, 0);
 		prvs = (t_thread *)lst->content;
 		if (lst->next == NULL)
-			return (loop_con_blur(res, cur, img));
+			return (loop_con_blur(cur, img));
 		lst = lst->next;
 	}
 	if (prvs->limit->e_j > 0)

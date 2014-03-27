@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 02:58:29 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/27 03:19:45 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/27 10:53:32 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_coord	cross_product(t_coord v1, t_coord v2)
 	return (new);
 }
 
-int		*apply_text_sphere(t_coord point, t_sphere *s, t_textures tx)
+int		*apply_text_sphere(t_coord point, t_textures tx)
 {
 	t_coord	v_n;
 	t_coord	v_e;
@@ -100,22 +100,22 @@ int		*damer(t_param *param, t_info *info, t_coord point)
 	if (tmp == 0)
 		return (info->color);
 	if (get_texture(info) == TEXT_0)
-		return (apply_text_sphere(point, (t_sphere *)info->obj, T0));
+		return (apply_text_sphere(point, T0));
 	if (get_texture(info) == TEXT_1)
-		return (apply_text_sphere(point, (t_sphere *)info->obj, T1));
+		return (apply_text_sphere(point, T1));
 	if (get_texture(info) == TEXT_2)
-		return (apply_text_sphere(point, (t_sphere *)info->obj, T2));
+		return (apply_text_sphere(point, T2));
 	if (get_texture(info) == TEXT_3)
-		return (apply_text_sphere(point, (t_sphere *)info->obj, T3));
+		return (apply_text_sphere(point, T3));
 	if (get_texture(info) == TEXT_4)
-		return (apply_text_sphere(point, (t_sphere *)info->obj, T4));
+		return (apply_text_sphere(point, T4));
 	if (get_texture(info) == TEXT_5)
-		return (apply_text_sphere(point, (t_sphere *)info->obj, T5));
+		return (apply_text_sphere(point, T5));
 	if (get_texture(info) == TEXT_6)
-		return (apply_text_sphere(point, (t_sphere *)info->obj, T6));
+		return (apply_text_sphere(point, T6));
 	if (get_texture(info) == TEXT_7)
-		return (apply_text_sphere(point, (t_sphere *)info->obj, T7));
+		return (apply_text_sphere(point, T7));
 	if (get_texture(info) == TEXT_8)
-		return (apply_text_sphere(point, (t_sphere *)info->obj, T8));
+		return (apply_text_sphere(point, T8));
 	return (info->color);
 }

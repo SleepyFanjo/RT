@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/21 22:10:51 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 09:05:52 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 10:15:47 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static char		*ft_hexatoa(unsigned int n, int base)
 void			ft_put_maj_hexa(unsigned int n, int base, int fd)
 {
 	char		*s;
+
 	s = ft_hexatoa(n, base);
 	ft_putstr_fd(s, fd);
 	free(s);
