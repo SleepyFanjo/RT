@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 12:42:18 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:04:16 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,13 @@ typedef struct		s_img
 typedef struct		s_textures
 {
 	void			*img;
-	char            *data;
+	char			*data;
 	char			*file;
-	int             bpp;
-	int             sizeline;
-	int             endian;
-	int             size_x;
-	int             size_y;
+	int				bpp;
+	int				sizeline;
+	int				endian;
+	int				size_x;
+	int				size_y;
 }					t_textures;
 
 typedef struct		s_material
