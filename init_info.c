@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 15:18:04 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 18:03:17 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/27 14:48:27 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		init_line(t_param *param, int i, int j, t_line *line)
 	line->pos.z = 0;
 	line->vec.x = -(WIDTH / 2) + j;
 	line->vec.y = (HEIGHT / 2) - i;
-	line->vec.z = 1000;
+	line->vec.z = WIDTH + HEIGHT;
 	apply_trans(param->m_cam, &(line->pos));
 	apply_rot(param->m_cam, &(line->vec));
 }
