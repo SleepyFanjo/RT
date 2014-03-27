@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/27 03:51:09 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/27 08:28:28 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define F_PI			(3.1415926535)
 # define WIDTH			(800)
 # define HEIGHT			(600)
-# define AMBL			0.2
+# define AMBL			0.0
 # define RAD(deg)			(deg * F_PI / 180)
 # include "multithread_struct.h"
 # include <struct.h>

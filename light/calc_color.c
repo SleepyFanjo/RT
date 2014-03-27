@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 02:55:22 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/27 02:58:19 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/27 08:21:21 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int			final_color(int *color, double light)
 	int		ret;
 	int		pop[3];
 
+	light = light + AMBL;
 	if (light > 1)
 		light = 1;
 	if (color == NULL)
