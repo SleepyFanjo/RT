@@ -6,12 +6,13 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/27 11:08:23 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/27 14:17:26 by qchevrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= gcc
 FLAGS=-Wall -Wextra -Werror -g
+FLAG=-Wall -Wextra -g
 SRC1=apply_transformation.c \
 	 init_info.c \
 	 inter_sphere.c \
@@ -44,6 +45,7 @@ SRC1=apply_transformation.c \
 	 parser/test_tab.c \
 	 parser/get_cam.c \
 	 parser/get_sphere.c \
+	 parser/get_mesh.c \
 	 parser/free_obj_lst.c \
 	 light/light.c \
 	 light/reflex.c \
@@ -68,7 +70,14 @@ SRC1=apply_transformation.c \
 	 client/compute.c \
 	 client/calc_multi_stage.c \
 	 client/client.c \
+<<<<<<< HEAD
 	 client/new_file_for_norme.c \
+=======
+	 mesh/calc_inter_mesh.c \
+	 mesh/calc_inter_tri.c \
+	 mesh/moller.c \
+	 mesh/prequel_inter.c \
+>>>>>>> fab7bd36ef19b0c887013d1865964986eb32bb14
 	 ft_error.c \
 	 main.c
 
@@ -119,6 +128,7 @@ SRC2=server/main_serv.c \
 	 parser/test_tab.c \
 	 parser/get_cam.c \
 	 parser/get_sphere.c \
+	 parser/get_mesh.c \
 	 parser/free_obj_lst.c \
 	 light/light.c \
 	 light/reflex.c \
@@ -149,6 +159,10 @@ SRC2=server/main_serv.c \
 	 ui/find_obj.c \
 	 ui/copy.c \
 	 ft_error.c \
+	 mesh/calc_inter_mesh.c \
+	 mesh/calc_inter_tri.c \
+	 mesh/moller.c \
+	 mesh/prequel_inter.c \
 	 server/calc_img.c
 
 INCLUDES=-I./ui/ -I./includes/ -I./libft/includes/
@@ -177,8 +191,13 @@ $(NAME2): $(OBJ2)
 
 %.o: %.c
 	echo "\t\xF0\x9F\x94\xA7   Building \033[34m $@ \033[0m"
+<<<<<<< HEAD
 #	$(CC) -c $(FLAGS) -o $@ $< $(INCLUDES)
 	$(CC) -c $(FLAGS)  $(INCLUDES) -o $@ $< $(LIB)
+=======
+#	$(CC) -c $(FLAG) -o $@ $< $(INCLUDES)
+	$(CC) -c $(FLAG)  $(INCLUDES) -o $@ $< $(LIB)
+>>>>>>> fab7bd36ef19b0c887013d1865964986eb32bb14
 
 clean:
 	echo "\t\xF0\x9F\x92\xA3   Cleaning"
