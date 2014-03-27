@@ -6,14 +6,14 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 09:39:17 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 10:49:21 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 11:01:44 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raytracer.h"
 #include "ui.h"
 
-int		rad(int keycode, t_param *param)
+int				rad(int keycode, t_param *param)
 {
 	if (keycode == 45 && RADIUS != NULL && *(RADIUS) > 15)
 	{
@@ -54,7 +54,7 @@ static void		supp(t_param *param, int obj)
 	}
 }
 
-int			del(int keycode, t_param *param)
+int				del(int keycode, t_param *param)
 {
 	if (keycode != DEL)
 		return (0);
