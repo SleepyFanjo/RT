@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/27 10:52:42 by vwatrelo          #+#    #+#             */
+/*   Updated: 2014/03/27 10:58:09 by vwatrelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <string.h>
@@ -10,16 +22,17 @@
 
 static void	ft_print_error(char *str, int kill)
 {
-	printf("error: %s\n", str);
+	int		fucking_norminette_she_sucks;
+
+	(void)fucking_norminette_she_sucks;
+	ft_printf("%rerror: %s\n", str);
 	if (kill)
 		_exit(kill);
 }
 
-static int		init_socket(int sockfd, int port)
+static int	init_socket(int sockfd, int port)
 {
-
 	struct sockaddr_in	this;
-
 
 	bzero(&this, sizeof(this));
 	this.sin_family = AF_INET;
@@ -38,7 +51,7 @@ static int		init_socket(int sockfd, int port)
 	return (0);
 }
 
-static void		v_child(int newsockfd, int sockfd)
+static void	v_child(int newsockfd, int sockfd)
 {
 	close(sockfd);
 	compute(newsockfd);
@@ -46,7 +59,7 @@ static void		v_child(int newsockfd, int sockfd)
 	exit(0);
 }
 
-static void		loop_listen(socklen_t lg, int sockfd)
+static void	loop_listen(socklen_t lg, int sockfd)
 {
 	int					newsockfd;
 	struct sockaddr_in	that;
@@ -66,17 +79,14 @@ static void		loop_listen(socklen_t lg, int sockfd)
 			if (pid == 0)
 				v_child(newsockfd, sockfd);
 			else
-			{
-				close(newsockfd);
-				wait(&ret);
-			}
+				new_file_for_norme(newsockfd, &ret);
 			ft_printf("Compute end with status: %d\n", ret);
 		}
 	}
 	close(sockfd);
 }
 
-int				ft_listen(int port)
+int			ft_listen(int port)
 {
 	int					sockfd;
 	socklen_t			lg;

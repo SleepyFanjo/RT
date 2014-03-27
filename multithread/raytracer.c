@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raytracer.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/27 10:44:27 by vwatrelo          #+#    #+#             */
+/*   Updated: 2014/03/27 10:44:32 by vwatrelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "multithread.h"
 #include "../includes/client.h"
 
@@ -30,7 +42,7 @@ static void	execute_thread(t_list *th)
 	}
 }
 
-int		raytracer(t_param *param, t_inf_exec *inf, int sockfd)
+int			raytracer(t_param *param, t_inf_exec *inf, int sockfd)
 {
 	t_list		*th;
 	t_list		*tmp;
@@ -54,6 +66,5 @@ int		raytracer(t_param *param, t_inf_exec *inf, int sockfd)
 		ft_printf("%r#13\n");
 		exit(12);
 	}
-//	free_obj_lst(param);
 	return (0);
 }
