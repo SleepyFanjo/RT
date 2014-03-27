@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/27 11:08:23 by vwatrelo         ###   ########.fr        #
+#    Updated: 2014/03/27 14:27:59 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,6 +148,8 @@ SRC2=server/main_serv.c \
 	 ui/key3.c \
 	 ui/find_obj.c \
 	 ui/copy.c \
+	 ui/dup_sp.c \
+	 ui/dup_cc.c \
 	 ft_error.c \
 	 server/calc_img.c
 
