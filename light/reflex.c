@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 02:46:35 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/27 02:46:38 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/27 08:24:45 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_info	*new_vd(t_line old_line, t_coord v_nor)
 	reflex = (t_info *)j_malloc(sizeof(t_info));
 	reflex->r_line = init_line(old_line, v_nor);
 	reflex->distance = -1;
-	reflex->light = AMBL;
+	reflex->light = 0.0f;
 	reflex->color = (int *)j_malloc(sizeof(int) * 3);
 	reflex->obj_type = -1;
 	return (reflex);

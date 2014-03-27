@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 02:50:53 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/27 03:07:55 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/27 08:23:26 by jrenouf-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_info	*init_light(t_info *info, t_spot *spot)
 	light = (t_info *)j_malloc(sizeof(t_info));
 	light->r_line = init_line(info->r_pos, spot->coord);
 	light->distance = -1;
-	light->light = AMBL;
+	light->light = 0.0f;
 	light->color = (int *)j_malloc(sizeof(int) * 3);
 	light->obj_type = -1;
 	return (light);

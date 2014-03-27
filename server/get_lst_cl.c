@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_lst_cl.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/27 11:57:34 by vwatrelo          #+#    #+#             */
+/*   Updated: 2014/03/27 11:57:53 by vwatrelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/network.h"
 
-static size_t	v_get_size_tab(char **tab)
+static size_t		v_get_size_tab(char **tab)
 {
 	size_t		i;
 
@@ -10,7 +22,7 @@ static size_t	v_get_size_tab(char **tab)
 	return (i);
 }
 
-static void		my_free_tab(char **tab)
+static void			my_free_tab(char **tab)
 {
 	int		i;
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/27 10:59:41 by vwatrelo          #+#    #+#             */
+/*   Updated: 2014/03/27 10:59:43 by vwatrelo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CLIENT_H
 # define CLIENT_H
 
@@ -15,5 +27,6 @@ void		calc_multi_stage(int sockfd, t_inf_env *inf_env);
 int			my_mlx_get_color_value(int color, int *decrgb, int depth);
 
 int			compute(int socketfd);
+void		new_file_for_norme(int newsockfd, int *status);
 
 #endif
