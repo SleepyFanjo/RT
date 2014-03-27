@@ -6,12 +6,12 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/27 09:47:58 by lredoban         ###   ########.fr        #
+#    Updated: 2014/03/27 10:50:02 by lredoban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= gcc
-FLAGS=-Wall -Wextra -g
+FLAGS=-Wall -Wextra -Werror -g
 SRC1=apply_transformation.c \
 	 init_info.c \
 	 inter_sphere.c \

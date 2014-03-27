@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 09:39:17 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 09:47:00 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 10:49:21 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 
 int		rad(int keycode, t_param *param)
 {
-	if (keycode == 45 && RADIUS != NULL && *(RADIUS) > 0)
+	if (keycode == 45 && RADIUS != NULL && *(RADIUS) > 15)
 	{
-		//if cone alpha
 		*(RADIUS) -= 15;
 		return (1);
 	}
 	if (keycode == 61 && RADIUS != NULL)
 	{
-		//if cone alpah
 		*(RADIUS) += 15;
 		return (1);
 	}

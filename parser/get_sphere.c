@@ -38,10 +38,8 @@ static void	set_sphere(t_sphere *obj, char **tab)
 int			get_sphere(t_obj *obj, char *line)
 {
 	char		**tab;
-	int			i;
 	t_sphere	*sphere;
 
-	i = 0;
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
 	{
 		ft_printf("%rAllocation Fail: ");

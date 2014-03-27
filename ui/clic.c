@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/24 19:49:45 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/26 19:16:06 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 10:17:47 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void		clic_sphere(t_param *param, t_info *info)
 {
-	t_sphere   *s;
+	t_sphere	*s;
 
 	s = info->obj;
 	POS = &(s->pos);
