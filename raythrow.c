@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 14:21:34 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/26 15:16:56 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/27 09:31:48 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		raythrow(t_thread *thread)
 	return (0);
 }
 
+#include <stdio.h>
 int		put_pixel_to_img(t_param *param, int i, int j)
 {
 	t_info		*info;

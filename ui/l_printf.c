@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/21 11:34:48 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/22 23:14:05 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 10:16:18 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void		ft_d2(t_printf_env *e, const char *format)
 static void		ft_dispatch(t_printf_env *e, const char *format)
 {
 	e->pos += 1;
-
 	if (format[e->pos] == 'd' || format[e->pos] == 'i')
 		ft_num(e, (va_arg(e->ap, int)));
 	if (format[e->pos] == 'u')
