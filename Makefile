@@ -6,7 +6,7 @@
 #    By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 12:33:25 by qchevrin          #+#    #+#              #
-#    Updated: 2014/03/26 16:45:37 by qchevrin         ###   ########.fr        #
+#    Updated: 2014/03/27 03:45:19 by vwatrelo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,10 @@ SRC1=apply_transformation.c \
 	 client/compute.c \
 	 client/calc_multi_stage.c \
 	 client/client.c \
+	 mesh/moller.c \
+	 mesh/calc_inter_mesh.c \
+	 mesh/calc_inter_tri.c \
+	 mesh/prequel_inter.c \
 	 ft_error.c \
 	 main.c
 
@@ -135,6 +139,10 @@ SRC2=server/main_serv.c \
 	 ui/ft_num.c \
 	 ui/ft_putui.c \
 	 ui/clic.c \
+	 mesh/calc_inter_mesh.c \
+	 mesh/calc_inter_tri.c \
+	 mesh/prequel_inter.c \
+	 mesh/moller.c \
 	 ft_error.c \
 	 server/calc_img.c
 

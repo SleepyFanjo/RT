@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 02:24:31 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/27 03:19:00 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define CYLINDER	(2)
 # define CONE		(3)
 # define CAM		(4)
+# define MESH		(5)
 # define NB_T		(9)
 
 typedef struct		s_coord
@@ -220,7 +221,7 @@ typedef struct		s_param
 	t_list			*plane;
 	t_list			*cylinder;
 	t_list			*cone;
-	t_mesh			*mesh;
+	t_list			*mesh;
 	t_img			v_img;
 	t_ui			*ui;
 	t_textures		*text;
