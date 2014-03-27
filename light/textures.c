@@ -6,13 +6,13 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 02:58:29 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/27 10:53:32 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:17:24 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light.h"
 
-int			get_texture(t_info *info)
+int		get_texture(t_info *info)
 {
 	if (info->obj_type == -1)
 		return (0.0);

@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/10 11:04:14 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/12 15:37:25 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:06:39 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-void		ft_lstiter(t_list *list, void *(*f)(void *data));
-void		ft_lstadd(t_list **begin, t_list *new_elem);
-t_list		*ft_lstnew(void *content, size_t content_size);
-void		ft_lstdel(t_list **begin, t_list *elem);
-void		ft_lstdelone(t_list **list, t_list *elem);
-void		free_tab(char **tab);
-void		ft_lstpop(t_list **begin, t_list *new_elem);
-int			is_comment(char *str);
+void				ft_lstiter(t_list *list, void *(*f)(void *data));
+void				ft_lstadd(t_list **begin, t_list *new_elem);
+t_list				*ft_lstnew(void *content, size_t content_size);
+void				ft_lstdel(t_list **begin, t_list *elem);
+void				ft_lstdelone(t_list **list, t_list *elem);
+void				free_tab(char **tab);
+void				ft_lstpop(t_list **begin, t_list *new_elem);
+int					is_comment(char *str);
 
 #endif

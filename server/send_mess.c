@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 12:07:14 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 12:07:14 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:24:05 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	v_exit(char *msg, int cd)
 	exit(cd);
 }
 
-int		send_long_message(int sockfd, void *mess, int size)
+int			send_long_message(int sockfd, void *mess, int size)
 {
 	int		pos;
 	int		ret;
@@ -43,7 +43,7 @@ int		send_long_message(int sockfd, void *mess, int size)
 	return (0);
 }
 
-int		send_message(int fd, size_t size, void *mess)
+int			send_message(int fd, size_t size, void *mess)
 {
 	if (write(fd, mess, size) < 0)
 	{

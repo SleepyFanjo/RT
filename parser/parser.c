@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/27 15:21:34 by lredoban          #+#    #+#             */
+/*   Updated: 2014/03/27 15:21:49 by lredoban         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "raytracer.h"
 
 static void		getobjln(t_obj *o, char *ln, int (*f)(t_obj *, char *), int nb)
@@ -65,7 +77,7 @@ static t_obj	*get_struct_obj(int fd)
 	return (var.obj);
 }
 
-void	parser(char *filename, t_param *param)
+void			parser(char *filename, t_param *param)
 {
 	int		fd;
 	t_obj	*obj;

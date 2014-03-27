@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 12:06:37 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 12:06:38 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:23:48 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int		send_textures(int sockfd, t_v_env *env)
 	return (0);
 }
 
-static void	v_exit(char *msg, int cd)
+static void		v_exit(char *msg, int cd)
 {
 	ft_printf(msg);
 	exit(cd);
@@ -81,7 +81,7 @@ static void		loop_send_env(t_client *cl, t_img *img, t_v_env *env)
 	}
 }
 
-void		send_env(t_list *lst, t_v_env *e)
+void			send_env(t_list *lst, t_v_env *e)
 {
 	t_client	*cl;
 	t_img		*img;

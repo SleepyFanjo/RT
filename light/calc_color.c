@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 02:55:22 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/27 08:21:21 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:14:13 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	calc_color(int **col, int *s_col, double s_light, double coef)
 	(*col)[2] += s_light * s_col[2] * coef;
 }
 
-int 	*retrieve_col(int *col, int *obj_col, double coef)
+int		*retrieve_col(int *col, int *obj_col, double coef)
 {
-	int 	*final_col;
+	int		*final_col;
 
 	final_col = (int *)j_malloc(sizeof(int) * 3);
 	final_col[0] = coef * col[0] + obj_col[0] * (1 - coef);
@@ -36,7 +36,7 @@ int 	*retrieve_col(int *col, int *obj_col, double coef)
 	return (final_col);
 }
 
-int			final_color(int *color, double light)
+int		final_color(int *color, double light)
 {
 	int		ret;
 	int		pop[3];
@@ -49,11 +49,11 @@ int			final_color(int *color, double light)
 	pop[0] = color[0] * light;
 	pop[1] = color[1] * light;
 	pop[2] = color[2] * light;
-	ret = pop[0] + 256 * pop[1]	+ 256 * 256 * pop[2];
+	ret = pop[0] + 256 * pop[1] + 256 * 256 * pop[2];
 	return (ret);
 }
 
-int			calc_color_end(t_param *param, t_info *info)
+int		calc_color_end(t_param *param, t_info *info)
 {
 	calc_reflex(param, info);
 	calc_light(param, info, param->spot);
