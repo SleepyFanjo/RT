@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 01:06:24 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 02:24:31 by vwatrelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ typedef struct		s_img
 	int				*decrgb;
 	int				depth;
 }					t_img;
+
+typedef struct		s_triangle
+{
+	double			vert0[3];
+	double			vert1[3];
+	double			vert2[3];
+	double			vecn[3];
+}					t_triangle;
 
 typedef struct		s_textures
 {
@@ -196,6 +204,11 @@ typedef struct		s_ui
 	int				focus;
 }					t_ui;
 
+typedef struct		s_mesh
+{
+	t_triangle		**tri;
+}					t_mesh;
+
 typedef struct		s_param
 {
 	t_env			env;
@@ -207,6 +220,7 @@ typedef struct		s_param
 	t_list			*plane;
 	t_list			*cylinder;
 	t_list			*cone;
+	t_mesh			*mesh;
 	t_img			v_img;
 	t_ui			*ui;
 	t_textures		*text;
@@ -221,6 +235,7 @@ typedef struct		s_obj
 	t_list			*sphere;
 	t_list			*cone;
 	t_cam			*cam;
+	t_list			*mesh;
 }					t_obj;
 
 typedef struct		s_var_parser
