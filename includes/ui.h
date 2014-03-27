@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/21 15:51:35 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 14:27:44 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:04:54 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,24 @@
 /*
 **	key1.c
 */
-int		render(int keycode, t_param *param);
-int		save(t_param *param);
-int		live(int keycode, t_param *param);
-int		how_high(int keycode, t_param *param);
-int		back_to_cam(int keycode, t_param *param);
+int			render(int keycode, t_param *param);
+int			save(t_param *param);
+int			live(int keycode, t_param *param);
+int			how_high(int keycode, t_param *param);
+int			back_to_cam(int keycode, t_param *param);
 
 /*
 **	key2.c
 */
-int		wasd(int keycode, t_param *param);
-int		arrows(int keycode, t_param *param);
-int		roll(int keycode, t_param *param);
+int			wasd(int keycode, t_param *param);
+int			arrows(int keycode, t_param *param);
+int			roll(int keycode, t_param *param);
 
 /*
 **	key3.c
 */
-int		rad(int keycode, t_param *param);
-int		del(int keycode, t_param *param);
+int			rad(int keycode, t_param *param);
+int			del(int keycode, t_param *param);
 
 /*
 **	find_obj.c
@@ -77,8 +77,8 @@ t_list		*find_sphere(t_param *param, t_list *l);
 /*
 **	copy.c
 */
-int		copy(int keycode, t_param *param);
-int		*cpy_col(int *col);
+int			copy(int keycode, t_param *param);
+int			*cpy_col(int *col);
 
 /*
 **	save.c

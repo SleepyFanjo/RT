@@ -13,15 +13,15 @@
 # define LIM_NB_READ	10
 # define START_MODE		1
 
-#define T0			(param->text[0])
-#define T1			(param->text[1])
-#define T2			(param->text[2])
-#define T3			(param->text[3])
-#define T4			(param->text[4])
-#define T5			(param->text[5])
-#define T6			(param->text[6])
-#define T7			(param->text[7])
-#define T8			(param->text[8])
+# define T0			(param->text[0])
+# define T1			(param->text[1])
+# define T2			(param->text[2])
+# define T3			(param->text[3])
+# define T4			(param->text[4])
+# define T5			(param->text[5])
+# define T6			(param->text[6])
+# define T7			(param->text[7])
+# define T8			(param->text[8])
 
 typedef struct	s_inf_exec
 {

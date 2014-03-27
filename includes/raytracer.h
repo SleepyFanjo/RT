@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/27 14:52:44 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:08:42 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define RAYTRACER_H
 # define LOADING		(0)
 # define F_PI			(3.1415926535)
-# define WIDTH			(800)
-# define HEIGHT			(600)
+# define WIDTH			(1800)
+# define HEIGHT			(1600)
 # define AMBL			0.0
 # define RAD(deg)			(deg * F_PI / 180)
 # include "multithread_struct.h"
