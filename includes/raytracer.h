@@ -6,7 +6,7 @@
 /*   By: qchevrin <qchevrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 13:13:36 by qchevrin          #+#    #+#             */
-/*   Updated: 2014/03/27 15:11:33 by qchevrin         ###   ########.fr       */
+/*   Updated: 2014/03/27 16:14:38 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		get_plan(t_obj *obj, char *str);
 int		get_sphere(t_obj *obj, char *str);
 int		get_cam(t_obj *obj, char *line);
 int		*get_color(char *color);
+void	*free_spot(void *data);
 int		ft_hex_atoi(char *str);
 int		next_number(char *line, int *i);
 int		first_number(char *line, int *i);

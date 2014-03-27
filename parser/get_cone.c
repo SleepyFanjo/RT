@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 15:18:18 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 15:18:20 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 16:06:55 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	set_cone(t_cone *cone, char **tab)
 	cone->mat.refrax = ft_atoi(tab[13]) / 100.0;
 	cone->mat.trans = ft_atoi(tab[14]) / 100.0;
 	cone->mat.texture = ft_atoi(tab[15]);
+	calc_matrix((void *)cone, CONE);
 }
 
 int			get_cone(t_obj *obj, char *line)
@@ -57,7 +58,6 @@ int			get_cone(t_obj *obj, char *line)
 		return (-1);
 	}
 	set_cone(cone, tab);
-	calc_matrix((void *)cone, CONE);
 	ft_lstadd(&(obj->cone), ft_lstnew(cone, sizeof(t_cone)));
 	return (0);
 }

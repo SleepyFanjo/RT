@@ -6,13 +6,30 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 15:22:07 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 15:22:11 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 16:18:08 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raytracer.h"
 
-int	test_tab(char **tab, int s_i)
+int		next_test_tab(char **tab, int s_i)
+{
+	int		j;
+
+	j = 0;
+	while (tab[s_i][j] != '\0')
+	{
+		if (!ft_isdigit(tab[s_i][j]) && tab[s_i][j] < 'a' && tab[s_i][j] > 'f')
+		{
+			ft_printf("%rNot an hexadecimal number: ");
+			return (0);
+		}
+		j++;
+	}
+	return (1);
+}
+
+int		test_tab(char **tab, int s_i)
 {
 	int		i;
 	int		j;
@@ -32,15 +49,5 @@ int	test_tab(char **tab, int s_i)
 		}
 		i++;
 	}
-	j = 0;
-	while (tab[s_i][j] != '\0')
-	{
-		if (!ft_isdigit(tab[s_i][j]) && tab[s_i][j] < 'a' && tab[s_i][j] > 'f')
-		{
-			ft_printf("%rNot an hexadecimal number: ");
-			return (0);
-		}
-		j++;
-	}
-	return (1);
+	return (next_test_tab(tab, s_i));
 }

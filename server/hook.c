@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 12:03:38 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 15:58:30 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 16:11:24 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			expose_hook(void *env)
 	return (0);
 }
 
-static void	norminette_mary_me(t_param *param, t_v_env *e, int keycode, int i)
+static void	norminette_mary_me(t_param *param, t_v_env *e, int i)
 {
 	if (i != 10)
 	{
@@ -56,12 +56,6 @@ static void	norminette_mary_me(t_param *param, t_v_env *e, int keycode, int i)
 			exit (0);
 		calc_img(e->lst_id_cl, e->inf, e);
 		expose_hook(e);
-	}
-	else
-	{
-		ft_putstr("keycode=");
-		ft_putnbr(keycode);
-		ft_putstr("\n");
 	}
 }
 
@@ -84,6 +78,6 @@ int			key_hook(int keycode, t_v_env *e)
 			break ;
 		i++;
 	}
-	norminette_mary_me(param, e, keycode, i);
+	norminette_mary_me(param, e, i);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:29:34 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 18:51:52 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/27 16:07:10 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	set_cylinder(t_cylinder *cylinder, char **tab)
 	cylinder->mat.refrax = ft_atoi(tab[13]) / 100.0;
 	cylinder->mat.trans = ft_atoi(tab[14]) / 100.0;
 	cylinder->mat.texture = ft_atoi(tab[15]);
+	calc_matrix((void *)cylinder, CYLINDER);
 }
 
 int			get_cylinder(t_obj *obj, char *line)
@@ -57,7 +58,6 @@ int			get_cylinder(t_obj *obj, char *line)
 	set_cylinder(cylinder, tab);
 	if ((cylinder->color = get_color(tab[16])) == NULL)
 		return (-1);
-	calc_matrix((void *)cylinder, CYLINDER);
 	ft_lstadd(&(obj->cylinder), ft_lstnew(cylinder, sizeof(t_cylinder)));
 	return (0);
 }

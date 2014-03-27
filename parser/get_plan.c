@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 17:19:28 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/26 15:24:15 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/27 16:08:06 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	set_plan(t_plane *plan, char **tab)
 	plan->mat.refrax = ft_atoi(tab[9]) / 100.0;
 	plan->mat.trans = ft_atoi(tab[10]) / 100.0;
 	plan->mat.texture = ft_atoi(tab[11]);
+	calc_matrix((void *)plan, PLANE);
 }
 
 int			get_plan(t_obj *obj, char *line)
@@ -34,10 +35,7 @@ int			get_plan(t_obj *obj, char *line)
 	t_plane		*plan;
 
 	if ((tab = ft_strsplit(line, ' ')) == NULL)
-	{
-		ft_printf("%rAllocation Fail: ");
 		return (-1);
-	}
 	if (get_size_tab(tab) != 13)
 	{
 		ft_printf("%rThis line has no 13 param: ");
@@ -54,7 +52,6 @@ int			get_plan(t_obj *obj, char *line)
 	plan->color = get_color(tab[12]);
 	if (plan->color == NULL)
 		return (-1);
-	calc_matrix((void *)plan, PLANE);
 	ft_lstadd(&(obj->plan), ft_lstnew(plan, sizeof(t_plane)));
 	return (0);
 }

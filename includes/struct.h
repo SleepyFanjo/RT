@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:53:15 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 15:04:16 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 16:27:31 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,7 +239,5 @@ typedef struct		s_inf_env
 	t_textures	*t;
 	t_event		*event;
 }					t_inf_env;
-
-# include "multithread_struct.h"
 
 #endif

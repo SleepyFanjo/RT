@@ -6,7 +6,7 @@
 /*   By: lredoban <lredoban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 15:24:27 by lredoban          #+#    #+#             */
-/*   Updated: 2014/03/27 15:24:31 by lredoban         ###   ########.fr       */
+/*   Updated: 2014/03/27 16:21:27 by qchevrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ static void		v_exit(char *str, int cd)
 
 static void		get_text_sequel(t_v_env *param, void *e)
 {
+	T4.file = "./textures/4.xpm";
+	T4.img = mlx_xpm_file_to_image(e, T4.file, &T4.size_x, &T4.size_y);
+	if (T4.img == NULL)
+		v_exit("%r#20", 20);
+	T4.data = mlx_get_data_addr(T4.img, &T4.bpp, &T4.sizeline, &T4.endian);
 	T5.file = "./textures/5.xpm";
 	T5.img = mlx_xpm_file_to_image(e, T5.file, &T5.size_x, &T5.size_y);
 	if (T5.img == NULL)
@@ -64,10 +69,5 @@ void			get_textures(t_v_env *param, void *e)
 	if (T3.img == NULL)
 		v_exit("%r#20", 20);
 	T3.data = mlx_get_data_addr(T3.img, &T3.bpp, &T3.sizeline, &T3.endian);
-	T4.file = "./textures/4.xpm";
-	T4.img = mlx_xpm_file_to_image(e, T4.file, &T4.size_x, &T4.size_y);
-	if (T4.img == NULL)
-		v_exit("%r#20", 20);
-	T4.data = mlx_get_data_addr(T4.img, &T4.bpp, &T4.sizeline, &T4.endian);
 	get_text_sequel(param, e);
 }
