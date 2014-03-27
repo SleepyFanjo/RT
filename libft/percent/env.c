@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/12 17:04:24 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/02/12 19:00:41 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:12:55 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ void		setenv_percent(void)
 	}
 	else
 		tcsetattr(0, 0, &backup);
-
 }

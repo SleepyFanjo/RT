@@ -6,13 +6,13 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 02:50:53 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/27 08:23:26 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:28:43 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light.h"
 
-double	calc_fading(t_coord v_dir, t_coord v_nor)
+double			calc_fading(t_coord v_dir, t_coord v_nor)
 {
 	double	tmp;
 
@@ -21,7 +21,7 @@ double	calc_fading(t_coord v_dir, t_coord v_nor)
 	return (tmp);
 }
 
-double	calc_shining(t_coord v_nor, t_coord v_lum)
+double			calc_shining(t_coord v_nor, t_coord v_lum)
 {
 	double	shining;
 	t_coord	v_reflex;
@@ -44,7 +44,7 @@ static t_line	init_line(t_coord p1, t_coord p2)
 	return (line);
 }
 
-t_info	*init_light(t_info *info, t_spot *spot)
+t_info			*init_light(t_info *info, t_spot *spot)
 {
 	t_info	*light;
 
@@ -57,13 +57,12 @@ t_info	*init_light(t_info *info, t_spot *spot)
 	return (light);
 }
 
-
-void	calc_light(t_param *param, t_info *info, t_list *spot)
+void			calc_light(t_param *param, t_info *info, t_list *spot)
 {
 	t_info	*light;
 	t_spot	*o_spot;
 	t_lum	lum;
-	int 	*s_color;
+	int		*s_color;
 
 	if (info->distance < 0)
 		return ;
@@ -84,5 +83,5 @@ void	calc_light(t_param *param, t_info *info, t_list *spot)
 		spot = spot->next;
 	}
 	info->color = retrieve_col(s_color, damer(param, info, info->s_pos),
-		   			get_shine(info));
+		get_shine(info));
 }

@@ -6,7 +6,7 @@
 /*   By: vwatrelo <vwatrelo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 12:06:09 by vwatrelo          #+#    #+#             */
-/*   Updated: 2014/03/27 12:06:11 by vwatrelo         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:23:17 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	ending_mlx(t_v_env *e)
 
 static int	get_init_value(int argc, char **argv, t_info_serv *inf)
 {
-
 	if (argc != 4)
 	{
 		ft_printf("%rBad usage: ./RT scene.rt list.host nb_thread\n");

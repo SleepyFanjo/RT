@@ -6,7 +6,7 @@
 /*   By: jrenouf- <jrenouf-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 02:46:35 by jrenouf-          #+#    #+#             */
-/*   Updated: 2014/03/27 08:24:45 by jrenouf-         ###   ########.fr       */
+/*   Updated: 2014/03/27 15:16:55 by lredoban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_info	*new_vd(t_line old_line, t_coord v_nor)
 	return (reflex);
 }
 
-int 	*init_color(void)
+int		*init_color(void)
 {
 	int *color;
 
