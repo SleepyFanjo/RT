@@ -33,7 +33,6 @@ static void	execute_thread(t_list *th)
 int		raytracer(t_param *param, t_inf_exec *inf, int sockfd)
 {
 	t_list		*th;
-	t_list		*tmp;
 	int			end;
 	int			start;
 	int			tmp_ret;
@@ -46,7 +45,6 @@ int		raytracer(t_param *param, t_inf_exec *inf, int sockfd)
 		ft_printf("%r#12\n");
 		exit(12);
 	}
-	tmp = th;
 	execute_thread(th);
 	send_stage(sockfd, param, start, end);
 	if (get_value(sockfd, &tmp_ret, sizeof(int)) < 0 || tmp_ret != STAGE_SUCCES)

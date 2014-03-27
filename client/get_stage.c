@@ -54,10 +54,8 @@ static void	get_stage_read(int sockfd, int size)
 
 static void	get_content(int fd, int size)
 {
-	char	*stage;
 	int		ret;
 
-	stage = malloc(sizeof(char) * (size + 10));
 	get_stage_read(fd, size);
 	ret = STAGE_SUCCES;
 	send_message(fd, sizeof(int), (void *)(&ret));
