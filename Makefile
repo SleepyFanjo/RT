@@ -158,7 +158,7 @@ OBJ1= $(SRC1:.c=.o)
 OBJ2= $(SRC2:.c=.o)
 NAME1= Exec_client
 NAME2= Raytracer
-LIB=-L./libft -lft_core -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lpthread -I /usr/X11/include/
+LIB=-L./libft -lft_core -lft_list -L/usr/X11/lib -lmlx -lXext -lX11 -lm -lbsd -lpthread -I /usr/X11/include/
 DIR_LFT=./libft
 
 .PHONY: clean fclean re all

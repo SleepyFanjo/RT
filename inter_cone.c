@@ -16,7 +16,7 @@ static double	*init_delta(void)
 {
 	double		*d;
 
-	d = (double *)j_malloc(sizeof(double));
+	d = (double *)j_malloc(sizeof(double) * 2);
 	d[0] = -1;
 	d[1] = -1;
 	return (d);

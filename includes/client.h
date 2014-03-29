@@ -15,6 +15,8 @@
 
 # include "define.h"
 # include "raytracer.h"
+# include <sys/types.h>
+# include <sys/wait.h>
 # include <X11/Xlib.h>
 
 void		send_message(int fd, size_t size, void *mess);
